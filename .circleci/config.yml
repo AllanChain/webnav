@@ -22,7 +22,7 @@ jobs:
             git worktree add -B gh-pages ../public origin/gh-pages
             git config user.email "ci-build@pkuphysu.top"
             git config user.name "ci-build"
-    # Download and cache dependencies
+      # Download and cache dependencies
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
