@@ -33,10 +33,10 @@ jobs:
           command: |
             npm install
             npm run build
-      - run:
-          name: Install tzdata
-          command: |
-            apt-get install tzdata
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
       - run:
           name: Deploy to gh-pages
           command: |
@@ -45,10 +45,6 @@ jobs:
             git add --all
             git commit -m "Site build at $(date '+%F %T')"
             git push
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
 workflows:
   main:
     jobs:
