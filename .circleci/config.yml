@@ -4,6 +4,7 @@ jobs:
     working_directory: ~/repo/webnav
     environment:
       TZ: Asia/Shanghai
+      NODE_ENV: production
     docker:
         - image: circleci/node:latest
     steps:
