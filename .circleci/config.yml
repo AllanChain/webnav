@@ -40,7 +40,7 @@ jobs:
       - run:
           name: Deploy to gh-pages
           command: |
-            cp dist/* ../public
+            cp -r dist/* ../public
             cd ../public
             git add --all
             git commit -m "Site build at $(date '+%F %T')"
