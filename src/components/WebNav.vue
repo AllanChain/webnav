@@ -44,7 +44,7 @@ export default {
     },
     fetchData() {
       axios
-        .get("/Bookmarks.json")
+        .get("Bookmarks.json")
         .then(response => {
           this.bookmarks = response.data;
           console.log(response);
