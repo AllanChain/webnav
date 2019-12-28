@@ -32,7 +32,7 @@ jobs:
       - run:
           name: Vue build
           command: |
-            npm install
+            npm ci
             npm run build
       - save_cache:
           paths:
