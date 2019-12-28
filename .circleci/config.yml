@@ -10,7 +10,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - '8f:11:02:f3:3e:35:37:d7:17:4d:e4:1e:6b:e8:f6:db'
+            - '20:30:b0:49:49:f6:36:1e:ab:0d:5f:64:df:62:b1:57'
       - run:
           name: Update Submodules
           command: |
