@@ -5,7 +5,7 @@ jobs:
     environment:
       TZ: Asia/Shanghai
     docker:
-        - image: cibuilds/node:latest
+        - image: circleci/node:latest
     steps:
       - checkout
       - add_ssh_keys:
@@ -22,6 +22,12 @@ jobs:
             git worktree add -B gh-pages ../public origin/gh-pages
             git config user.email "ci-build@pkuphysu.top"
             git config user.name "ci-build"
+    # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
       - run:
           name: Vue build
           command: |
@@ -39,6 +45,10 @@ jobs:
             git add --all
             git commit -m "Site build at $(date '+%F %T')"
             git push
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
 workflows:
   main:
     jobs:
