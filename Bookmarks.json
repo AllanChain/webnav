@@ -74,6 +74,7 @@
     {
         "title": "未名BBS",
         "url": "https://bbs.pku.edu.cn",
+        "search": "search.php?&owner=&board=&rated=&days=700&titleonly=&timeorder=&mode=post&bid=&key="
         "url_icon": "icon/未名BBS.ico"
     },
     {
