@@ -6,7 +6,7 @@ jobs:
       TZ: Asia/Shanghai
       NODE_ENV: production
     docker:
-        - image: circleci/node:latest
+        - image: circleci/node:10.16.3
     steps:
       - checkout
       - add_ssh_keys:
