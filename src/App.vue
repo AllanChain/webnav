@@ -25,6 +25,7 @@ export default {
   methods: {
     installPrompt: function(e) {
       console.log(e);
+      this.query = 'install!';
       e.prompt();
     }
   }
