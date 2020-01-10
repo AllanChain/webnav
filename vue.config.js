@@ -1,5 +1,38 @@
+const fs = require('fs');
+
 module.exports = {
   publicPath: process.env.NODE_ENV === 'production'
     ? '/webnav/'
-    : '/'
+    : '/',
+  pwa: {
+    name: 'WebNav',
+    themeColor: '#4c89fe',
+    msTileColor: '#4c89fe',
+    manifestOptions: {
+      start_url: "/index.html",
+      background_color: '#4c89fe'
+    },
+    workboxPluginMode: "GenerateSW",
+    workboxOptions: {
+      navigateFallback: "/index.html",
+      runtimeCaching: [{
+        // urlPattern: new RegExp('API_URL'),
+        handler: 'networkFirst',
+        options: {
+          networkTimeoutSeconds: 20,
+          cacheName: 'api-cache',
+          cacheableResponse: {
+            statuses: [0, 200],
+          },
+        },
+      }]
+    }
+  },
+  devServer: {
+    host: '127.0.0.1',
+    https: {
+      key: fs.readFileSync('localhost+2-key.pem'),
+      cert: fs.readFileSync('localhost+2.pem')
+    }
+  }
 }

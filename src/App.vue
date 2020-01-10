@@ -15,6 +15,18 @@ export default {
   name: "app",
   components: {
     WebNav
+  },
+  created: function() {
+    window.addEventListener('beforeinstallprompt', this.installPrompt);
+  },
+  destroyed: function() {
+    window.removeEventListener('beforeinstallprompt', this.installPrompt);
+  },
+  methods: {
+    installPrompt: function(e) {
+      console.log(e);
+      e.prompt();
+    }
   }
 };
 </script>
