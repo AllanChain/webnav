@@ -16,11 +16,11 @@ module.exports = {
     workboxOptions: {
       navigateFallback: "/index.html",
       runtimeCaching: [{
-        // urlPattern: new RegExp('API_URL'),
+        urlPattern: new RegExp('/'),
         handler: 'networkFirst',
         options: {
           networkTimeoutSeconds: 20,
-          cacheName: 'api-cache',
+          cacheName: 'webnav|AC',
           cacheableResponse: {
             statuses: [0, 200],
           },
