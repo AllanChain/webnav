@@ -1,4 +1,4 @@
-const fs = require('fs');
+// const fs = require('fs');
 
 module.exports = {
   publicPath: process.env.NODE_ENV === 'production'
@@ -9,12 +9,12 @@ module.exports = {
     themeColor: '#4c89fe',
     msTileColor: '#4c89fe',
     manifestOptions: {
-      start_url: "/index.html",
+      start_url: ".",
       background_color: '#4c89fe'
     },
     workboxPluginMode: "GenerateSW",
     workboxOptions: {
-      navigateFallback: "/index.html",
+      navigateFallback: ".",
       runtimeCaching: [{
         urlPattern: new RegExp('/'),
         handler: 'networkFirst',
@@ -27,12 +27,13 @@ module.exports = {
         },
       }]
     }
-  },
-  devServer: {
-    host: '127.0.0.1',
-    https: {
-      key: fs.readFileSync('localhost+2-key.pem'),
-      cert: fs.readFileSync('localhost+2.pem')
-    }
   }
+  // },
+  // devServer: {
+  //   host: '127.0.0.1',
+  //   https: {
+  //     key: fs.readFileSync('localhost+2-key.pem'),
+  //     cert: fs.readFileSync('localhost+2.pem')
+  //   }
+  // }
 }
