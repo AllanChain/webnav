@@ -1,19 +1,29 @@
 <template>
   <div>
     <div class="search">
-      <input v-model="query" type="text" id="search_input" />
+      <input
+        id="search_input"
+        v-model="query"
+        type="text"
+      >
     </div>
-    <br />
+    <br>
     <div
-      class="box"
       v-for="(bookmark, index) in bookmarks"
       :key="index"
+      class="box"
       :data-url="bookmark.url"
       :data-search="bookmark.search"
       @click="go"
     >
-      <img class="icon" :src="resolveIcon(bookmark)" @onerror="defaultIcon" />
-      <p class="url">{{ bookmark.title }}</p>
+      <img
+        class="icon"
+        :src="resolveIcon(bookmark)"
+        @onerror="defaultIcon"
+      >
+      <p class="url">
+        {{ bookmark.title }}
+      </p>
     </div>
   </div>
 </template>
@@ -45,11 +55,11 @@ export default {
     go(event) {
       let targetData = event.currentTarget.dataset
       let url
-      if (this.query && targetData.search) {
+      if (this.query && targetData.search) 
         url = targetData.url + '/' + targetData.search + this.query
-      } else {
+       else 
         url = targetData.url
-      }
+      
       window.location.href = url
     },
     async fetchData() {

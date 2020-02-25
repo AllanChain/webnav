@@ -3,7 +3,7 @@ module.exports = {
   env: {
     node: true
   },
-  extends: ['plugin:vue/recommended', 'eslint:recommended', '@vue/standard'],
+  extends: ['plugin:vue/recommended', 'eslint:recommended'],
   rules: {
     curly: [2, 'multi-or-nest'],
     'generator-star-spacing': [1, 'before'],

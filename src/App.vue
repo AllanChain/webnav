@@ -1,8 +1,11 @@
 <template>
   <div id="app">
-    <div class="logo" style="font-size: 100px; color: #fff; margin-bottom: 20px; line-height: 0">
+    <div
+      class="logo"
+      style="font-size: 100px; color: #fff; margin-bottom: 20px; line-height: 0"
+    >
       4&emsp;
-      <img src="./assets/octocat.svg" />&emsp;4
+      <img src="./assets/octocat.svg">&emsp;4
     </div>
 
     <WebNav />
@@ -13,7 +16,7 @@
 import WebNav from './components/WebNav.vue'
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
     WebNav
   },
@@ -30,9 +33,7 @@ export default {
   },
   methods: {
     installPrompt: function(e) {
-      console.log(e)
-      this.query = 'install!'
-      e.prompt()
+      this.install = e
     }
   }
 }
