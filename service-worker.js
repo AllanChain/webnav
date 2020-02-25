@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/webnav/precache-manifest.01dd1114887a877b7051d25a8cf125bb.js"
+  "webnav/precache-manifest.553d50d5019d529459167b0db4279e8d.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "webnav"});
@@ -33,6 +33,4 @@ self.addEventListener('message', (event) => {
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("."));
-
-workbox.routing.registerRoute(/\//, new workbox.strategies.NetworkFirst({ "cacheName":"webnav|AC","networkTimeoutSeconds":20, plugins: [new workbox.cacheableResponse.Plugin({ statuses: [ 0, 200 ] })] }), 'GET');
+workbox.routing.registerRoute(/./, new workbox.strategies.StaleWhileRevalidate({ "cacheName":"webnav-AC", plugins: [new workbox.cacheableResponse.Plugin({ statuses: [ 0, 200 ] })] }), 'GET');

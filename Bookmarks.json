@@ -2,100 +2,98 @@
     {
         "title": "Google",
         "url": "https://www.google.com",
-        "search": "search?q=",
-        "url_icon": "icon/Google.ico"
+        "search": "search?q="
     },
     {
         "title": "Bing",
         "url": "http://cn.bing.com",
-        "search": "search?q=",
-        "url_icon": "icon/Bing.ico"
+        "search": "search?q="
     },
     {
         "title": "百度",
         "url": "https://www.baidu.com",
-        "search": "s?wd=",
-        "url_icon": "icon/百度.ico"
+        "search": "s?wd="
     },
     {
         "title": "谷歌翻译",
         "url": "https://translate.google.cn",
-        "search": "#view=home&op=translate&sl=en&tl=zh-CN&text=",
-        "url_icon": "icon/谷歌翻译.ico"
+        "search": "#view=home&op=translate&text="
     },
     {
         "title": "GitHub",
         "url": "https://github.com",
-        "search": "search?q=",
-        "url_icon": "icon/GitHub.ico"
+        "search": "search?q="
     },
     {
         "title": "Pypi",
         "url": "https://pypi.org",
         "search": "search?q=",
-        "url_icon": "icon/Pypi.ico"
+        "url_icon": "https://pypi.org/static/images/favicon.6a76275d.ico"
     },
     {
         "title": "古诗文网",
         "url": "https://www.gushiwen.org",
-        "search": "search.aspx?type=title&page=1&value=",
-        "url_icon": "icon/古诗文网.ico"
+        "search": "search.aspx?type=title&page=1&value="
     },
     {
         "title": "TG",
         "url": "https://tg2019303.github.io/",
-        "url_icon": "icon/TG.ico"
+        "url_icon": "https://tg2019303.github.io/icon.ico"
     },
     {
         "title": "Stack Overflow",
-        "url": "https://stackoverflow.com",
-        "url_icon": "icon/Stack Overflow.ico"
+        "url": "https://stackoverflow.com"
     },
     {
         "title": "Wolfram",
-        "url": "http://m.wolframalpha.com",
-        "url_icon": "icon/Wolfram.ico"
+        "url": "http://www.wolframalpha.com"
     },
     {
         "title": "Allan Chain",
         "url": "https://allanchain.github.io/blog",
-        "url_icon": "icon/Allan Chain.ico"
+        "url_icon": "https://allanchain.github.io/img/favicon.ico"
     },
     {
         "title": "观察者",
-        "url": "http://m.guancha.cn",
-        "url_icon": "icon/观察者.ico"
+        "url": "http://m.guancha.cn"
     },
     {
         "title": "温州台风",
-        "url": "http://m.wztf121.com",
-        "url_icon": "icon/温州台风.ico"
+        "url": "http://m.wztf121.com"
     },
     {
         "title": "未名BBS",
         "url": "https://bbs.pku.edu.cn",
-        "search": "v2/search.php?&owner=&board=&rated=&days=700&titleonly=&timeorder=&mode=post&bid=&key=",
-        "url_icon": "icon/未名BBS.ico"
+        "search": "v2/search.php?&owner=&board=&rated=&days=700&titleonly=&timeorder=&mode=post&bid=&key="
     },
     {
         "title": "P大树洞",
         "url": "https://pkuhelper.pku.edu.cn/hole",
         "search": "#",
-        "url_icon": "icon/P大树洞.ico"
+        "url_icon": "https://pkuhelper.pku.edu.cn/hole/static/favicon/256.png"
     },
     {
         "title": "北大门户",
-        "url": "https://portal.w.pku.edu.cn/portal2017/#/index",
-        "url_icon": "icon/北大门户.ico"
+        "url": "https://portal.w.pku.edu.cn/"
     },
     {
         "title": "北大网关",
-        "url": "https://its.pku.edu.cn",
-        "url_icon": "icon/北大网关.ico"
+        "url": "https://its.pku.edu.cn"
     },
     {
-        "title": "handsome-ml",
-        "url": "https://nbviewer.jupyter.org/github/ageron/handson-ml2/blob/master/index.ipynb",
-        "url_icon": "icon/handsome-ml.ico"
+        "title": "北大教学网",
+        "url": "https://course.pku.edu.cn"
+    },
+    {
+        "title": "北大邮箱",
+        "url": "https://mail.pku.edu.cn/"
+    },
+    {
+        "title": "HFTP",
+        "url": "https://www.txsf.ml:8888/hftp"
+    },
+    {
+        "title": "handson-ml",
+        "url": "https://nbviewer.jupyter.org/github/ageron/handson-ml2/blob/master/index.ipynb"
     }
 ]
