@@ -2,7 +2,7 @@
   <div id="app">
     <div
       class="logo"
-      style="font-size: 100px; color: #fff; margin-bottom: 20px; line-height: 0"
+      @click="install.prompt()"
     >
       4&emsp;
       <img src="./assets/octocat.svg">&emsp;4
@@ -55,6 +55,10 @@ export default {
   margin: auto;
   animation: flipInX 3s;
   -webkit-animation: flipInX 3s infinite;
+  font-size: 100px;
+  color: #fff;
+  margin-bottom: 20px;
+  line-height: 0;
 }
 
 .icon {

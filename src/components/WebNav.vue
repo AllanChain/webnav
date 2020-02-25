@@ -19,7 +19,6 @@
       <img
         class="icon"
         :src="resolveIcon(bookmark)"
-        @onerror="defaultIcon"
       >
       <p class="url">
         {{ bookmark.title }}
@@ -68,10 +67,6 @@ export default {
     },
     resolveIcon(bookmark) {
       return bookmark.url_icon || url.resolve(bookmark.url, '/favicon.ico')
-    },
-    defaultIcon(e) {
-      console.log('suck')
-      console.log(e.target)
     }
   }
 }
