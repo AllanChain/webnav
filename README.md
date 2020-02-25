@@ -1,5 +1,5 @@
 # webnav
-
+![.github/workflows/gh-pages.yml](https://github.com/AllanChain/webnav/workflows/.github/workflows/gh-pages.yml/badge.svg?branch=master)
 ## What can it do
 
 - read website info from a json file
