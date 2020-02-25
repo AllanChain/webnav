@@ -1,9 +1,7 @@
 // const fs = require('fs');
 
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production'
-    ? '/webnav/'
-    : '/',
+  publicPath: process.env.PUB_PATH || '/',
   pwa: {
     name: 'WebNav',
     themeColor: '#4c89fe',
@@ -14,13 +12,11 @@ module.exports = {
     },
     workboxPluginMode: "GenerateSW",
     workboxOptions: {
-      navigateFallback: ".",
       runtimeCaching: [{
-        urlPattern: new RegExp('/'),
-        handler: 'networkFirst',
+        urlPattern: /./,
+        handler: 'StaleWhileRevalidate',
         options: {
-          networkTimeoutSeconds: 20,
-          cacheName: 'webnav|AC',
+          cacheName: 'webnav-AC',
           cacheableResponse: {
             statuses: [0, 200],
           },

@@ -12,47 +12,59 @@
       :data-search="bookmark.search"
       @click="go"
     >
-      <img class="icon" :src="bookmark.url_icon" />
+      <img class="icon" :src="resolveIcon(bookmark)" @onerror="defaultIcon" />
       <p class="url">{{ bookmark.title }}</p>
     </div>
   </div>
 </template>
 
 <script>
-import axios from "axios";
+import url from 'url'
+import Vue from 'vue'
+
+const IMG_FALLBACK = 'img/icons/favicon-32x32.png'
 
 export default {
   data() {
     return {
       bookmarks: null,
-      query: ""
-    };
+      query: ''
+    }
   },
-  created() {
-    this.fetchData();
+  async created() {
+    await this.fetchData()
+    Vue.nextTick(() => {
+      for (let image of this.$el.querySelectorAll('img')) {
+        image.onerror = function () {
+          this.src = this.src === IMG_FALLBACK ? '' : IMG_FALLBACK
+        }
+      }
+    })
   },
   methods: {
     go(event) {
-      let targetData = event.currentTarget.dataset;
-      let url;
+      let targetData = event.currentTarget.dataset
+      let url
       if (this.query && targetData.search) {
-        url = targetData.url + "/" + targetData.search + this.query;
+        url = targetData.url + '/' + targetData.search + this.query
       } else {
-        url = targetData.url;
+        url = targetData.url
       }
-      window.location.href = url;
+      window.location.href = url
     },
-    fetchData() {
-      axios
-        .get("Bookmarks.json")
-        .then(response => {
-          this.bookmarks = response.data;
-          console.log(response);
-        })
-        .catch(error => console.log(error));
+    async fetchData() {
+      let resp = await fetch('Bookmarks.json')
+      this.bookmarks = await resp.json()
+    },
+    resolveIcon(bookmark) {
+      return bookmark.url_icon || url.resolve(bookmark.url, '/favicon.ico')
+    },
+    defaultIcon(e) {
+      console.log('suck')
+      console.log(e.target)
     }
   }
-};
+}
 </script>
 
 <style>

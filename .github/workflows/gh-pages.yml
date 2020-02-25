@@ -5,6 +5,7 @@ on:
 
 env:
   NODE_VERSION: '10.x'
+  PUB_PATH: 'webnav'
 
 jobs:
   build-and-deploy:
