@@ -93,8 +93,21 @@ export default {
   box-shadow: 0 0 10px rgb(175, 23, 245);
 }
 
+.edit-btn {
+  float:right;
+  color: darkslategrey;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
 input:focus {
   outline: none;
+}
+
+.icon {
+  width: 2em;
+  height: 2em;
+  max-width: 65px;
 }
 
 .url {

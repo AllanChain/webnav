@@ -1,25 +1,26 @@
 <template>
   <div id="app">
     <div
+      class="edit-btn"
+      @click="$router.push('about')"
+    >
+      ···
+    </div>
+    <div class="clear" />
+    <div
       class="logo"
-      @click="install.prompt()"
+      @click="install && install.prompt()"
     >
       4&emsp;
-      <img src="./assets/octocat.svg">&emsp;4
+      <img src="@/assets/octocat.svg">&emsp;4
     </div>
-
-    <WebNav />
+    <router-view />
   </div>
 </template>
 
 <script>
-import WebNav from './components/WebNav.vue'
-
 export default {
   name: 'App',
-  components: {
-    WebNav
-  },
   data() {
     return {
       install: null
@@ -41,13 +42,17 @@ export default {
 
 <style>
 #app {
-  margin-top: 30px;
+  margin-top: 10px;
   text-align: center;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+.clear {
+  clear: both;
 }
 
 .logo {
@@ -59,12 +64,6 @@ export default {
   color: #fff;
   margin-bottom: 20px;
   line-height: 0;
-}
-
-.icon {
-  width: 2em;
-  height: 2em;
-  max-width: 65px;
 }
 
 @keyframes flipInX {

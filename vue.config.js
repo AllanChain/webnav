@@ -18,7 +18,7 @@ module.exports = {
         options: {
           cacheName: 'webnav-AC',
           cacheableResponse: {
-            statuses: [0, 200],
+            statuses: [200],
           },
         },
       }]
