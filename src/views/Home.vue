@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div class="search">
+    <!-- <div class="search">
       <input
         id="search_input"
         v-model="query"
         type="text"
       >
-    </div>
+    </div> -->
     <br>
     <div
       v-for="(bookmark, index) in bookmarks"

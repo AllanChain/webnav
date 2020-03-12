@@ -1,21 +1,25 @@
 <template>
-  <div id="app">
-    <div
-      class="edit-btn"
-      @click="$router.push('about')"
-    >
-      ···
-    </div>
-    <div class="clear" />
-    <div
-      class="logo"
-      @click="install && install.prompt()"
-    >
-      4&emsp;
-      <img src="@/assets/octocat.svg">&emsp;4
-    </div>
-    <router-view />
-  </div>
+  <v-app style="background: rgba(0, 0, 0, 0)">
+    <v-app-bar app color="purple darken-1" dark>
+      <v-text-field
+        hide-details
+        prepend-inner-icon="search"
+        outlined
+        single-line
+        dense
+      />
+      <v-spacer />
+      <v-btn icon>
+        <v-icon>cloud_download</v-icon>
+      </v-btn>
+      <v-btn icon @click="$router.push('edit')">
+        <v-icon>edit</v-icon>
+      </v-btn>
+    </v-app-bar>
+    <v-content>
+      <router-view />
+    </v-content>
+  </v-app>
 </template>
 
 <script>
@@ -56,13 +60,13 @@ export default {
 }
 
 .logo {
-  max-width: 300px;
-  margin: auto;
+  /* max-width: 300px; */
+  /* margin: auto; */
   animation: flipInX 3s;
   -webkit-animation: flipInX 3s infinite;
-  font-size: 100px;
+  font-size: 45px;
   color: #fff;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   line-height: 0;
 }
 
