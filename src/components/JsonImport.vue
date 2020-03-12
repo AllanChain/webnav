@@ -1,0 +1,74 @@
+<template>
+  <v-dialog :value="value" max-width="350px" @input="emit">
+    <v-card class="elevation-12">
+      <v-card-text class="pa-1">
+        <v-container>
+          <v-row>
+            <v-text-field
+              v-model="url"
+              prepend-inner-icon="link"
+              color="purple"
+              label="JSON URL"
+              placeholder="https://cors.net/bookmarks.json"
+              dense
+              outlined
+              hide-details
+            />
+          </v-row>
+          <v-row>
+            <v-col cols="4">
+              <v-btn fab small color="indigo lighten-1">
+                <v-icon>upload_file</v-icon>
+              </v-btn>
+            </v-col>
+            <v-col cols="4">
+              <v-btn fab small color="amber" @click="emit(false)">
+                <v-icon>cancel</v-icon>
+              </v-btn>
+            </v-col>
+            <v-col cols="4">
+              <v-btn fab small color="green" @click="importFromCloud">
+                <v-icon>done</v-icon>
+              </v-btn>
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-card-text>
+    </v-card>
+  </v-dialog>
+</template>
+
+<script>
+export default {
+  name: 'JsonImport',
+  props: {
+    value: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data() {
+    return {
+      url: ''
+    }
+  },
+  methods: {
+    emit(value) {
+      this.$emit('input', value)
+    },
+    async importFromCloud() {
+      try {
+        let response = await fetch(this.url)
+        let bookmarks = await response.json()
+        bookmarks = bookmarks.filter(m => 'title' in m && 'url' in m)
+        await this.$store.dispatch('addAll', bookmarks)
+        this.emit(false)
+      } catch (error) {
+        alert(error)
+      }
+    }
+  }
+}
+</script>
+
+<style></style>

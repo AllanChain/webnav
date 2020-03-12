@@ -2,36 +2,57 @@
   <v-app style="background: rgba(0, 0, 0, 0)">
     <v-app-bar app color="purple darken-1" dark>
       <v-text-field
-        hide-details
+        v-model="query"
         prepend-inner-icon="search"
+        hide-details
         outlined
         single-line
         dense
       />
       <v-spacer />
-      <v-btn icon>
-        <v-icon>cloud_download</v-icon>
+      <v-btn icon small>
+        <v-icon>file_download</v-icon>
       </v-btn>
-      <v-btn icon @click="$router.push('edit')">
+      <v-btn icon small @click="importDialog = true">
+        <v-icon>add_to_home_screen</v-icon>
+      </v-btn>
+      <v-btn
+        icon
+        small
+        :color="$store.state.editMode ? 'green' : undefined"
+        @click="$store.commit('toggleEdit')"
+      >
         <v-icon>edit</v-icon>
       </v-btn>
     </v-app-bar>
     <v-content>
-      <router-view />
+      <WebNav :query="query" />
+      <JsonImport v-model="importDialog" />
     </v-content>
   </v-app>
 </template>
 
 <script>
+import JsonImport from '@/components/JsonImport'
+import WebNav from '@/components/WebNav'
+
+
 export default {
   name: 'App',
+  components: {
+    JsonImport,
+    WebNav
+  },
   data() {
     return {
-      install: null
+      install: null,
+      importDialog: false,
+      query: ''
     }
   },
   created: function() {
     window.addEventListener('beforeinstallprompt', this.installPrompt)
+    this.$store.dispatch('init')
   },
   destroyed: function() {
     window.removeEventListener('beforeinstallprompt', this.installPrompt)
