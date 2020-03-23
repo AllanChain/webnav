@@ -1,6 +1,7 @@
 <template>
   <v-app style="background: rgba(0, 0, 0, 0)">
-    <v-app-bar app color="purple darken-1" dark>
+    <v-app-bar app color="indigo darken-1" dark>
+      <v-app-bar-nav-icon @click="drawer = !drawer" />
       <v-text-field
         v-model="query"
         prepend-inner-icon="search"
@@ -10,15 +11,14 @@
         dense
       />
       <v-spacer />
-      <v-btn icon small>
+      <!-- <v-btn icon small>
         <v-icon>file_download</v-icon>
       </v-btn>
       <v-btn icon small @click="importDialog = true">
         <v-icon>add_to_home_screen</v-icon>
-      </v-btn>
+      </v-btn> -->
       <v-btn
         icon
-        small
         :color="$store.state.editMode ? 'green' : undefined"
         @click="$store.commit('toggleEdit')"
       >
@@ -29,6 +29,34 @@
       <WebNav :query="query" />
       <JsonImport v-model="importDialog" />
     </v-content>
+    <v-navigation-drawer v-model="drawer" app>
+      <v-list dense>
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title class="title">
+              WebNav
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-divider />
+        <v-list-item link @click="importDialog = true">
+          <v-list-item-action>
+            <v-icon>add_to_home_screen</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Import</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item link>
+          <v-list-item-action>
+            <v-icon>file_download</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Download</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
   </v-app>
 </template>
 
@@ -47,7 +75,8 @@ export default {
     return {
       install: null,
       importDialog: false,
-      query: ''
+      query: '',
+      drawer: false
     }
   },
   created: function() {
@@ -66,15 +95,13 @@ export default {
 </script>
 
 <style>
-#app {
+/* #app {
   margin-top: 10px;
-  text-align: center;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-}
+} */
 
 .clear {
   clear: both;

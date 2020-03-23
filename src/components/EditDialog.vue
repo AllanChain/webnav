@@ -1,26 +1,44 @@
 <template>
-  <v-dialog v-if="!!bookmark" :value="value" @input="$emit('input', false)">
+  <v-dialog v-if="!!bookmark" :value="value" @input="closeDialog">
     <v-card class="ma-2">
-      <v-card-title class="ma-2">
-        <WebsiteIcon :bookmark="bookmark" size="1.2rem" />
+      <v-toolbar color="indigo" dark dense>
+        <v-toolbar-title>
+          <WebsiteIcon :bookmark="bookmark" size="1.2rem" />
+          {{ bookmark.title }}
+        </v-toolbar-title>
+        <v-spacer />
+        <v-btn icon large @click="done">
+          <v-icon color="green lighten-2">
+            check
+          </v-icon>
+        </v-btn>
+        <v-btn icon large @click="deleteThis">
+          <v-icon color="red lighten-2">
+            delete
+          </v-icon>
+        </v-btn>
+        <v-btn icon large @click="closeDialog">
+          <v-icon color="yellow lighten-2">
+            cancel
+          </v-icon>
+        </v-btn>
+      </v-toolbar>
+      <v-card-text class="mt-4">
         <v-text-field
           v-model="bookmark.title"
-          class="px-1"
-          hide-details
+          prepend-inner-icon="bookmark"
+          label="Bookmark Name"
+          placeholder="Example"
+          outlined
           dense
         />
-        <v-btn icon small @click="dialog = true">
-          <v-icon>delete</v-icon>
-        </v-btn>
-      </v-card-title>
-      <v-card-text>
         <v-text-field
           v-model="bookmark.url"
           prepend-inner-icon="language"
           label="Website URL"
           placeholder="https://example.com"
           outlined
-          dense 
+          dense
         />
         <v-text-field
           v-model="bookmark.search"
@@ -28,7 +46,7 @@
           label="Search Template"
           placeholder="/search?wd={searchItem}"
           outlined
-          dense 
+          dense
         />
         <v-text-field
           v-model="bookmark.icon"
@@ -36,7 +54,7 @@
           label="Website Icon"
           placeholder="/favicon.ico"
           outlined
-          dense 
+          dense
         />
       </v-card-text>
     </v-card>
@@ -59,10 +77,22 @@ export default {
       type: Boolean,
       required: true
     }
+  },
+  methods: {
+    closeDialog() {
+      this.$store.commit('toggleEdit')
+      this.$emit('input', false)
+    },
+    done(){
+      this.$store.dispatch('put', this.bookmark)
+      this.closeDialog()
+    },
+    deleteThis(){
+      this.$store.dispatch('delete', this.bookmark.id)
+      this.closeDialog()
+    }
   }
 }
 </script>
 
-<style>
-
-</style>
+<style></style>
