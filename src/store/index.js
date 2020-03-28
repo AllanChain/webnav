@@ -12,8 +12,11 @@ export default new Vuex.Store({
     editMode: false
   },
   mutations: {
-    toggleEdit(state) {
-      state.editMode = !state.editMode
+    toggleEdit(state, payload) {
+      if (payload === undefined)
+        state.editMode = !state.editMode
+      else
+        state.editMode = payload
     }
   },
   actions: {
@@ -47,7 +50,7 @@ export default new Vuex.Store({
       context.dispatch('refresh')
     },
     async refresh(context) {
-      context.state.refresh = await db.getAll('bookmarks')
+      context.state.bookmarks = await db.getAll('bookmarks')
     }
   },
   modules: {}

@@ -26,7 +26,7 @@
       </v-btn>
     </v-app-bar>
     <v-content>
-      <WebNav :query="query" />
+      <WebNav ref="webnav" :query="query" />
       <JsonImport v-model="importDialog" />
     </v-content>
     <v-navigation-drawer v-model="drawer" app>
@@ -53,6 +53,14 @@
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>Download</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item link @click="$refs.webnav.add()">
+          <v-list-item-action>
+            <v-icon>add</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Add Bookmark</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>

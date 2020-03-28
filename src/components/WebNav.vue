@@ -53,6 +53,13 @@ export default {
     }
   },
   methods: {
+    add() {
+      this.editingBookmark = {
+        title: 'New Bookmark',
+        url: ''
+      }
+      this.dialog = true
+    },
     go(bookmark) {
       if (this.$store.state.editMode) {
         this.dialog = true

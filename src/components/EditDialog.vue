@@ -80,11 +80,14 @@ export default {
   },
   methods: {
     closeDialog() {
-      this.$store.commit('toggleEdit')
+      this.$store.commit('toggleEdit', false)
       this.$emit('input', false)
     },
     done(){
-      this.$store.dispatch('put', this.bookmark)
+      if (this.bookmark.id)
+        this.$store.dispatch('put', this.bookmark)
+      else
+        this.$store.dispatch('add', this.bookmark)
       this.closeDialog()
     },
     deleteThis(){
