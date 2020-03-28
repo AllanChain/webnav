@@ -1,5 +1,5 @@
 module.exports = {
-  publicPath: '/',
+  publicPath: process.env.PUB_PATH || '/',
   pwa: {
     name: 'WebNav',
     themeColor: '#4c89fe',
