@@ -12,7 +12,7 @@ module.exports = {
     workboxOptions: {
       runtimeCaching: [
         {
-          urlPattern: {},
+          urlPattern: /./,
           handler: 'StaleWhileRevalidate',
           options: {
             cacheName: 'webnav-AC',
