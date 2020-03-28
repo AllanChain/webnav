@@ -16,8 +16,9 @@ module.exports = {
       }
     ],
     curly: ['warn', 'multi-or-nest'],
-    'no-extra-semi': 'error',
+    'no-extra-semi': 'warn',
     'vue/script-indent': 'warn',
+    'no-multi-spaces': 'warn',
     'generator-star-spacing': ['warn', 'before'],
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
