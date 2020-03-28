@@ -46,6 +46,8 @@
 </template>
 
 <script>
+const bookmarkMatch = (t, m) => t.url === m.url && t.search === m.search
+
 export default {
   name: 'JsonImport',
   props: {
@@ -82,7 +84,13 @@ export default {
       reader.readAsText(file)
     },
     async importBookmarks(bookmarks) {
-      bookmarks = bookmarks.filter(m => 'title' in m && 'url' in m)
+      // https://stackoverflow.com/a/36744732/8810271
+      bookmarks = bookmarks.filter(
+        (m, index, self) => 
+          self.findIndex(t => bookmarkMatch(t, m)) === index &&
+          this.$store.state.bookmarks.findIndex(
+            t => bookmarkMatch(t, m)) === -1 &&
+          'title' in m && 'url' in m)
       await this.$store.dispatch('addAll', bookmarks)
       this.emit(false)
     }

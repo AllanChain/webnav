@@ -32,11 +32,6 @@ export default new Vuex.Store({
       context.state.bookmarks = await db.getAll('bookmarks')
     },
     async add(context, bookmark) {
-      let fingerprint = bookmark.url + bookmark.search
-      for (let oldBookmark of context.state.bookmarks) {
-        if (oldBookmark.url + oldBookmark.search === fingerprint) 
-          return
-      }
       await db.add('bookmarks', bookmark)
       context.dispatch('refresh')
     },
