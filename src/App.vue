@@ -47,12 +47,13 @@
             <v-list-item-title>Import</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link>
+        <v-list-item link @click="downloadJSON">
           <v-list-item-action>
             <v-icon>file_download</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>Download</v-list-item-title>
+            <a ref="downloadLink" class="d-none" download="bookmarks.json" />
           </v-list-item-content>
         </v-list-item>
         <v-list-item link @click="$refs.webnav.add()">
@@ -97,6 +98,13 @@ export default {
   methods: {
     installPrompt: function(e) {
       this.install = e
+    },
+    downloadJSON() {
+      let bookmarks = JSON.parse(JSON.stringify(this.$store.state.bookmarks))
+      bookmarks.map(m => delete m.id)
+      this.$refs.downloadLink.href='data:text/json;charset=utf-8,' +
+        encodeURIComponent(JSON.stringify(bookmarks))
+      this.$refs.downloadLink.click()
     }
   }
 }

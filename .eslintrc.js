@@ -3,7 +3,7 @@ module.exports = {
   env: {
     node: true
   },
-  extends: ['plugin:vue/recommended', 'eslint:recommended'],
+  extends: ['eslint:recommended', 'plugin:vue/recommended'],
   rules: {
     'vue/max-attributes-per-line': [
       'error',
@@ -15,8 +15,10 @@ module.exports = {
         }
       }
     ],
-    curly: [2, 'multi-or-nest'],
-    'generator-star-spacing': [1, 'before'],
+    curly: ['warn', 'multi-or-nest'],
+    'no-extra-semi': 'error',
+    'vue/script-indent': 'warn',
+    'generator-star-spacing': ['warn', 'before'],
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
   },

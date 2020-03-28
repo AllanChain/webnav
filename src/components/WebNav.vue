@@ -3,7 +3,7 @@
     <div class="text-center pt-5">
       <div
         v-for="bookmark in $store.state.bookmarks"
-        :key="bookmark.url"
+        :key="bookmark.id"
         class="box"
         @click="go(bookmark)"
       >

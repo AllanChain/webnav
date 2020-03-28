@@ -17,9 +17,16 @@
           </v-row>
           <v-row>
             <v-col cols="4">
-              <v-btn fab small color="indigo lighten-1">
+              <v-btn fab small color="indigo lighten-1" @click="$refs.file.click()">
                 <v-icon>upload_file</v-icon>
               </v-btn>
+              <input
+                ref="file"
+                type="file"
+                accept=".json"
+                hidden
+                @change="importFromFile"
+              >
             </v-col>
             <v-col cols="4">
               <v-btn fab small color="amber" @click="emit(false)">
@@ -60,12 +67,24 @@ export default {
       try {
         let response = await fetch(this.url)
         let bookmarks = await response.json()
-        bookmarks = bookmarks.filter(m => 'title' in m && 'url' in m)
-        await this.$store.dispatch('addAll', bookmarks)
-        this.emit(false)
+        this.importBookmarks(bookmarks)
       } catch (error) {
         alert(error)
       }
+    },
+    importFromFile(e) {
+      const file = e.target.files[0]
+      const reader = new FileReader();
+      reader.onload = async e => {
+        const content = e.target.result
+        await this.importBookmarks(JSON.parse(content))
+      }
+      reader.readAsText(file)
+    },
+    async importBookmarks(bookmarks) {
+      bookmarks = bookmarks.filter(m => 'title' in m && 'url' in m)
+      await this.$store.dispatch('addAll', bookmarks)
+      this.emit(false)
     }
   }
 }
