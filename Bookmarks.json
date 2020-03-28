@@ -2,43 +2,43 @@
     {
         "title": "Google",
         "url": "https://www.google.com",
-        "search": "search?q="
+        "search": "/search?q={}"
     },
     {
         "title": "Bing",
         "url": "http://cn.bing.com",
-        "search": "search?q="
+        "search": "/search?q={}"
     },
     {
         "title": "百度",
         "url": "https://www.baidu.com",
-        "search": "s?wd="
+        "search": "/s?wd={}"
     },
     {
         "title": "谷歌翻译",
         "url": "https://translate.google.cn",
-        "search": "#view=home&op=translate&text="
+        "search": "/#view=home&op=translate&sl=auto&tl=zh-CN&text={}"
     },
     {
         "title": "GitHub",
         "url": "https://github.com",
-        "search": "search?q="
+        "search": "/search?q={}"
     },
     {
         "title": "Pypi",
         "url": "https://pypi.org",
-        "search": "search?q=",
-        "url_icon": "https://pypi.org/static/images/favicon.6a76275d.ico"
+        "search": "/search?q={}",
+        "icon": "https://pypi.org/static/images/favicon.6a76275d.ico"
     },
     {
         "title": "古诗文网",
         "url": "https://www.gushiwen.org",
-        "search": "search.aspx?type=title&page=1&value="
+        "search": "/search.aspx?type=title&page=1&value={}"
     },
     {
         "title": "TG",
         "url": "https://tg2019303.github.io/",
-        "url_icon": "https://tg2019303.github.io/icon.ico"
+        "icon": "https://tg2019303.github.io/icon.ico"
     },
     {
         "title": "Stack Overflow",
@@ -51,7 +51,7 @@
     {
         "title": "Allan Chain",
         "url": "https://allanchain.github.io/blog",
-        "url_icon": "https://allanchain.github.io/img/favicon.ico"
+        "icon": "https://allanchain.github.io/img/favicon.ico"
     },
     {
         "title": "观察者",
@@ -64,13 +64,13 @@
     {
         "title": "未名BBS",
         "url": "https://bbs.pku.edu.cn",
-        "search": "v2/search.php?&owner=&board=&rated=&days=700&titleonly=&timeorder=&mode=post&bid=&key="
+        "search": "/v2/search.php?&owner=&board=&rated=&days=700&titleonly=&timeorder=&mode=post&bid=&key={}"
     },
     {
         "title": "P大树洞",
         "url": "https://pkuhelper.pku.edu.cn/hole",
-        "search": "#",
-        "url_icon": "https://pkuhelper.pku.edu.cn/hole/static/favicon/256.png"
+        "search": "#{}",
+        "icon": "https://pkuhelper.pku.edu.cn/hole/static/favicon/256.png"
     },
     {
         "title": "北大门户",

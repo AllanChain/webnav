@@ -1,0 +1,24 @@
+[
+    {
+        "title": "谷歌翻译",
+        "url": "https://translate.google.cn",
+        "search": "/#view=home&op=translate&sl=auto&tl=zh-CN&text={}"
+    },
+    {
+        "title": "Pypi",
+        "url": "https://pypi.org",
+        "search": "/search?q={}",
+        "icon": "https://pypi.org/static/images/favicon.6a76275d.ico"
+    },
+    {
+        "title": "古诗文网",
+        "url": "https://www.gushiwen.org",
+        "search": "/search.aspx?type=title&page=1&value={}"
+    },
+    {
+        "title": "P大树洞",
+        "url": "https://pkuhelper.pku.edu.cn/hole",
+        "search": "#{}",
+        "icon": "https://pkuhelper.pku.edu.cn/hole/static/favicon/256.png"
+    }
+]
