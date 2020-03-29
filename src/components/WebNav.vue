@@ -35,7 +35,7 @@
               </v-icon>
             </v-btn>
           </v-overlay>
-          <WebsiteIcon :bookmark="bookmark" @click.capture="goURL(bookmark.url)" />
+          <WebsiteIcon :bookmark="bookmark" @click.native="goURL(bookmark.url)" />
         </div>
         <p class="url">
           {{ bookmark.title }}
