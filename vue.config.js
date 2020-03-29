@@ -16,7 +16,7 @@ module.exports = {
           handler: 'StaleWhileRevalidate',
           options: {
             cacheName: 'webnav-AC',
-            cacheExpiration: {
+            expiration: {
               maxAgeSeconds: 86400 * 15
             }
             cacheableResponse: {
