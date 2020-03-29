@@ -12,8 +12,8 @@ module.exports = {
     workboxOptions: {
       runtimeCaching: [
         {
-          urlPattern: /./,
-          handler: 'StaleWhileRevalidate',
+          urlPattern: /.*/,
+          handler: 'CacheFirst',
           options: {
             cacheName: 'webnav-AC',
             cacheableResponse: {
