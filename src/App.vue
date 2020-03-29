@@ -11,7 +11,7 @@
         single-line
         dense
         clearable
-        @input="query=$event?$event:''"
+        @input="query = $event ? $event : ''"
       />
       <!-- Clear will set the string to null -->
       <!-- See https://github.com/vuetifyjs/vuetify/issues/4144 -->
@@ -35,6 +35,9 @@
             <v-list-item-title class="title">
               WebNav
             </v-list-item-title>
+            <div class="logo text-center">
+              4&emsp;<img src="./assets/octocat.svg" width="50">&emsp;4
+            </div>
           </v-list-item-content>
         </v-list-item>
         <v-divider />
@@ -69,12 +72,11 @@
 </template>
 
 <script>
-import JsonImport from '@/components/JsonImport'
-import WebNav from '@/components/WebNav'
-
+import JsonImport from "@/components/JsonImport";
+import WebNav from "@/components/WebNav";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     JsonImport,
     WebNav
@@ -83,53 +85,39 @@ export default {
     return {
       install: null,
       importDialog: false,
-      query: '',
+      query: "",
       drawer: false
-    }
+    };
   },
   created: function() {
-    window.addEventListener('beforeinstallprompt', this.installPrompt)
-    this.$store.dispatch('init')
+    window.addEventListener("beforeinstallprompt", this.installPrompt);
+    this.$store.dispatch("init");
   },
   destroyed: function() {
-    window.removeEventListener('beforeinstallprompt', this.installPrompt)
+    window.removeEventListener("beforeinstallprompt", this.installPrompt);
   },
   methods: {
     installPrompt: function(e) {
-      this.install = e
+      this.install = e;
     },
     downloadJSON() {
-      let bookmarks = JSON.parse(JSON.stringify(this.$store.state.bookmarks))
-      bookmarks.map(m => delete m.id)
-      this.$refs.downloadLink.href='data:text/json;charset=utf-8,' +
-        encodeURIComponent(JSON.stringify(bookmarks))
-      this.$refs.downloadLink.click()
+      let bookmarks = JSON.parse(JSON.stringify(this.$store.state.bookmarks));
+      bookmarks.map(m => delete m.id);
+      this.$refs.downloadLink.href =
+        "data:text/json;charset=utf-8," +
+        encodeURIComponent(JSON.stringify(bookmarks));
+      this.$refs.downloadLink.click();
     }
   }
-}
+};
 </script>
 
 <style>
-/* #app {
-  margin-top: 10px;
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-} */
-
-.clear {
-  clear: both;
-}
-
 .logo {
-  /* max-width: 300px; */
-  /* margin: auto; */
+  font-size: 65px;
+  color: #2196f3;
   animation: flipInX 3s;
   -webkit-animation: flipInX 3s infinite;
-  font-size: 45px;
-  color: #fff;
-  /* margin-bottom: 20px; */
   line-height: 0;
 }
 
