@@ -18,7 +18,7 @@ module.exports = {
             cacheName: 'webnav-AC',
             expiration: {
               maxAgeSeconds: 86400 * 15
-            }
+            },
             cacheableResponse: {
               statuses: [0, 200]
             }
