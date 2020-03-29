@@ -4,7 +4,7 @@
       <v-app-bar-nav-icon @click="drawer = !drawer" />
       <v-text-field
         ref="text"
-        value="query"
+        :value="query"
         prepend-inner-icon="search"
         hide-details
         outlined
