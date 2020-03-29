@@ -6,8 +6,9 @@
     },
     {
         "title": "Bing",
-        "url": "http://cn.bing.com",
-        "search": "/search?q={}"
+        "url": "https://cn.bing.com",
+        "search": "/search?q={}",
+        "icon": ""
     },
     {
         "title": "百度",
@@ -46,7 +47,7 @@
     },
     {
         "title": "Wolfram",
-        "url": "http://www.wolframalpha.com"
+        "url": "https://www.wolframalpha.com"
     },
     {
         "title": "Allan Chain",
@@ -55,7 +56,7 @@
     },
     {
         "title": "观察者",
-        "url": "http://m.guancha.cn"
+        "url": "https://m.guancha.cn"
     },
     {
         "title": "温州台风",
@@ -74,7 +75,7 @@
     },
     {
         "title": "北大门户",
-        "url": "https://portal.w.pku.edu.cn/"
+        "url": "https://portal.pku.edu.cn/"
     },
     {
         "title": "北大网关",
@@ -87,10 +88,6 @@
     {
         "title": "北大邮箱",
         "url": "https://mail.pku.edu.cn/"
-    },
-    {
-        "title": "HFTP",
-        "url": "https://www.txsf.ml:8888/hftp"
     },
     {
         "title": "handson-ml",
