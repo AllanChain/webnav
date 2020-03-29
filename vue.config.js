@@ -12,12 +12,15 @@ module.exports = {
     workboxOptions: {
       runtimeCaching: [
         {
-          urlPattern: /./,
+          urlPattern: /.*/,
           handler: 'StaleWhileRevalidate',
           options: {
             cacheName: 'webnav-AC',
+            expiration: {
+              maxAgeSeconds: 86400 * 15
+            },
             cacheableResponse: {
-              statuses: [200]
+              statuses: [0, 200]
             }
           }
         }
