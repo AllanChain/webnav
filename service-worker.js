@@ -33,4 +33,4 @@ self.addEventListener('message', (event) => {
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerRoute(/.*/, new workbox.strategies.CacheFirst({ "cacheName":"webnav-AC", plugins: [new workbox.cacheableResponse.Plugin({ statuses: [ 200 ] })] }), 'GET');
+workbox.routing.registerRoute(/.*/, new workbox.strategies.StaleWhileRevalidate({ "cacheName":"webnav-AC", plugins: [new workbox.expiration.Plugin({ maxAgeSeconds: 1296000, purgeOnQuotaError: false }), new workbox.cacheableResponse.Plugin({ statuses: [ 0, 200 ] })] }), 'GET');
