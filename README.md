@@ -16,33 +16,25 @@
         "title": "Google",
         "url": "https://www.google.com",
         "search": "search?q=",
-        "url_icon": "icon/Google.ico"
+        "icon": "icon/Google.ico"
     }
 ]
 ```
 
 ## TODO
-I still need to download the icon via python script, and I will try to implement that in node, as this repo serves as my nodejs practice.
+- [ ] Better bookmark editing
+- [ ] Solve damn cross site and https issue
 
 ## Project setup
 ```
 npm install
-```
 
-### Compiles and hot-reloads for development
-```
+# Compiles and hot-reloads for development
 npm run serve
-```
 
-### Compiles and minifies for production
-```
+# Compiles and minifies for production
 npm run build
-```
 
-### Lints and fixes files
-```
+# Lints and fixes files
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
