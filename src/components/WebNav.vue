@@ -5,21 +5,37 @@
         v-for="bookmark in $store.state.bookmarks"
         :key="bookmark.id"
         class="box"
-        @click="go(bookmark)"
       >
         <div>
-          <v-btn
-            v-show="$store.state.editMode"
-            color="#2196f390"
-            class="edit-overlay"
-            fab
-            x-small
+          <v-overlay absolute opacity="0.1" :value="$store.state.editMode">
+            <v-btn
+              color="#2196f390"
+              fab
+              x-small
+              @click="dialog = true; editingBookmark = bookmark"
+            >
+              <v-icon color="white">
+                edit
+              </v-icon>
+            </v-btn>
+          </v-overlay>
+          <v-overlay
+            absolute
+            opacity="0.1"
+            :value="!$store.state.editMode && query && !!bookmark.search"
           >
-            <v-icon color="white">
-              edit
-            </v-icon>
-          </v-btn>
-          <WebsiteIcon :bookmark="bookmark" />
+            <v-btn
+              color="#2196f390"
+              fab
+              x-small
+              @click="goSearch(bookmark)"
+            >
+              <v-icon color="white">
+                search
+              </v-icon>
+            </v-btn>
+          </v-overlay>
+          <WebsiteIcon :bookmark="bookmark" @click="goURL(bookmark.url)" />
         </div>
         <p class="url">
           {{ bookmark.title }}
@@ -60,21 +76,14 @@ export default {
       }
       this.dialog = true
     },
-    go(bookmark) {
-      if (this.$store.state.editMode) {
-        this.dialog = true
-        this.editingBookmark = bookmark
-        return
-      }
-      let searchUrl
-      if (this.query && bookmark.search) {
-        searchUrl = url.resolve(
-          bookmark.url,
-          bookmark.search.replace('{}', this.query)
-        )
-      } else searchUrl = bookmark.url
-
-      window.location.href = searchUrl
+    goSearch(bookmark) {
+      this.goURL(url.resolve(
+        bookmark.url,
+        bookmark.search.replace('{}', this.query)
+      ))
+    },
+    goURL(url) {
+      window.location.href = url
     }
   }
 }
@@ -86,12 +95,6 @@ export default {
   display: inline-block;
   width: 65px;
   border: 0;
-}
-
-.edit-overlay {
-  position: absolute !important;
-  top: 0;
-  right: 0;
 }
 .url {
   color: #eee;

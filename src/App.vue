@@ -3,20 +3,19 @@
     <v-app-bar app color="indigo darken-1" dark>
       <v-app-bar-nav-icon @click="drawer = !drawer" />
       <v-text-field
-        v-model="query"
+        ref="text"
+        value="query"
         prepend-inner-icon="search"
         hide-details
         outlined
         single-line
         dense
+        clearable
+        @input="query=$event?$event:''"
       />
+      <!-- Clear will set the string to null -->
+      <!-- See https://github.com/vuetifyjs/vuetify/issues/4144 -->
       <v-spacer />
-      <!-- <v-btn icon small>
-        <v-icon>file_download</v-icon>
-      </v-btn>
-      <v-btn icon small @click="importDialog = true">
-        <v-icon>add_to_home_screen</v-icon>
-      </v-btn> -->
       <v-btn
         icon
         :color="$store.state.editMode ? 'green' : undefined"
