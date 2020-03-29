@@ -1,23 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7e7d0a107ae4a6e80de1a2bf8d97afb6",
+    "revision": "724178912ea8895426bf4b5e3f68bb9d",
     "url": "/webnav/Bookmarks.json"
-  },
-  {
-    "revision": "6c2f10b06381c8fc34000f7ea173da1c",
-    "url": "/webnav/a.json"
   },
   {
     "revision": "0db6f19cb1b51b736e9ef2f4a4a61580",
     "url": "/webnav/back.jpg"
   },
   {
-    "revision": "4dda7ca35108d1a6867e",
-    "url": "/webnav/css/app.e86ebc95.css"
+    "revision": "dbb2ea58ac4f180c3abc",
+    "url": "/webnav/css/app.23e57229.css"
   },
   {
-    "revision": "32d21577e5ace5fb563c",
-    "url": "/webnav/css/chunk-vendors.a5da7fc6.css"
+    "revision": "5d94e2b635f3747b7d6a",
+    "url": "/webnav/css/chunk-vendors.72a6fafd.css"
   },
   {
     "revision": "0509ab09c1b0d2200a4135803c91d6ce",
@@ -36,16 +32,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/webnav/fonts/MaterialIcons-Regular.da4ea5cd.ttf"
   },
   {
-    "revision": "62b890e77102b64a7e4301a74bb7c6a3",
+    "revision": "7b711a497dcf4497777a90f7a9f70a50",
+    "url": "/webnav/img/octocat.7b711a49.svg"
+  },
+  {
+    "revision": "80245572e183c78b792c77abe8384e47",
     "url": "/webnav/index.html"
   },
   {
-    "revision": "4dda7ca35108d1a6867e",
-    "url": "/webnav/js/app.a03f3bb9.js"
+    "revision": "dbb2ea58ac4f180c3abc",
+    "url": "/webnav/js/app.462018cb.js"
   },
   {
-    "revision": "32d21577e5ace5fb563c",
-    "url": "/webnav/js/chunk-vendors.f26a7e65.js"
+    "revision": "5d94e2b635f3747b7d6a",
+    "url": "/webnav/js/chunk-vendors.41e4ece3.js"
   },
   {
     "revision": "42093bf1c25302e76eb4811462ff72e7",
