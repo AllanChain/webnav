@@ -13,11 +13,14 @@ module.exports = {
       runtimeCaching: [
         {
           urlPattern: /.*/,
-          handler: 'CacheFirst',
+          handler: 'StaleWhileRevalidate',
           options: {
             cacheName: 'webnav-AC',
+            cacheExpiration: {
+              maxAgeSeconds: 86400 * 15
+            }
             cacheableResponse: {
-              statuses: [200]
+              statuses: [0, 200]
             }
           }
         }
