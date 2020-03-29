@@ -17,10 +17,17 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ env.NODE_VERSION }}
-    - name: npm install and build
-      run: |
-        npm install
-        npm run build
+    - uses: actions/cache@v1
+        with:
+          path: node_modules
+          id: cache
+          key: node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            node-
+    - name: Install Packages
+      run: npm install
+    - name: Build App
+      run: npm run build
     - name: Deploy
       env:
         ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
