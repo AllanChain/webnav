@@ -52,8 +52,8 @@
             <v-icon>file_download</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Download</v-list-item-title>
-            <a ref="downloadLink" class="d-none" download="bookmarks.json" />
+            <v-list-item-title>Export and Download</v-list-item-title>
+            <a ref="downloadLink" class="d-none" />
           </v-list-item-content>
         </v-list-item>
         <v-list-item link @click="$refs.webnav.add()">
@@ -101,8 +101,12 @@ export default {
       this.install = e;
     },
     downloadJSON() {
+      // Copy and delete `id` field
       let bookmarks = JSON.parse(JSON.stringify(this.$store.state.bookmarks));
       bookmarks.map(m => delete m.id);
+      const timeStr =new Date().toJSON().slice(0, -8).replace(/-|:/g, '')
+      this.$refs.downloadLink.download = 
+        `bookmarks-${timeStr}.json`
       this.$refs.downloadLink.href =
         "data:text/json;charset=utf-8," +
         encodeURIComponent(JSON.stringify(bookmarks));
