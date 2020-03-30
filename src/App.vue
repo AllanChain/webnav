@@ -71,7 +71,7 @@
               <v-icon small>
                 settings
               </v-icon>
-              SW: {{ $store.state.swStatus }}
+              {{ $store.state.swStatus }}
             </span>
           </v-list-item-content>
         </v-list-item>
