@@ -35,7 +35,7 @@
             <v-list-item-title class="title">
               WebNav
             </v-list-item-title>
-            <logo class="text-center" />
+            <logo class="text-center" @click.native="install.prompt()" />
           </v-list-item-content>
         </v-list-item>
         <v-divider />
