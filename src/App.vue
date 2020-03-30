@@ -64,6 +64,17 @@
             <v-list-item-title>Add Bookmark</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        <v-divider />
+        <v-list-item>
+          <v-list-item-content>
+            <span>
+              <v-icon small>
+                settings
+              </v-icon>
+              SW: {{ $store.state.swStatus }}
+            </span>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
   </v-app>

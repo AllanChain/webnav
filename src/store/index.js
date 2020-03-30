@@ -9,7 +9,8 @@ let db
 export default new Vuex.Store({
   state: {
     bookmarks: [],
-    editMode: false
+    editMode: false,
+    swStatus: ''
   },
   mutations: {
     toggleEdit(state, payload) {
@@ -17,6 +18,9 @@ export default new Vuex.Store({
         state.editMode = !state.editMode
       else
         state.editMode = payload
+    },
+    swUpdate(state, status) {
+      state.swStatus = status
     }
   },
   actions: {
