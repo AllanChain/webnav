@@ -7,7 +7,12 @@
         class="box"
       >
         <div>
-          <v-overlay absolute opacity="0.1" :value="$store.state.editMode">
+          <v-overlay
+            absolute
+            opacity="0.1"
+            z-index="2"
+            :value="$store.state.editMode"
+          >
             <v-btn
               color="#2196f390"
               fab
@@ -22,6 +27,7 @@
           <v-overlay
             absolute
             opacity="0.1"
+            z-index="2"
             :value="!$store.state.editMode && query && !!bookmark.search"
           >
             <v-btn
