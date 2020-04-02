@@ -24,6 +24,8 @@
 ## TODO
 - [ ] Better bookmark editing
 - [ ] Solve damn cross site and https issue
+- [ ] Edit order
+- [ ] Config dialog
 
 ## Project setup
 ```
