@@ -10,7 +10,7 @@ module.exports = {
       {
         singleline: 4,
         multiline: {
-          max: 1,
+          max: 3,
           allowFirstLine: false
         }
       }
