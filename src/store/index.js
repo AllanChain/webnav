@@ -4,6 +4,9 @@ import { openDB } from 'idb'
 
 Vue.use(Vuex)
 
+const sortIndex = bookmarks => 
+  bookmarks.sort((a, b) => a.index - b.index)
+
 let db
 
 export default new Vuex.Store({
@@ -17,6 +20,17 @@ export default new Vuex.Store({
     switchMode(state, payload) {
       state.mode = payload.mode || payload
       state.modeData = payload.data
+    },
+    reorder(state, payload) {
+      const {from, to} = payload
+      const direction = Math.sign(from - to)
+      state.bookmarks[from].index = to
+      db.put('bookmarks', state.bookmarks[from])
+      for (let i = to;i !== from;i += direction) {
+        state.bookmarks[i].index += direction
+        db.put('bookmarks', state.bookmarks[i])
+      }
+      state.bookmarks = sortIndex(state.bookmarks)
     },
     swUpdate(state, status) {
       state.swStatus = status
@@ -58,9 +72,7 @@ export default new Vuex.Store({
     },
     async refresh(context) {
       const bookmarks = await db.getAll('bookmarks')
-      context.state.bookmarks = bookmarks.sort(
-        (a, b) => a.index - b.index
-      )
+      context.state.bookmarks = sortIndex(bookmarks)
     }
   },
   modules: {}

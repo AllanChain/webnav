@@ -33,6 +33,11 @@
         :value="$store.state.mode === 'edit-dialog'"
         @input="$store.commit('switchMode', 'normal')"
       />
+      <ReorderDialog
+        v-if="$store.state.mode === 'reorder-dialog'"
+        :value="$store.state.mode === 'reorder-dialog'"
+        @input="$store.commit('switchMode', 'normal')"
+      />
     </v-content>
     <v-navigation-drawer v-model="drawer" app>
       <v-list dense>
@@ -97,6 +102,7 @@
 <script>
 import ImportDialog from "@/components/ImportDialog"
 import EditDialog from '@/components/EditDialog'
+import ReorderDialog from '@/components/ReorderDialog'
 import WebNav from "@/components/WebNav"
 import Logo from '@/components/Logo'
 
@@ -105,6 +111,7 @@ export default {
   components: {
     ImportDialog,
     EditDialog,
+    ReorderDialog,
     WebNav,
     Logo
   },

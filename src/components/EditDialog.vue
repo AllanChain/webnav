@@ -17,9 +17,15 @@
             delete
           </v-icon>
         </v-btn>
-        <v-btn icon large @click="closeDialog">
+        <v-btn
+          icon large 
+          @click="$store.commit('switchMode', {
+            mode: 'reorder-dialog',
+            data: bookmark.index
+          })"
+        >
           <v-icon color="yellow lighten-2">
-            cancel
+            swap_horiz
           </v-icon>
         </v-btn>
       </v-toolbar>
