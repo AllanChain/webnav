@@ -9,7 +9,7 @@ let db
 export default new Vuex.Store({
   state: {
     bookmarks: [],
-    mode: '',
+    mode: 'normal',
     modeData: undefined,
     swStatus: ''
   },
