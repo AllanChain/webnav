@@ -46,6 +46,9 @@
 </template>
 
 <script>
+import { validate } from 'jsonschema'
+import schema from '@/bookmark.schema.json'
+
 const bookmarkMatch = (t, m) => t.url === m.url && t.search === m.search
 
 export default {
@@ -84,13 +87,18 @@ export default {
       reader.readAsText(file)
     },
     async importBookmarks(bookmarks) {
+      const result = validate(bookmarks, schema)
+      if (!result.valid) {
+        console.log(result)
+        return
+      }
       // https://stackoverflow.com/a/36744732/8810271
       bookmarks = bookmarks.filter(
         (m, index, self) => 
           self.findIndex(t => bookmarkMatch(t, m)) === index &&
           this.$store.state.bookmarks.findIndex(
-            t => bookmarkMatch(t, m)) === -1 &&
-          'title' in m && 'url' in m)
+            t => bookmarkMatch(t, m)) === -1)
+      bookmarks.forEach((b, i) => b.index = i);
       await this.$store.dispatch('addAll', bookmarks)
       this.emit(false)
     }

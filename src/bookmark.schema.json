@@ -1,0 +1,20 @@
+{
+    "type": "array",
+    "items": {
+        "type": "object",
+        "uniqueItems": true,
+        "required": ["title", "url"],
+        "properties": {
+            "title": { "type": "string" },
+            "url": {
+                "type": "string",
+                "pattern": "^http(s)*:\\/\\/.+$",
+                "message": {
+                    "pattern": "Must begin with \"http(s)://\""
+                }
+            },
+            "search": { "type": "string" },
+            "icon": { "type": "string" }
+        }
+    }
+}
