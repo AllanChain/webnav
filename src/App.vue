@@ -147,13 +147,16 @@ export default {
     downloadJSON() {
       // Copy and delete `id` field
       let bookmarks = JSON.parse(JSON.stringify(this.$store.state.bookmarks));
-      bookmarks.map(m => delete m.id);
-      const timeStr =new Date().toJSON().slice(0, -8).replace(/-|:/g, '')
+      bookmarks.forEach(m => {
+        delete m.id
+        delete m.index
+      });
+      const timeStr = new Date().toJSON().slice(0, -8).replace(/-|:/g, '')
       this.$refs.downloadLink.download = 
         `bookmarks-${timeStr}.json`
       this.$refs.downloadLink.href =
         "data:text/json;charset=utf-8," +
-        encodeURIComponent(JSON.stringify(bookmarks));
+        encodeURIComponent(JSON.stringify(bookmarks, null, 4));
       this.$refs.downloadLink.click();
     }
   }
