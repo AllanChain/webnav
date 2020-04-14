@@ -15,7 +15,9 @@ module.exports = {
         }
       }
     ],
-    curly: ['warn', 'multi-or-nest'],
+    'space-infix-ops': 'warn',
+    'indent': ['warn', 2],
+    'curly': ['warn', 'multi-or-nest'],
     'no-extra-semi': 'warn',
     'vue/script-indent': 'warn',
     'no-multi-spaces': 'warn',
