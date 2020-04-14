@@ -44,7 +44,7 @@
           v-model="bookmark.search"
           prepend-inner-icon="search"
           label="Search Template"
-          placeholder="/search?wd={searchItem}"
+          placeholder="/search?wd={}"
           outlined
           dense
         />
@@ -69,18 +69,19 @@ export default {
     WebsiteIcon
   },
   props: {
-    bookmark: {
-      type: Object,
-      required: true
-    },
     value: {
       type: Boolean,
       required: true
     }
   },
+  data(){
+    return {
+      bookmark: JSON.parse(JSON.stringify(this.$store.state.modeData))
+    }
+  },
   methods: {
     closeDialog() {
-      this.$store.commit('toggleEdit', false)
+      this.$store.commit('switchMode', 'normal')
       this.$emit('input', false)
     },
     done(){

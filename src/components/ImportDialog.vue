@@ -16,7 +16,7 @@
             />
           </v-row>
           <v-row>
-            <v-col cols="4">
+            <v-col cols="4" class="text-center">
               <v-btn fab small color="indigo lighten-1" @click="$refs.file.click()">
                 <v-icon>upload_file</v-icon>
               </v-btn>
@@ -28,12 +28,12 @@
                 @change="importFromFile"
               >
             </v-col>
-            <v-col cols="4">
+            <v-col cols="4" class="text-center">
               <v-btn fab small color="amber" @click="emit(false)">
                 <v-icon>cancel</v-icon>
               </v-btn>
             </v-col>
-            <v-col cols="4">
+            <v-col cols="4" class="text-center">
               <v-btn fab small color="green" @click="importFromCloud">
                 <v-icon>done</v-icon>
               </v-btn>

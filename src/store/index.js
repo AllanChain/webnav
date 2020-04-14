@@ -9,15 +9,14 @@ let db
 export default new Vuex.Store({
   state: {
     bookmarks: [],
-    editMode: false,
+    mode: '',
+    modeData: undefined,
     swStatus: ''
   },
   mutations: {
-    toggleEdit(state, payload) {
-      if (payload === undefined)
-        state.editMode = !state.editMode
-      else
-        state.editMode = payload
+    switchMode(state, payload) {
+      state.mode = payload.mode || payload
+      state.modeData = payload.data
     },
     swUpdate(state, status) {
       state.swStatus = status
@@ -33,7 +32,7 @@ export default new Vuex.Store({
           })
         }
       })
-      context.state.bookmarks = await db.getAll('bookmarks')
+      context.dispatch('refresh')
     },
     async add(context, bookmark) {
       await db.add('bookmarks', bookmark)
@@ -47,14 +46,17 @@ export default new Vuex.Store({
     },
     async put(context, bookmark) {
       await db.put('bookmarks', bookmark)
-      // context.dispatch('refresh')
+      context.dispatch('refresh')
     },
     async delete(context, id) {
       await db.delete('bookmarks', id)
       context.dispatch('refresh')
     },
     async refresh(context) {
-      context.state.bookmarks = await db.getAll('bookmarks')
+      const bookmarks = await db.getAll('bookmarks')
+      context.state.bookmarks = bookmarks.sort(
+        (a, b) => a.index - b.index
+      )
     }
   },
   modules: {}

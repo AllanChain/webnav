@@ -3,21 +3,19 @@
     <div class="text-center pt-5">
       <div
         v-for="bookmark in $store.state.bookmarks"
-        :key="bookmark.id"
-        class="box"
+        :key="bookmark.id" class="box"
       >
         <div>
           <v-overlay
-            absolute
-            opacity="0.1"
-            z-index="2"
-            :value="$store.state.editMode"
+            absolute opacity="0.1" z-index="2"
+            :value="$store.state.mode === 'edit'"
           >
             <v-btn
-              color="#2196f390"
-              fab
-              x-small
-              @click="dialog = true; editingBookmark = bookmark"
+              color="#2196f390" fab x-small
+              @click="$store.commit('switchMode', {
+                mode: 'edit-dialog',
+                data: bookmark
+              })"
             >
               <v-icon color="white">
                 edit
@@ -25,15 +23,11 @@
             </v-btn>
           </v-overlay>
           <v-overlay
-            absolute
-            opacity="0.1"
-            z-index="2"
-            :value="!$store.state.editMode && query && !!bookmark.search"
+            absolute opacity="0.1" z-index="2"
+            :value="$store.state.mode === 'normal' && query && !!bookmark.search"
           >
             <v-btn
-              color="#2196f390"
-              fab
-              x-small
+              color="#2196f390" fab x-small
               @click="goSearch(bookmark)"
             >
               <v-icon color="white">
@@ -48,19 +42,16 @@
         </p>
       </div>
     </div>
-    <EditDialog v-model="dialog" :bookmark="editingBookmark" />
   </div>
 </template>
 
 <script>
 import url from 'url'
 import WebsiteIcon from '@/components/WebsiteIcon'
-import EditDialog from '@/components/EditDialog'
 
 export default {
   components: {
     WebsiteIcon,
-    EditDialog
   },
   props: {
     query: {
@@ -68,20 +59,7 @@ export default {
       required: true
     }
   },
-  data() {
-    return {
-      dialog: false,
-      editingBookmark: {}
-    }
-  },
   methods: {
-    add() {
-      this.editingBookmark = {
-        title: 'New Bookmark',
-        url: ''
-      }
-      this.dialog = true
-    },
     goSearch(bookmark) {
       this.goURL(url.resolve(
         bookmark.url,

@@ -6,11 +6,8 @@
         ref="text"
         :value="query"
         prepend-inner-icon="search"
-        hide-details
-        outlined
-        single-line
-        dense
-        clearable
+        hide-details outlined
+        single-line dense clearable
         @input="query = $event ? $event : ''"
       />
       <!-- Clear will set the string to null -->
@@ -18,15 +15,24 @@
       <v-spacer />
       <v-btn
         icon
-        :color="$store.state.editMode ? 'green' : undefined"
-        @click="$store.commit('toggleEdit')"
+        :color="$store.state.mode === 'edit' ? 'green' : undefined"
+        @click=" $store.commit('switchMode', 
+                               $store.state.mode === 'edit' ? 'normal' : 'edit')"
       >
         <v-icon>edit</v-icon>
       </v-btn>
     </v-app-bar>
     <v-content>
-      <WebNav ref="webnav" :query="query" />
-      <JsonImport v-model="importDialog" />
+      <WebNav :query="query" />
+      <ImportDialog 
+        :value="$store.state.mode === 'import-dialog'"
+        @input="$store.commit('switchMode', 'normal')"
+      />
+      <EditDialog 
+        v-if="$store.state.mode === 'edit-dialog'"
+        :value="$store.state.mode === 'edit-dialog'"
+        @input="$store.commit('switchMode', 'normal')"
+      />
     </v-content>
     <v-navigation-drawer v-model="drawer" app>
       <v-list dense>
@@ -39,7 +45,7 @@
           </v-list-item-content>
         </v-list-item>
         <v-divider />
-        <v-list-item link @click="importDialog = true">
+        <v-list-item link @click="$store.commit('switchMode', 'import-dialog')">
           <v-list-item-action>
             <v-icon>add_to_home_screen</v-icon>
           </v-list-item-action>
@@ -56,7 +62,7 @@
             <a ref="downloadLink" class="d-none" />
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link @click="$refs.webnav.add()">
+        <v-list-item link @click="newBookmark">
           <v-list-item-action>
             <v-icon>add</v-icon>
           </v-list-item-action>
@@ -81,14 +87,16 @@
 </template>
 
 <script>
-import JsonImport from "@/components/JsonImport"
+import ImportDialog from "@/components/ImportDialog"
+import EditDialog from '@/components/EditDialog'
 import WebNav from "@/components/WebNav"
 import Logo from '@/components/Logo'
 
 export default {
   name: "App",
   components: {
-    JsonImport,
+    ImportDialog,
+    EditDialog,
     WebNav,
     Logo
   },
@@ -110,6 +118,16 @@ export default {
   methods: {
     installPrompt: function(e) {
       this.install = e;
+    },
+    newBookmark() {
+      this.$store.commit({
+        type: 'switchMode', 
+        mode: 'edit-dialog',
+        data: {
+          title: '',
+          url: ''
+        }
+      })
     },
     downloadJSON() {
       // Copy and delete `id` field
