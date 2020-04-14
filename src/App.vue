@@ -140,7 +140,8 @@ export default {
         mode: 'edit-dialog',
         data: {
           title: '',
-          url: ''
+          url: '',
+          index: this.$store.state.bookmarks.length
         }
       })
     },
