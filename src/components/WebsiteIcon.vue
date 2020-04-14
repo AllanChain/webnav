@@ -26,8 +26,8 @@ export default {
   },
   data() {
     return {
-      src:
-        this.bookmark.icon || url.resolve(this.bookmark.url, '/favicon.ico')
+      src: url.resolve(this.bookmark.url,
+                       this.bookmark.icon || '/favicon.ico')
     }
   }
 }
