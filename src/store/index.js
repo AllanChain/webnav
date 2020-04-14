@@ -25,11 +25,8 @@ export default new Vuex.Store({
       const {from, to} = payload
       const direction = Math.sign(from - to)
       state.bookmarks[from].index = to
-      db.put('bookmarks', state.bookmarks[from])
-      for (let i = to;i !== from;i += direction) {
+      for (let i = to;i !== from;i += direction) 
         state.bookmarks[i].index += direction
-        db.put('bookmarks', state.bookmarks[i])
-      }
       state.bookmarks = sortIndex(state.bookmarks)
     },
     swUpdate(state, status) {
@@ -61,6 +58,16 @@ export default new Vuex.Store({
     async put(context, bookmark) {
       await db.put('bookmarks', bookmark)
       context.dispatch('refresh')
+    },
+    /** Put all current bookmarks to db after reorder
+     * 
+     * No need to refresh because using state.bookmarks
+     */
+    async putAll(context) {
+      await Promise.all(
+        context.state.bookmarks.map(
+          bookmark => db.put('bookmarks', bookmark)
+        ))
     },
     async delete(context, id) {
       await db.delete('bookmarks', id)

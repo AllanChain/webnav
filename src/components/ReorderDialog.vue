@@ -1,7 +1,7 @@
 <template>
   <v-overlay
     opacity="0.8"
-    @click.native="$store.commit('switchMode', 'normal')"
+    @click.native="closeDialog"
   >
     <v-slider
       :value="index"
@@ -30,6 +30,10 @@ export default {
         to: newIndex
       })
       this.index = newIndex
+    },
+    closeDialog() {
+      this.$store.commit('switchMode', 'normal')
+      this.$store.dispatch('putAll')
     }
   }
 }
