@@ -52,6 +52,10 @@ export default new Vuex.Store({
       await db.delete('bookmarks', id)
       context.dispatch('refresh')
     },
+    async clear(context) {
+      await db.clear('bookmarks')
+      context.state.bookmarks = []
+    },
     async refresh(context) {
       const bookmarks = await db.getAll('bookmarks')
       context.state.bookmarks = bookmarks.sort(
