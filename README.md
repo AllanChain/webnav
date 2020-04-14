@@ -10,6 +10,9 @@
     - if you *did not enter the query or search url not set*, you will be navigated to that website as usual
 
 ## JSON file
+
+[schema](src/bookmark.schema.json)
+
 ```json
 [
     {
@@ -24,8 +27,9 @@
 ## TODO
 - [ ] Better bookmark editing
 - [ ] Solve damn cross site and https issue
-- [ ] Edit order
+- [X] Edit order
 - [ ] Config dialog
+- [ ] Error handling
 
 ## Project setup
 ```
