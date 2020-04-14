@@ -89,7 +89,7 @@ export default {
     async importBookmarks(bookmarks) {
       const result = validate(bookmarks, schema)
       if (!result.valid) {
-        console.log(result)
+        alert('JSON File Invalid! Rejecting...')
         return
       }
       // https://stackoverflow.com/a/36744732/8810271
