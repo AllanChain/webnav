@@ -25,14 +25,14 @@
 ```
 
 ## TODO
-- [ ] Better bookmark editing
-- [ ] Solve damn cross site and https issue
+- [X] Better bookmark editing
+- [X] ~~Solve damn cross site and https issue~~ NO WAY!
 - [X] Edit order
 - [ ] Config dialog
 - [ ] Error handling
 
 ## Project setup
-```
+```bash
 npm install
 
 # Compiles and hot-reloads for development
@@ -43,4 +43,12 @@ npm run build
 
 # Lints and fixes files
 npm run lint
+
+# New version
+## Also push tags
+git config --global push.followTags true
+## patch, minor and major version changes
+npm version patch
+npm version minor
+npm version major
 ```
