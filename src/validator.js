@@ -20,6 +20,5 @@ export default (schema, payload) => {
     let message = `${e.message}. Got "${pointer.get(payload, e.dataPath)}"`
     store.commit('alert', message)
   })
-  console.log(validate.errors)
   return false
 }
