@@ -99,6 +99,10 @@ export default {
         this.$store.dispatch('put', this.bookmark)
       else
         this.$store.dispatch('add', this.bookmark)
+      this.$store.commit('alert', {
+        text: 'Success!',
+        type: 'success'
+      })
       this.closeDialog()
     },
     deleteThis() {
