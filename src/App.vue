@@ -131,7 +131,7 @@ export default {
       drawer: false
     };
   },
-  created: function() {
+  created() {
     window.addEventListener('beforeinstallprompt', this.installPrompt);
     this.$store.dispatch('init');
     this.$store.commit('alert', {
@@ -139,11 +139,11 @@ export default {
       type: 'success'
     })
   },
-  destroyed: function() {
+  destroyed() {
     window.removeEventListener('beforeinstallprompt', this.installPrompt);
   },
   methods: {
-    installPrompt: function(e) {
+    installPrompt(e) {
       this.install = e;
     },
     newBookmark() {
