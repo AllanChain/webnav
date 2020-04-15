@@ -69,6 +69,7 @@
 
 <script>
 import WebsiteIcon from '@/components/WebsiteIcon'
+import { validateBookmark } from '@/validator'
 
 export default {
   components: {
@@ -91,6 +92,13 @@ export default {
       this.$emit('input', false)
     },
     done() {
+      if (validateBookmark(this.bookmark) === false) {
+        this.$store.commit('alert', {
+          text: 'Bookmark invalid!',
+          type: 'error'
+        })
+        return
+      }
       if (this.bookmark.id)
         this.$store.dispatch('put', this.bookmark)
       else
