@@ -133,11 +133,7 @@ export default {
   },
   created() {
     window.addEventListener('beforeinstallprompt', this.installPrompt);
-    this.$store.dispatch('init');
-    this.$store.commit('alert', {
-      text: 'welcome',
-      type: 'success'
-    })
+    this.$store.dispatch('init')
   },
   destroyed() {
     window.removeEventListener('beforeinstallprompt', this.installPrompt);
