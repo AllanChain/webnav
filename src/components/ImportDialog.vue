@@ -1,5 +1,5 @@
 <template>
-  <v-dialog :value="value" max-width="350px" @input="emit">
+  <v-dialog :value="value" max-width="350px" @input="$emit('input', false)">
     <v-card class="elevation-12">
       <v-card-text class="pa-1">
         <v-container>
@@ -46,8 +46,7 @@
 </template>
 
 <script>
-import { validate } from 'jsonschema'
-import schema from '@/bookmark.schema.json'
+import { validateBookmarks } from '@/validator'
 
 const bookmarkMatch = (t, m) => t.url === m.url && t.search === m.search
 
@@ -65,9 +64,6 @@ export default {
     }
   },
   methods: {
-    emit(value) {
-      this.$emit('input', value)
-    },
     async importFromCloud() {
       try {
         let response = await fetch(this.url)
@@ -87,9 +83,13 @@ export default {
       reader.readAsText(file)
     },
     async importBookmarks(bookmarks) {
-      const result = validate(bookmarks, schema)
-      if (!result.valid) {
-        alert('JSON File Invalid! Rejecting...')
+      const result = validateBookmarks(bookmarks)
+      if (result === false) {
+        this.$store.commit('alert', {
+          text: 'JSON file invalid!',
+          type: 'error'
+        })
+        this.$emit('input', false)
         return
       }
       // https://stackoverflow.com/a/36744732/8810271
@@ -100,7 +100,7 @@ export default {
             t => bookmarkMatch(t, m)) === -1)
       bookmarks.forEach((b, i) => b.index = i);
       await this.$store.dispatch('addAll', bookmarks)
-      this.emit(false)
+      this.$emit('input', false)
     }
   }
 }
