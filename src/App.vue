@@ -23,7 +23,7 @@
       </v-btn>
     </v-app-bar>
     <v-content>
-      <div class="mt-3 mx-2">
+      <div class="mt-3 mx-2 alert-box">
         <DisAlert 
           v-for="(message, i) in $store.state.messages" 
           :key="i" :message="message"
@@ -182,5 +182,8 @@ export default {
 </script>
 
 <style>
-
+.alert-box {
+  position: fixed;
+  z-index: 9999;
+}
 </style>
