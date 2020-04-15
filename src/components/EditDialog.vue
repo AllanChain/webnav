@@ -1,5 +1,5 @@
 <template>
-  <v-dialog :value="true" @input="closeDialog">
+  <v-dialog :value="true" @input="$emit('input', false)">
     <v-card class="ma-2">
       <v-toolbar color="indigo" dark dense>
         <v-toolbar-title>
@@ -88,10 +88,6 @@ export default {
     }
   },
   methods: {
-    closeDialog() {
-      this.$store.commit('switchMode', 'normal')
-      this.$emit('input', false)
-    },
     done() {
       if (!validate('/bookmark', this.bookmark)) 
         return
@@ -103,11 +99,11 @@ export default {
         text: 'Success!',
         type: 'success'
       })
-      this.closeDialog()
+      this.$emit('input', false)
     },
     deleteThis() {
       this.$store.dispatch('delete', this.bookmark.id)
-      this.closeDialog()
+      this.$emit('input', false)
     }
   }
 }
