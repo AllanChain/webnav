@@ -1,7 +1,6 @@
 {
     "$id": "/bookmark",
     "type": "object",
-    "uniqueItems": true,
     "required": [
         "title",
         "url"
@@ -13,16 +12,19 @@
         },
         "url": {
             "type": "string",
-            "pattern": "^http(s)*:\\/\\/.+$",
-            "message": {
-                "pattern": "Must begin with \"http(s)://\""
-            }
+            "pattern": "^http(s)*:\\/\\/.+$"
         },
         "search": {
             "type": "string"
         },
         "icon": {
             "type": "string"
+        }
+    },
+    "errorMessage": {
+        "properties": {
+            "title": "Bookmark title is required",
+            "url": "Bookmark URL must begin with \"http(s)://\""
         }
     }
 }
