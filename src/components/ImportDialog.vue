@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import { validateBookmarks } from '@/validator'
+import validate from '@/validator'
 
 const bookmarkMatch = (t, m) => t.url === m.url && t.search === m.search
 
@@ -81,12 +81,7 @@ export default {
       reader.readAsText(file)
     },
     async importBookmarks(bookmarks) {
-      const result = validateBookmarks(bookmarks)
-      if (result === false) {
-        this.$store.commit('alert', {
-          text: 'JSON file invalid!',
-          type: 'error'
-        })
+      if (!validate('/bookmarks', bookmarks)) {
         this.$emit('input', false)
         return
       }
