@@ -75,7 +75,7 @@
             <v-list-item-title>Add Bookmark</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link @click="$store.dispatch('clear')">
+        <v-list-item link @click="confirmClear">
           <v-list-item-action>
             <v-icon>warning</v-icon>
           </v-list-item-action>
@@ -159,6 +159,11 @@ export default {
         "data:text/json;charset=utf-8," +
         encodeURIComponent(JSON.stringify(bookmarks, null, 4));
       this.$refs.downloadLink.click();
+    },
+    confirmClear() {
+      if (prompt('Type CLEAR to continue. Hope you have an backup')
+        === 'CLEAR')
+        this.$store.dispatch('clear')
     }
   }
 };
