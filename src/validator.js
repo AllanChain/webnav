@@ -1,4 +1,4 @@
-import Ajv from 'ajv';
+import Ajv from 'ajv'
 import bookmarkSchema from './bookmark.schema.json'
 import bookmarksSchema from './bookmarks.schema.json'
 import store from '@/store'

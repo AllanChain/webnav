@@ -129,18 +129,18 @@ export default {
       importDialog: false,
       query: '',
       drawer: false
-    };
+    }
   },
   created() {
-    window.addEventListener('beforeinstallprompt', this.installPrompt);
+    window.addEventListener('beforeinstallprompt', this.installPrompt)
     this.$store.dispatch('init')
   },
   destroyed() {
-    window.removeEventListener('beforeinstallprompt', this.installPrompt);
+    window.removeEventListener('beforeinstallprompt', this.installPrompt)
   },
   methods: {
     installPrompt(e) {
-      this.install = e;
+      this.install = e
     },
     newBookmark() {
       this.$store.commit({
@@ -155,18 +155,18 @@ export default {
     },
     downloadJSON() {
       // Copy and delete `id` field
-      let bookmarks = JSON.parse(JSON.stringify(this.$store.state.bookmarks));
+      let bookmarks = JSON.parse(JSON.stringify(this.$store.state.bookmarks))
       bookmarks.forEach(m => {
         delete m.id
         delete m.index
-      });
+      })
       const timeStr = new Date().toJSON().slice(0, -8).replace(/-|:/g, '')
       this.$refs.downloadLink.download = 
         `bookmarks-${timeStr}.json`
       this.$refs.downloadLink.href =
         'data:text/json;charset=utf-8,' +
-        encodeURIComponent(JSON.stringify(bookmarks, null, 4));
-      this.$refs.downloadLink.click();
+        encodeURIComponent(JSON.stringify(bookmarks, null, 4))
+      this.$refs.downloadLink.click()
     },
     confirmClear() {
       if (prompt('Type CLEAR to continue. Hope you have an backup')
@@ -174,7 +174,7 @@ export default {
         this.$store.dispatch('clear')
     }
   }
-};
+}
 </script>
 
 <style>

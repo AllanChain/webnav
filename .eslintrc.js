@@ -24,7 +24,7 @@ module.exports = {
       }
     ],
     curly: ['warn', 'multi-or-nest'],
-    'no-extra-semi': 'warn',
+    'semi': ['warn', 'never'],
     'space-before-blocks': 'warn',
     'quotes': ['warn', 'single'],
     'vue/script-indent': 'warn',

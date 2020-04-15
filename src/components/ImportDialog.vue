@@ -73,7 +73,7 @@ export default {
     },
     importFromFile(e) {
       const file = e.target.files[0]
-      const reader = new FileReader();
+      const reader = new FileReader()
       reader.onload = async e => {
         const content = e.target.result
         await this.importBookmarks(JSON.parse(content))
@@ -91,7 +91,7 @@ export default {
           self.findIndex(t => bookmarkMatch(t, m)) === index &&
           this.$store.state.bookmarks.findIndex(
             t => bookmarkMatch(t, m)) === -1)
-      bookmarks.forEach((b, i) => b.index = i);
+      bookmarks.forEach((b, i) => b.index = i)
       await this.$store.dispatch('addAll', bookmarks)
       this.$emit('input', false)
     }
