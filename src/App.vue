@@ -41,7 +41,6 @@
       />
       <ReorderDialog
         v-if="$store.state.mode === 'reorder-dialog'"
-        :value="$store.state.mode === 'reorder-dialog'"
         @input="$store.commit('switchMode', 'normal')"
       />
     </v-content>

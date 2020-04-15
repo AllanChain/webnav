@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-if="!!bookmark" :value="value" @input="closeDialog">
+  <v-dialog :value="true" @input="closeDialog">
     <v-card class="ma-2">
       <v-toolbar color="indigo" dark dense>
         <v-toolbar-title>
