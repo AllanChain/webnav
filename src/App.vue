@@ -24,7 +24,7 @@
     </v-app-bar>
     <v-content
       :style="{
-        backgroundImage: `url(back.jpg)`,
+        backgroundImage: `url(${$store.state.config.bgImg})`,
         backgroundSize: 'cover'
       }"
     >
@@ -46,6 +46,10 @@
       />
       <ReorderDialog
         v-if="$store.state.mode === 'reorder-dialog'"
+        @input="$store.commit('switchMode', 'normal')"
+      />
+      <ConfigDialog
+        v-if="$store.state.mode === 'config-dialog'"
         @input="$store.commit('switchMode', 'normal')"
       />
     </v-content>
@@ -85,6 +89,14 @@
             <v-list-item-title>Add Bookmark</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        <v-list-item link @click="$store.commit('switchMode', 'config-dialog')">
+          <v-list-item-action>
+            <v-icon>settings</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>More Config</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
         <v-list-item link @click="confirmClear">
           <v-list-item-action>
             <v-icon>warning</v-icon>
@@ -121,6 +133,7 @@
 import ImportDialog from '@/components/ImportDialog'
 import EditDialog from '@/components/EditDialog'
 import ReorderDialog from '@/components/ReorderDialog'
+import ConfigDialog from '@/components/ConfigDialog'
 import WebNav from '@/components/WebNav'
 import Logo from '@/components/Logo'
 import DisAlert from '@/components/DisAlert'
@@ -131,6 +144,7 @@ export default {
     ImportDialog,
     EditDialog,
     ReorderDialog,
+    ConfigDialog,
     WebNav,
     Logo,
     DisAlert

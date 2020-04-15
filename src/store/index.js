@@ -15,7 +15,8 @@ export default new Vuex.Store({
     mode: 'normal',
     modeData: undefined,
     swStatus: '',
-    messages: []
+    messages: [],
+    config: {}
   },
   mutations: {
     switchMode(state, payload) {
@@ -33,6 +34,10 @@ export default new Vuex.Store({
     swUpdate(state, status) {
       state.swStatus = status
     },
+    updateConfig(state, config) {
+      state.config = config
+      localStorage.setItem('config', JSON.stringify(config))
+    },
     alert(state, payload) {
       if (typeof payload === 'string') {
         state.messages.push({
@@ -45,6 +50,12 @@ export default new Vuex.Store({
   },
   actions: {
     async init(context) {
+      const config = JSON.parse(localStorage.getItem('config'))
+      if (!config) 
+        localStorage.setItem('config', '{}')
+      else
+        context.state.config = config
+
       db = await openDB('BookmarkDB', 1, {
         upgrade(db) {
           db.createObjectStore('bookmarks', {
