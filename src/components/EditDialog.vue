@@ -80,7 +80,7 @@ export default {
       required: true
     }
   },
-  data(){
+  data() {
     return {
       bookmark: JSON.parse(JSON.stringify(this.$store.state.modeData))
     }
@@ -90,14 +90,14 @@ export default {
       this.$store.commit('switchMode', 'normal')
       this.$emit('input', false)
     },
-    done(){
+    done() {
       if (this.bookmark.id)
         this.$store.dispatch('put', this.bookmark)
       else
         this.$store.dispatch('add', this.bookmark)
       this.closeDialog()
     },
-    deleteThis(){
+    deleteThis() {
       this.$store.dispatch('delete', this.bookmark.id)
       this.closeDialog()
     }

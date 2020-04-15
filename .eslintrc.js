@@ -25,6 +25,8 @@ module.exports = {
     ],
     curly: ['warn', 'multi-or-nest'],
     'no-extra-semi': 'warn',
+    'space-before-blocks': 'warn',
+    'quotes': ['warn', 'single'],
     'vue/script-indent': 'warn',
     'no-multi-spaces': 'warn',
     'generator-star-spacing': ['warn', 'before'],

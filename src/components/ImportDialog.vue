@@ -10,9 +10,7 @@
               color="purple"
               label="JSON URL"
               placeholder="https://cors.net/bookmarks.json"
-              dense
-              outlined
-              hide-details
+              dense outlined hide-details
             />
           </v-row>
           <v-row>

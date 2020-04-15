@@ -106,15 +106,15 @@
 </template>
 
 <script>
-import ImportDialog from "@/components/ImportDialog"
+import ImportDialog from '@/components/ImportDialog'
 import EditDialog from '@/components/EditDialog'
 import ReorderDialog from '@/components/ReorderDialog'
-import WebNav from "@/components/WebNav"
+import WebNav from '@/components/WebNav'
 import Logo from '@/components/Logo'
 import DisAlert from '@/components/DisAlert'
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     ImportDialog,
     EditDialog,
@@ -127,20 +127,20 @@ export default {
     return {
       install: null,
       importDialog: false,
-      query: "",
+      query: '',
       drawer: false
     };
   },
   created: function() {
-    window.addEventListener("beforeinstallprompt", this.installPrompt);
-    this.$store.dispatch("init");
+    window.addEventListener('beforeinstallprompt', this.installPrompt);
+    this.$store.dispatch('init');
     this.$store.commit('alert', {
       text: 'welcome',
       type: 'success'
     })
   },
   destroyed: function() {
-    window.removeEventListener("beforeinstallprompt", this.installPrompt);
+    window.removeEventListener('beforeinstallprompt', this.installPrompt);
   },
   methods: {
     installPrompt: function(e) {
@@ -168,7 +168,7 @@ export default {
       this.$refs.downloadLink.download = 
         `bookmarks-${timeStr}.json`
       this.$refs.downloadLink.href =
-        "data:text/json;charset=utf-8," +
+        'data:text/json;charset=utf-8,' +
         encodeURIComponent(JSON.stringify(bookmarks, null, 4));
       this.$refs.downloadLink.click();
     },
