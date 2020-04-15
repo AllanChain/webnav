@@ -23,6 +23,12 @@
       </v-btn>
     </v-app-bar>
     <v-content>
+      <div class="mt-3 mx-2">
+        <DisAlert 
+          v-for="(message, i) in $store.state.messages" 
+          :key="i" :message="message"
+        />
+      </div>
       <WebNav :query="query" />
       <ImportDialog 
         :value="$store.state.mode === 'import-dialog'"
@@ -105,6 +111,7 @@ import EditDialog from '@/components/EditDialog'
 import ReorderDialog from '@/components/ReorderDialog'
 import WebNav from "@/components/WebNav"
 import Logo from '@/components/Logo'
+import DisAlert from '@/components/DisAlert'
 
 export default {
   name: "App",
@@ -113,7 +120,8 @@ export default {
     EditDialog,
     ReorderDialog,
     WebNav,
-    Logo
+    Logo,
+    DisAlert
   },
   data() {
     return {
@@ -126,6 +134,10 @@ export default {
   created: function() {
     window.addEventListener("beforeinstallprompt", this.installPrompt);
     this.$store.dispatch("init");
+    this.$store.commit('alert', {
+      text: 'welcome',
+      type: 'success'
+    })
   },
   destroyed: function() {
     window.removeEventListener("beforeinstallprompt", this.installPrompt);

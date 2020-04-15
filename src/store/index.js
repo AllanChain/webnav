@@ -14,7 +14,8 @@ export default new Vuex.Store({
     bookmarks: [],
     mode: 'normal',
     modeData: undefined,
-    swStatus: ''
+    swStatus: '',
+    messages: []
   },
   mutations: {
     switchMode(state, payload) {
@@ -31,6 +32,15 @@ export default new Vuex.Store({
     },
     swUpdate(state, status) {
       state.swStatus = status
+    },
+    alert(state, payload) {
+      if (typeof payload === 'string') {
+        state.messages.push({
+          text: payload,
+          type: 'warning'
+        })
+      } else 
+        state.messages.push(payload)
     }
   },
   actions: {
