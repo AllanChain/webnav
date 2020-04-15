@@ -2,6 +2,8 @@ on:
   push:
     branches:
       - master
+    tags:
+      - v*
 
 env:
   NODE_VERSION: '10.x'
