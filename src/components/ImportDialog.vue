@@ -93,6 +93,10 @@ export default {
             t => bookmarkMatch(t, m)) === -1)
       bookmarks.forEach((b, i) => b.index = i)
       await this.$store.dispatch('addAll', bookmarks)
+      this.$store.commit('alert', {
+        text: `Successfully added ${bookmarks.length} bookmark(s)`,
+        type: 'success'
+      })
       this.$emit('input', false)
     }
   }

@@ -1,6 +1,6 @@
 <template>
   <v-overlay
-    opacity="0.8"
+    opacity="0.7"
     @click.native="closeDialog"
   >
     <v-slider
@@ -31,9 +31,13 @@ export default {
       })
       this.index = newIndex
     },
-    closeDialog() {
+    async closeDialog() {
       this.$store.commit('switchMode', 'normal')
-      this.$store.dispatch('putAll')
+      await this.$store.dispatch('putAll')
+      this.$store.commit('alert', {
+        text: 'Reordered!',
+        type: 'success'
+      })
     }
   }
 }
