@@ -12,12 +12,13 @@
             check
           </v-icon>
         </v-btn>
-        <v-btn icon large @click="deleteThis">
+        <v-btn v-if="bookmark.id" icon large @click="deleteThis">
           <v-icon color="red lighten-2">
             delete
           </v-icon>
         </v-btn>
         <v-btn
+          v-if="bookmark.id"
           icon large 
           @click="$store.commit('switchMode', {
             mode: 'reorder-dialog',
