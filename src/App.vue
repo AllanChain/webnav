@@ -89,6 +89,14 @@
             <v-list-item-title>CLEAR ALL Bookmark</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        <v-list-item link href="https://github.com/AllanChain/webnav">
+          <v-list-item-action>
+            <img src="@/assets/octocat.svg" width="24px">
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Fork me on GitHub</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
         <v-divider />
         <v-list-item>
           <v-list-item-content>
