@@ -1,5 +1,5 @@
 <template>
-  <v-app style="background: rgba(0, 0, 0, 0)">
+  <v-app>
     <v-app-bar app color="indigo darken-1" dark>
       <v-app-bar-nav-icon @click="drawer = !drawer" />
       <v-text-field
@@ -22,7 +22,12 @@
         <v-icon>edit</v-icon>
       </v-btn>
     </v-app-bar>
-    <v-content>
+    <v-content
+      :style="{
+        backgroundImage: `url(back.jpg)`,
+        backgroundSize: 'cover'
+      }"
+    >
       <div class="mt-3 mx-2 alert-box">
         <DisAlert 
           v-for="(message, i) in $store.state.messages" 
