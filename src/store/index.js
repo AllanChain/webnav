@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { openDB } from 'idb'
+import validate from '@/validator'
 
 Vue.use(Vuex)
 
@@ -50,10 +51,11 @@ export default new Vuex.Store({
   },
   actions: {
     async init(context) {
-      const config = JSON.parse(localStorage.getItem('config'))
-      if (!config) 
-        localStorage.setItem('config', '{}')
-      else
+      let config = JSON.parse(localStorage.getItem('config'))
+      if (!validate('/config', config)) {
+        config = require('@/config.default.json')
+        localStorage.setItem('config', JSON.stringify(config))
+      } else
         context.state.config = config
 
       db = await openDB('BookmarkDB', 1, {

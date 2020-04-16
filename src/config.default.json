@@ -1,0 +1,14 @@
+{
+    "bgImg": {
+        "url": "back.jpg",
+        "filter": {
+            "blur": 0,
+            "contrast": 100,
+            "grayscale": 0
+        }
+    },
+    "text": {
+        "color": "#eee",
+        "shadow": "#000"
+    }
+}

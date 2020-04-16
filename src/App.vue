@@ -22,13 +22,20 @@
         <v-icon>edit</v-icon>
       </v-btn>
     </v-app-bar>
-    <v-content
-      :style="{
-        backgroundImage: `url(${$store.state.config.bgImg})`,
-        backgroundSize: 'cover'
-      }"
-    >
-      <div class="mt-3 mx-2 alert-box">
+    <v-content>
+      <div
+        class="bg-image" 
+        :style="{
+          backgroundImage: `url(${$store.state.config.bgImg.url})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          filter: `blur(${$store.state.config.bgImg.filter.blur}px)
+            contrast(${$store.state.config.bgImg.filter.contrast}%)
+            grayscale(${$store.state.config.bgImg.filter.grayscale}%)`}"
+      />
+      <div
+        class="mt-3 mx-2 alert-box"
+      >
         <DisAlert 
           v-for="(message, i) in $store.state.messages" 
           :key="i" :message="message"
@@ -210,5 +217,14 @@ export default {
 }
 .grayscale {
   filter: grayscale(100%);
+}
+.bg-image {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 </style>
