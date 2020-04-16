@@ -55,8 +55,8 @@ export default new Vuex.Store({
       if (!validate('/config', config)) {
         config = require('@/config.default.json')
         localStorage.setItem('config', JSON.stringify(config))
-      } else
-        context.state.config = config
+      }
+      context.state.config = config
 
       db = await openDB('BookmarkDB', 1, {
         upgrade(db) {
