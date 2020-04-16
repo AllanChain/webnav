@@ -1,0 +1,63 @@
+{
+    "$id": "/config",
+    "type": "object",
+    "required": [
+        "bgImg",
+        "text"
+    ],
+    "additionalProperties": false,
+    "properties": {
+        "bgImg": {
+            "type": "object",
+            "required": [
+                "url",
+                "filter"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "url": {
+                    "type": "string"
+                },
+                "filter": {
+                    "type": "object",
+                    "required": [
+                        "blur",
+                        "contrast",
+                        "grayscale"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                        "blur": {
+                            "type": "integer",
+                            "min": 0,
+                            "max": 10
+                        },
+                        "contrast": {
+                            "type": "integer",
+                            "min": 0,
+                            "max": 200
+                        },
+                        "grayscale": {
+                            "type": "integer",
+                            "min": 0,
+                            "max": 100
+                        }
+                    }
+                }
+            }
+        },
+        "text": {
+            "type": "object",
+            "required": ["color", "shadow"],
+            "additionalProperties": false,
+            "properties": {
+                "color": {
+                    "type": "string"
+                },
+                "shadow": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

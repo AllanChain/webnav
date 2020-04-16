@@ -1,11 +1,9 @@
 import Ajv from 'ajv'
 import pointer from 'json-pointer'
-import bookmarkSchema from './bookmark.schema.json'
-import bookmarksSchema from './bookmarks.schema.json'
 import store from '@/store'
 
 let ajv = new Ajv({
-  schemas: [bookmarkSchema, bookmarksSchema],
+  schemas: require('./schemas'),
   allErrors: true,
   jsonPointers: true,
   verbose: true
