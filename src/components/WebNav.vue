@@ -37,7 +37,14 @@
           </v-overlay>
           <WebsiteIcon :bookmark="bookmark" @click.native="goURL(bookmark.url)" />
         </div>
-        <p class="url">
+        <p
+          class="url" 
+          :style="{
+            color: $store.state.config.blackText ? '#000' : '#eee',
+            textShadow: `1px 1px 3px
+            ${$store.state.config.blackText ? '#eee' : '#000'}`
+          }"
+        >
           {{ bookmark.title }}
         </p>
       </div>
@@ -81,8 +88,6 @@ export default {
   border: 0;
 }
 .url {
-  color: #eee;
-  text-shadow: 1px 1px 3px #000;
   height: 2em;
   line-height: 1.1em;
   width: 65px;

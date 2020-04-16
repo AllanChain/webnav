@@ -219,7 +219,7 @@ export default {
   filter: grayscale(100%);
 }
 .bg-image {
-  position: fixed;
+  position: absolute;
   left: 0;
   right: 0;
   z-index: 0;

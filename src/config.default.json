@@ -7,8 +7,5 @@
             "grayscale": 0
         }
     },
-    "text": {
-        "color": "#eee",
-        "shadow": "#000"
-    }
+    "blackText": false
 }

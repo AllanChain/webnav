@@ -54,16 +54,38 @@
             />
           </v-col>
         </v-row>
-        <div 
-          :style="{
-            backgroundImage: `url(${config.bgImg.url})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            height: '180px',
-            filter: `blur(${config.bgImg.filter.blur}px)
+        <div
+          style="width: 100%; height: 180px; position: relative; 
+              overflow: hidden"
+        >
+          <div
+            class="bg-image"
+            :style="{
+              backgroundImage: `url(${config.bgImg.url})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              filter: `blur(${config.bgImg.filter.blur}px)
             contrast(${config.bgImg.filter.contrast}%)
             grayscale(${config.bgImg.filter.grayscale}%)`
-          }"
+            }"
+          />
+          <div
+            class="ma-1"
+            :style="{
+              position: 'absolute',
+              color: config.blackText ? '#000' : '#eee',
+              textShadow: `1px 1px 3px
+            ${config.blackText ? '#eee' : '#000'}`
+            }"
+          >
+            {{ 'Example Text '.repeat(30) }}
+          </div>
+        </div>
+        <v-divider class="my-1" />
+        <v-switch
+          v-model="config.blackText"
+          class="mt-0"
+          :label="config.blackText ? 'Black text' : 'White text'"
         />
       </v-card-text>
     </v-card>
