@@ -63,8 +63,15 @@ export default new Vuex.Store({
       context.dispatch('refresh')
     },
     initConfig(context) {
-      let config = JSON.parse(localStorage.getItem('config')) || {}
-      if (!validate('/config', config)) {
+      let config = JSON.parse(localStorage.getItem('config'))
+      if (config === null) { // Beginner friendly
+        config = require('@/config.default.json')
+        localStorage.setItem('config', JSON.stringify(config))
+        context.commit('alert', {
+          text: 'Welcome to WebNav!',
+          type: 'success'
+        })
+      } else if (!validate('/config', config)) {
         context.commit('alert', 'Current config is out-dated')
         const defaultConfig = require('@/config.default.json')
         config = require('deepmerge')(defaultConfig, config)
