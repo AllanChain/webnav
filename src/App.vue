@@ -164,9 +164,9 @@ export default {
       drawer: false
     }
   },
-  created() {
+  async created() {
     window.addEventListener('beforeinstallprompt', this.installPrompt)
-    this.$store.dispatch('init')
+    await this.$store.dispatch('init')
   },
   destroyed() {
     window.removeEventListener('beforeinstallprompt', this.installPrompt)
