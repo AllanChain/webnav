@@ -1,12 +1,7 @@
 <template>
   <img
-    v-if="!!src"
-    :src="src"
-    :style="{
-      width: size,
-      height: size
-    }"
-    @error="src = 'img/icons/favicon-32x32.png'"
+    v-bind="image"
+    @error="image.src = 'img/icons/favicon-32x32.png'"
   >
 </template>
 
@@ -25,10 +20,23 @@ export default {
     }
   },
   data() {
-    return {
-      src: url.resolve(this.bookmark.url,
-                       this.bookmark.icon || '/favicon.ico')
+    const cors = this.$store.state.config.cors
+    let image = {
+      src:  cors + url.resolve(
+        this.bookmark.url,
+        this.bookmark.icon || '/favicon.ico'),
+      style: {
+        width: this.size,
+        height: this.size
+      }
     }
+    if (cors) {
+      image = {
+        ...image,
+        crossorigin: 'anonymous'
+      }
+    }
+    return { image }
   }
 }
 </script>

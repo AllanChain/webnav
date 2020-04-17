@@ -3,7 +3,8 @@
     "type": "object",
     "required": [
         "bgImg",
-        "blackText"
+        "blackText",
+        "cors"
     ],
     "additionalProperties": false,
     "properties": {
@@ -48,6 +49,10 @@
         },
         "blackText": {
             "type": "boolean"
+        },
+        "cors": {
+            "description": "CORS proxy",
+            "type": "string"
         }
     }
 }

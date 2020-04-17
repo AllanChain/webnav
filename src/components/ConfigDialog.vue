@@ -1,15 +1,22 @@
 <template>
-  <v-dialog value="true" @input="$emit('input', false)">
+  <v-dialog value="true" fullscreen @input="$emit('input', false)">
     <v-card>
-      <v-toolbar color="indigo" dark dense>
-        <v-toolbar-title>Config WebNav</v-toolbar-title>
-        <v-spacer />
-        <v-btn icon large @click="done">
-          <v-icon color="green lighten-2">
-            check
-          </v-icon>
-        </v-btn>
-      </v-toolbar>
+      <v-card-title class="pa-0">
+        <v-toolbar color="indigo" dark dense>
+          <v-toolbar-title>Config WebNav</v-toolbar-title>
+          <v-spacer />
+          <v-btn icon large @click="done">
+            <v-icon color="green lighten-2">
+              check
+            </v-icon>
+          </v-btn>
+          <v-btn icon large @click="$emit('input', false)">
+            <v-icon color="yellow lighten-2">
+              cancel
+            </v-icon>
+          </v-btn>
+        </v-toolbar>
+      </v-card-title>
       <v-card-text class="mt-4">
         <v-text-field
           v-model="config.bgImg.url"
@@ -54,6 +61,11 @@
             />
           </v-col>
         </v-row>
+        <v-switch
+          v-model="config.blackText"
+          class="mt-0"
+          :label="config.blackText ? 'Black text' : 'White text'"
+        />
         <div
           style="width: 100%; height: 180px; position: relative; 
               overflow: hidden"
@@ -82,10 +94,12 @@
           </div>
         </div>
         <v-divider class="my-1" />
-        <v-switch
-          v-model="config.blackText"
-          class="mt-0"
-          :label="config.blackText ? 'Black text' : 'White text'"
+        <v-text-field
+          v-model="config.cors"
+          prepend-inner-icon="flight_takeoff"
+          label="CORS Proxy"
+          placeholder="https://netnr-proxy.cloudno.de/"
+          outlined dense
         />
       </v-card-text>
     </v-card>

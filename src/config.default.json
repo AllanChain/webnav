@@ -7,5 +7,6 @@
             "grayscale": 0
         }
     },
-    "blackText": false
+    "blackText": false,
+    "cors": "https://netnr-proxy.cloudno.de/"
 }
