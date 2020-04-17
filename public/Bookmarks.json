@@ -11,16 +11,6 @@
         "icon": ""
     },
     {
-        "title": "百度",
-        "url": "https://www.baidu.com",
-        "search": "/s?wd={}"
-    },
-    {
-        "title": "谷歌翻译",
-        "url": "https://translate.google.cn",
-        "search": "/#view=home&op=translate&sl=auto&tl=zh-CN&text={}"
-    },
-    {
         "title": "GitHub",
         "url": "https://github.com",
         "search": "/search?q={}"
@@ -32,35 +22,13 @@
         "icon": "https://pypi.org/static/images/favicon.6a76275d.ico"
     },
     {
-        "title": "古诗文网",
-        "url": "https://www.gushiwen.org",
-        "search": "/search.aspx?type=title&page=1&value={}"
-    },
-    {
-        "title": "TG",
-        "url": "https://tg2019303.github.io/",
-        "icon": "https://tg2019303.github.io/icon.ico"
-    },
-    {
         "title": "Stack Overflow",
         "url": "https://stackoverflow.com"
-    },
-    {
-        "title": "Wolfram",
-        "url": "https://www.wolframalpha.com"
     },
     {
         "title": "Allan Chain",
         "url": "https://allanchain.github.io/blog",
         "icon": "https://allanchain.github.io/img/favicon.ico"
-    },
-    {
-        "title": "观察者",
-        "url": "https://m.guancha.cn"
-    },
-    {
-        "title": "温州台风",
-        "url": "http://m.wztf121.com"
     },
     {
         "title": "未名BBS",
@@ -78,19 +46,7 @@
         "url": "https://portal.pku.edu.cn/"
     },
     {
-        "title": "北大网关",
-        "url": "https://its.pku.edu.cn"
-    },
-    {
         "title": "北大教学网",
         "url": "https://course.pku.edu.cn"
-    },
-    {
-        "title": "北大邮箱",
-        "url": "https://mail.pku.edu.cn/"
-    },
-    {
-        "title": "handson-ml",
-        "url": "https://nbviewer.jupyter.org/github/ageron/handson-ml2/blob/master/index.ipynb"
     }
 ]
