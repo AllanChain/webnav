@@ -51,13 +51,7 @@ export default new Vuex.Store({
   },
   actions: {
     async init(context) {
-      let config = JSON.parse(localStorage.getItem('config'))
-      if (!validate('/config', config)) {
-        config = require('@/config.default.json')
-        localStorage.setItem('config', JSON.stringify(config))
-      }
-      context.state.config = config
-
+      context.dispatch('initConfig')
       db = await openDB('BookmarkDB', 1, {
         upgrade(db) {
           db.createObjectStore('bookmarks', {
@@ -67,6 +61,28 @@ export default new Vuex.Store({
         }
       })
       context.dispatch('refresh')
+    },
+    initConfig(context) {
+      let config = JSON.parse(localStorage.getItem('config')) || {}
+      if (!validate('/config', config)) {
+        context.commit('alert', 'Current config is out-dated')
+        const defaultConfig = require('@/config.default.json')
+        config = require('deepmerge')(defaultConfig, config)
+        if (!validate('/config', config)) {
+          context.commit('alert', {
+            text: 'Auto update config failed. Fall back to default',
+            type: 'error'
+          })
+          config = defaultConfig
+        } else {
+          context.commit('alert', {
+            text: 'Auto update config success',
+            type: 'success'
+          })
+        }
+        localStorage.setItem('config', JSON.stringify(config))
+      }
+      context.state.config = config
     },
     async add(context, bookmark) {
       await db.add('bookmarks', bookmark)
