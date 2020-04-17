@@ -127,7 +127,7 @@
               <v-icon small>
                 settings
               </v-icon>
-              {{ $store.state.swStatus }}
+              v{{ version }} - {{ $store.state.swStatus }}
             </span>
           </v-list-item-content>
         </v-list-item>
@@ -161,7 +161,8 @@ export default {
       install: null,
       importDialog: false,
       query: '',
-      drawer: false
+      drawer: false,
+      version: process.env.VUE_APP_PACKAGE_VERSION
     }
   },
   async created() {
