@@ -192,7 +192,7 @@ export default {
       })
     },
     downloadJSON() {
-      // Copy and delete `id` field
+      // Copy and delete `id` and `index` field
       let bookmarks = JSON.parse(JSON.stringify(this.$store.state.bookmarks))
       bookmarks.forEach(m => {
         delete m.id
