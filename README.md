@@ -26,9 +26,9 @@
 
 ## TODO
 - [X] Better bookmark editing
-- [X] ~~Solve damn cross site and https issue~~ NO WAY!
+- [X] Solve damn cross site and https issue (AS LONG AS YOU FIND A GOOD PROXY)
 - [X] Edit order
-- [ ] Config dialog
+- [X] Config dialog
 - [ ] Error handling
 
 ## Project setup
