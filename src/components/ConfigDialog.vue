@@ -1,10 +1,29 @@
 <template>
   <v-dialog value="true" fullscreen @input="$emit('input', false)">
+    <a ref="downloadLink" class="d-none" />
+    <input
+      ref="file"
+      type="file"
+      accept=".json"
+      hidden
+      @change="importFromFile"
+    >
     <v-card>
       <v-card-title class="pa-0">
         <v-toolbar color="indigo" dark dense>
           <v-toolbar-title>Config WebNav</v-toolbar-title>
           <v-spacer />
+          <v-btn
+            icon large color="blue lighten-2"
+            @click="$refs.file.click()"
+          >
+            <v-icon>upload_file</v-icon>
+          </v-btn>
+          <v-btn icon large @click="downloadJSON">
+            <v-icon color="amber">
+              file_download
+            </v-icon>
+          </v-btn>
           <v-btn icon large @click="done">
             <v-icon color="green lighten-2">
               check
@@ -126,6 +145,32 @@ export default {
         this.$store.commit('updateConfig', this.config)
         this.$emit('input', false)
       }
+    },
+    importFromFile(e) {
+      const file = e.target.files[0]
+      const reader = new FileReader()
+      reader.onload = async e => {
+        const content = JSON.parse(e.target.result)
+        if (validate('/config', content)) {
+          this.config = content
+          this.$store.commit('alert', {
+            text: 'Success!',
+            type: 'success'
+          })
+        }
+      }
+      reader.readAsText(file)
+    },
+    downloadJSON() {
+      // Copy and delete `id` field
+      let config = JSON.parse(JSON.stringify(this.$store.state.config))
+      const timeStr = new Date().toJSON().slice(0, -8).replace(/-|:/g, '')
+      this.$refs.downloadLink.download = 
+        `config-${timeStr}.json`
+      this.$refs.downloadLink.href =
+        'data:text/json;charset=utf-8,' +
+        encodeURIComponent(JSON.stringify(config, null, 4))
+      this.$refs.downloadLink.click()
     }
   }
 }
