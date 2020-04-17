@@ -1,6 +1,10 @@
 <template>
-  <v-dialog :value="true" @input="$emit('input', false)">
-    <v-card class="ma-2">
+  <v-dialog 
+    :value="true" 
+    max-width="500"
+    @input="$emit('input', false)"
+  >
+    <v-card>
       <v-toolbar color="indigo" dark dense>
         <v-toolbar-title>
           <WebsiteIcon :bookmark="bookmark" size="1.2rem" />

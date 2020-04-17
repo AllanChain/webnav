@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="text-center pt-5">
+  <div class="text-center pt-5">
+    <div style="max-width: 700px; margin: auto">
       <div
         v-for="bookmark in $store.state.bookmarks"
         :key="bookmark.id" class="box"
