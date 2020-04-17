@@ -68,7 +68,10 @@ export default {
         let bookmarks = await response.json()
         this.importBookmarks(bookmarks)
       } catch (error) {
-        alert(error)
+        this.$store.commit('alert', {
+          text: error,
+          type: 'error'
+        })
       }
     },
     importFromFile(e) {
