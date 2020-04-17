@@ -22,7 +22,11 @@
         <v-icon>edit</v-icon>
       </v-btn>
     </v-app-bar>
-    <v-content>
+    <v-content 
+      :style="{
+        backgroundColor: $store.state.config.bgImg.filter.blurColor
+      }"
+    >
       <div
         class="bg-image" 
         :style="{

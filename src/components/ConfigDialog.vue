@@ -32,7 +32,7 @@
           <v-col cols="9" sm="10" md="11">
             <v-slider 
               v-model="config.bgImg.filter.blur" 
-              min="0" max="20"
+              min="0" max="10"
               thumb-label hide-details
             />
           </v-col>
@@ -66,23 +66,28 @@
           class="mt-0"
           :label="config.blackText ? 'Black text' : 'White text'"
         />
+        <v-color-picker
+          v-show="config.bgImg.filter.blur"
+          v-model="config.bgImg.filter.blurColor"
+          canvas-height="100"
+          hide-inputs flat
+        />
         <div
           style="width: 100%; height: 180px; position: relative; 
               overflow: hidden"
         >
           <div
-            class="bg-image"
+            class="bg-image bg-preview"
             :style="{
+              borderColor: config.bgImg.filter.blurColor,
               backgroundImage: `url(${config.bgImg.url})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
               filter: `blur(${config.bgImg.filter.blur}px)
             contrast(${config.bgImg.filter.contrast}%)
             grayscale(${config.bgImg.filter.grayscale}%)`
             }"
           />
           <div
-            class="ma-1"
+            class="pa-3"
             :style="{
               position: 'absolute',
               color: config.blackText ? '#000' : '#eee',
@@ -90,10 +95,10 @@
             ${config.blackText ? '#eee' : '#000'}`
             }"
           >
-            {{ 'Example Text '.repeat(30) }}
+            {{ 'Example Text '.repeat(20) }}
           </div>
         </div>
-        <v-divider class="my-1" />
+        <v-divider class="my-3" />
         <v-text-field
           v-model="config.cors"
           prepend-inner-icon="flight_takeoff"
@@ -127,8 +132,12 @@ export default {
 </script>
 
 <style>
-.img-preview {
-  max-width: 90%;
-  max-height: 200px;
+.bg-preview {
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  border-width: 10px;
+  border-style: solid;
 }
 </style>
