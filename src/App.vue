@@ -114,7 +114,7 @@
         </v-list-item>
         <v-list-item link href="https://github.com/AllanChain/webnav">
           <v-list-item-action>
-            <img src="@/assets/octocat.svg" width="24px" class="grayscale">
+            <img src="@/assets/octocat.svg" width="24px" height="24px" class="grayscale">
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>Fork me on GitHub</v-list-item-title>
