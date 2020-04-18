@@ -31,7 +31,7 @@ module.exports = {
     'no-multi-spaces': 'warn',
     'no-trailing-spaces': 'warn',
     'generator-star-spacing': ['warn', 'before'],
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
+    'no-console': 'warn',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'warn'
   },
   parserOptions: {
