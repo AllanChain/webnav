@@ -27,7 +27,7 @@
               >
             </v-col>
             <v-col cols="4" class="text-center">
-              <v-btn fab small color="amber" @click="emit(false)">
+              <v-btn fab small color="amber" @click="$emit('input', false)">
                 <v-icon>cancel</v-icon>
               </v-btn>
             </v-col>
@@ -49,7 +49,6 @@ import validate from '@/validator'
 const bookmarkMatch = (t, m) => t.url === m.url && t.search === m.search
 
 export default {
-  name: 'JsonImport',
   props: {
     value: {
       type: Boolean,
