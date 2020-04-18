@@ -29,6 +29,7 @@ module.exports = {
     'quotes': ['warn', 'single'],
     'vue/script-indent': 'warn',
     'no-multi-spaces': 'warn',
+    'no-trailing-spaces': 'warn',
     'generator-star-spacing': ['warn', 'before'],
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'

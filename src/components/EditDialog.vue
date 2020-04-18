@@ -1,6 +1,6 @@
 <template>
-  <v-dialog 
-    :value="true" 
+  <v-dialog
+    :value="true"
     max-width="500"
     @input="$emit('input', false)"
   >
@@ -23,7 +23,7 @@
         </v-btn>
         <v-btn
           v-if="bookmark.id"
-          icon large 
+          icon large
           @click="$store.commit('switchMode', {
             mode: 'reorder-dialog',
             data: bookmark.index
@@ -93,7 +93,7 @@ export default {
   },
   methods: {
     done() {
-      if (!validate('/bookmark', this.bookmark)) 
+      if (!validate('/bookmark', this.bookmark))
         return
       if (this.bookmark.id)
         this.$store.dispatch('put', this.bookmark)

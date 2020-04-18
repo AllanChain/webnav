@@ -38,7 +38,7 @@
           <WebsiteIcon :bookmark="bookmark" @click.native="goURL(bookmark.url)" />
         </div>
         <div
-          class="url" 
+          class="url"
           :style="{
             color: $store.state.config.blackText ? '#000' : '#eee',
             textShadow: `1px 1px 3px

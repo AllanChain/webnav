@@ -5,7 +5,7 @@ import validate from '@/validator'
 
 Vue.use(Vuex)
 
-const sortIndex = bookmarks => 
+const sortIndex = bookmarks =>
   bookmarks.sort((a, b) => a.index - b.index)
 
 let db
@@ -28,7 +28,7 @@ export default new Vuex.Store({
       const {from, to} = payload
       const direction = Math.sign(from - to)
       state.bookmarks[from].index = to
-      for (let i = to;i !== from;i += direction) 
+      for (let i = to;i !== from;i += direction)
         state.bookmarks[i].index += direction
       state.bookmarks = sortIndex(state.bookmarks)
     },
@@ -45,7 +45,7 @@ export default new Vuex.Store({
           text: payload,
           type: 'warning'
         })
-      } else 
+      } else
         state.messages.push(payload)
     }
   },
@@ -87,7 +87,7 @@ export default new Vuex.Store({
           context.commit('alert', {
             text: 'Auto update config success',
             type: 'success'
-          })     
+          })
         }
       }
       context.state.config = config
@@ -107,7 +107,7 @@ export default new Vuex.Store({
       context.dispatch('refresh')
     },
     /** Put all current bookmarks to db after reorder
-     * 
+     *
      * No need to refresh because using state.bookmarks
      */
     async putAll(context) {

@@ -90,7 +90,7 @@ export default {
       }
       // https://stackoverflow.com/a/36744732/8810271
       bookmarks = bookmarks.filter(
-        (m, index, self) => 
+        (m, index, self) =>
           self.findIndex(t => bookmarkMatch(t, m)) === index &&
           this.$store.state.bookmarks.findIndex(
             t => bookmarkMatch(t, m)) === -1)

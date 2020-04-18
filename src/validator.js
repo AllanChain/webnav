@@ -12,7 +12,7 @@ require('ajv-errors')(ajv, {singleError: true})
 
 export default (schema, payload, showError) => {
   const validate = ajv.getSchema(schema)
-  if (validate(payload)) 
+  if (validate(payload))
     return true
   if (!showError) return false
   validate.errors.map(e => {

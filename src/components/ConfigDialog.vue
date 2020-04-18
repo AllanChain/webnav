@@ -52,8 +52,8 @@
               <v-label>Blur</v-label>
             </v-col>
             <v-col cols="9" sm="10" md="11">
-              <v-slider 
-                v-model="config.bgImg.filter.blur" 
+              <v-slider
+                v-model="config.bgImg.filter.blur"
                 min="0" max="10"
                 thumb-label hide-details
               />
@@ -64,8 +64,8 @@
               <v-label>Contrast</v-label>
             </v-col>
             <v-col cols="9" sm="10" md="11">
-              <v-slider 
-              
+              <v-slider
+
                 v-model="config.bgImg.filter.contrast" min="0"
                 max="200"
                 thumb-label hide-details
@@ -77,8 +77,8 @@
               <v-label>Gray</v-label>
             </v-col>
             <v-col cols="9" sm="10" md="11">
-              <v-slider 
-                v-model="config.bgImg.filter.grayscale" 
+              <v-slider
+                v-model="config.bgImg.filter.grayscale"
                 min="0" max="100"
                 thumb-label hide-details
               />
@@ -169,7 +169,7 @@ export default {
     },
     downloadJSON() {
       const timeStr = new Date().toJSON().slice(0, -8).replace(/-|:/g, '')
-      this.$refs.downloadLink.download = 
+      this.$refs.downloadLink.download =
         `config-${timeStr}.json`
       this.$refs.downloadLink.href =
         'data:text/json;charset=utf-8,' +

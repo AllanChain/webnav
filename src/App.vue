@@ -16,19 +16,19 @@
       <v-btn
         icon
         :color="$store.state.mode === 'edit' ? 'green' : undefined"
-        @click=" $store.commit('switchMode', 
+        @click=" $store.commit('switchMode',
                                $store.state.mode === 'edit' ? 'normal' : 'edit')"
       >
         <v-icon>edit</v-icon>
       </v-btn>
     </v-app-bar>
-    <v-content 
+    <v-content
       :style="{
         backgroundColor: $store.state.config.bgImg.filter.blurColor
       }"
     >
       <div
-        class="bg-image" 
+        class="bg-image"
         :style="{
           backgroundImage: `url(${$store.state.config.bgImg.url})`,
           backgroundSize: 'cover',
@@ -40,17 +40,17 @@
       <div
         class="mt-3 mx-2 alert-box"
       >
-        <DisAlert 
-          v-for="(message, i) in $store.state.messages" 
+        <DisAlert
+          v-for="(message, i) in $store.state.messages"
           :key="i" :message="message"
         />
       </div>
       <WebNav :query="query" />
-      <ImportDialog 
+      <ImportDialog
         :value="$store.state.mode === 'import-dialog'"
         @input="$store.commit('switchMode', 'normal')"
       />
-      <EditDialog 
+      <EditDialog
         v-if="$store.state.mode === 'edit-dialog'"
         :value="$store.state.mode === 'edit-dialog'"
         @input="$store.commit('switchMode', 'normal')"
@@ -182,7 +182,7 @@ export default {
     },
     newBookmark() {
       this.$store.commit({
-        type: 'switchMode', 
+        type: 'switchMode',
         mode: 'edit-dialog',
         data: {
           title: '',
@@ -199,7 +199,7 @@ export default {
         delete m.index
       })
       const timeStr = new Date().toJSON().slice(0, -8).replace(/-|:/g, '')
-      this.$refs.downloadLink.download = 
+      this.$refs.downloadLink.download =
         `bookmarks-${timeStr}.json`
       this.$refs.downloadLink.href =
         'data:text/json;charset=utf-8,' +
