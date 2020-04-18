@@ -184,9 +184,12 @@ export default {
 
 <style>
 .bg-preview-wrapper {
-  width: 100%; height: 180px; position: relative; 
-              overflow: hidden
+  width: 100%;
+  height: 180px;
+  position: relative;
+  overflow: hidden;
 }
+
 .bg-preview {
   background-size: cover;
   background-position: center;

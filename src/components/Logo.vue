@@ -15,7 +15,7 @@ export default {
   font-size: 65px;
   color: #2196f3;
   animation: flipInX 3s;
-  -webkit-animation: flipInX 3s infinite;
+  -webkit-animation: flipinx 3s infinite;
   line-height: 0;
 }
 
@@ -45,6 +45,7 @@ export default {
     transform: perspective(400px) rotateX(-30deg);
     opacity: 1;
   }
+
   100% {
     -webkit-transform: perspective(400px) rotateX(90deg);
     -ms-transform: perspective(400px) rotateX(90deg);

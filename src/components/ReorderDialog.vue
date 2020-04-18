@@ -12,7 +12,7 @@
       :max="$store.state.bookmarks.length - 1"
       @input="reorder"
     />
-    <div style="width: 90vw" />
+    <div style="width: 90vw;" />
   </v-overlay>
 </template>
 

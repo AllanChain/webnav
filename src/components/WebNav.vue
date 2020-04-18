@@ -1,6 +1,6 @@
 <template>
   <div class="text-center pt-5">
-    <div style="max-width: 700px; margin: auto">
+    <div style="max-width: 700px; margin: auto;">
       <div
         v-for="bookmark in $store.state.bookmarks"
         :key="bookmark.id" class="box"
@@ -87,6 +87,7 @@ export default {
   width: 65px;
   border: 0;
 }
+
 .url {
   height: 3em;
   line-height: 1.1em;

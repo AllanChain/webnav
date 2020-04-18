@@ -220,9 +220,11 @@ export default {
   position: fixed;
   z-index: 9999;
 }
+
 .grayscale {
   filter: grayscale(100%);
 }
+
 .bg-image {
   position: absolute;
   left: 0;

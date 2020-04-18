@@ -5,7 +5,7 @@
     dismissible
     border="left"
     :type="message.type"
-    style="word-break: break-all"
+    style="word-break: break-all;"
   >
     {{ message.text }}
   </v-alert>
