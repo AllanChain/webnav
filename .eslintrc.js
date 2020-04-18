@@ -31,8 +31,8 @@ module.exports = {
     'no-multi-spaces': 'warn',
     'no-trailing-spaces': 'warn',
     'generator-star-spacing': ['warn', 'before'],
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'warn'
   },
   parserOptions: {
     parser: 'babel-eslint'
