@@ -75,6 +75,8 @@ export default {
     },
     importFromFile(e) {
       const file = e.target.files[0]
+      // Clear input to let it fire for the same file
+      e.target.value = null
       const reader = new FileReader()
       reader.onload = async e => {
         const content = e.target.result
