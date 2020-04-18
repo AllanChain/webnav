@@ -168,14 +168,12 @@ export default {
       reader.readAsText(file)
     },
     downloadJSON() {
-      // Copy and delete `id` field
-      let config = JSON.parse(JSON.stringify(this.$store.state.config))
       const timeStr = new Date().toJSON().slice(0, -8).replace(/-|:/g, '')
       this.$refs.downloadLink.download = 
         `config-${timeStr}.json`
       this.$refs.downloadLink.href =
         'data:text/json;charset=utf-8,' +
-        encodeURIComponent(JSON.stringify(config, null, 4))
+        encodeURIComponent(localStorage.getItem('config'))
       this.$refs.downloadLink.click()
     }
   }

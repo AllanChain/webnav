@@ -76,17 +76,19 @@ export default new Vuex.Store({
         config = require('deepmerge')(defaultConfig, config)
         if (!validate('/config', config, false)) {
           context.commit('alert', {
-            text: 'Auto update config failed. Fall back to default',
+            text: `Auto update config failed. Falling back to default.
+            You can still download your previous config.
+            To discard your config changes, just apply default config`,
             type: 'error'
           })
           config = defaultConfig
         } else {
+          localStorage.setItem('config', JSON.stringify(config))
           context.commit('alert', {
             text: 'Auto update config success',
             type: 'success'
-          })
+          })     
         }
-        localStorage.setItem('config', JSON.stringify(config))
       }
       context.state.config = config
     },
