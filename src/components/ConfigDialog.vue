@@ -38,48 +38,53 @@
       </v-card-title>
       <v-card-text class="mt-4">
         <v-text-field
-          v-model="config.bgImg.url"
+          :value="config.bgImg.url"
           prepend-inner-icon="image"
           label="Image URL"
           placeholder="back.jpg"
-          outlined dense
+          messages="Leave it blank to use pure color background"
+          outlined dense clearable
+          @input="config.bgImg.url = $event || ''"
         />
-        <v-row no-gutters>
-          <v-col cols="3" sm="2" md="1">
-            <v-label>Blur</v-label>
-          </v-col>
-          <v-col cols="9" sm="10" md="11">
-            <v-slider 
-              v-model="config.bgImg.filter.blur" 
-              min="0" max="10"
-              thumb-label hide-details
-            />
-          </v-col>
-        </v-row>
-        <v-row no-gutters>
-          <v-col cols="3" sm="2" md="1">
-            <v-label>Contrast</v-label>
-          </v-col>
-          <v-col cols="9" sm="10" md="11">
-            <v-slider 
-              v-model="config.bgImg.filter.contrast" 
-              min="0" max="200"
-              thumb-label hide-details
-            />
-          </v-col>
-        </v-row>
-        <v-row no-gutters>
-          <v-col cols="3" sm="2" md="1">
-            <v-label>Gray</v-label>
-          </v-col>
-          <v-col cols="9" sm="10" md="11">
-            <v-slider 
-              v-model="config.bgImg.filter.grayscale" 
-              min="0" max="100"
-              thumb-label hide-details
-            />
-          </v-col>
-        </v-row>
+        <v-container v-if="config.bgImg.url !== ''">
+          <v-row no-gutters>
+            <v-col cols="3" sm="2" md="1">
+              <v-label>Blur</v-label>
+            </v-col>
+            <v-col cols="9" sm="10" md="11">
+              <v-slider 
+                v-model="config.bgImg.filter.blur" 
+                min="0" max="10"
+                thumb-label hide-details
+              />
+            </v-col>
+          </v-row>
+          <v-row no-gutters>
+            <v-col cols="3" sm="2" md="1">
+              <v-label>Contrast</v-label>
+            </v-col>
+            <v-col cols="9" sm="10" md="11">
+              <v-slider 
+              
+                v-model="config.bgImg.filter.contrast" min="0"
+                max="200"
+                thumb-label hide-details
+              />
+            </v-col>
+          </v-row>
+          <v-row no-gutters>
+            <v-col cols="3" sm="2" md="1">
+              <v-label>Gray</v-label>
+            </v-col>
+            <v-col cols="9" sm="10" md="11">
+              <v-slider 
+                v-model="config.bgImg.filter.grayscale" 
+                min="0" max="100"
+                thumb-label hide-details
+              />
+            </v-col>
+          </v-row>
+        </v-container>
         <v-switch
           v-model="config.blackText"
           class="mt-0"
@@ -92,13 +97,14 @@
           hide-inputs flat
         />
         <div
-          style="width: 100%; height: 180px; position: relative; 
-              overflow: hidden"
+          class="bg-preview-wrapper"
+          :style="{
+            backgroundColor: config.bgImg.filter.blurColor
+          }"
         >
           <div
             class="bg-image bg-preview"
             :style="{
-              borderColor: config.bgImg.filter.blurColor,
               backgroundImage: `url(${config.bgImg.url})`,
               filter: `blur(${config.bgImg.filter.blur}px)
             contrast(${config.bgImg.filter.contrast}%)
@@ -177,12 +183,14 @@ export default {
 </script>
 
 <style>
+.bg-preview-wrapper {
+  width: 100%; height: 180px; position: relative; 
+              overflow: hidden
+}
 .bg-preview {
   background-size: cover;
   background-position: center;
   width: 100%;
   height: 100%;
-  border-width: 10px;
-  border-style: solid;
 }
 </style>

@@ -8,7 +8,7 @@
         prepend-inner-icon="search"
         hide-details outlined
         single-line dense clearable
-        @input="query = $event ? $event : ''"
+        @input="query = $event || ''"
       />
       <!-- Clear will set the string to null -->
       <!-- See https://github.com/vuetifyjs/vuetify/issues/4144 -->
