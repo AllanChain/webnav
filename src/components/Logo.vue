@@ -14,12 +14,12 @@ export default {
 .logo {
   font-size: 65px;
   color: #2196f3;
-  animation: flipInX 3s;
-  -webkit-animation: flipinx 3s infinite;
+  animation: flip-x 3s infinite;
+  -webkit-animation: flip-x 3s infinite;
   line-height: 0;
 }
 
-@keyframes flipInX {
+@keyframes flip-x {
   0% {
     -webkit-transform: perspective(400px) rotateX(90deg);
     -ms-transform: perspective(400px) rotateX(90deg);
