@@ -5,7 +5,7 @@
     dismissible
     border="left"
     :type="message.type"
-    style="word-break: break-all;"
+    :style="style"
   >
     {{ message.text }}
   </v-alert>
@@ -21,11 +21,15 @@ export default {
   },
   data() {
     return {
-      show: true
+      show: true,
+      style: this.message.break ?
+        {wordBreak: 'break-all'} :
+        {hypens: 'auto'}
     }
   },
   created() {
-    setTimeout(this.close.bind(this), 6000)
+    setTimeout(this.close.bind(this),
+               this.message.delay || 6000)
   },
   methods: {
     close() {
@@ -34,7 +38,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

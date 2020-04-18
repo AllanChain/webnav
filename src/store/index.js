@@ -71,15 +71,16 @@ export default new Vuex.Store({
           text: 'Welcome to WebNav!',
           type: 'success'
         })
-      } else if (!validate('/config', config, false)) {
+      } else if (!validate('/config', config, true)) {
         const defaultConfig = require('@/config.default.json')
         config = require('deepmerge')(defaultConfig, config)
-        if (!validate('/config', config, false)) {
+        if (!validate('/config', config, true)) {
           context.commit('alert', {
             text: `Auto update config failed. Falling back to default.
             You can still download your previous config.
-            To discard your config changes, just apply default config`,
-            type: 'error'
+            To discard your config changes, just apply default config.`,
+            type: 'error',
+            delay: 12000
           })
           config = defaultConfig
         } else {

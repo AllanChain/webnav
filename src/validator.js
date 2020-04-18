@@ -10,14 +10,22 @@ let ajv = new Ajv({
 })
 require('ajv-errors')(ajv, {singleError: true})
 
-export default (schema, payload, showError) => {
+export default (schema, payload, quiet) => {
   const validate = ajv.getSchema(schema)
   if (validate(payload))
     return true
-  if (!showError) return false
+  if (quiet) return false
   validate.errors.map(e => {
-    let message = `${e.message}. Got "${pointer.get(payload, e.dataPath)}"`
-    store.commit('alert', message)
+    console.log(e)
+    let message = pointer.get(payload, e.dataPath)
+    if (typeof message === 'object')
+      message = JSON.stringify(message)
+    message = `"${e.dataPath}" ${e.message}. Got "${message}"`
+    store.commit('alert', {
+      text: message,
+      type: 'warning',
+      break: true
+    })
   })
   return false
 }
