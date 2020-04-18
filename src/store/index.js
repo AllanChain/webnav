@@ -71,11 +71,10 @@ export default new Vuex.Store({
           text: 'Welcome to WebNav!',
           type: 'success'
         })
-      } else if (!validate('/config', config)) {
-        context.commit('alert', 'Current config is out-dated')
+      } else if (!validate('/config', config, false)) {
         const defaultConfig = require('@/config.default.json')
         config = require('deepmerge')(defaultConfig, config)
-        if (!validate('/config', config)) {
+        if (!validate('/config', config, false)) {
           context.commit('alert', {
             text: 'Auto update config failed. Fall back to default',
             type: 'error'
