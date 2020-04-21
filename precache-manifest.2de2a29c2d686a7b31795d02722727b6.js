@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/webnav/bookmarks.json"
   },
   {
-    "revision": "8c0f61f6cee5d4cafe91",
+    "revision": "381837d0e7e50450d882",
     "url": "/webnav/css/app.d5168519.css"
   },
   {
@@ -36,12 +36,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/webnav/img/octocat.7b711a49.svg"
   },
   {
-    "revision": "05559c256738c1d6a55e8e93c4ec05d5",
+    "revision": "b1fae9dd482073f5e8aa17c346a9c65f",
     "url": "/webnav/index.html"
   },
   {
-    "revision": "8c0f61f6cee5d4cafe91",
-    "url": "/webnav/js/app.b1c1e72e.js"
+    "revision": "381837d0e7e50450d882",
+    "url": "/webnav/js/app.3878a8b6.js"
   },
   {
     "revision": "b7c446e3f317deb9d765",
