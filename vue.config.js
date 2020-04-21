@@ -1,27 +1,16 @@
 const webpack = require('webpack')
-const CompressionPlugin = require('compression-webpack-plugin')
 const version = require('./package.json').version
 
-let webpackPlugins = [new webpack.DefinePlugin({
-  'process.env': {
-    VUE_APP_PACKAGE_VERSION: `"${version}"`
-  }
-})]
-if (process.env.NODE_ENV === 'production') {
-  webpackPlugins.push(
-    new CompressionPlugin({
-      algorithm: 'gzip',
-      test: /\.(js|css)$/,
-      threshold: 10240, // compress files larger than 10K
-      deleteOriginalAssets: true,
-      minRatio: 0.8 // compression rate
-    }))
-}
 module.exports = {
   publicPath: process.env.PUB_PATH || '/',
-  productionSourceMap: false,
   configureWebpack: {
-    plugins: webpackPlugins
+    plugins: [
+      new webpack.DefinePlugin({
+        'process.env': {
+          VUE_APP_PACKAGE_VERSION: `"${version}"`
+        }
+      })
+    ]
   },
   pwa: {
     name: 'WebNav',
