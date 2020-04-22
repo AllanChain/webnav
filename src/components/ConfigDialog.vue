@@ -91,7 +91,7 @@
           :label="config.blackText ? 'Black text' : 'White text'"
         />
         <v-color-picker
-          v-show="config.bgImg.filter.blur"
+          v-show="config.bgImg.filter.blur || !config.bgImg.url"
           v-model="config.bgImg.filter.blurColor"
           canvas-height="100"
           hide-inputs flat
