@@ -2,38 +2,41 @@
   <v-dialog
     :value="true"
     max-width="500"
+    scrollable
     @input="$emit('input', false)"
   >
     <v-card>
-      <v-toolbar color="indigo" dark dense>
-        <v-toolbar-title>
-          <WebsiteIcon :bookmark="bookmark" size="1.2rem" />
-          {{ bookmark.title }}
-        </v-toolbar-title>
-        <v-spacer />
-        <v-btn icon large @click="done">
-          <v-icon color="green lighten-2">
-            check
-          </v-icon>
-        </v-btn>
-        <v-btn v-if="bookmark.id" icon large @click="deleteThis">
-          <v-icon color="red lighten-2">
-            delete
-          </v-icon>
-        </v-btn>
-        <v-btn
-          v-if="bookmark.id"
-          icon large
-          @click="$store.commit('switchMode', {
-            mode: 'reorder-dialog',
-            data: bookmark.index
-          })"
-        >
-          <v-icon color="yellow lighten-2">
-            swap_horiz
-          </v-icon>
-        </v-btn>
-      </v-toolbar>
+      <v-card-title class="pa-0">
+        <v-toolbar color="indigo" dark dense>
+          <v-toolbar-title>
+            <WebsiteIcon :bookmark="bookmark" size="1.2rem" />
+            {{ bookmark.title }}
+          </v-toolbar-title>
+          <v-spacer />
+          <v-btn icon large @click="done">
+            <v-icon color="green lighten-2">
+              check
+            </v-icon>
+          </v-btn>
+          <v-btn v-if="bookmark.id" icon large @click="deleteThis">
+            <v-icon color="red lighten-2">
+              delete
+            </v-icon>
+          </v-btn>
+          <v-btn
+            v-if="bookmark.id"
+            icon large
+            @click="$store.commit('switchMode', {
+              mode: 'reorder-dialog',
+              data: bookmark.index
+            })"
+          >
+            <v-icon color="yellow lighten-2">
+              swap_horiz
+            </v-icon>
+          </v-btn>
+        </v-toolbar>
+      </v-card-title>
       <v-card-text class="mt-4">
         <v-text-field
           v-model="bookmark.title"

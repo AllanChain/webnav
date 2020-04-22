@@ -1,5 +1,5 @@
 <template>
-  <v-dialog value="true" fullscreen @input="$emit('input', false)">
+  <v-dialog value="true" scrollable fullscreen @input="$emit('input', false)">
     <a ref="downloadLink" class="d-none" />
     <input
       ref="file"
