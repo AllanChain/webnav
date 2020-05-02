@@ -1,5 +1,5 @@
 <template>
-  <v-dialog :value="value" max-width="350px" @input="$emit('input', false)">
+  <v-dialog :value="true" max-width="350px" @input="$emit('input', false)">
     <v-card class="elevation-12">
       <v-card-text class="pa-1">
         <v-container>

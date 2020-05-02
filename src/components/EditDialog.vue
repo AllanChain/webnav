@@ -83,12 +83,6 @@ export default {
   components: {
     WebsiteIcon
   },
-  props: {
-    value: {
-      type: Boolean,
-      required: true
-    }
-  },
   data() {
     return {
       bookmark: JSON.parse(JSON.stringify(this.$store.state.modeData))

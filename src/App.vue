@@ -60,12 +60,11 @@
       </div>
       <WebNav :query="query" />
       <ImportDialog
-        :value="$store.state.mode === 'import-dialog'"
+        v-if="$store.state.mode === 'import-dialog'"
         @input="$store.commit('switchMode', 'normal')"
       />
       <EditDialog
         v-if="$store.state.mode === 'edit-dialog'"
-        :value="$store.state.mode === 'edit-dialog'"
         @input="$store.commit('switchMode', 'normal')"
       />
       <ReorderDialog
@@ -158,11 +157,6 @@
 </template>
 
 <script>
-import ImportDialog from '@/components/ImportDialog'
-import EditDialog from '@/components/EditDialog'
-import ReorderDialog from '@/components/ReorderDialog'
-import ConfigDialog from '@/components/ConfigDialog'
-import QRCodeDialog from '@/components/QRCodeDialog'
 import WebNav from '@/components/WebNav'
 import Logo from '@/components/Logo'
 import DisAlert from '@/components/DisAlert'
@@ -170,11 +164,16 @@ import DisAlert from '@/components/DisAlert'
 export default {
   name: 'App',
   components: {
-    ImportDialog,
-    EditDialog,
-    ReorderDialog,
-    ConfigDialog,
-    QRCodeDialog,
+    'ImportDialog': () =>
+      import(/* webpackChunkName: "import" */ '@/components/ImportDialog'),
+    'EditDialog': () =>
+      import(/* webpackChunkName: "edit" */ '@/components/EditDialog'),
+    'ReorderDialog': () =>
+      import(/* webpackChunkName: "reorder" */ '@/components/ReorderDialog'),
+    'ConfigDialog': () =>
+      import(/* webpackChunkName: "config" */ '@/components/ConfigDialog'),
+    'QRCodeDialog': () =>
+      import(/* webpackChunkName: "qrcode" */ '@/components/QRCodeDialog'),
     WebNav,
     Logo,
     DisAlert
