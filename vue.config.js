@@ -1,5 +1,17 @@
+let plugins = []
+if (process.env.WEBPACK_STATS) {
+  const { StatsWriterPlugin } = require('webpack-stats-plugin')
+  plugins.push(new StatsWriterPlugin({
+    fields: null,
+    stats: {chunkModules: true}
+  }))
+}
+
 module.exports = {
   publicPath: process.env.PUB_PATH || '/',
+  configureWebpack: {
+    plugins
+  },
   pwa: {
     name: 'WebNav',
     themeColor: '#4c89fe',
