@@ -44,6 +44,34 @@
         <v-tabs-items v-model="tab">
           <!-- Background -->
           <v-tab-item>
+            <div
+              class="bg-preview-wrapper"
+              :style="{
+                backgroundColor: config.bgImg.filter.blurColor
+              }"
+            >
+              <div
+                class="bg-image bg-preview"
+                :style="{
+                  backgroundImage: `url(${config.bgImg.url})`,
+                  filter: `blur(${config.bgImg.filter.blur}px)
+            contrast(${config.bgImg.filter.contrast}%)
+            grayscale(${config.bgImg.filter.grayscale}%)`
+                }"
+              />
+              <div
+                class="pa-3"
+                :style="{
+                  position: 'absolute',
+                  color: config.blackText ? '#000' : '#eee',
+                  textShadow: `1px 1px 3px
+            ${config.blackText ? '#eee' : '#000'}`
+                }"
+              >
+                {{ 'Example Text '.repeat(20) }}
+              </div>
+            </div>
+            <v-divider class="my-2" />
             <v-text-field
               :value="config.bgImg.url"
               prepend-inner-icon="image"
@@ -97,40 +125,17 @@
               :label="config.blackText ? 'Black text' : 'White text'"
             />
             <div v-show="config.bgImg.filter.blur || !config.bgImg.url">
-              <v-divider />
-              <p>Set background color or blur padding color</p>
+              <h2 class="mb-2">
+                <span v-if="config.bgImg.filter.blur">
+                  Blur padding color
+                </span>
+                <span v-else> BG color </span>
+              </h2>
               <v-color-picker
                 v-model="config.bgImg.filter.blurColor"
                 canvas-height="100"
                 hide-inputs flat
               />
-            </div>
-            <div
-              class="bg-preview-wrapper"
-              :style="{
-                backgroundColor: config.bgImg.filter.blurColor
-              }"
-            >
-              <div
-                class="bg-image bg-preview"
-                :style="{
-                  backgroundImage: `url(${config.bgImg.url})`,
-                  filter: `blur(${config.bgImg.filter.blur}px)
-            contrast(${config.bgImg.filter.contrast}%)
-            grayscale(${config.bgImg.filter.grayscale}%)`
-                }"
-              />
-              <div
-                class="pa-3"
-                :style="{
-                  position: 'absolute',
-                  color: config.blackText ? '#000' : '#eee',
-                  textShadow: `1px 1px 3px
-            ${config.blackText ? '#eee' : '#000'}`
-                }"
-              >
-                {{ 'Example Text '.repeat(20) }}
-              </div>
             </div>
           </v-tab-item>
           <!-- other -->
