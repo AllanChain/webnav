@@ -12,14 +12,20 @@
             Scan QR Code
           </v-toolbar-title>
           <v-spacer />
-          <v-btn icon large @click="copy">
+          <qrcode-capture ref="file" class="d-none" @decode="onDecode" />
+          <v-btn icon @click="triggerUpload">
+            <v-icon color="pink">
+              upload_file
+            </v-icon>
+          </v-btn>
+          <v-btn v-show="!!result" icon large @click="copy">
             <v-icon color="amber lighten-2">
               content_copy
             </v-icon>
           </v-btn>
-          <v-btn icon large @click="rescan">
+          <v-btn v-show="camera === 'off'" icon large @click="rescan">
             <v-icon color="teal lighten-2">
-              replay
+              camera_alt
             </v-icon>
           </v-btn>
           <v-btn icon large @click="$emit('input', false)">
@@ -46,14 +52,14 @@
 </template>
 
 <script>
-import { QrcodeStream } from 'vue-qrcode-reader'
+import { QrcodeStream, QrcodeCapture } from 'vue-qrcode-reader'
 
 export default {
-  components: { QrcodeStream },
+  components: { QrcodeStream, QrcodeCapture },
   data () {
     return {
       isLink: false,
-      camera: 'auto',
+      camera: 'off',
       result: null,
     }
   },
@@ -66,14 +72,20 @@ export default {
       }
     },
     rescan () {
-      this.isLink = false
-      this.result = null
       this.camera = 'auto'
+      this.result = null
+      this.isLink = false
     },
     async onDecode (content) {
-      this.result = content
       this.camera = 'off'
+      this.result = content
       this.isLink = content.startsWith('http')
+    },
+    triggerUpload() {
+      this.camera = 'off'
+      this.result = null
+      this.isLink = false
+      this.$refs.file.$el.click()
     },
     async copy() {
       try {
