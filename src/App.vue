@@ -166,7 +166,8 @@ export default {
       importDialog: false,
       query: '',
       drawer: false,
-      version: process.env.VUE_APP_PACKAGE_VERSION
+      version: process.env.VUE_APP_VERSION,
+      showSearch: false
     }
   },
   async created() {
