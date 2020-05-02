@@ -37,7 +37,7 @@
       </v-card-title>
       <v-card-text>
         <h3>Result:</h3>
-        <p class="pt-2" style="word-break: break-all">
+        <p class="pt-2" style="word-break: break-all;">
           <a v-if="isLink" :href="result">{{ result }}</a>
           <b v-else>{{ result }}</b>
         </p>
