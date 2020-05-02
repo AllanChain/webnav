@@ -15,14 +15,16 @@ module.exports = {
         }
       }
     ],
-    'space-infix-ops': 'warn',
     indent: [
       'warn',
       2,
       {
-        CallExpression: { arguments: 'first' }
+        CallExpression: { arguments: 'first' },
+        ignoredNodes: [ 'TemplateLiteral' ]
       }
     ],
+    'template-curly-spacing' : 'off',
+    'space-infix-ops': 'warn',
     curly: ['warn', 'multi-or-nest'],
     'semi': ['warn', 'never'],
     'space-before-blocks': 'warn',
