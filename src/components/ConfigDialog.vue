@@ -35,102 +35,126 @@
             </v-icon>
           </v-btn>
         </v-toolbar>
+        <v-tabs v-model="tab" background-color="white">
+          <v-tab> Background </v-tab>
+          <v-tab> other </v-tab>
+        </v-tabs>
       </v-card-title>
-      <v-card-text class="mt-4">
-        <v-text-field
-          :value="config.bgImg.url"
-          prepend-inner-icon="image"
-          label="Image URL"
-          placeholder="back.jpg"
-          messages="Leave it blank to use pure color background"
-          outlined dense clearable
-          @input="config.bgImg.url = $event || ''"
-        />
-        <v-container v-if="config.bgImg.url !== ''">
-          <v-row no-gutters>
-            <v-col cols="3" sm="2" md="1">
-              <v-label>Blur</v-label>
-            </v-col>
-            <v-col cols="9" sm="10" md="11">
-              <v-slider
-                v-model="config.bgImg.filter.blur"
-                min="0" max="10"
-                thumb-label hide-details
+      <v-card-text class="pt-4">
+        <v-tabs-items v-model="tab">
+          <!-- Background -->
+          <v-tab-item>
+            <v-text-field
+              :value="config.bgImg.url"
+              prepend-inner-icon="image"
+              label="Image URL"
+              placeholder="back.jpg"
+              messages="Leave it blank to use pure color background"
+              outlined dense clearable
+              @input="config.bgImg.url = $event || ''"
+            />
+            <v-container v-if="config.bgImg.url !== ''">
+              <v-row no-gutters>
+                <v-col cols="3" sm="2" md="1">
+                  <v-label>Blur</v-label>
+                </v-col>
+                <v-col cols="9" sm="10" md="11">
+                  <v-slider
+                    v-model="config.bgImg.filter.blur"
+                    min="0" max="10"
+                    thumb-label hide-details
+                  />
+                </v-col>
+              </v-row>
+              <v-row no-gutters>
+                <v-col cols="3" sm="2" md="1">
+                  <v-label>Contrast</v-label>
+                </v-col>
+                <v-col cols="9" sm="10" md="11">
+                  <v-slider
+                    v-model="config.bgImg.filter.contrast" min="0"
+                    max="200"
+                    thumb-label hide-details
+                  />
+                </v-col>
+              </v-row>
+              <v-row no-gutters>
+                <v-col cols="3" sm="2" md="1">
+                  <v-label>Gray</v-label>
+                </v-col>
+                <v-col cols="9" sm="10" md="11">
+                  <v-slider
+                    v-model="config.bgImg.filter.grayscale"
+                    min="0" max="100"
+                    thumb-label hide-details
+                  />
+                </v-col>
+              </v-row>
+            </v-container>
+            <v-switch
+              v-model="config.blackText"
+              class="mt-0"
+              :label="config.blackText ? 'Black text' : 'White text'"
+            />
+            <div v-show="config.bgImg.filter.blur || !config.bgImg.url">
+              <v-divider />
+              <p>Set background color or blur padding color</p>
+              <v-color-picker
+                v-model="config.bgImg.filter.blurColor"
+                canvas-height="100"
+                hide-inputs flat
               />
-            </v-col>
-          </v-row>
-          <v-row no-gutters>
-            <v-col cols="3" sm="2" md="1">
-              <v-label>Contrast</v-label>
-            </v-col>
-            <v-col cols="9" sm="10" md="11">
-              <v-slider
-
-                v-model="config.bgImg.filter.contrast" min="0"
-                max="200"
-                thumb-label hide-details
-              />
-            </v-col>
-          </v-row>
-          <v-row no-gutters>
-            <v-col cols="3" sm="2" md="1">
-              <v-label>Gray</v-label>
-            </v-col>
-            <v-col cols="9" sm="10" md="11">
-              <v-slider
-                v-model="config.bgImg.filter.grayscale"
-                min="0" max="100"
-                thumb-label hide-details
-              />
-            </v-col>
-          </v-row>
-        </v-container>
-        <v-switch
-          v-model="config.blackText"
-          class="mt-0"
-          :label="config.blackText ? 'Black text' : 'White text'"
-        />
-        <v-color-picker
-          v-show="config.bgImg.filter.blur || !config.bgImg.url"
-          v-model="config.bgImg.filter.blurColor"
-          canvas-height="100"
-          hide-inputs flat
-        />
-        <div
-          class="bg-preview-wrapper"
-          :style="{
-            backgroundColor: config.bgImg.filter.blurColor
-          }"
-        >
-          <div
-            class="bg-image bg-preview"
-            :style="{
-              backgroundImage: `url(${config.bgImg.url})`,
-              filter: `blur(${config.bgImg.filter.blur}px)
+            </div>
+            <div
+              class="bg-preview-wrapper"
+              :style="{
+                backgroundColor: config.bgImg.filter.blurColor
+              }"
+            >
+              <div
+                class="bg-image bg-preview"
+                :style="{
+                  backgroundImage: `url(${config.bgImg.url})`,
+                  filter: `blur(${config.bgImg.filter.blur}px)
             contrast(${config.bgImg.filter.contrast}%)
             grayscale(${config.bgImg.filter.grayscale}%)`
-            }"
-          />
-          <div
-            class="pa-3"
-            :style="{
-              position: 'absolute',
-              color: config.blackText ? '#000' : '#eee',
-              textShadow: `1px 1px 3px
+                }"
+              />
+              <div
+                class="pa-3"
+                :style="{
+                  position: 'absolute',
+                  color: config.blackText ? '#000' : '#eee',
+                  textShadow: `1px 1px 3px
             ${config.blackText ? '#eee' : '#000'}`
-            }"
-          >
-            {{ 'Example Text '.repeat(20) }}
-          </div>
-        </div>
-        <v-divider class="my-3" />
-        <v-text-field
-          v-model="config.cors"
-          prepend-inner-icon="flight_takeoff"
-          label="CORS Proxy"
-          placeholder="https://netnr-proxy.cloudno.de/"
-          outlined dense
-        />
+                }"
+              >
+                {{ 'Example Text '.repeat(20) }}
+              </div>
+            </div>
+          </v-tab-item>
+          <!-- other -->
+          <v-tab-item>
+            <p>
+              Use CORS proxy to convert blocked <code>http</code> requests to <code>https</code>.
+            </p>
+            <v-text-field
+              v-model="config.cors"
+              prepend-inner-icon="flight_takeoff"
+              label="CORS Proxy"
+              placeholder="https://netnr-proxy.cloudno.de/"
+              outlined dense
+            />
+            <h2 class="mb-2">
+              Main app bar color
+            </h2>
+            <v-color-picker
+              v-model="config.barColor"
+              canvas-height="100"
+              flat mode="hexa"
+            />
+          </v-tab-item>
+        </v-tabs-items>
       </v-card-text>
     </v-card>
   </v-dialog>
@@ -142,6 +166,7 @@ import validate from '@/validator'
 export default {
   data() {
     return {
+      tab: 0,
       config: JSON.parse(JSON.stringify(this.$store.state.config))
     }
   },

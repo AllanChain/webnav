@@ -4,7 +4,8 @@
     "required": [
         "bgImg",
         "blackText",
-        "cors"
+        "cors",
+        "barColor"
     ],
     "additionalProperties": false,
     "properties": {
@@ -58,6 +59,10 @@
         "cors": {
             "description": "CORS proxy",
             "type": "string"
+        },
+        "barColor": {
+            "type": "string",
+            "pattern": "^#([\\da-fA-F]{3}){1,2}$"
         }
     }
 }

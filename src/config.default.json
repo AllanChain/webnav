@@ -9,5 +9,6 @@
         }
     },
     "blackText": false,
-    "cors": ""
+    "cors": "",
+    "barColor": "#3949AB"
 }

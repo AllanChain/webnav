@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app color="indigo darken-1" dark>
+    <v-app-bar app :color="$store.state.config.barColor" dark>
       <v-app-bar-nav-icon @click="drawer = !drawer" />
       <v-text-field
         ref="text"
