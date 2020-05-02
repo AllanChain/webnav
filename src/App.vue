@@ -9,18 +9,23 @@
         hide-details outlined
         single-line dense clearable
         @input="query = $event || ''"
+        @focus="textFocus = true"
+        @blur="textFocus = false"
       />
       <!-- Clear will set the string to null -->
       <!-- See https://github.com/vuetifyjs/vuetify/issues/4144 -->
       <v-spacer />
-      <v-btn
-        icon
-        :color="$store.state.mode === 'edit' ? 'green' : undefined"
-        @click=" $store.commit('switchMode',
-                               $store.state.mode === 'edit' ? 'normal' : 'edit')"
-      >
-        <v-icon>edit</v-icon>
-      </v-btn>
+      <v-expand-x-transition>
+        <v-btn
+          v-show="showBtn" icon
+          :color="$store.state.mode === 'edit' ? 'green' : undefined"
+          @click=" $store.commit(
+            'switchMode',
+            $store.state.mode === 'edit' ? 'normal' : 'edit')"
+        >
+          <v-icon>edit</v-icon>
+        </v-btn>
+      </v-expand-x-transition>
     </v-app-bar>
     <v-content
       :style="{
@@ -167,7 +172,14 @@ export default {
       query: '',
       drawer: false,
       version: process.env.VUE_APP_VERSION,
-      showSearch: false
+      textFocus: false
+    }
+  },
+  computed: {
+    showBtn() {
+      if (window.innerWidth >= 550) return true
+      if (this.textFocus || this.query) return false
+      return true
     }
   },
   async created() {
