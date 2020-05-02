@@ -12,6 +12,11 @@
             Scan QR Code
           </v-toolbar-title>
           <v-spacer />
+          <v-btn icon large @click="copy">
+            <v-icon color="amber lighten-2">
+              content_copy
+            </v-icon>
+          </v-btn>
           <v-btn icon large @click="rescan">
             <v-icon color="teal lighten-2">
               replay
@@ -31,7 +36,10 @@
           <b v-else>{{ result }}</b>
         </p>
         <v-divider class="my-2" />
-        <qrcode-stream :camera="camera" @decode="onDecode" @init="onInit" />
+        <qrcode-stream
+          class="qrcode-stream" :camera="camera"
+          @decode="onDecode" @init="onInit"
+        />
       </v-card-text>
     </v-card>
   </v-dialog>
@@ -66,7 +74,24 @@ export default {
       this.result = content
       this.camera = 'off'
       this.isLink = content.startsWith('http')
+    },
+    async copy() {
+      try {
+        await navigator.clipboard.writeText(this.result)
+        this.$store.commit('alert', {
+          type: 'success',
+          text: 'Copied!'
+        })
+      } catch (err) {
+        this.$store.commit('alert', err.message)
+      }
     }
   }
 }
 </script>
+
+<style>
+.qrcode-stream {
+  max-height: 70vh;
+}
+</style>
