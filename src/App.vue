@@ -18,6 +18,14 @@
       <v-expand-x-transition>
         <v-btn
           v-show="showBtn" icon
+          @click=" $store.commit('switchMode', 'qrcode-dialog')"
+        >
+          <v-icon>filter_center_focus</v-icon>
+        </v-btn>
+      </v-expand-x-transition>
+      <v-expand-x-transition>
+        <v-btn
+          v-show="showBtn" icon
           :color="$store.state.mode === 'edit' ? 'green' : undefined"
           @click=" $store.commit(
             'switchMode',
@@ -66,6 +74,10 @@
       />
       <ConfigDialog
         v-if="$store.state.mode === 'config-dialog'"
+        @input="$store.commit('switchMode', 'normal')"
+      />
+      <QRCodeDialog
+        v-if="$store.state.mode === 'qrcode-dialog'"
         @input="$store.commit('switchMode', 'normal')"
       />
     </v-content>
@@ -150,6 +162,7 @@ import ImportDialog from '@/components/ImportDialog'
 import EditDialog from '@/components/EditDialog'
 import ReorderDialog from '@/components/ReorderDialog'
 import ConfigDialog from '@/components/ConfigDialog'
+import QRCodeDialog from '@/components/QRCodeDialog'
 import WebNav from '@/components/WebNav'
 import Logo from '@/components/Logo'
 import DisAlert from '@/components/DisAlert'
@@ -161,6 +174,7 @@ export default {
     EditDialog,
     ReorderDialog,
     ConfigDialog,
+    QRCodeDialog,
     WebNav,
     Logo,
     DisAlert

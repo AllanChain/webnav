@@ -15,6 +15,7 @@
     "json-pointer": "^0.6.0",
     "register-service-worker": "^1.6.2",
     "vue": "^2.6.10",
+    "vue-qrcode-reader": "^2.1.1",
     "vue-router": "^3.1.5",
     "vuetify": "^2.2.11",
     "vuex": "^3.1.2"
