@@ -60,9 +60,13 @@ export default {
   components: { QrcodeStream, QrcodeCapture },
   data () {
     return {
-      isLink: false,
       camera: 'off',
       result: null,
+    }
+  },
+  computed: {
+    isLink() {
+      return this.result && this.result.startsWith('http')
     }
   },
   methods: {
@@ -76,17 +80,14 @@ export default {
     rescan () {
       this.camera = 'auto'
       this.result = null
-      this.isLink = false
     },
     async onDecode (content) {
       this.camera = 'off'
       this.result = content
-      this.isLink = content.startsWith('http')
     },
     triggerUpload() {
       this.camera = 'off'
       this.result = null
-      this.isLink = false
       this.$refs.file.$el.click()
     },
     async copy() {
