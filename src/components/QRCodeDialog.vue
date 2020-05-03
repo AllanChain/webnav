@@ -14,7 +14,7 @@
           <v-spacer />
           <qrcode-capture ref="file" class="d-none" @decode="onDecode" />
           <v-btn icon @click="triggerUpload">
-            <v-icon color="pink">
+            <v-icon color="orange lighten-2">
               upload_file
             </v-icon>
           </v-btn>
