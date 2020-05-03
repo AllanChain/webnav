@@ -50,6 +50,17 @@
               <b v-else>{{ result }}</b>
             </p>
           </v-overlay>
+          <v-overlay
+            v-if="!result && camera === 'off'" class="text-center"
+            color="#fff" dark="false" absolute
+          >
+            <p class="px-2">
+              <v-icon>camera_alt</v-icon> open camera and scan
+            </p>
+            <p class="px-2">
+              <v-icon>upload_file</v-icon> upload a image and scan
+            </p>
+          </v-overlay>
         </qrcode-stream>
       </v-card-text>
     </v-card>
