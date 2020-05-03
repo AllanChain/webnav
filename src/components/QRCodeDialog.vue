@@ -35,17 +35,19 @@
           </v-btn>
         </v-toolbar>
       </v-card-title>
-      <v-card-text>
-        <h3>Result:</h3>
-        <p class="pt-2" style="word-break: break-all;">
-          <a v-if="isLink" :href="result">{{ result }}</a>
-          <b v-else>{{ result }}</b>
-        </p>
-        <v-divider class="my-2" />
+      <v-card-text class="pa-0">
         <qrcode-stream
           class="qrcode-stream" :camera="camera"
           @decode="onDecode" @init="onInit"
-        />
+        >
+          <div v-if="!!result" class="pa-2 qrcode-result">
+            <h2>Result</h2>
+            <p class="pt-2">
+              <a v-if="isLink" :href="result">{{ result }}</a>
+              <b v-else>{{ result }}</b>
+            </p>
+          </div>
+        </qrcode-stream>
       </v-card-text>
     </v-card>
   </v-dialog>
@@ -105,5 +107,20 @@ export default {
 <style>
 .qrcode-stream {
   max-height: 70vh;
+}
+.qrcode-result {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(255, 255, 255, .8);
+  text-align: center;
+
+  /* display: flex;
+  flex-flow: column nowrap; */
+  justify-content: center;
+}
+.qrcode-result p {
+  word-break: break-all;
 }
 </style>
