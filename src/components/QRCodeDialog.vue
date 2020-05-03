@@ -40,13 +40,16 @@
           class="qrcode-stream" :camera="camera"
           @decode="onDecode" @init="onInit"
         >
-          <div v-if="!!result" class="pa-2 qrcode-result">
+          <v-overlay
+            v-if="!!result" class="text-center"
+            color="#fff" dark="false" absolute
+          >
             <h2>Result</h2>
-            <p class="pt-2">
+            <p class="pt-2 qrcode-result">
               <a v-if="isLink" :href="result">{{ result }}</a>
               <b v-else>{{ result }}</b>
             </p>
-          </div>
+          </v-overlay>
         </qrcode-stream>
       </v-card-text>
     </v-card>
@@ -110,18 +113,6 @@ export default {
   max-height: 70vh;
 }
 .qrcode-result {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-
-  background-color: rgba(255, 255, 255, .8);
-  text-align: center;
-
-  /* display: flex;
-  flex-flow: column nowrap; */
-  justify-content: center;
-}
-.qrcode-result p {
   word-break: break-all;
 }
 </style>
