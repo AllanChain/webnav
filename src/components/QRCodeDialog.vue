@@ -84,6 +84,11 @@ export default {
       return this.result && this.result.startsWith('http')
     }
   },
+  mounted() {
+    const fileInput = this.$refs.file.$el
+    fileInput.removeAttribute('capture')
+    fileInput.removeAttribute('multiple')
+  },
   methods: {
     async onInit (promise) {
       try {
