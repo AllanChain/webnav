@@ -40,20 +40,14 @@
           class="qrcode-stream" :camera="camera"
           @decode="onDecode" @init="onInit"
         >
-          <v-overlay
-            v-if="!!result" class="text-center"
-            color="#fff" dark="false" absolute
-          >
+          <v-overlay v-if="!!result" v-bind="overlayProps">
             <h2>Result</h2>
             <p class="pt-2 qrcode-result">
               <a v-if="isLink" :href="result">{{ result }}</a>
               <b v-else>{{ result }}</b>
             </p>
           </v-overlay>
-          <v-overlay
-            v-if="!result && camera === 'off'" class="text-center"
-            color="#fff" dark="false" absolute
-          >
+          <v-overlay v-if="!result && camera === 'off'" v-bind="overlayProps">
             <p class="px-2">
               <v-icon>camera_alt</v-icon> open camera and scan
             </p>
@@ -76,6 +70,13 @@ export default {
     return {
       camera: 'off',
       result: null,
+      overlayProps: {
+        class: 'text-center',
+        color: '#fff',
+        dark: false,
+        absolute: true,
+        opacity: 0.9
+      }
     }
   },
   computed: {
