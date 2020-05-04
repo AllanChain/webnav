@@ -129,6 +129,7 @@ export default {
 .qrcode-stream {
   max-height: 70vh;
 }
+
 .qrcode-result {
   word-break: break-all;
 }
