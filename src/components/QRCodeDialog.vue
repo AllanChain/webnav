@@ -15,22 +15,22 @@
           <qrcode-capture ref="file" class="d-none" @decode="onDecode" />
           <v-btn icon @click="triggerUpload">
             <v-icon color="orange lighten-2">
-              upload_file
+              mdi-file-upload-outline
             </v-icon>
           </v-btn>
           <v-btn v-show="!!result" icon large @click="copy">
             <v-icon color="amber lighten-2">
-              content_copy
+              mdi-content-copy
             </v-icon>
           </v-btn>
           <v-btn v-show="camera === 'off'" icon large @click="rescan">
             <v-icon color="teal lighten-2">
-              camera_alt
+              mdi-camera
             </v-icon>
           </v-btn>
           <v-btn icon large @click="$emit('input', false)">
             <v-icon color="yellow lighten-2">
-              cancel
+              mdi-close-circle-outline
             </v-icon>
           </v-btn>
         </v-toolbar>
@@ -48,11 +48,14 @@
             </p>
           </v-overlay>
           <v-overlay v-if="!result && camera === 'off'" v-bind="overlayProps">
+            <h3 class="mb-2">
+              Help
+            </h3>
             <p class="px-2">
-              <v-icon>camera_alt</v-icon> open camera and scan
+              Press <v-icon>mdi-camera</v-icon> open camera and scan
             </p>
             <p class="px-2">
-              <v-icon>upload_file</v-icon> upload a image and scan
+              Press <v-icon>mdi-file-upload-outline</v-icon> upload a image and scan
             </p>
           </v-overlay>
         </qrcode-stream>

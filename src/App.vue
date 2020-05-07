@@ -5,7 +5,7 @@
       <v-text-field
         ref="text"
         :value="query"
-        prepend-inner-icon="search"
+        prepend-inner-icon="mdi-magnify"
         hide-details outlined
         single-line dense clearable
         @input="query = $event || ''"
@@ -20,7 +20,7 @@
           v-show="showBtn" icon
           @click=" $store.commit('switchMode', 'qrcode-dialog')"
         >
-          <v-icon>filter_center_focus</v-icon>
+          <v-icon>mdi-qrcode-scan</v-icon>
         </v-btn>
       </v-expand-x-transition>
       <v-expand-x-transition>
@@ -31,7 +31,7 @@
             'switchMode',
             $store.state.mode === 'edit' ? 'normal' : 'edit')"
         >
-          <v-icon>edit</v-icon>
+          <v-icon>mdi-pencil</v-icon>
         </v-btn>
       </v-expand-x-transition>
     </v-app-bar>
@@ -93,7 +93,7 @@
         <v-divider />
         <v-list-item link @click="$store.commit('switchMode', 'import-dialog')">
           <v-list-item-action>
-            <v-icon>add_to_home_screen</v-icon>
+            <v-icon>mdi-application-import</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>Import</v-list-item-title>
@@ -101,7 +101,7 @@
         </v-list-item>
         <v-list-item link @click="downloadJSON">
           <v-list-item-action>
-            <v-icon>file_download</v-icon>
+            <v-icon>mdi-file-download-outline</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>Export and Download</v-list-item-title>
@@ -110,7 +110,7 @@
         </v-list-item>
         <v-list-item link @click="newBookmark">
           <v-list-item-action>
-            <v-icon>add</v-icon>
+            <v-icon>mdi-bookmark-plus-outline</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>Add Bookmark</v-list-item-title>
@@ -118,7 +118,7 @@
         </v-list-item>
         <v-list-item link @click="$store.commit('switchMode', 'config-dialog')">
           <v-list-item-action>
-            <v-icon>settings</v-icon>
+            <v-icon>mdi-cog</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>More Config</v-list-item-title>
@@ -126,7 +126,7 @@
         </v-list-item>
         <v-list-item link @click="confirmClear">
           <v-list-item-action>
-            <v-icon>warning</v-icon>
+            <v-icon>mdi-alert</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>CLEAR ALL Bookmark</v-list-item-title>
@@ -134,7 +134,7 @@
         </v-list-item>
         <v-list-item link href="https://github.com/AllanChain/webnav">
           <v-list-item-action>
-            <img src="@/assets/octocat.svg" width="24px" height="24px" class="grayscale">
+            <v-icon>mdi-github</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>Fork me on GitHub</v-list-item-title>
@@ -145,7 +145,7 @@
           <v-list-item-content>
             <span>
               <v-icon small>
-                settings
+                mdi-cogs
               </v-icon>
               v{{ version }} - {{ $store.state.swStatus }}
             </span>

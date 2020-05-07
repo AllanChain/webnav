@@ -18,7 +18,7 @@
               })"
             >
               <v-icon color="white">
-                edit
+                mdi-pencil
               </v-icon>
             </v-btn>
           </v-overlay>
@@ -31,7 +31,7 @@
               @click="goSearch(bookmark)"
             >
               <v-icon color="white">
-                search
+                mdi-magnify
               </v-icon>
             </v-btn>
           </v-overlay>

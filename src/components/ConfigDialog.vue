@@ -17,21 +17,21 @@
             icon large color="blue lighten-2"
             @click="$refs.file.click()"
           >
-            <v-icon>upload_file</v-icon>
+            <v-icon>mdi-file-upload-outline</v-icon>
           </v-btn>
           <v-btn icon large @click="downloadJSON">
             <v-icon color="amber">
-              file_download
+              mdi-file-download-outline
             </v-icon>
           </v-btn>
           <v-btn icon large @click="done">
             <v-icon color="green lighten-2">
-              check
+              mdi-check
             </v-icon>
           </v-btn>
           <v-btn icon large @click="$emit('input', false)">
             <v-icon color="yellow lighten-2">
-              cancel
+              mdi-close-circle-outline
             </v-icon>
           </v-btn>
         </v-toolbar>
@@ -74,7 +74,7 @@
             <v-divider class="my-2" />
             <v-text-field
               :value="config.bgImg.url"
-              prepend-inner-icon="image"
+              prepend-inner-icon="mdi-image"
               label="Image URL"
               placeholder="back.jpg"
               messages="Leave it blank to use pure color background"
@@ -145,7 +145,7 @@
             </p>
             <v-text-field
               v-model="config.cors"
-              prepend-inner-icon="flight_takeoff"
+              prepend-inner-icon="mdi-airplane-takeoff"
               label="CORS Proxy"
               placeholder="https://netnr-proxy.cloudno.de/"
               outlined dense

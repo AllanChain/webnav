@@ -6,7 +6,7 @@
           <v-row>
             <v-text-field
               v-model="url"
-              prepend-inner-icon="link"
+              prepend-inner-icon="mdi-web"
               color="purple"
               label="JSON URL"
               placeholder="https://cors.net/bookmarks.json"
@@ -16,7 +16,7 @@
           <v-row>
             <v-col cols="4" class="text-center">
               <v-btn fab small color="indigo lighten-1" @click="$refs.file.click()">
-                <v-icon>upload_file</v-icon>
+                <v-icon>mdi-file-upload-outline</v-icon>
               </v-btn>
               <input
                 ref="file"
@@ -28,12 +28,12 @@
             </v-col>
             <v-col cols="4" class="text-center">
               <v-btn fab small color="amber" @click="$emit('input', false)">
-                <v-icon>cancel</v-icon>
+                <v-icon>mdi-close-thick</v-icon>
               </v-btn>
             </v-col>
             <v-col cols="4" class="text-center">
               <v-btn fab small color="green" @click="importFromCloud">
-                <v-icon>done</v-icon>
+                <v-icon>mdi-check-bold</v-icon>
               </v-btn>
             </v-col>
           </v-row>
