@@ -1,6 +1,10 @@
 <template>
   <div class="logo py-4">
-    4&emsp;<img src="@/assets/octocat.svg" width="50">&emsp;4
+    4
+    <v-icon class="pb-3" size="60" color="#2196f3">
+      mdi-github
+    </v-icon>
+    4
   </div>
 </template>
 
