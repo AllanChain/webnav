@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/webnav/precache-manifest.1fb9804aaa4d868189c5e5bb583f354a.js"
+  "/webnav/precache-manifest.d7448cf093ec24a9955f8be1ffa7f948.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "webnav"});
