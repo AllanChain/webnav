@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/webnav/bookmarks.json"
   },
   {
-    "revision": "ffe702f07d593f673346",
+    "revision": "4eb26848d1c06943a974",
     "url": "/webnav/css/app.392752af.css"
   },
   {
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/webnav/css/chunk-vendors.1b7c8458.css"
   },
   {
-    "revision": "02aa9f1b04f8f2301d7b",
+    "revision": "96a1de00f0eeea7a8044",
     "url": "/webnav/css/config.17d4b7a5.css"
   },
   {
@@ -28,28 +28,28 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/webnav/css/config~import.09af3917.css"
   },
   {
-    "revision": "7641561580fef5a27a5b",
+    "revision": "5e1f22b65bb71b75d40a",
     "url": "/webnav/css/qrcode.5bfe1575.css"
   },
   {
-    "revision": "64405e62d174587fdaa0",
+    "revision": "00a5a397803908bf8f5c",
     "url": "/webnav/css/reorder.f4cd3df8.css"
   },
   {
-    "revision": "3b5a8cbdc869a39e8b772c704f9f63aa",
+    "revision": "2013593ffe3ef9c0400a53ec1073d34f",
     "url": "/webnav/index.html"
   },
   {
-    "revision": "ffe702f07d593f673346",
-    "url": "/webnav/js/app.beea6eaa.js"
+    "revision": "4eb26848d1c06943a974",
+    "url": "/webnav/js/app.136f8310.js"
   },
   {
     "revision": "adb75567f334a302c7a0",
     "url": "/webnav/js/chunk-vendors.1644336a.js"
   },
   {
-    "revision": "02aa9f1b04f8f2301d7b",
-    "url": "/webnav/js/config.47d61f22.js"
+    "revision": "96a1de00f0eeea7a8044",
+    "url": "/webnav/js/config.555ca37d.js"
   },
   {
     "revision": "7edd7172a4f0b554790c",
@@ -60,20 +60,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/webnav/js/config~import.6e6cc4e7.js"
   },
   {
-    "revision": "7b0ffaef958b1dbe04e3",
-    "url": "/webnav/js/edit.b7362ea3.js"
+    "revision": "f927c342777b21caa166",
+    "url": "/webnav/js/edit.37fdf39e.js"
   },
   {
-    "revision": "7ace1c529ddaadd30651",
-    "url": "/webnav/js/import.6870d9b6.js"
+    "revision": "4f9e907c8f946a7a8ce6",
+    "url": "/webnav/js/import.e415f2ca.js"
   },
   {
-    "revision": "7641561580fef5a27a5b",
-    "url": "/webnav/js/qrcode.3783cd2a.js"
+    "revision": "5e1f22b65bb71b75d40a",
+    "url": "/webnav/js/qrcode.02b28384.js"
   },
   {
-    "revision": "64405e62d174587fdaa0",
-    "url": "/webnav/js/reorder.1ca93b2c.js"
+    "revision": "00a5a397803908bf8f5c",
+    "url": "/webnav/js/reorder.737f9377.js"
   },
   {
     "revision": "9bd31e76ff5d46bcdcc2071318a84e8b",
