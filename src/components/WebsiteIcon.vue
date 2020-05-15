@@ -21,10 +21,13 @@ export default {
   },
   data() {
     const cors = this.$store.state.config.cors
+    let src = cors + url.resolve(
+      this.bookmark.url,
+      this.bookmark.icon || '/favicon.ico'
+    )
+    if (!src.startsWith('https://')) src = 'img/icons/favicon-32x32.png'
     let image = {
-      src:  cors + url.resolve(
-        this.bookmark.url,
-        this.bookmark.icon || '/favicon.ico'),
+      src,
       style: {
         width: this.size,
         height: this.size
