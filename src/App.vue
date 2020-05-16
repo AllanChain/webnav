@@ -96,7 +96,7 @@
             <v-icon>mdi-application-import</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>{{ $t('import') }}</v-list-item-title>
+            <v-list-item-title>{{ $t('menu.import') }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <v-list-item link @click="downloadJSON">
@@ -104,7 +104,7 @@
             <v-icon>mdi-file-download-outline</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Export and Download</v-list-item-title>
+            <v-list-item-title>{{ $t('menu.export') }}</v-list-item-title>
             <a ref="downloadLink" class="d-none" />
           </v-list-item-content>
         </v-list-item>
@@ -113,7 +113,7 @@
             <v-icon>mdi-bookmark-plus-outline</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Add Bookmark</v-list-item-title>
+            <v-list-item-title>{{ $t('menu.newBookmark') }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <v-list-item link @click="$store.commit('switchMode', 'config-dialog')">
@@ -121,7 +121,7 @@
             <v-icon>mdi-cog</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>{{ $t('moreConfig') }}</v-list-item-title>
+            <v-list-item-title>{{ $t('menu.moreConfig') }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <v-list-item link @click="confirmClear">
@@ -129,7 +129,7 @@
             <v-icon>mdi-alert</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>CLEAR ALL Bookmark</v-list-item-title>
+            <v-list-item-title>{{ $t('menu.clearBookmark') }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <v-list-item link href="https://github.com/AllanChain/webnav">
@@ -137,7 +137,7 @@
             <v-icon>mdi-github</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Fork me on GitHub</v-list-item-title>
+            <v-list-item-title>{{ $t('menu.githubLink') }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <v-divider />
@@ -155,16 +155,6 @@
     </v-navigation-drawer>
   </v-app>
 </template>
-
-<i18n locale="en" lang="yaml">
-import: Import
-moreConfig: More Config
-</i18n>
-
-<i18n locale="zh" lang="yaml">
-import: 导入
-moreConfig: 更多设置
-</i18n>
 
 <script>
 import WebNav from '@/components/WebNav'

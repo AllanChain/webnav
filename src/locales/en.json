@@ -1,0 +1,10 @@
+{
+    "menu": {
+        "import": "Import",
+        "export": "Export and Download",
+        "newBookmark": "Add Bookmark",
+        "moreConfig": "More Config",
+        "clearBookmark": "CLEAR ALL Bookmark",
+        "githubLink": "Fork me on GitHub"
+    }
+}
