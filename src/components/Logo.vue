@@ -1,9 +1,7 @@
 <template>
   <div class="logo py-4">
     4
-    <v-icon class="pb-3" size="60" color="#2196f3">
-      mdi-github
-    </v-icon>
+    <img src="img/icons/android-chrome-192x192.png" width="50">
     4
   </div>
 </template>
@@ -17,7 +15,7 @@ export default {
 <style>
 .logo {
   font-size: 65px;
-  color: #2196f3;
+  color: #c8aa50;
   animation: flip-x 3s infinite;
   -webkit-animation: flip-x 3s infinite;
   line-height: 0;

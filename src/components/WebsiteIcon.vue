@@ -1,7 +1,7 @@
 <template>
   <img
     v-bind="image"
-    @error="image.src = 'img/icons/favicon-32x32.png'"
+    @error="image.src = 'img/fallback.png'"
   >
 </template>
 
@@ -25,7 +25,7 @@ export default {
       this.bookmark.url,
       this.bookmark.icon || '/favicon.ico'
     )
-    if (!src.startsWith('https://')) src = 'img/icons/favicon-32x32.png'
+    if (!src.startsWith('https://')) src = 'img/fallback.png'
     let image = {
       src,
       style: {
