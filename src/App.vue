@@ -96,7 +96,7 @@
             <v-icon>mdi-application-import</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Import</v-list-item-title>
+            <v-list-item-title>{{ $t('import') }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <v-list-item link @click="downloadJSON">
@@ -121,7 +121,7 @@
             <v-icon>mdi-cog</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>More Config</v-list-item-title>
+            <v-list-item-title>{{ $t('moreConfig') }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <v-list-item link @click="confirmClear">
@@ -155,6 +155,16 @@
     </v-navigation-drawer>
   </v-app>
 </template>
+
+<i18n locale="en" lang="yaml">
+import: Import
+moreConfig: More Config
+</i18n>
+
+<i18n locale="zhHans" lang="yaml">
+import: 导入
+moreConfig: 更多设置
+</i18n>
 
 <script>
 import WebNav from '@/components/WebNav'
