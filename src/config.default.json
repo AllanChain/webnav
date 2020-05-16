@@ -11,5 +11,6 @@
     "blackText": false,
     "cors": "",
     "barColor": "#3949AB",
-    "httpIcon": false
+    "httpIcon": false,
+    "locale": ""
 }

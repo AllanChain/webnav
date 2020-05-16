@@ -6,7 +6,8 @@
         "blackText",
         "cors",
         "barColor",
-        "httpIcon"
+        "httpIcon",
+        "locale"
     ],
     "additionalProperties": false,
     "properties": {
