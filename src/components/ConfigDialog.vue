@@ -13,10 +13,7 @@
         <v-toolbar color="indigo" dark dense>
           <v-toolbar-title>Config WebNav</v-toolbar-title>
           <v-spacer />
-          <v-btn
-            icon large color="blue lighten-2"
-            @click="$refs.file.click()"
-          >
+          <v-btn icon large color="blue lighten-2" @click="$refs.file.click()">
             <v-icon>mdi-file-upload-outline</v-icon>
           </v-btn>
           <v-btn icon large @click="downloadJSON">
@@ -44,86 +41,100 @@
         <v-tabs-items v-model="tab">
           <!-- Background -->
           <v-tab-item>
-            <div
-              class="bg-preview-wrapper"
-              :style="{
-                backgroundColor: config.bgImg.filter.blurColor
-              }"
-            >
-              <div
-                class="bg-image bg-preview"
-                :style="{
-                  backgroundImage: `url(${config.bgImg.url})`,
-                  filter: `blur(${config.bgImg.filter.blur}px)
+            <v-row>
+              <v-col cols="12" md="5">
+                <div
+                  class="bg-preview-wrapper"
+                  :style="{
+                    backgroundColor: config.bgImg.filter.blurColor
+                  }"
+                >
+                  <div
+                    class="bg-image bg-preview"
+                    :style="{
+                      backgroundImage: `url(${config.bgImg.url})`,
+                      filter: `blur(${config.bgImg.filter.blur}px)
             contrast(${config.bgImg.filter.contrast}%)
             grayscale(${config.bgImg.filter.grayscale}%)`
-                }"
-              />
-              <div
-                class="pa-3"
-                :style="{
-                  position: 'absolute',
-                  color: config.blackText ? '#000' : '#eee',
-                  textShadow: `1px 1px 3px
+                    }"
+                  />
+                  <div
+                    class="pa-3"
+                    :style="{
+                      position: 'absolute',
+                      color: config.blackText ? '#000' : '#eee',
+                      textShadow: `1px 1px 3px
             ${config.blackText ? '#eee' : '#000'}`
-                }"
-              >
-                {{ 'Example Text '.repeat(20) }}
-              </div>
-            </div>
-            <v-divider class="my-2" />
-            <v-text-field
-              :value="config.bgImg.url"
-              prepend-inner-icon="mdi-image"
-              label="Image URL"
-              placeholder="back.jpg"
-              messages="Leave it blank to use pure color background"
-              outlined dense clearable
-              @input="config.bgImg.url = $event || ''"
-            />
-            <v-container v-if="config.bgImg.url !== ''">
-              <v-row no-gutters>
-                <v-col cols="3" sm="2" md="1">
-                  <v-label>Blur</v-label>
-                </v-col>
-                <v-col cols="9" sm="10" md="11">
-                  <v-slider
-                    v-model="config.bgImg.filter.blur"
-                    min="0" max="10"
-                    thumb-label hide-details
-                  />
-                </v-col>
-              </v-row>
-              <v-row no-gutters>
-                <v-col cols="3" sm="2" md="1">
-                  <v-label>Contrast</v-label>
-                </v-col>
-                <v-col cols="9" sm="10" md="11">
-                  <v-slider
-                    v-model="config.bgImg.filter.contrast" min="0"
-                    max="200"
-                    thumb-label hide-details
-                  />
-                </v-col>
-              </v-row>
-              <v-row no-gutters>
-                <v-col cols="3" sm="2" md="1">
-                  <v-label>Gray</v-label>
-                </v-col>
-                <v-col cols="9" sm="10" md="11">
-                  <v-slider
-                    v-model="config.bgImg.filter.grayscale"
-                    min="0" max="100"
-                    thumb-label hide-details
-                  />
-                </v-col>
-              </v-row>
-            </v-container>
-            <v-switch
-              v-model="config.blackText"
-              class="mt-0"
-              :label="config.blackText ? 'Black text' : 'White text'"
-            />
+                    }"
+                  >
+                    {{ 'Example Text '.repeat(20) }}
+                  </div>
+                </div>
+              </v-col>
+              <v-col cols="12" md="7">
+                <!-- <v-divider class="my-2" /> -->
+                <v-text-field
+                  :value="config.bgImg.url"
+                  prepend-inner-icon="mdi-image"
+                  label="Image URL"
+                  placeholder="back.jpg"
+                  messages="Leave it blank to use pure color background"
+                  outlined
+                  dense
+                  clearable
+                  @input="config.bgImg.url = $event || ''"
+                />
+                <v-container v-if="config.bgImg.url !== ''">
+                  <v-row no-gutters>
+                    <v-col cols="3" sm="2">
+                      <v-label>Blur</v-label>
+                    </v-col>
+                    <v-col cols="9" sm="10">
+                      <v-slider
+                        v-model="config.bgImg.filter.blur"
+                        min="0"
+                        max="10"
+                        thumb-label
+                        hide-details
+                      />
+                    </v-col>
+                  </v-row>
+                  <v-row no-gutters>
+                    <v-col cols="3" sm="2">
+                      <v-label>Contrast</v-label>
+                    </v-col>
+                    <v-col cols="9" sm="10">
+                      <v-slider
+                        v-model="config.bgImg.filter.contrast"
+                        min="0"
+                        max="200"
+                        thumb-label
+                        hide-details
+                      />
+                    </v-col>
+                  </v-row>
+                  <v-row no-gutters>
+                    <v-col cols="3" sm="2">
+                      <v-label>Gray</v-label>
+                    </v-col>
+                    <v-col cols="9" sm="10">
+                      <v-slider
+                        v-model="config.bgImg.filter.grayscale"
+                        min="0"
+                        max="100"
+                        thumb-label
+                        hide-details
+                      />
+                    </v-col>
+                  </v-row>
+                </v-container>
+                <v-switch
+                  v-model="config.blackText"
+                  class="mt-0"
+                  :label="config.blackText ? 'Black text' : 'White text'"
+                />
+              </v-col>
+            </v-row>
             <div v-show="config.bgImg.filter.blur || !config.bgImg.url">
               <h2 class="mb-2">
                 <span v-if="config.bgImg.filter.blur">
@@ -134,35 +145,45 @@
               <v-color-picker
                 v-model="config.bgImg.filter.blurColor"
                 canvas-height="100"
-                hide-inputs flat
+                hide-inputs
+                flat
               />
             </div>
           </v-tab-item>
           <!-- other -->
           <v-tab-item>
-            <p>
-              Use CORS proxy to convert blocked <code>http</code> requests to <code>https</code>.
-            </p>
-            <v-text-field
-              v-model="config.cors"
-              prepend-inner-icon="mdi-airplane-takeoff"
-              label="CORS Proxy"
-              placeholder="https://netnr-proxy.cloudno.de/"
-              outlined dense
-            />
-            <v-switch v-model="config.httpIcon">
-              <template #label>
-                Allow icon served over <code>http</code>
-              </template>
-            </v-switch>
-            <h2 class="mb-2">
-              Main app bar color
-            </h2>
-            <v-color-picker
-              v-model="config.barColor"
-              canvas-height="100"
-              flat mode="hexa"
-            />
+            <v-row>
+              <v-col cols="12" md="7">
+                <p>
+                  Use CORS proxy to convert blocked <code>http</code> requests
+                  to <code>https</code>.
+                </p>
+                <v-text-field
+                  v-model="config.cors"
+                  prepend-inner-icon="mdi-airplane-takeoff"
+                  label="CORS Proxy"
+                  placeholder="https://netnr-proxy.cloudno.de/"
+                  outlined
+                  dense
+                />
+                <v-switch v-model="config.httpIcon">
+                  <template #label>
+                    Allow icon served over <code>http</code>
+                  </template>
+                </v-switch>
+              </v-col>
+              <v-col cols="12" md="5">
+                <h2 class="mb-2">
+                  Main app bar color
+                </h2>
+                <v-color-picker
+                  v-model="config.barColor"
+                  canvas-height="100"
+                  flat
+                  mode="hexa"
+                />
+              </v-col>
+            </v-row>
           </v-tab-item>
         </v-tabs-items>
       </v-card-text>
@@ -203,9 +224,11 @@ export default {
       reader.readAsText(file)
     },
     downloadJSON() {
-      const timeStr = new Date().toJSON().slice(0, -8).replace(/-|:/g, '')
-      this.$refs.downloadLink.download =
-        `config-${timeStr}.json`
+      const timeStr = new Date()
+        .toJSON()
+        .slice(0, -8)
+        .replace(/-|:/g, '')
+      this.$refs.downloadLink.download = `config-${timeStr}.json`
       this.$refs.downloadLink.href =
         'data:text/json;charset=utf-8,' +
         encodeURIComponent(localStorage.getItem('config'))
