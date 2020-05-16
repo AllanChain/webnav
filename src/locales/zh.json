@@ -1,10 +1,14 @@
 {
-    "menu": {
-        "import": "导入",
-        "export": "导出并下载",
-        "newBookmark": "新建书签",
-        "moreConfig": "更多设置",
-        "clearBookmark": "清除所有书签",
-        "githubLink": "去 GitHub 看看本项目"
-    }
+  "menu": {
+    "import": "导入",
+    "export": "导出并下载",
+    "newBookmark": "新建书签",
+    "moreConfig": "更多设置",
+    "clearBookmark": "清除所有书签",
+    "githubLink": "去 GitHub 看看本项目"
+  },
+  "bookmark": {
+    "name": "书签名称",
+    "url": "网址"
+  }
 }

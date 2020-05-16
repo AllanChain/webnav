@@ -41,7 +41,7 @@
         <v-text-field
           v-model="bookmark.title"
           prepend-inner-icon="mdi-bookmark"
-          label="Bookmark Name"
+          :label="$t('bookmark.name')"
           placeholder="Example"
           outlined
           dense
@@ -49,7 +49,7 @@
         <v-text-field
           v-model="bookmark.url"
           prepend-inner-icon="mdi-web"
-          label="Website URL"
+          :label="$t('bookmark.url')"
           placeholder="https://example.com"
           outlined
           dense
