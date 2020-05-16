@@ -50,9 +50,7 @@
             contrast(${$store.state.config.bgImg.filter.contrast}%)
             grayscale(${$store.state.config.bgImg.filter.grayscale}%)`}"
       />
-      <div
-        class="mt-3 mx-2 alert-box"
-      >
+      <div class="mt-3 mx-2 alert-box">
         <DisAlert
           v-for="(message, i) in $store.state.messages"
           :key="i" :message="message"
