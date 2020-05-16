@@ -37,7 +37,7 @@
           </v-btn>
         </v-toolbar>
       </v-card-title>
-      <v-card-text class="mt-4">
+      <v-card-text class="pt-4">
         <v-text-field
           v-model="bookmark.title"
           prepend-inner-icon="mdi-bookmark"
