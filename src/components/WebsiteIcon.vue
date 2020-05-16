@@ -25,7 +25,8 @@ export default {
       this.bookmark.url,
       this.bookmark.icon || '/favicon.ico'
     )
-    if (!src.startsWith('https://')) src = 'img/fallback.png'
+    if (!this.$store.state.config.httpIcon && !src.startsWith('https://'))
+      src = 'img/fallback.png'
     let image = {
       src,
       style: {

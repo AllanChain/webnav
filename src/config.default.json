@@ -10,5 +10,6 @@
     },
     "blackText": false,
     "cors": "",
-    "barColor": "#3949AB"
+    "barColor": "#3949AB",
+    "httpIcon": false
 }

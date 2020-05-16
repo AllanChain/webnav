@@ -150,6 +150,11 @@
               placeholder="https://netnr-proxy.cloudno.de/"
               outlined dense
             />
+            <v-switch v-model="config.httpIcon">
+              <template #label>
+                Allow icon served over <code>http</code>
+              </template>
+            </v-switch>
             <h2 class="mb-2">
               Main app bar color
             </h2>
