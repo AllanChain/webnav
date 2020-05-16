@@ -9,6 +9,15 @@ if (process.env.WEBPACK_STATS) {
 
 module.exports = {
   publicPath: process.env.PUB_PATH || '/',
+  chainWebpack: config => {
+    config.plugin('copy').tap(([options]) => {
+      options[0].ignore.push(
+        'img/icons/converter.sh', // shell script to convert logo to all icons
+        'img/icons/logo.*' // original logo
+      )
+      return [options]
+    })
+  },
   configureWebpack: {
     plugins
   },
