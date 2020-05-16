@@ -154,6 +154,14 @@
           <v-tab-item>
             <v-row>
               <v-col cols="12" md="7">
+                <v-select
+                  v-model="config.locale"
+                  :items="[{text: 'default', value: ''}, 'zh', 'en']"
+                  label="Language"
+                  prepend-inner-icon="mdi-language-java"
+                  outlined
+                  dense
+                />
                 <p>
                   Use CORS proxy to convert blocked <code>http</code> requests
                   to <code>https</code>.
@@ -205,6 +213,7 @@ export default {
     done() {
       if (validate('/config', this.config)) {
         this.$store.commit('updateConfig', this.config)
+        this.$i18n.locale = this.config.locale || navigator.language.slice(0, 2)
         this.$emit('input', false)
       }
     },

@@ -67,6 +67,9 @@
         },
         "httpIcon": {
             "type": "boolean"
+        },
+        "locale": {
+            "type": "string"
         }
     }
 }

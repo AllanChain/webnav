@@ -161,7 +161,7 @@ import: Import
 moreConfig: More Config
 </i18n>
 
-<i18n locale="zhHans" lang="yaml">
+<i18n locale="zh" lang="yaml">
 import: 导入
 moreConfig: 更多设置
 </i18n>

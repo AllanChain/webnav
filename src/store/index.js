@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import { openDB } from 'idb'
 import validate from '@/validator'
+import i18n from '@/plugins/vue-i18n'
 
 Vue.use(Vuex)
 
@@ -91,6 +92,7 @@ export default new Vuex.Store({
           })
         }
       }
+      i18n.locale = config.locale || navigator.language.slice(0, 2)
       context.state.config = config
     },
     async add(context, bookmark) {
