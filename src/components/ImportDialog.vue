@@ -9,7 +9,7 @@
               prepend-inner-icon="mdi-web"
               color="purple"
               label="JSON URL"
-              placeholder="https://cors.net/bookmarks.json"
+              placeholder="https://example.cors/marks.json"
               dense outlined hide-details
             />
           </v-row>
