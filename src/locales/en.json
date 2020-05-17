@@ -16,5 +16,8 @@
   "message": {
     "clearWarn": "Type CLEAR to continue. Hope you have a backup.",
     "success": "Success!"
+  },
+  "config": {
+    "localeDefault": "System default"
   }
 }

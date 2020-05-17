@@ -156,7 +156,11 @@
               <v-col cols="12" md="7">
                 <v-select
                   v-model="config.locale"
-                  :items="[{text: 'default', value: ''}, 'zh', 'en']"
+                  :items="[
+                    {text: $t('config.localeDefault'), value: ''},
+                    {text: '中文', value: 'zh'},
+                    {text: 'English', value: 'en'}
+                  ]"
                   label="Language"
                   prepend-inner-icon="mdi-language-java"
                   outlined

@@ -16,5 +16,8 @@
   "message": {
     "clearWarn": "请输入 CLEAR 以继续。请确认已经备份书签。",
     "success": "操作成功！"
+  },
+  "config": {
+    "localeDefault": "系统默认"
   }
 }
