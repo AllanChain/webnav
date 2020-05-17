@@ -10,5 +10,8 @@
   "bookmark": {
     "name": "Bookmark Name",
     "url": "Website URL"
+  },
+  "message": {
+    "clearWarn": "Type CLEAR to continue. Hope you have a backup."
   }
 }

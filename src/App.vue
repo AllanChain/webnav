@@ -233,8 +233,7 @@ export default {
       this.$refs.downloadLink.click()
     },
     confirmClear() {
-      if (prompt('Type CLEAR to continue. Hope you have a backup.')
-        === 'CLEAR')
+      if (prompt(this.$t('message.clearWarn')) === 'CLEAR')
         this.$store.dispatch('clear')
     },
     handleAutofill() {

@@ -10,5 +10,8 @@
   "bookmark": {
     "name": "书签名称",
     "url": "网址"
+  },
+  "message": {
+    "clearWarn": "请输入 CLEAR 以继续。请确认已经备份书签。"
   }
 }
