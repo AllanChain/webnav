@@ -57,7 +57,7 @@
         <v-text-field
           v-model="bookmark.search"
           prepend-inner-icon="mdi-magnify"
-          label="Search Template"
+          :label="$t('bookmark.search')"
           placeholder="/search?wd={}"
           outlined
           dense
@@ -65,7 +65,7 @@
         <v-text-field
           v-model="bookmark.icon"
           prepend-inner-icon="mdi-earth"
-          label="Website Icon"
+          :label="$t('bookmark.icon')"
           placeholder="/favicon.ico"
           outlined
           dense
@@ -97,7 +97,7 @@ export default {
       else
         this.$store.dispatch('add', this.bookmark)
       this.$store.commit('alert', {
-        text: 'Success!',
+        text: this.$t('message.success'),
         type: 'success'
       })
       this.$emit('input', false)
@@ -109,5 +109,3 @@ export default {
   }
 }
 </script>
-
-<style></style>

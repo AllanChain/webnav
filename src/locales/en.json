@@ -9,9 +9,12 @@
   },
   "bookmark": {
     "name": "Bookmark Name",
-    "url": "Website URL"
+    "url": "Website URL",
+    "search": "Search Template",
+    "icon": "Website Icon"
   },
   "message": {
-    "clearWarn": "Type CLEAR to continue. Hope you have a backup."
+    "clearWarn": "Type CLEAR to continue. Hope you have a backup.",
+    "success": "Success!"
   }
 }

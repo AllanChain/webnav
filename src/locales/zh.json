@@ -9,9 +9,12 @@
   },
   "bookmark": {
     "name": "书签名称",
-    "url": "网址"
+    "url": "网址",
+    "search": "搜索 URL 模板",
+    "icon": "网站图标地址"
   },
   "message": {
-    "clearWarn": "请输入 CLEAR 以继续。请确认已经备份书签。"
+    "clearWarn": "请输入 CLEAR 以继续。请确认已经备份书签。",
+    "success": "操作成功！"
   }
 }
