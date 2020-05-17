@@ -8,6 +8,7 @@
         prepend-inner-icon="mdi-magnify"
         hide-details outlined
         single-line dense clearable
+        @mousedown="handleAutofill"
         @input="query = $event || ''"
         @focus="textFocus = true"
         @blur="textFocus = false"
@@ -183,7 +184,8 @@ export default {
       query: '',
       drawer: false,
       version: process.env.VUE_APP_VERSION,
-      textFocus: false
+      textFocus: false,
+      autofilled: false
     }
   },
   computed: {
@@ -234,6 +236,12 @@ export default {
       if (prompt('Type CLEAR to continue. Hope you have a backup.')
         === 'CLEAR')
         this.$store.dispatch('clear')
+    },
+    handleAutofill() {
+      if (!this.autofilled) {
+        this.query = this.$refs.text.$refs.input.value
+        this.autofilled = true
+      }
     }
   }
 }
