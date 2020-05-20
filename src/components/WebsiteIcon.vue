@@ -20,27 +20,36 @@ export default {
     }
   },
   data() {
-    const cors = this.$store.state.config.cors
-    let src = cors + url.resolve(
-      this.bookmark.url,
-      this.bookmark.icon || '/favicon.ico'
-    )
-    if (!this.$store.state.config.httpIcon && !src.startsWith('https://'))
-      src = 'img/fallback.png'
-    let image = {
-      src,
-      style: {
-        width: this.size,
-        height: this.size
+    return {
+      image: {}
+    }
+  },
+  watch: {
+    bookmark: {
+      deep: true,
+      immediate: true,
+      handler(bookmark) {
+        const cors = this.$store.state.config.cors
+        let src = cors + url.resolve(bookmark.url, bookmark.icon || '/favicon.ico')
+        // Fail image serve over http if configured
+        if (!this.$store.state.config.httpIcon && !src.startsWith('https://'))
+          src = 'img/fallback.png'
+        let image = {
+          src,
+          style: {
+            width: this.size,
+            height: this.size
+          }
+        }
+        if (cors) {
+          image = {
+            ...image,
+            crossorigin: 'anonymous'
+          }
+        }
+        this.image = image
       }
     }
-    if (cors) {
-      image = {
-        ...image,
-        crossorigin: 'anonymous'
-      }
-    }
-    return { image }
   }
 }
 </script>
