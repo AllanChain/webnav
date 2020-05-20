@@ -4,19 +4,19 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/webnav/back.jpg"
   },
   {
-    "revision": "116981931c430bafd8ab29568aaaade3",
+    "revision": "d7e9cb8aed6ce5cbc4c0feea05ee6f67",
     "url": "/webnav/bookmarks.json"
   },
   {
-    "revision": "f097e1aaf16b621a1cf8",
+    "revision": "07071cce1e3e45e8fe26",
     "url": "/webnav/css/app.121a1ca7.css"
   },
   {
-    "revision": "85ba229a7ffd5f30d587",
+    "revision": "6b0fc32b4ff5424ca0d0",
     "url": "/webnav/css/chunk-vendors.6e82b6bc.css"
   },
   {
-    "revision": "177030d293949742384b",
+    "revision": "1882821212714900e55f",
     "url": "/webnav/css/config.39ca15f6.css"
   },
   {
@@ -28,11 +28,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/webnav/css/config~import.09af3917.css"
   },
   {
-    "revision": "38c3331cbbd29b28ceac",
+    "revision": "16755ad4adc15d252992",
     "url": "/webnav/css/qrcode.5bfe1575.css"
   },
   {
-    "revision": "ac5b93d37709521ad3ee",
+    "revision": "7330c13244feb164a2a8",
     "url": "/webnav/css/reorder.f4cd3df8.css"
   },
   {
@@ -40,20 +40,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/webnav/img/fallback.png"
   },
   {
-    "revision": "8856959e278427e3c217d6a36fc2a7fb",
+    "revision": "e72dcbfb5081b4fce45e443024fab94f",
     "url": "/webnav/index.html"
   },
   {
-    "revision": "f097e1aaf16b621a1cf8",
-    "url": "/webnav/js/app.2940901c.js"
+    "revision": "07071cce1e3e45e8fe26",
+    "url": "/webnav/js/app.ae0db1e0.js"
   },
   {
-    "revision": "85ba229a7ffd5f30d587",
-    "url": "/webnav/js/chunk-vendors.09a470a1.js"
+    "revision": "6b0fc32b4ff5424ca0d0",
+    "url": "/webnav/js/chunk-vendors.3ceabc35.js"
   },
   {
-    "revision": "177030d293949742384b",
-    "url": "/webnav/js/config.37db5658.js"
+    "revision": "1882821212714900e55f",
+    "url": "/webnav/js/config.fd62cb12.js"
   },
   {
     "revision": "4e8e604fc4dc3f7fde6b",
@@ -64,20 +64,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/webnav/js/config~import.f14eaca1.js"
   },
   {
-    "revision": "799a94a7c39209a32eb6",
-    "url": "/webnav/js/edit.7e63736a.js"
+    "revision": "7d457db99a7f06dfb7c2",
+    "url": "/webnav/js/edit.4d2deb21.js"
   },
   {
-    "revision": "8c9f6c0bd1237e3ff452",
-    "url": "/webnav/js/import.67483ca8.js"
+    "revision": "1335e94ada3631aa1485",
+    "url": "/webnav/js/import.c6169b52.js"
   },
   {
-    "revision": "38c3331cbbd29b28ceac",
-    "url": "/webnav/js/qrcode.8eec11ab.js"
+    "revision": "16755ad4adc15d252992",
+    "url": "/webnav/js/qrcode.e9c39bed.js"
   },
   {
-    "revision": "ac5b93d37709521ad3ee",
-    "url": "/webnav/js/reorder.f9b5a13d.js"
+    "revision": "7330c13244feb164a2a8",
+    "url": "/webnav/js/reorder.bb0b6547.js"
   },
   {
     "revision": "9bd31e76ff5d46bcdcc2071318a84e8b",

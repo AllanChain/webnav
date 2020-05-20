@@ -5,10 +5,14 @@
         "search": "/search?q={}"
     },
     {
+        "title": "DuckDuckGo",
+        "url": "https://duckduckgo.com",
+        "search": "/?q={}"
+    },
+    {
         "title": "Bing",
-        "url": "https://cn.bing.com",
-        "search": "/search?q={}",
-        "icon": ""
+        "url": "https://www.bing.com",
+        "search": "/search?q={}"
     },
     {
         "title": "GitHub",
@@ -24,29 +28,5 @@
     {
         "title": "Stack Overflow",
         "url": "https://stackoverflow.com"
-    },
-    {
-        "title": "Allan Chain",
-        "url": "https://allanchain.github.io/blog",
-        "icon": "https://allanchain.github.io/img/favicon.ico"
-    },
-    {
-        "title": "未名BBS",
-        "url": "https://bbs.pku.edu.cn",
-        "search": "/v2/search.php?&owner=&board=&rated=&days=700&titleonly=&timeorder=&mode=post&bid=&key={}"
-    },
-    {
-        "title": "P大树洞",
-        "url": "https://pkuhelper.pku.edu.cn/hole",
-        "search": "#{}",
-        "icon": "https://pkuhelper.pku.edu.cn/hole/static/favicon/256.png"
-    },
-    {
-        "title": "北大门户",
-        "url": "https://portal.pku.edu.cn/"
-    },
-    {
-        "title": "北大教学网",
-        "url": "https://course.pku.edu.cn"
     }
 ]
