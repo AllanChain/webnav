@@ -54,8 +54,8 @@
                     :style="{
                       backgroundImage: `url(${config.bgImg.url})`,
                       filter: `blur(${config.bgImg.filter.blur}px)
-            contrast(${config.bgImg.filter.contrast}%)
-            grayscale(${config.bgImg.filter.grayscale}%)`
+                      contrast(${config.bgImg.filter.contrast}%)
+                      grayscale(${config.bgImg.filter.grayscale}%)`
                     }"
                   />
                   <div
