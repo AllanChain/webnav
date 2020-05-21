@@ -17,7 +17,7 @@ module.exports = {
       )
       options.push({
         from: 'src/defaults',
-        to: 'dist',
+        to: '',
         toType: 'dir'
       })
       return [options]
