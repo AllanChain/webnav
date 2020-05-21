@@ -18,7 +18,8 @@
     "success": "Success!",
     "configInit": "WebNav config initiated",
     "configError": "Auto upgrade config failed. Falling back to default. You can still download your previous config. To discard your config changes, just apply default config.",
-    "configUpdate": "Auto upgrade config success"
+    "configUpdate": "Auto upgrade config success",
+    "bookmarkInit": "WebNav has added some bookmarks for you"
   },
   "config": {
     "localeDefault": "System default"

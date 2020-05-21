@@ -62,9 +62,13 @@ export default new Vuex.Store({
           })
         }
       })
-      if (newcomer)
+      if (newcomer) {
         context.dispatch('addAll', require('@/defaults/bookmarks.json'))
-      else
+        context.commit('alert', {
+          text: app.$t('message.bookmarkInit'),
+          type: 'success'
+        })
+      } else
         context.dispatch('refresh')
     },
     /**
