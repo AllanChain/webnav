@@ -4,6 +4,7 @@
     dense
     dismissible
     border="left"
+    transition="slide-x-transition"
     :type="message.type"
     :style="style"
   >
