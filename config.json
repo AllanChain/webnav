@@ -1,0 +1,17 @@
+{
+    "bgImg": {
+        "url": "back.jpg",
+        "filter": {
+            "blur": 0,
+            "blurColor": "#4480fd",
+            "contrast": 100,
+            "grayscale": 0
+        }
+    },
+    "blackText": false,
+    "cors": "",
+    "barColor": "#3949AB",
+    "httpIcon": false,
+    "locale": "",
+    "dark": false
+}
