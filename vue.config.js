@@ -15,6 +15,11 @@ module.exports = {
         'img/icons/converter.sh', // shell script to convert logo to all icons
         'img/icons/logo.*' // original logo
       )
+      options.push({
+        from: 'src/defaults',
+        to: 'dist',
+        toType: 'dir'
+      })
       return [options]
     })
   },

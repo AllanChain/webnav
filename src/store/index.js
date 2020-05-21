@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import { openDB } from 'idb'
 import validate from '@/validator'
-import i18n from '@/plugins/vue-i18n'
 
 Vue.use(Vuex)
 
@@ -51,49 +50,65 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    async init(context) {
-      context.dispatch('initConfig')
+    async init(context, app) {
+      context.dispatch('initConfig', app)
+      let newcomer = false
       db = await openDB('BookmarkDB', 1, {
         upgrade(db) {
+          newcomer = true
           db.createObjectStore('bookmarks', {
             autoIncrement: true,
             keyPath: 'id'
           })
         }
       })
-      context.dispatch('refresh')
+      if (newcomer)
+        context.dispatch('addAll', require('@/defaults/bookmarks.json'))
+      else
+        context.dispatch('refresh')
     },
-    initConfig(context) {
+    /**
+     * Load config
+     * i18n will work after config load.
+     * Thus need result insted of commit.
+     * @param {*} context
+     */
+    initConfig(context, app) {
+      let result
       let config = JSON.parse(localStorage.getItem('config'))
       if (config === null) { // Beginner friendly
-        config = require('@/config.default.json')
+        config = require('@/defaults/config.json')
         localStorage.setItem('config', JSON.stringify(config))
-        context.commit('alert', {
-          text: 'Welcome to WebNav!',
+        result = {
+          text: 'message.configInit',
           type: 'success'
-        })
+        }
       } else if (!validate('/config', config, true)) {
-        const defaultConfig = require('@/config.default.json')
+        const defaultConfig = require('@/defaults/config.json')
         config = require('deepmerge')(defaultConfig, config)
         if (!validate('/config', config, true)) {
-          context.commit('alert', {
-            text: `Auto update config failed. Falling back to default.
-            You can still download your previous config.
-            To discard your config changes, just apply default config.`,
+          config = defaultConfig
+          result = {
+            text: 'message.configError',
             type: 'error',
             delay: 12000
-          })
-          config = defaultConfig
+          }
         } else {
           localStorage.setItem('config', JSON.stringify(config))
-          context.commit('alert', {
-            text: 'Auto update config success',
+          result = {
+            text: 'message.configUpdate',
             type: 'success'
-          })
+          }
         }
       }
-      i18n.locale = config.locale || navigator.language.slice(0, 2)
+      app.$i18n.locale = config.locale || navigator.language.slice(0, 2)
       context.state.config = config
+      if (result !== undefined) {
+        context.commit('alert', {
+          text: app.$t(result.text),
+          type: result.type
+        })
+      }
     },
     async add(context, bookmark) {
       await db.add('bookmarks', bookmark)

@@ -197,7 +197,7 @@ export default {
   },
   async created() {
     window.addEventListener('beforeinstallprompt', this.installPrompt)
-    await this.$store.dispatch('init')
+    await this.$store.dispatch('init', this)
   },
   destroyed() {
     window.removeEventListener('beforeinstallprompt', this.installPrompt)

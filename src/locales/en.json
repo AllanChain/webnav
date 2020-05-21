@@ -15,7 +15,10 @@
   },
   "message": {
     "clearWarn": "Type CLEAR to continue. Hope you have a backup.",
-    "success": "Success!"
+    "success": "Success!",
+    "configInit": "WebNav config initiated",
+    "configError": "Auto upgrade config failed. Falling back to default. You can still download your previous config. To discard your config changes, just apply default config.",
+    "configUpdate": "Auto upgrade config success"
   },
   "config": {
     "localeDefault": "System default"
