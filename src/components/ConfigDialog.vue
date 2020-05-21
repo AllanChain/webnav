@@ -32,7 +32,7 @@
             </v-icon>
           </v-btn>
         </v-toolbar>
-        <v-tabs v-model="tab" background-color="white">
+        <v-tabs v-model="tab">
           <v-tab> Background </v-tab>
           <v-tab> other </v-tab>
         </v-tabs>
@@ -163,9 +163,11 @@
                   ]"
                   label="Language"
                   prepend-inner-icon="mdi-language-java"
+                  hide-details
                   outlined
                   dense
                 />
+                <v-switch v-model="config.dark" label="Dark Mode" />
                 <p>
                   Use CORS proxy to convert blocked <code>http</code> requests
                   to <code>https</code>.
@@ -216,8 +218,11 @@ export default {
   methods: {
     done() {
       if (validate('/config', this.config)) {
-        this.$store.commit('updateConfig', this.config)
-        this.$i18n.locale = this.config.locale || navigator.language.slice(0, 2)
+        this.$store.commit('updateConfig', {
+          config: this.config,
+          app: this,
+          write: true
+        })
         this.$emit('input', false)
       }
     },

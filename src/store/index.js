@@ -35,9 +35,15 @@ export default new Vuex.Store({
     swUpdate(state, status) {
       state.swStatus = status
     },
-    updateConfig(state, config) {
-      state.config = config
-      localStorage.setItem('config', JSON.stringify(config))
+    updateConfig(state, payload) {
+      state.config = payload.config
+      payload.app.$i18n.locale = (
+        payload.config.locale ||
+        navigator.language.slice(0, 2)
+      )
+      payload.app.$vuetify.theme.dark = payload.config.dark
+      if (payload.write === true)
+        localStorage.setItem('config', JSON.stringify(payload.config))
     },
     alert(state, payload) {
       if (typeof payload === 'string') {
@@ -105,8 +111,7 @@ export default new Vuex.Store({
           }
         }
       }
-      app.$i18n.locale = config.locale || navigator.language.slice(0, 2)
-      context.state.config = config
+      context.commit('updateConfig', { config, app })
       if (result !== undefined) {
         context.commit('alert', {
           text: app.$t(result.text),
