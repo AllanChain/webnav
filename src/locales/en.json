@@ -22,7 +22,30 @@
     "bookmarkInit": "WebNav has added some bookmarks for you"
   },
   "config": {
-    "localeDefault": "System default"
+    "localeDefault": "System default",
+    "title": "Config WebNav",
+    "other": {
+      "title": "other",
+      "corsNote": "Use CORS proxy to convert blocked http requests to https.",
+      "httpIcon": "Allow icon served over http",
+      "barColor": "Main app bar color",
+      "language": "Language",
+      "darkMode": "Dark Mode",
+      "cors": "CORS Proxy"
+    },
+    "bg": {
+      "blur": "Blur",
+      "title": "Background",
+      "contrast": "Contrast",
+      "gray": "Gray",
+      "padding": "Blur padding color",
+      "color": "BG color",
+      "blackText": "Black text",
+      "whiteText": "White text",
+      "imgMsg": "Leave it blank to use pure color background",
+      "example-text": "Example Text ",
+      "image-url": "Image URL"
+    }
   },
   "qr": {
     "title": "Scan QR Code",

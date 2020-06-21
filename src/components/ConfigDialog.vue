@@ -11,7 +11,7 @@
     <v-card>
       <v-card-title class="pa-0">
         <v-toolbar color="indigo" dark dense>
-          <v-toolbar-title>Config WebNav</v-toolbar-title>
+          <v-toolbar-title>{{ $t('config.title') }}</v-toolbar-title>
           <v-spacer />
           <v-btn icon large color="blue lighten-2" @click="$refs.file.click()">
             <v-icon>mdi-file-upload-outline</v-icon>
@@ -33,8 +33,8 @@
           </v-btn>
         </v-toolbar>
         <v-tabs v-model="tab">
-          <v-tab> Background </v-tab>
-          <v-tab> other </v-tab>
+          <v-tab> {{ $t('config.bg.title') }} </v-tab>
+          <v-tab> {{ $t('config.other.title') }} </v-tab>
         </v-tabs>
       </v-card-title>
       <v-card-text class="pt-4">
@@ -67,7 +67,7 @@
             ${config.blackText ? '#eee' : '#000'}`
                     }"
                   >
-                    {{ 'Example Text '.repeat(20) }}
+                    {{ $t('config.bg.example-text').repeat(20) }}
                   </div>
                 </div>
               </v-col>
@@ -76,9 +76,9 @@
                 <v-text-field
                   :value="config.bgImg.url"
                   prepend-inner-icon="mdi-image"
-                  label="Image URL"
+                  :label="$t('config.bg.image-url')"
                   placeholder="back.jpg"
-                  messages="Leave it blank to use pure color background"
+                  :messages="$t('config.bg.imgMsg')"
                   outlined
                   dense
                   clearable
@@ -87,7 +87,7 @@
                 <v-container v-if="config.bgImg.url !== ''">
                   <v-row no-gutters>
                     <v-col cols="3" sm="2">
-                      <v-label>Blur</v-label>
+                      <v-label>{{ $t('config.bg.blur') }}</v-label>
                     </v-col>
                     <v-col cols="9" sm="10">
                       <v-slider
@@ -101,7 +101,7 @@
                   </v-row>
                   <v-row no-gutters>
                     <v-col cols="3" sm="2">
-                      <v-label>Contrast</v-label>
+                      <v-label>{{ $t('config.bg.contrast') }}</v-label>
                     </v-col>
                     <v-col cols="9" sm="10">
                       <v-slider
@@ -115,7 +115,7 @@
                   </v-row>
                   <v-row no-gutters>
                     <v-col cols="3" sm="2">
-                      <v-label>Gray</v-label>
+                      <v-label>{{ $t('config.bg.gray') }}</v-label>
                     </v-col>
                     <v-col cols="9" sm="10">
                       <v-slider
@@ -131,16 +131,16 @@
                 <v-switch
                   v-model="config.blackText"
                   class="mt-0"
-                  :label="config.blackText ? 'Black text' : 'White text'"
+                  :label="config.blackText ? $t('config.bg.blackText') : $t('config.bg.whiteText')"
                 />
               </v-col>
             </v-row>
             <div v-show="config.bgImg.filter.blur || !config.bgImg.url">
               <h2 class="mb-2">
                 <span v-if="config.bgImg.filter.blur">
-                  Blur padding color
+                  {{ $t('config.bg.padding') }}
                 </span>
-                <span v-else> BG color </span>
+                <span v-else> {{ $t('config.bg.color') }} </span>
               </h2>
               <v-color-picker
                 v-model="config.bgImg.filter.blurColor"
@@ -161,34 +161,33 @@
                     {text: '中文', value: 'zh'},
                     {text: 'English', value: 'en'}
                   ]"
-                  label="Language"
+                  :label="$t('config.other.language')"
                   prepend-inner-icon="mdi-language-java"
                   hide-details
                   outlined
                   dense
                 />
-                <v-switch v-model="config.dark" label="Dark Mode" />
+                <v-switch v-model="config.dark" :label="$t('config.other.darkMode')" />
                 <p>
-                  Use CORS proxy to convert blocked <code>http</code> requests
-                  to <code>https</code>.
+                  {{ $t('config.other.corsNote') }}
                 </p>
                 <v-text-field
                   v-model="config.cors"
                   prepend-inner-icon="mdi-airplane-takeoff"
-                  label="CORS Proxy"
-                  placeholder="https://netnr-proxy.cloudno.de/"
+                  :label="$t('config.other.cors')"
+                  placeholder="e.g. https://netnr-proxy.cloudno.de/"
                   outlined
                   dense
                 />
                 <v-switch v-model="config.httpIcon">
                   <template #label>
-                    Allow icon served over <code>http</code>
+                    {{ $t('config.other.httpIcon') }}
                   </template>
                 </v-switch>
               </v-col>
               <v-col cols="12" md="5">
                 <h2 class="mb-2">
-                  Main app bar color
+                  {{ $t('config.other.barColor') }}
                 </h2>
                 <v-color-picker
                   v-model="config.barColor"

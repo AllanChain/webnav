@@ -22,7 +22,30 @@
     "bookmarkInit": "WebNav 已为您添加默认书签"
   },
   "config": {
-    "localeDefault": "系统默认"
+    "localeDefault": "系统默认",
+    "bg": {
+      "blur": "模糊",
+      "color": "背景颜色",
+      "contrast": "对比度",
+      "gray": "灰度",
+      "padding": "模糊衬色",
+      "title": "背景",
+      "blackText": "黑色文字",
+      "example-text": "这是范例文字 ",
+      "imgMsg": "留白以使用纯色背景",
+      "whiteText": "白色文字",
+      "image-url": "图片网址"
+    },
+    "other": {
+      "barColor": "主应用栏颜色",
+      "corsNote": "使用 CORS 代理将使被阻止的 http 请求转换为 https。",
+      "httpIcon": "允许加载 http 协议的图标",
+      "title": "其他",
+      "cors": "CORS 代理",
+      "darkMode": "暗色模式",
+      "language": "语言"
+    },
+    "title": "配置 WebNav"
   },
   "qr": {
     "title": "扫描二维码",
