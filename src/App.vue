@@ -36,7 +36,7 @@
         </v-btn>
       </v-expand-x-transition>
     </v-app-bar>
-    <v-content
+    <v-main
       :style="{
         backgroundColor: $store.state.config.bgImg.filter.blurColor
       }"
@@ -78,7 +78,7 @@
         v-if="$store.state.mode === 'qrcode-dialog'"
         @input="$store.commit('switchMode', 'normal')"
       />
-    </v-content>
+    </v-main>
     <v-navigation-drawer v-model="drawer" app>
       <v-list dense>
         <v-list-item>
