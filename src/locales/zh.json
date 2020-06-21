@@ -23,5 +23,13 @@
   },
   "config": {
     "localeDefault": "系统默认"
+  },
+  "qr": {
+    "title": "扫描二维码",
+    "result": "扫描结果",
+    "help": "帮助",
+    "press": "点击",
+    "cameraScan": "打开摄像头扫描",
+    "uploadScan": "扫描上传的图片"
   }
 }

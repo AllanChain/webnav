@@ -9,7 +9,7 @@
       <v-card-title class="pa-0">
         <v-toolbar color="indigo" dark dense>
           <v-toolbar-title>
-            Scan QR Code
+            {{ $t('qr.title') }}
           </v-toolbar-title>
           <v-spacer />
           <qrcode-capture ref="file" class="d-none" @decode="onDecode" />
@@ -41,7 +41,7 @@
           @decode="onDecode" @init="onInit"
         >
           <v-overlay v-if="!!result" v-bind="overlayProps">
-            <h2>Result</h2>
+            <h2>{{ $t('qr.result') }}</h2>
             <p class="pt-2 qrcode-result">
               <a v-if="isLink" :href="result">{{ result }}</a>
               <b v-else>{{ result }}</b>
@@ -49,13 +49,13 @@
           </v-overlay>
           <v-overlay v-if="!result && camera === 'off'" v-bind="overlayProps">
             <h3 class="mb-2">
-              Help
+              {{ $t('qr.help') }}
             </h3>
             <p class="px-2">
-              Press <v-icon>mdi-camera</v-icon> open camera and scan
+              {{ $t('qr.press') }} <v-icon>mdi-camera</v-icon> {{ $t('qr.cameraScan') }}
             </p>
             <p class="px-2">
-              Press <v-icon>mdi-file-upload-outline</v-icon> upload a image and scan
+              {{ $t('qr.press') }} <v-icon>mdi-file-upload-outline</v-icon> {{ $t('qr.uploadScan') }}
             </p>
           </v-overlay>
         </qrcode-stream>

@@ -23,5 +23,13 @@
   },
   "config": {
     "localeDefault": "System default"
+  },
+  "qr": {
+    "title": "Scan QR Code",
+    "result": "Scan Result",
+    "help": "Help",
+    "press": "Press",
+    "cameraScan": "open camera and scan",
+    "uploadScan": "upload an image and scan"
   }
 }
