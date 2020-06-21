@@ -17,7 +17,7 @@
     "vue": "^2.6.10",
     "vue-i18n": "^8.18.2",
     "vue-qrcode-reader": "^2.3.0",
-    "vuetify": "^2.3.0",
+    "vuetify": "^2.3.1",
     "vuex": "^3.4.0"
   },
   "devDependencies": {
@@ -36,12 +36,12 @@
     "eslint-plugin-vue": "^6.2.2",
     "sass": "^1.26.8",
     "sass-loader": "^8.0.0",
-    "stylelint": "^13.6.0",
+    "stylelint": "^13.6.1",
     "stylelint-config-standard": "^20.0.0",
     "vue-cli-plugin-vuetify": "^2.0.5",
     "vue-template-compiler": "^2.6.10",
     "vuetify-loader": "^1.5.0",
-    "webpack-stats-plugin": "^0.3.1"
+    "webpack-stats-plugin": "^0.3.2"
   },
   "eslintConfig": {
     "root": true,
