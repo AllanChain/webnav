@@ -99,7 +99,7 @@ export default {
         b.index = i + this.$store.state.bookmarks.length)
       await this.$store.dispatch('addAll', bookmarks)
       this.$store.commit('alert', {
-        text: this.$tc('message.importSuccess', bookmarks.length),
+        text: this.$tc('message.import-success', bookmarks.length),
         type: 'success'
       })
       this.$emit('input', false)

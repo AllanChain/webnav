@@ -2,10 +2,10 @@
   "menu": {
     "import": "Import",
     "export": "Export and Download",
-    "newBookmark": "Add Bookmark",
-    "moreConfig": "More Config",
-    "clearBookmark": "CLEAR ALL Bookmark",
-    "githubLink": "Fork me on GitHub"
+    "clear-bookmark": "CLEAR ALL Bookmark",
+    "github-link": "Fork me on GitHub",
+    "more-config": "More Config",
+    "new-bookmark": "Add Bookmark"
   },
   "bookmark": {
     "name": "Bookmark Name",
@@ -14,25 +14,24 @@
     "icon": "Website Icon"
   },
   "message": {
-    "clearWarn": "Type CLEAR to continue. Hope you have a backup.",
     "success": "Success!",
-    "configInit": "WebNav config initiated",
-    "configError": "Auto upgrade config failed. Falling back to default. You can still download your previous config. To discard your config changes, just apply default config.",
-    "configUpdate": "Auto upgrade config success",
-    "bookmarkInit": "WebNav has added some bookmarks for you",
-    "importSuccess": "No bookmark added | Successfully added {n} bookmark | Successfully added {n} bookmarks`"
+    "bookmark-init": "WebNav has added some bookmarks for you",
+    "clear-warn": "Type CLEAR to continue. Hope you have a backup.",
+    "config-init": "WebNav config initiated",
+    "config-error": "Auto upgrade config failed. Falling back to default. You can still download your previous config. To discard your config changes, just apply default config.",
+    "import-success": "No bookmark added | Successfully added {n} bookmark | Successfully added {n} bookmarks`",
+    "config-update": "Auto upgrade config success"
   },
   "config": {
-    "localeDefault": "System default",
     "title": "Config WebNav",
     "other": {
       "title": "other",
-      "corsNote": "Use CORS proxy to convert blocked http requests to https.",
-      "httpIcon": "Allow icon served over http",
-      "barColor": "Main app bar color",
       "language": "Language",
-      "darkMode": "Dark Mode",
-      "cors": "CORS Proxy"
+      "cors": "CORS Proxy",
+      "bar-color": "Main app bar color",
+      "cors-note": "Use CORS proxy to convert blocked http requests to https.",
+      "dark-mode": "Dark Mode",
+      "http-icon": "Allow icon served over http"
     },
     "bg": {
       "blur": "Blur",
@@ -41,19 +40,20 @@
       "gray": "Gray",
       "padding": "Blur padding color",
       "color": "BG color",
-      "blackText": "Black text",
-      "whiteText": "White text",
-      "imgMsg": "Leave it blank to use pure color background",
       "example-text": "Example Text ",
-      "image-url": "Image URL"
-    }
+      "image-url": "Image URL",
+      "black-text": "Black text",
+      "img-msg": "Leave it blank to use pure color background",
+      "white-text": "White text"
+    },
+    "locale-default": "System default"
   },
   "qr": {
     "title": "Scan QR Code",
     "result": "Scan Result",
     "help": "Help",
     "press": "Press",
-    "cameraScan": "open camera and scan",
-    "uploadScan": "upload an image and scan"
+    "camera-scan": "open camera and scan",
+    "upload-scan": "upload an image and scan"
   }
 }

@@ -52,10 +52,10 @@
               {{ $t('qr.help') }}
             </h3>
             <p class="px-2">
-              {{ $t('qr.press') }} <v-icon>mdi-camera</v-icon> {{ $t('qr.cameraScan') }}
+              {{ $t('qr.press') }} <v-icon>mdi-camera</v-icon> {{ $t('qr.camera-scan') }}
             </p>
             <p class="px-2">
-              {{ $t('qr.press') }} <v-icon>mdi-file-upload-outline</v-icon> {{ $t('qr.uploadScan') }}
+              {{ $t('qr.press') }} <v-icon>mdi-file-upload-outline</v-icon> {{ $t('qr.upload-scan') }}
             </p>
           </v-overlay>
         </qrcode-stream>

@@ -73,7 +73,7 @@ export default new Vuex.Store({
         bookmarks.forEach((b, i) => b.index = i)
         context.dispatch('addAll', bookmarks)
         context.commit('alert', {
-          text: app.$t('message.bookmarkInit'),
+          text: app.$t('message.bookmark-init'),
           type: 'success'
         })
       } else

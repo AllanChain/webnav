@@ -2,10 +2,10 @@
   "menu": {
     "import": "导入",
     "export": "导出并下载",
-    "newBookmark": "新建书签",
-    "moreConfig": "更多设置",
-    "clearBookmark": "清除所有书签",
-    "githubLink": "去 GitHub 看看本项目"
+    "clear-bookmark": "清除所有书签",
+    "github-link": "去 GitHub 看看本项目",
+    "more-config": "更多设置",
+    "new-bookmark": "新建书签"
   },
   "bookmark": {
     "name": "书签名称",
@@ -14,16 +14,15 @@
     "icon": "网站图标地址"
   },
   "message": {
-    "clearWarn": "请输入 CLEAR 以继续。请确认已经备份书签。",
     "success": "操作成功！",
-    "configInit": "WebNav 配置加载成功",
-    "configUpdate": "配置自动升级成功",
-    "configError": "自动更新配置失败，回退至默认配置。您仍然可以下载之前的配置。如果回到决定默认，应用一下默认配置即可。",
-    "bookmarkInit": "WebNav 已为您添加默认书签",
-    "importSuccess": "未添加书签 | 已成功添加 {n} 个书签 | 已成功添加 {n} 个书签`"
+    "bookmark-init": "WebNav 已为您添加默认书签",
+    "clear-warn": "请输入 CLEAR 以继续。请确认已经备份书签。",
+    "config-init": "WebNav 配置加载成功",
+    "config-error": "自动更新配置失败，回退至默认配置。您仍然可以下载之前的配置。如果回到决定默认，应用一下默认配置即可。",
+    "import-success": "未添加书签 | 已成功添加 {n} 个书签 | 已成功添加 {n} 个书签`",
+    "config-update": "配置自动升级成功"
   },
   "config": {
-    "localeDefault": "系统默认",
     "bg": {
       "blur": "模糊",
       "color": "背景颜色",
@@ -31,29 +30,30 @@
       "gray": "灰度",
       "padding": "模糊衬色",
       "title": "背景",
-      "blackText": "黑色文字",
       "example-text": "这是范例文字 ",
-      "imgMsg": "留白以使用纯色背景",
-      "whiteText": "白色文字",
-      "image-url": "图片网址"
+      "image-url": "图片网址",
+      "black-text": "黑色文字",
+      "img-msg": "留白以使用纯色背景",
+      "white-text": "白色文字"
     },
     "other": {
-      "barColor": "主应用栏颜色",
-      "corsNote": "使用 CORS 代理将使被阻止的 http 请求转换为 https。",
-      "httpIcon": "允许加载 http 协议的图标",
       "title": "其他",
       "cors": "CORS 代理",
-      "darkMode": "暗色模式",
-      "language": "语言"
+      "language": "语言",
+      "bar-color": "主应用栏颜色",
+      "cors-note": "使用 CORS 代理将使被阻止的 http 请求转换为 https。",
+      "dark-mode": "暗色模式",
+      "http-icon": "允许加载 http 协议的图标"
     },
-    "title": "配置 WebNav"
+    "title": "配置 WebNav",
+    "locale-default": "系统默认"
   },
   "qr": {
     "title": "扫描二维码",
     "result": "扫描结果",
     "help": "帮助",
     "press": "点击",
-    "cameraScan": "打开摄像头扫描",
-    "uploadScan": "扫描上传的图片"
+    "camera-scan": "打开摄像头扫描",
+    "upload-scan": "扫描上传的图片"
   }
 }

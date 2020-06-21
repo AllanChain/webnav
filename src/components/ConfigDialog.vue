@@ -78,7 +78,7 @@
                   prepend-inner-icon="mdi-image"
                   :label="$t('config.bg.image-url')"
                   placeholder="back.jpg"
-                  :messages="$t('config.bg.imgMsg')"
+                  :messages="$t('config.bg.img-msg')"
                   outlined
                   dense
                   clearable
@@ -131,7 +131,7 @@
                 <v-switch
                   v-model="config.blackText"
                   class="mt-0"
-                  :label="config.blackText ? $t('config.bg.blackText') : $t('config.bg.whiteText')"
+                  :label="config.blackText ? $t('config.bg.black-text') : $t('config.bg.white-text')"
                 />
               </v-col>
             </v-row>
@@ -157,7 +157,7 @@
                 <v-select
                   v-model="config.locale"
                   :items="[
-                    {text: $t('config.localeDefault'), value: ''},
+                    {text: $t('config.locale-default'), value: ''},
                     {text: '中文', value: 'zh'},
                     {text: 'English', value: 'en'}
                   ]"
@@ -167,9 +167,9 @@
                   outlined
                   dense
                 />
-                <v-switch v-model="config.dark" :label="$t('config.other.darkMode')" />
+                <v-switch v-model="config.dark" :label="$t('config.other.dark-mode')" />
                 <p>
-                  {{ $t('config.other.corsNote') }}
+                  {{ $t('config.other.cors-note') }}
                 </p>
                 <v-text-field
                   v-model="config.cors"
@@ -181,13 +181,13 @@
                 />
                 <v-switch v-model="config.httpIcon">
                   <template #label>
-                    {{ $t('config.other.httpIcon') }}
+                    {{ $t('config.other.http-icon') }}
                   </template>
                 </v-switch>
               </v-col>
               <v-col cols="12" md="5">
                 <h2 class="mb-2">
-                  {{ $t('config.other.barColor') }}
+                  {{ $t('config.other.bar-color') }}
                 </h2>
                 <v-color-picker
                   v-model="config.barColor"

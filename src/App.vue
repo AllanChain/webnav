@@ -112,7 +112,7 @@
             <v-icon>mdi-bookmark-plus-outline</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>{{ $t('menu.newBookmark') }}</v-list-item-title>
+            <v-list-item-title>{{ $t('menu.new-bookmark') }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <v-list-item link @click="$store.commit('switchMode', 'config-dialog')">
@@ -120,7 +120,7 @@
             <v-icon>mdi-cog</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>{{ $t('menu.moreConfig') }}</v-list-item-title>
+            <v-list-item-title>{{ $t('menu.more-config') }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <v-list-item link @click="confirmClear">
@@ -128,7 +128,7 @@
             <v-icon>mdi-alert</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>{{ $t('menu.clearBookmark') }}</v-list-item-title>
+            <v-list-item-title>{{ $t('menu.clear-bookmark') }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <v-list-item link href="https://github.com/AllanChain/webnav">
@@ -136,7 +136,7 @@
             <v-icon>mdi-github</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>{{ $t('menu.githubLink') }}</v-list-item-title>
+            <v-list-item-title>{{ $t('menu.github-link') }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <v-divider />
@@ -233,7 +233,7 @@ export default {
       this.$refs.downloadLink.click()
     },
     confirmClear() {
-      if (prompt(this.$t('message.clearWarn')) === 'CLEAR')
+      if (prompt(this.$t('message.clear-warn')) === 'CLEAR')
         this.$store.dispatch('clear')
     },
     handleAutofill() {
