@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/webnav/config.json"
   },
   {
-    "revision": "12977de831ac61342167",
+    "revision": "827090d0532e39b0178e",
     "url": "/webnav/css/app.121a1ca7.css"
   },
   {
@@ -20,7 +20,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/webnav/css/chunk-vendors.587481d0.css"
   },
   {
-    "revision": "7ef2d13434d8eee5576a",
+    "revision": "1a9ceff14be83bbfe56d",
     "url": "/webnav/css/config.168160a7.css"
   },
   {
@@ -32,11 +32,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/webnav/css/config~import.09af3917.css"
   },
   {
-    "revision": "5504f0b2b63c6c32971d",
+    "revision": "5153336d78aaa1783088",
     "url": "/webnav/css/qrcode.5bfe1575.css"
   },
   {
-    "revision": "fd14f883f916c2eac8e7",
+    "revision": "88289e0fca39eaa717f3",
     "url": "/webnav/css/reorder.f4cd3df8.css"
   },
   {
@@ -44,20 +44,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/webnav/img/fallback.png"
   },
   {
-    "revision": "bd822750030928775f6f993e93ba8485",
+    "revision": "bab83ac0f16f204e966e046de4a23a2f",
     "url": "/webnav/index.html"
   },
   {
-    "revision": "12977de831ac61342167",
-    "url": "/webnav/js/app.e27fa1bf.js"
+    "revision": "827090d0532e39b0178e",
+    "url": "/webnav/js/app.ce18d4e7.js"
   },
   {
     "revision": "2b8cc32aa9d040bc1c3a",
     "url": "/webnav/js/chunk-vendors.a49640c3.js"
   },
   {
-    "revision": "7ef2d13434d8eee5576a",
-    "url": "/webnav/js/config.784664a0.js"
+    "revision": "1a9ceff14be83bbfe56d",
+    "url": "/webnav/js/config.8a8f1b01.js"
   },
   {
     "revision": "64c244a26e2d38d9179a",
@@ -68,20 +68,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/webnav/js/config~import.b73ef931.js"
   },
   {
-    "revision": "dd27ff470ae399f7a3c8",
-    "url": "/webnav/js/edit.481d858f.js"
+    "revision": "e44f893832d685b8720d",
+    "url": "/webnav/js/edit.0ffb2223.js"
   },
   {
-    "revision": "fa2c3e4dc0ab8cf789bf",
-    "url": "/webnav/js/import.b740bf1d.js"
+    "revision": "0d8eeef33e64925e9f03",
+    "url": "/webnav/js/import.60210d55.js"
   },
   {
-    "revision": "5504f0b2b63c6c32971d",
-    "url": "/webnav/js/qrcode.d311643d.js"
+    "revision": "5153336d78aaa1783088",
+    "url": "/webnav/js/qrcode.a07ffe16.js"
   },
   {
-    "revision": "fd14f883f916c2eac8e7",
-    "url": "/webnav/js/reorder.ae9051a5.js"
+    "revision": "88289e0fca39eaa717f3",
+    "url": "/webnav/js/reorder.07a128c5.js"
   },
   {
     "revision": "9bd31e76ff5d46bcdcc2071318a84e8b",
