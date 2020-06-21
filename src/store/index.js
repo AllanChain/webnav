@@ -69,7 +69,9 @@ export default new Vuex.Store({
         }
       })
       if (newcomer) {
-        context.dispatch('addAll', require('@/defaults/bookmarks.json'))
+        const bookmarks = require('@/defaults/bookmarks.json')
+        bookmarks.forEach((b, i) => b.index = i)
+        context.dispatch('addAll', bookmarks)
         context.commit('alert', {
           text: app.$t('message.bookmarkInit'),
           type: 'success'
