@@ -3,21 +3,17 @@ on:
     tags:
       - v*
 
-env:
-  NODE_VERSION: '10.x'
-  PUB_PATH: '/webnav/'
-
 jobs:
   build-and-deploy:
     name: Build and Deploy
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: Use Node.js ${{ env.NODE_VERSION }}
+    - name: Use Node.js 12.x
       uses: actions/setup-node@v1
       with:
-        node-version: ${{ env.NODE_VERSION }}
-    - name: Prepare Content to Hash
+        node-version: '12.x'
+    - name: Prepare Content to Hash (ignore app version)
       run: tail -n +4 package-lock.json > .content.to.hash
     - uses: actions/cache@v2
       with:
@@ -29,6 +25,8 @@ jobs:
       run: npm install
     - name: Build App
       run: npm run build
+      env:
+        PUB_PATH: '/webnav/'
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
