@@ -19,7 +19,7 @@
     "clear-warn": "请输入 CLEAR 以继续。请确认已经备份书签。",
     "config-init": "WebNav 配置加载成功",
     "config-error": "自动更新配置失败，回退至默认配置。您仍然可以下载之前的配置。如果回到决定默认，应用一下默认配置即可。",
-    "import-success": "未添加书签 | 已成功添加 {n} 个书签 | 已成功添加 {n} 个书签`",
+    "import-success": "未添加书签 | 已成功添加 {n} 个书签 | 已成功添加 {n} 个书签",
     "config-update": "配置自动升级成功"
   },
   "config": {
