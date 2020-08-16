@@ -204,6 +204,7 @@ export default {
   },
   methods: {
     installPrompt(e) {
+      e.preventDefault()
       this.install = e
     },
     newBookmark() {
