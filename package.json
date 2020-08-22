@@ -14,7 +14,7 @@
     "idb": "^5.0.4",
     "json-pointer": "^0.6.0",
     "register-service-worker": "^1.6.2",
-    "vue": "^2.6.10",
+    "vue": "^2.6.12",
     "vue-i18n": "^8.21.0",
     "vue-qrcode-reader": "^2.3.3",
     "vuetify": "^2.3.8",
@@ -39,7 +39,7 @@
     "stylelint": "^13.6.1",
     "stylelint-config-standard": "^20.0.0",
     "vue-cli-plugin-vuetify": "^2.0.7",
-    "vue-template-compiler": "^2.6.10",
+    "vue-template-compiler": "^2.6.12",
     "vuetify-loader": "^1.6.0",
     "webpack-stats-plugin": "^0.3.2"
   },
