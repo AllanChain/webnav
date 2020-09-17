@@ -75,7 +75,7 @@ export default {
       result: null,
       overlayProps: {
         class: 'text-center',
-        color: '#fff',
+        color: this.$vuetify.theme.dark ? undefined : '#fff',
         dark: false,
         absolute: true,
         opacity: 0.9
