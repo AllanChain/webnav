@@ -7,4 +7,4 @@ updates:
     day: sunday
     time: "07:00"
     timezone: Asia/Manila
-  open-pull-requests-limit: 10
+  open-pull-requests-limit: 0
