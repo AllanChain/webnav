@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     reorder(newIndex) {
-      this.$store.commit('reorder', {
+      this.$store.dispatch('reorder', {
         from: this.index,
         to: newIndex
       })

@@ -5,9 +5,6 @@ import validate from '@/validator'
 
 Vue.use(Vuex)
 
-const sortIndex = bookmarks =>
-  bookmarks.sort((a, b) => a.index - b.index)
-
 let db
 
 export default new Vuex.Store({
@@ -23,14 +20,6 @@ export default new Vuex.Store({
     switchMode(state, payload) {
       state.mode = payload.mode || payload
       state.modeData = payload.data
-    },
-    reorder(state, payload) {
-      const {from, to} = payload
-      const direction = Math.sign(from - to)
-      state.bookmarks[from].index = to
-      for (let i = to;i !== from;i += direction)
-        state.bookmarks[i].index += direction
-      state.bookmarks = sortIndex(state.bookmarks)
     },
     swUpdate(state, status) {
       state.swStatus = status
@@ -121,19 +110,39 @@ export default new Vuex.Store({
         })
       }
     },
+    reorder(context, { from, to }) {
+      // splice is the recommended way to change an array member
+      // and it returns replaced members
+      context.state.bookmarks.splice(
+        from, 1, ...context.state.bookmarks.splice(
+          to, 1, context.state.bookmarks[from]
+        )
+      )
+      context.dispatch('reIndex')
+    },
+    sortIndex(context) {
+      context.state.bookmarks = context.state.bookmarks.sort(
+        (a, b) => a.index - b.index
+      )
+    },
+    reIndex(context) {
+      context.state.bookmarks.forEach(
+        (bookmark, index) => { bookmark.index = index }
+      )
+    },
     async add(context, bookmark) {
       await db.add('bookmarks', bookmark)
-      context.dispatch('refresh')
+      await context.dispatch('refresh') // fetch from db to get their id
     },
     async addAll(context, bookmarks) {
       await Promise.all(
         bookmarks.map(bookmark => db.add('bookmarks', bookmark))
       )
-      context.dispatch('refresh')
+      await context.dispatch('refresh')
     },
     async put(context, bookmark) {
       await db.put('bookmarks', bookmark)
-      context.dispatch('refresh')
+      context.state.bookmarks.splice(bookmark.index, 1, bookmark)
     },
     /** Put all current bookmarks to db after reorder
      *
@@ -145,17 +154,22 @@ export default new Vuex.Store({
           bookmark => db.put('bookmarks', bookmark)
         ))
     },
-    async delete(context, id) {
-      await db.delete('bookmarks', id)
-      context.dispatch('refresh')
+    // Index will not be continous after delete,
+    // making other assumptions invalid.
+    // Let's just reindex
+    async delete(context, bookmark) {
+      await db.delete('bookmarks', bookmark.id)
+      context.state.bookmarks.splice(bookmark.index, 1)
+      await context.dispatch('reIndex')
+      await context.dispatch('putAll')
     },
     async clear(context) {
       await db.clear('bookmarks')
       context.state.bookmarks = []
     },
     async refresh(context) {
-      const bookmarks = await db.getAll('bookmarks')
-      context.state.bookmarks = sortIndex(bookmarks)
+      context.state.bookmarks = await db.getAll('bookmarks')
+      await context.dispatch('sortIndex')
     }
   },
   modules: {}

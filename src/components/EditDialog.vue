@@ -103,7 +103,7 @@ export default {
       this.$emit('input', false)
     },
     deleteThis() {
-      this.$store.dispatch('delete', this.bookmark.id)
+      this.$store.dispatch('delete', this.bookmark)
       this.$emit('input', false)
     }
   }
