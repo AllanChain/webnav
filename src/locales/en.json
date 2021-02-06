@@ -31,7 +31,9 @@
       "bar-color": "Main app bar color",
       "cors-note": "Use CORS proxy to convert blocked http requests to https.",
       "dark-mode": "Dark Mode",
-      "http-icon": "Allow icon served over http"
+      "http-icon": "Allow icon served over http",
+      "link-preview": "Use LinkPreview.net service to automatically fill in website title and icon. LinkPreview has some limitaions which means it does not work in every situation.",
+      "link-preview-key": "LinkPreview Key"
     },
     "bg": {
       "blur": "Blur",

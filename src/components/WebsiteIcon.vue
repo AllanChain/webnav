@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import url from 'url'
+import { resolve as resolveUrl } from 'url'
 
 export default {
   props: {
@@ -30,7 +30,7 @@ export default {
       immediate: true,
       handler(bookmark) {
         const cors = this.$store.state.config.cors
-        let src = cors + url.resolve(bookmark.url, bookmark.icon || '/favicon.ico')
+        let src = cors + resolveUrl(bookmark.url, bookmark.icon || '/favicon.ico')
         // Fail image serve over http if configured
         if (!this.$store.state.config.httpIcon && !src.startsWith('https://'))
           src = 'img/fallback.png'
@@ -53,5 +53,3 @@ export default {
   }
 }
 </script>
-
-<style></style>

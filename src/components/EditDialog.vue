@@ -37,7 +37,7 @@
           </v-btn>
         </v-toolbar>
       </v-card-title>
-      <v-card-text class="pt-4">
+      <v-card-text class="pt-4 pb-0">
         <v-text-field
           v-model="bookmark.title"
           prepend-inner-icon="mdi-bookmark"
@@ -71,11 +71,25 @@
           dense
         />
       </v-card-text>
+      <v-card-actions v-if="$store.state.config.linkPreviewKey" class="pt-0">
+        <v-spacer />
+        <v-btn
+          text
+          color="primary"
+          :disabled="!bookmark.url || linkPreviewLoading"
+          @click="linkPreview"
+        >
+          LinkPreview
+          <span v-if="linkPreviewLoading">...</span>
+          <span v-else>!</span>
+        </v-btn>
+      </v-card-actions>
     </v-card>
   </v-dialog>
 </template>
 
 <script>
+import RelateUrl from 'relateurl'
 import WebsiteIcon from '@/components/WebsiteIcon'
 import validate from '@/validator'
 
@@ -85,7 +99,8 @@ export default {
   },
   data() {
     return {
-      bookmark: JSON.parse(JSON.stringify(this.$store.state.modeData))
+      bookmark: JSON.parse(JSON.stringify(this.$store.state.modeData)),
+      linkPreviewLoading: false
     }
   },
   methods: {
@@ -105,6 +120,33 @@ export default {
     deleteThis() {
       this.$store.dispatch('delete', this.bookmark)
       this.$emit('input', false)
+    },
+    async linkPreview() {
+      this.linkPreviewLoading = true
+      const response = await fetch('https://api.linkpreview.net', {
+        method: 'POST',
+        mode: 'cors',
+        body: JSON.stringify({
+          key: this.$store.state.config.linkPreviewKey,
+          q: this.bookmark.url
+        }),
+      })
+      const previewData = await response.json()
+      this.linkPreviewLoading = false
+      if (previewData.error) {
+        this.$store.commit('alert', {
+          text: `${previewData.error}: ${previewData.description}`,
+          type: 'error'
+        })
+        return
+      }
+      if (previewData.title)
+        this.bookmark.title = previewData.title
+      if (previewData.image) {
+        this.bookmark.icon = RelateUrl.relate(
+          this.bookmark.url, previewData.image
+        )
+      }
     }
   }
 }

@@ -8,7 +8,8 @@
         "barColor",
         "httpIcon",
         "locale",
-        "dark"
+        "dark",
+        "linkPreviewKey"
     ],
     "additionalProperties": false,
     "properties": {
@@ -75,6 +76,9 @@
         },
         "dark": {
             "type": "boolean"
+        },
+        "linkPreviewKey": {
+            "type": "string"
         }
     }
 }

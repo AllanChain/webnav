@@ -13,5 +13,6 @@
     "barColor": "#3949AB",
     "httpIcon": false,
     "locale": "",
-    "dark": false
+    "dark": false,
+    "linkPreviewKey": ""
 }
