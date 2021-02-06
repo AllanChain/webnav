@@ -103,9 +103,8 @@ export default new Vuex.Store({
         }
       }
       context.commit('updateConfig', { config, app })
-      if (result !== undefined) {
+      if (result !== undefined)
         context.commit('alert', result)
-      }
     },
     reorder(context, { from, to }) {
       // splice is the recommended way to change an array member
