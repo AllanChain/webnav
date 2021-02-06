@@ -22,3 +22,11 @@ yarn-error.log*
 
 # Local https CA
 *.pem
+
+# Yarn 2
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*

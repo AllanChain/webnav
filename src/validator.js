@@ -5,7 +5,6 @@ import store from '@/store'
 let ajv = new Ajv({
   schemas: require('./schemas'),
   allErrors: true,
-  jsonPointers: true,
   verbose: true
 })
 require('ajv-errors')(ajv, {singleError: true})
