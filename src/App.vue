@@ -156,6 +156,7 @@
 </template>
 
 <script>
+import { version } from '../package.json'
 import WebNav from '@/components/WebNav'
 import Logo from '@/components/Logo'
 import DisAlert from '@/components/DisAlert'
@@ -183,7 +184,7 @@ export default {
       importDialog: false,
       query: '',
       drawer: false,
-      version: process.env.VUE_APP_VERSION,
+      version,
       textFocus: false,
       autofilled: false
     }
