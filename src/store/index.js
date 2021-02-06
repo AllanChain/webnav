@@ -81,33 +81,30 @@ export default new Vuex.Store({
         config = require('@/defaults/config.json')
         localStorage.setItem('config', JSON.stringify(config))
         result = {
-          text: 'message.configInit',
+          text: app.$t('message.config-init'),
           type: 'success'
         }
       } else if (!validate('/config', config, true)) {
         const defaultConfig = require('@/defaults/config.json')
         config = require('deepmerge')(defaultConfig, config)
-        if (!validate('/config', config, true)) {
+        if (!validate('/config', config)) {
           config = defaultConfig
           result = {
-            text: 'message.configError',
+            text: app.$t('message.config-error'),
             type: 'error',
             delay: 12000
           }
         } else {
           localStorage.setItem('config', JSON.stringify(config))
           result = {
-            text: 'message.configUpdate',
+            text: app.$t('message.config-update'),
             type: 'success'
           }
         }
       }
       context.commit('updateConfig', { config, app })
       if (result !== undefined) {
-        context.commit('alert', {
-          text: app.$t(result.text),
-          type: result.type
-        })
+        context.commit('alert', result)
       }
     },
     reorder(context, { from, to }) {
