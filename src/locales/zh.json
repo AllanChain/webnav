@@ -45,7 +45,8 @@
       "dark-mode": "暗色模式",
       "http-icon": "允许加载 http 协议的图标",
       "link-preview": "使用 LinkPreview.net 的服务自动填写网页标题和图标。LinkPreview 也存在一定缺陷，不对任何情况适用。",
-      "link-preview-key": "LinkPreview Key"
+      "link-preview-key": "LinkPreview Key",
+      "prefer-new-tab": "在新标签页打开网页"
     },
     "title": "配置 WebNav",
     "locale-default": "系统默认"

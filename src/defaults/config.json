@@ -14,5 +14,6 @@
     "httpIcon": false,
     "locale": "",
     "dark": false,
-    "linkPreviewKey": ""
+    "linkPreviewKey": "",
+    "preferNewTab": false
 }

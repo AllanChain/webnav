@@ -9,7 +9,8 @@
         "httpIcon",
         "locale",
         "dark",
-        "linkPreviewKey"
+        "linkPreviewKey",
+        "preferNewTab"
     ],
     "additionalProperties": false,
     "properties": {
@@ -79,6 +80,9 @@
         },
         "linkPreviewKey": {
             "type": "string"
+        },
+        "preferNewTab": {
+            "type": "boolean"
         }
     }
 }

@@ -196,6 +196,11 @@
                     {{ $t('config.other.http-icon') }}
                   </template>
                 </v-switch>
+                <v-switch v-model="config.preferNewTab">
+                  <template #label>
+                    {{ $t('config.other.prefer-new-tab') }}
+                  </template>
+                </v-switch>
               </v-col>
               <v-col cols="12" md="5">
                 <h2 class="mb-2">

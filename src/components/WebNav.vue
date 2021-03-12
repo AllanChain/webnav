@@ -74,7 +74,9 @@ export default {
       ))
     },
     goURL(url) {
-      window.location.href = url
+      if (this.$store.state.config.preferNewTab)
+        window.open(url,'_blank', 'noopener,noreferrer');
+      else window.location.href = url
     }
   }
 }

@@ -33,7 +33,8 @@
       "dark-mode": "Dark Mode",
       "http-icon": "Allow icon served over http",
       "link-preview": "Use LinkPreview.net service to automatically fill in website title and icon. LinkPreview has some limitaions which means it does not work in every situation.",
-      "link-preview-key": "LinkPreview Key"
+      "link-preview-key": "LinkPreview Key",
+      "prefer-new-tab": "Open web pages in a new tab"
     },
     "bg": {
       "blur": "Blur",
