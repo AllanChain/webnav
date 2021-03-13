@@ -95,8 +95,9 @@ export default {
           self.findIndex(t => bookmarkMatch(t, m)) === index &&
           this.$store.state.bookmarks.findIndex(
             t => bookmarkMatch(t, m)) === -1)
-      bookmarks.forEach((b, i) =>
-        b.index = i + this.$store.state.bookmarks.length)
+      bookmarks.forEach((b, i) => {
+        b.index = i + this.$store.state.bookmarks.length
+      })
       await this.$store.dispatch('addAll', bookmarks)
       this.$store.commit('alert', {
         text: this.$tc('message.import-success', bookmarks.length),

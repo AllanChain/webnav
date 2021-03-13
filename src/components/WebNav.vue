@@ -53,7 +53,6 @@
 </template>
 
 <script>
-import url from 'url'
 import WebsiteIcon from '@/components/WebsiteIcon'
 
 export default {
@@ -68,10 +67,10 @@ export default {
   },
   methods: {
     goSearch (bookmark) {
-      this.goURL(url.resolve(
-        bookmark.url,
-        bookmark.search.replace('{}', this.query)
-      ))
+      this.goURL(new URL(
+        bookmark.search.replace('{}', this.query),
+        bookmark.url
+      ).href)
     },
     goURL (url) {
       if (this.$store.state.config.preferNewTab)
