@@ -57,6 +57,7 @@
     "help": "帮助",
     "press": "点击",
     "camera-scan": "打开摄像头扫描",
-    "upload-scan": "扫描上传的图片"
+    "upload-scan": "扫描上传的图片",
+    "empty-content": "未发现二维码"
   }
 }

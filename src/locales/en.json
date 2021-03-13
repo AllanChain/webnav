@@ -57,6 +57,7 @@
     "help": "Help",
     "press": "Press",
     "camera-scan": "open camera and scan",
-    "upload-scan": "upload an image and scan"
+    "upload-scan": "upload an image and scan",
+    "empty-content": "No QR code found"
   }
 }

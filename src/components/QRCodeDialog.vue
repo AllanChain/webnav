@@ -12,7 +12,7 @@
             {{ $t('qr.title') }}
           </v-toolbar-title>
           <v-spacer />
-          <qrcode-capture ref="file" class="d-none" @decode="onDecode" />
+          <qrcode-capture ref="file" class="d-none" @detect="onDetect" />
           <v-btn icon @click="triggerUpload">
             <v-icon color="orange lighten-2">
               mdi-file-upload-outline
@@ -38,7 +38,7 @@
       <v-card-text class="pa-0">
         <qrcode-stream
           class="qrcode-stream" :camera="camera"
-          @decode="onDecode" @init="onInit"
+          @detect="onDetect" @init="onInit"
         >
           <v-overlay v-if="!!result" v-bind="overlayProps">
             <h2>{{ $t('qr.result') }}</h2>
@@ -104,9 +104,17 @@ export default {
       this.camera = 'auto'
       this.result = null
     },
-    async onDecode (content) {
+    async onDetect (promise) {
       this.camera = 'off'
-      this.result = content
+      try {
+        const { content } = await promise
+        if (content === null)
+          this.$store.commit('alert', this.$t('qr.empty-content'))
+        else
+          this.result = content
+      } catch (err) {
+        this.$store.commit('alert', err.message)
+      }
     },
     triggerUpload () {
       this.camera = 'off'
