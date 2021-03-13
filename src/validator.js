@@ -2,12 +2,12 @@ import Ajv from 'ajv'
 import pointer from 'json-pointer'
 import store from '@/store'
 
-let ajv = new Ajv({
+const ajv = new Ajv({
   schemas: require('./schemas'),
   allErrors: true,
   verbose: true
 })
-require('ajv-errors')(ajv, {singleError: true})
+require('ajv-errors')(ajv, { singleError: true })
 
 export default (schema, payload, quiet) => {
   const validate = ajv.getSchema(schema)

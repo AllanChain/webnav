@@ -97,14 +97,14 @@ export default {
   components: {
     WebsiteIcon
   },
-  data() {
+  data () {
     return {
       bookmark: JSON.parse(JSON.stringify(this.$store.state.modeData)),
       linkPreviewLoading: false
     }
   },
   methods: {
-    done() {
+    done () {
       if (!validate('/bookmark', this.bookmark))
         return
       if (this.bookmark.id)
@@ -117,11 +117,11 @@ export default {
       })
       this.$emit('input', false)
     },
-    deleteThis() {
+    deleteThis () {
       this.$store.dispatch('delete', this.bookmark)
       this.$emit('input', false)
     },
-    async linkPreview() {
+    async linkPreview () {
       this.linkPreviewLoading = true
       const response = await fetch('https://api.linkpreview.net', {
         method: 'POST',
@@ -129,7 +129,7 @@ export default {
         body: JSON.stringify({
           key: this.$store.state.config.linkPreviewKey,
           q: this.bookmark.url
-        }),
+        })
       })
       const previewData = await response.json()
       this.linkPreviewLoading = false

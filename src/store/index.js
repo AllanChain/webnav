@@ -17,14 +17,14 @@ export default new Vuex.Store({
     config: {}
   },
   mutations: {
-    switchMode(state, payload) {
+    switchMode (state, payload) {
       state.mode = payload.mode || payload
       state.modeData = payload.data
     },
-    swUpdate(state, status) {
+    swUpdate (state, status) {
       state.swStatus = status
     },
-    updateConfig(state, payload) {
+    updateConfig (state, payload) {
       state.config = payload.config
       payload.app.$i18n.locale = (
         payload.config.locale ||
@@ -34,7 +34,7 @@ export default new Vuex.Store({
       if (payload.write === true)
         localStorage.setItem('config', JSON.stringify(payload.config))
     },
-    alert(state, payload) {
+    alert (state, payload) {
       if (typeof payload === 'string') {
         state.messages.push({
           text: payload,
@@ -45,11 +45,11 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    async init(context, app) {
+    async init (context, app) {
       context.dispatch('initConfig', app)
       let newcomer = false
       db = await openDB('BookmarkDB', 1, {
-        upgrade(db) {
+        upgrade (db) {
           newcomer = true
           db.createObjectStore('bookmarks', {
             autoIncrement: true,
@@ -59,7 +59,7 @@ export default new Vuex.Store({
       })
       if (newcomer) {
         const bookmarks = require('@/defaults/bookmarks.json')
-        bookmarks.forEach((b, i) => b.index = i)
+        bookmarks.forEach((b, i) => { b.index = i })
         context.dispatch('addAll', bookmarks)
         context.commit('alert', {
           text: app.$t('message.bookmark-init'),
@@ -74,7 +74,7 @@ export default new Vuex.Store({
      * Thus need result insted of commit.
      * @param {*} context
      */
-    initConfig(context, app) {
+    initConfig (context, app) {
       let result
       let config = JSON.parse(localStorage.getItem('config'))
       if (config === null) { // Beginner friendly
@@ -106,7 +106,7 @@ export default new Vuex.Store({
       if (result !== undefined)
         context.commit('alert', result)
     },
-    reorder(context, { from, to }) {
+    reorder (context, { from, to }) {
       // splice is the recommended way to change an array member
       // and it returns replaced members
       context.state.bookmarks.splice(
@@ -116,27 +116,27 @@ export default new Vuex.Store({
       )
       context.dispatch('reIndex')
     },
-    sortIndex(context) {
+    sortIndex (context) {
       context.state.bookmarks = context.state.bookmarks.sort(
         (a, b) => a.index - b.index
       )
     },
-    reIndex(context) {
+    reIndex (context) {
       context.state.bookmarks.forEach(
         (bookmark, index) => { bookmark.index = index }
       )
     },
-    async add(context, bookmark) {
+    async add (context, bookmark) {
       await db.add('bookmarks', bookmark)
       await context.dispatch('refresh') // fetch from db to get their id
     },
-    async addAll(context, bookmarks) {
+    async addAll (context, bookmarks) {
       await Promise.all(
         bookmarks.map(bookmark => db.add('bookmarks', bookmark))
       )
       await context.dispatch('refresh')
     },
-    async put(context, bookmark) {
+    async put (context, bookmark) {
       await db.put('bookmarks', bookmark)
       context.state.bookmarks.splice(bookmark.index, 1, bookmark)
     },
@@ -144,7 +144,7 @@ export default new Vuex.Store({
      *
      * No need to refresh because using state.bookmarks
      */
-    async putAll(context) {
+    async putAll (context) {
       await Promise.all(
         context.state.bookmarks.map(
           bookmark => db.put('bookmarks', bookmark)
@@ -153,17 +153,17 @@ export default new Vuex.Store({
     // Index will not be continous after delete,
     // making other assumptions invalid.
     // Let's just reindex
-    async delete(context, bookmark) {
+    async delete (context, bookmark) {
       await db.delete('bookmarks', bookmark.id)
       context.state.bookmarks.splice(bookmark.index, 1)
       await context.dispatch('reIndex')
       await context.dispatch('putAll')
     },
-    async clear(context) {
+    async clear (context) {
       await db.clear('bookmarks')
       context.state.bookmarks = []
     },
-    async refresh(context) {
+    async refresh (context) {
       context.state.bookmarks = await db.getAll('bookmarks')
       await context.dispatch('sortIndex')
     }

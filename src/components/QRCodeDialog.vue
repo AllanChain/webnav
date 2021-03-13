@@ -83,11 +83,11 @@ export default {
     }
   },
   computed: {
-    isLink() {
+    isLink () {
       return this.result && this.result.startsWith('http')
     }
   },
-  mounted() {
+  mounted () {
     const fileInput = this.$refs.file.$el
     fileInput.removeAttribute('capture')
     fileInput.removeAttribute('multiple')
@@ -108,12 +108,12 @@ export default {
       this.camera = 'off'
       this.result = content
     },
-    triggerUpload() {
+    triggerUpload () {
       this.camera = 'off'
       this.result = null
       this.$refs.file.$el.click()
     },
-    async copy() {
+    async copy () {
       try {
         await navigator.clipboard.writeText(this.result)
         this.$store.commit('alert', {

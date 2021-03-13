@@ -1,9 +1,9 @@
-let plugins = []
+const plugins = []
 if (process.env.WEBPACK_STATS) {
   const { StatsWriterPlugin } = require('webpack-stats-plugin')
   plugins.push(new StatsWriterPlugin({
     fields: null,
-    stats: {chunkModules: true}
+    stats: { chunkModules: true }
   }))
 }
 

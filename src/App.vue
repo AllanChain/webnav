@@ -164,21 +164,21 @@ import DisAlert from '@/components/DisAlert'
 export default {
   name: 'App',
   components: {
-    'ImportDialog': () =>
+    ImportDialog: () =>
       import(/* webpackChunkName: "import" */ '@/components/ImportDialog'),
-    'EditDialog': () =>
+    EditDialog: () =>
       import(/* webpackChunkName: "edit" */ '@/components/EditDialog'),
-    'ReorderDialog': () =>
+    ReorderDialog: () =>
       import(/* webpackChunkName: "reorder" */ '@/components/ReorderDialog'),
-    'ConfigDialog': () =>
+    ConfigDialog: () =>
       import(/* webpackChunkName: "config" */ '@/components/ConfigDialog'),
-    'QRCodeDialog': () =>
+    QRCodeDialog: () =>
       import(/* webpackChunkName: "qrcode" */ '@/components/QRCodeDialog'),
     WebNav,
     Logo,
     DisAlert
   },
-  data() {
+  data () {
     return {
       install: null,
       importDialog: false,
@@ -190,25 +190,25 @@ export default {
     }
   },
   computed: {
-    showBtn() {
+    showBtn () {
       if (window.innerWidth >= 550) return true
       if (this.textFocus || this.query) return false
       return true
     }
   },
-  async created() {
+  async created () {
     window.addEventListener('beforeinstallprompt', this.installPrompt)
     await this.$store.dispatch('init', this)
   },
-  destroyed() {
+  destroyed () {
     window.removeEventListener('beforeinstallprompt', this.installPrompt)
   },
   methods: {
-    installPrompt(e) {
+    installPrompt (e) {
       e.preventDefault()
       this.install = e
     },
-    newBookmark() {
+    newBookmark () {
       this.$store.commit({
         type: 'switchMode',
         mode: 'edit-dialog',
@@ -219,9 +219,9 @@ export default {
         }
       })
     },
-    downloadJSON() {
+    downloadJSON () {
       // Copy and delete `id` and `index` field
-      let bookmarks = JSON.parse(JSON.stringify(this.$store.state.bookmarks))
+      const bookmarks = JSON.parse(JSON.stringify(this.$store.state.bookmarks))
       bookmarks.forEach(m => {
         delete m.id
         delete m.index
@@ -234,11 +234,11 @@ export default {
         encodeURIComponent(JSON.stringify(bookmarks, null, 4))
       this.$refs.downloadLink.click()
     },
-    confirmClear() {
+    confirmClear () {
       if (prompt(this.$t('message.clear-warn')) === 'CLEAR')
         this.$store.dispatch('clear')
     },
-    handleAutofill() {
+    handleAutofill () {
       if (!this.autofilled) {
         this.query = this.$refs.text.$refs.input.value
         this.autofilled = true

@@ -225,14 +225,14 @@
 import validate from '@/validator'
 
 export default {
-  data() {
+  data () {
     return {
       tab: 0,
       config: JSON.parse(JSON.stringify(this.$store.state.config))
     }
   },
   methods: {
-    done() {
+    done () {
       if (validate('/config', this.config)) {
         this.$store.commit('updateConfig', {
           config: this.config,
@@ -242,7 +242,7 @@ export default {
         this.$emit('input', false)
       }
     },
-    importFromFile(e) {
+    importFromFile (e) {
       const file = e.target.files[0]
       const reader = new FileReader()
       reader.onload = async e => {
@@ -257,7 +257,7 @@ export default {
       }
       reader.readAsText(file)
     },
-    downloadJSON() {
+    downloadJSON () {
       const timeStr = new Date()
         .toJSON()
         .slice(0, -8)

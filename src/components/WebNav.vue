@@ -58,7 +58,7 @@ import WebsiteIcon from '@/components/WebsiteIcon'
 
 export default {
   components: {
-    WebsiteIcon,
+    WebsiteIcon
   },
   props: {
     query: {
@@ -67,15 +67,15 @@ export default {
     }
   },
   methods: {
-    goSearch(bookmark) {
+    goSearch (bookmark) {
       this.goURL(url.resolve(
         bookmark.url,
         bookmark.search.replace('{}', this.query)
       ))
     },
-    goURL(url) {
+    goURL (url) {
       if (this.$store.state.config.preferNewTab)
-        window.open(url,'_blank', 'noopener,noreferrer');
+        window.open(url, '_blank', 'noopener,noreferrer')
       else window.location.href = url
     }
   }

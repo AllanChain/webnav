@@ -18,20 +18,20 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       index: this.$store.state.modeData
     }
   },
   methods: {
-    reorder(newIndex) {
+    reorder (newIndex) {
       this.$store.dispatch('reorder', {
         from: this.index,
         to: newIndex
       })
       this.index = newIndex
     },
-    async closeDialog() {
+    async closeDialog () {
       this.$store.commit('switchMode', 'normal')
       await this.$store.dispatch('putAll')
       this.$store.commit('alert', {

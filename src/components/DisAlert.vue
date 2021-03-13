@@ -20,20 +20,20 @@ export default {
       required: true
     }
   },
-  data() {
+  data () {
     return {
       show: true,
-      style: this.message.break ?
-        {wordBreak: 'break-all'} :
-        {hypens: 'auto'}
+      style: this.message.break
+        ? { wordBreak: 'break-all' }
+        : { hypens: 'auto' }
     }
   },
-  created() {
+  created () {
     setTimeout(this.close.bind(this),
                this.message.delay || 4000)
   },
   methods: {
-    close() {
+    close () {
       this.show = false
     }
   }

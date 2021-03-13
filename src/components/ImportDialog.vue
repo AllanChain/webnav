@@ -55,16 +55,16 @@ export default {
       default: false
     }
   },
-  data() {
+  data () {
     return {
       url: ''
     }
   },
   methods: {
-    async importFromCloud() {
+    async importFromCloud () {
       try {
-        let response = await fetch(this.url)
-        let bookmarks = await response.json()
+        const response = await fetch(this.url)
+        const bookmarks = await response.json()
         this.importBookmarks(bookmarks)
       } catch (error) {
         this.$store.commit('alert', {
@@ -73,7 +73,7 @@ export default {
         })
       }
     },
-    importFromFile(e) {
+    importFromFile (e) {
       const file = e.target.files[0]
       // Clear input to let it fire for the same file
       e.target.value = null
@@ -84,7 +84,7 @@ export default {
       }
       reader.readAsText(file)
     },
-    async importBookmarks(bookmarks) {
+    async importBookmarks (bookmarks) {
       if (!validate('/bookmarks', bookmarks)) {
         this.$emit('input', false)
         return

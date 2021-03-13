@@ -3,7 +3,11 @@ module.exports = {
   env: {
     node: true
   },
-  extends: ['eslint:recommended', 'plugin:vue/recommended'],
+  extends: [
+    'plugin:vue/essential',
+    'eslint:recommended',
+    '@vue/standard'
+  ],
   rules: {
     'vue/max-attributes-per-line': [
       'error',
@@ -20,10 +24,10 @@ module.exports = {
       2,
       {
         CallExpression: { arguments: 'first' },
-        ignoredNodes: [ 'TemplateLiteral' ]
+        ignoredNodes: ['TemplateLiteral']
       }
     ],
-    'template-curly-spacing' : 'off',
+    'template-curly-spacing': 'off',
     'space-infix-ops': 'warn',
     curly: ['warn', 'multi-or-nest'],
     'space-before-blocks': 'warn',

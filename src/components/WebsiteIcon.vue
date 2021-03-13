@@ -19,7 +19,7 @@ export default {
       default: '2rem'
     }
   },
-  data() {
+  data () {
     return {
       image: {}
     }
@@ -28,7 +28,7 @@ export default {
     bookmark: {
       deep: true,
       immediate: true,
-      handler(bookmark) {
+      handler (bookmark) {
         const cors = this.$store.state.config.cors
         let src = cors + resolveUrl(bookmark.url, bookmark.icon || '/favicon.ico')
         // Fail image serve over http if configured
