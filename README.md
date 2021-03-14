@@ -1,25 +1,33 @@
-# webnav
+# WebNav
 ![.github/workflows/gh-pages.yml](https://github.com/AllanChain/webnav/workflows/.github/workflows/gh-pages.yml/badge.svg?branch=master)
-## What can it do
 
-- read website info from a json file
-- search box utility
-    - type search query in the search box
-    - press corresponding website icon
-    - and you can search that website
-    - if you *did not enter the query or search url not set*, you will be navigated to that website as usual
+A good start page for web navigation.
+
+Try it out at https://allanchain.github.io/webnav/
+
+## Features
+
+- Import and export bookmarks and config via JSON files
+- Easy editing site's icon, display name and search query
+- Works with LinkPreview, for even easier icon and name editing
+- Easy reordering
+- Easy searching in any sites, as long as configured
+- Highly customisable
+
 
 ## JSON file
 
-[schema](src/bookmark.schema.json)
+It is possible to host your own bookmarks:
+
+[schema](src/schemas/bookmark.schema.json)
 
 ```json
 [
     {
-        "title": "Google",
-        "url": "https://www.google.com",
-        "search": "search?q=",
-        "icon": "icon/Google.ico"
+        "title": "Pypi",
+        "url": "https://pypi.org",
+        "search": "/search?q={}",
+        "icon": "https://pypi.org/static/images/favicon.6a76275d.ico"
     }
 ]
 ```
@@ -29,26 +37,27 @@
 - [X] Solve damn cross site and https issue (AS LONG AS YOU FIND A GOOD PROXY)
 - [X] Edit order
 - [X] Config dialog
-- [ ] Error handling
+- [X] Error handling
+- [ ] Upload Background image
 
 ## Project setup
 ```bash
-npm install
+yarn
 
 # Compiles and hot-reloads for development
-npm run serve
+yarn serve
 
 # Compiles and minifies for production
-npm run build
+yarn build
 
 # Lints and fixes files
-npm run lint
+yarn lint
 
 # New version
 ## Also push tags
 git config --global push.followTags true
 ## patch, minor and major version changes
-npm version patch
-npm version minor
-npm version major
+yarn version patch
+yarn version minor
+yarn version major
 ```
