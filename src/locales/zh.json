@@ -58,6 +58,6 @@
     "press": "点击",
     "camera-scan": "打开摄像头扫描",
     "upload-scan": "扫描上传的图片",
-    "empty-content": "未发现二维码"
+    "empty-content": "扫描二维码失败"
   }
 }

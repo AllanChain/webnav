@@ -12,7 +12,13 @@
             {{ $t('qr.title') }}
           </v-toolbar-title>
           <v-spacer />
-          <qrcode-capture ref="file" class="d-none" @detect="onDetect" />
+          <qrcode-capture
+            ref="file"
+            class="d-none"
+            @detect="onDetect"
+            :multiple="false"
+            :capture="null"
+          />
           <v-btn icon @click="triggerUpload">
             <v-icon color="orange lighten-2">
               mdi-file-upload-outline
@@ -86,11 +92,6 @@ export default {
     isLink () {
       return this.result && this.result.startsWith('http')
     }
-  },
-  mounted () {
-    const fileInput = this.$refs.file.$el
-    fileInput.removeAttribute('capture')
-    fileInput.removeAttribute('multiple')
   },
   methods: {
     async onInit (promise) {
