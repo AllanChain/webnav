@@ -44,6 +44,9 @@ It is possible to host your own bookmarks:
 ```bash
 yarn
 
+# Setup vscode in yarn 2
+yarn pnpify --sdk vscode
+
 # Compiles and hot-reloads for development
 yarn serve
 
