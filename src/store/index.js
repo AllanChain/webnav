@@ -136,6 +136,10 @@ export default new Vuex.Store({
       )
       await context.dispatch('refresh')
     },
+    async clearAndAddAll (context, bookmarks) {
+      await db.clear('bookmarks')
+      await context.dispatch('addAll', bookmarks)
+    },
     async put (context, bookmark) {
       await db.put('bookmarks', bookmark)
       context.state.bookmarks.splice(bookmark.index, 1, bookmark)

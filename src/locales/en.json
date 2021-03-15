@@ -59,5 +59,8 @@
     "camera-scan": "open camera and scan",
     "upload-scan": "upload an image and scan",
     "empty-content": "Fail to scan QR code"
+  },
+  "import": {
+    "overwrite": "Overwrite existing bookmarks"
   }
 }

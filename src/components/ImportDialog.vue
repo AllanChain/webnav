@@ -14,6 +14,15 @@
             />
           </v-row>
           <v-row>
+            <v-switch
+             v-model="overwrite"
+             dense
+             hide-details
+             class="ml-4 mt-0"
+              :label="$t('import.overwrite')"
+              />
+          </v-row>
+          <v-row>
             <v-col cols="4" class="text-center">
               <v-btn fab small color="indigo lighten-1" @click="$refs.file.click()">
                 <v-icon>mdi-file-upload-outline</v-icon>
@@ -57,7 +66,8 @@ export default {
   },
   data () {
     return {
-      url: ''
+      url: '',
+      overwrite: false
     }
   },
   methods: {
@@ -90,15 +100,23 @@ export default {
         return
       }
       // https://stackoverflow.com/a/36744732/8810271
-      bookmarks = bookmarks.filter(
-        (m, index, self) =>
-          self.findIndex(t => bookmarkMatch(t, m)) === index &&
-          this.$store.state.bookmarks.findIndex(
-            t => bookmarkMatch(t, m)) === -1)
-      bookmarks.forEach((b, i) => {
-        b.index = i + this.$store.state.bookmarks.length
-      })
-      await this.$store.dispatch('addAll', bookmarks)
+      bookmarks = bookmarks.filter((m, index, self) =>
+        self.findIndex(t => bookmarkMatch(t, m)) === index
+      )
+
+      if (this.overwrite) {
+        bookmarks.forEach((b, i) => { b.index = i })
+        await this.$store.dispatch('clearAndAddAll', bookmarks)
+      } else {
+        bookmarks = bookmarks = bookmarks.filter(m =>
+          this.$store.state.bookmarks.findIndex(t => bookmarkMatch(t, m)) === -1
+        )
+        bookmarks.forEach((b, i) => {
+          b.index = i + this.$store.state.bookmarks.length
+        })
+        await this.$store.dispatch('addAll', bookmarks)
+      }
+
       this.$store.commit('alert', {
         text: this.$tc('message.import-success', bookmarks.length),
         type: 'success'
