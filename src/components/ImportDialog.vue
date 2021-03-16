@@ -15,12 +15,12 @@
           </v-row>
           <v-row>
             <v-switch
-             v-model="overwrite"
-             dense
-             hide-details
-             class="ml-4 mt-0"
+              v-model="overwrite"
+              dense
+              hide-details
+              class="ml-4 mt-0"
               :label="$t('import.overwrite')"
-              />
+            />
           </v-row>
           <v-row>
             <v-col cols="4" class="text-center">

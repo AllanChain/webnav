@@ -15,9 +15,9 @@
           <qrcode-capture
             ref="file"
             class="d-none"
-            @detect="onDetect"
             :multiple="false"
             :capture="null"
+            @detect="onDetect"
           />
           <v-btn icon @click="triggerUpload">
             <v-icon color="orange lighten-2">
