@@ -131,6 +131,7 @@
                 <v-switch
                   v-model="config.blackText"
                   class="mt-0"
+                  hide-details
                   :label="config.blackText ? $t('config.bg.black-text') : $t('config.bg.white-text')"
                 />
               </v-col>
@@ -188,19 +189,20 @@
                   :label="$t('config.other.link-preview-key')"
                   placeholder="e.g. 123456abcdfe"
                   clearable
+                  hide-details
                   outlined
                   dense
                 />
-                <v-switch v-model="config.httpIcon">
-                  <template #label>
-                    {{ $t('config.other.http-icon') }}
-                  </template>
-                </v-switch>
-                <v-switch v-model="config.preferNewTab">
-                  <template #label>
-                    {{ $t('config.other.prefer-new-tab') }}
-                  </template>
-                </v-switch>
+                <v-switch
+                  v-model="config.httpIcon"
+                  hide-details=""
+                  :label="$t('config.other.http-icon')"
+                />
+                <v-switch
+                  v-model="config.preferNewTab"
+                  hide-details
+                  :label="$t('config.other.prefer-new-tab')"
+                />
               </v-col>
               <v-col cols="12" md="5">
                 <h2 class="mb-2">
