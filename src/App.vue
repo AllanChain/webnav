@@ -199,6 +199,14 @@ export default {
     ...mapState('config', ['config']),
     ...mapState('db/bookmarks', ['bookmarks'])
   },
+  watch: {
+    'config.dark': {
+      immediate: true,
+      handler (dark) {
+        this.$vuetify.theme.dark = dark
+      }
+    }
+  },
   async created () {
     window.addEventListener('beforeinstallprompt', this.installPrompt)
     await this.$store.dispatch('init', this)

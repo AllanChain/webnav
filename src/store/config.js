@@ -1,6 +1,5 @@
 import validate from '@/validator'
 import i18n from '@/plugins/vue-i18n'
-import vuetify from '@/plugins/vuetify'
 
 export default {
   namespaced: true,
@@ -14,7 +13,6 @@ export default {
         config.locale ||
         navigator.language.slice(0, 2)
       )
-      vuetify.preset.theme.dark = config.dark
       if (write === true)
         localStorage.setItem('config', JSON.stringify(config))
     }
