@@ -13,6 +13,7 @@ Try it out at https://allanchain.github.io/webnav/
 - Easy reordering
 - Easy searching in any sites, as long as configured
 - Highly customisable
+- Able to add proxy
 
 
 ## JSON file
@@ -33,14 +34,21 @@ It is possible to host your own bookmarks:
 ```
 
 ## TODO
-- [X] Better bookmark editing
-- [X] Solve damn cross site and https issue (AS LONG AS YOU FIND A GOOD PROXY)
-- [X] Edit order
-- [X] Config dialog
-- [X] Error handling
-- [ ] Upload Background image
+
+See [the project](https://github.com/AllanChain/webnav/projects/1?fullscreen=true)
 
 ## Project setup
+
+VSCode i18n-ally
+
+```json
+{
+  "i18n-ally.localesPaths": "src/locales",
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.sourceLanguage": "en"
+}
+```
+
 ```bash
 yarn
 
