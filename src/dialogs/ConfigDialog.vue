@@ -64,7 +64,7 @@
                       position: 'absolute',
                       color: config.blackText ? '#000' : '#eee',
                       textShadow: `1px 1px 3px
-            ${config.blackText ? '#eee' : '#000'}`
+                        ${config.blackText ? '#eee' : '#000'}`
                     }"
                   >
                     {{ $t('config.bg.example-text').repeat(20) }}

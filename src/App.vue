@@ -166,15 +166,15 @@ export default {
   name: 'App',
   components: {
     ImportDialog: () =>
-      import(/* webpackChunkName: "import" */ '@/components/ImportDialog'),
+      import(/* webpackChunkName: "import" */ '@/dialogs/ImportDialog'),
     EditDialog: () =>
-      import(/* webpackChunkName: "edit" */ '@/components/EditDialog'),
+      import(/* webpackChunkName: "edit" */ '@/dialogs/EditDialog'),
     ReorderDialog: () =>
-      import(/* webpackChunkName: "reorder" */ '@/components/ReorderDialog'),
+      import(/* webpackChunkName: "reorder" */ '@/dialogs/ReorderDialog'),
     ConfigDialog: () =>
-      import(/* webpackChunkName: "config" */ '@/components/ConfigDialog'),
+      import(/* webpackChunkName: "config" */ '@/dialogs/ConfigDialog'),
     QRCodeDialog: () =>
-      import(/* webpackChunkName: "qrcode" */ '@/components/QRCodeDialog'),
+      import(/* webpackChunkName: "qrcode" */ '@/dialogs/QRCodeDialog'),
     WebNav,
     Logo,
     DisAlert
