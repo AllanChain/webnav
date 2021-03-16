@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app :color="$store.state.config.barColor" dark>
+    <v-app-bar app :color="config.barColor" dark>
       <v-app-bar-nav-icon @click="drawer = !drawer" />
       <v-text-field
         ref="text"
@@ -38,18 +38,18 @@
     </v-app-bar>
     <v-main
       :style="{
-        backgroundColor: $store.state.config.bgImg.filter.blurColor
+        backgroundColor: config.bgImg.filter.blurColor
       }"
     >
       <div
         class="bg-image"
         :style="{
-          backgroundImage: `url(${$store.state.config.bgImg.url})`,
+          backgroundImage: `url(${config.bgImg.url})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          filter: `blur(${$store.state.config.bgImg.filter.blur}px)
-            contrast(${$store.state.config.bgImg.filter.contrast}%)
-            grayscale(${$store.state.config.bgImg.filter.grayscale}%)`}"
+          filter: `blur(${config.bgImg.filter.blur}px)
+            contrast(${config.bgImg.filter.contrast}%)
+            grayscale(${config.bgImg.filter.grayscale}%)`}"
       />
       <div class="mt-3 mx-2 alert-box">
         <DisAlert
@@ -160,6 +160,7 @@ import { version } from '../package.json'
 import WebNav from '@/components/WebNav'
 import Logo from '@/components/Logo'
 import DisAlert from '@/components/DisAlert'
+import { mapState } from 'vuex'
 
 export default {
   name: 'App',
@@ -194,7 +195,9 @@ export default {
       if (window.innerWidth >= 550) return true
       if (this.textFocus || this.query) return false
       return true
-    }
+    },
+    ...mapState('config', ['config']),
+    ...mapState('db/bookmarks', ['bookmarks'])
   },
   async created () {
     window.addEventListener('beforeinstallprompt', this.installPrompt)
@@ -215,13 +218,13 @@ export default {
         data: {
           title: '',
           url: '',
-          index: this.$store.state.bookmarks.length
+          index: this.bookmarks.length
         }
       })
     },
     downloadJSON () {
       // Copy and delete `id` and `index` field
-      const bookmarks = JSON.parse(JSON.stringify(this.$store.state.bookmarks))
+      const bookmarks = JSON.parse(JSON.stringify(this.bookmarks))
       bookmarks.forEach(m => {
         delete m.id
         delete m.index

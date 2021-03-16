@@ -71,7 +71,7 @@
           dense
         />
       </v-card-text>
-      <v-card-actions v-if="$store.state.config.linkPreviewKey" class="pt-0">
+      <v-card-actions v-if="config.linkPreviewKey" class="pt-0">
         <v-spacer />
         <v-btn
           text
@@ -92,6 +92,7 @@
 import RelateUrl from 'relateurl'
 import WebsiteIcon from '@/components/WebsiteIcon'
 import validate from '@/validator'
+import { mapState } from 'vuex'
 
 export default {
   components: {
@@ -102,6 +103,9 @@ export default {
       bookmark: JSON.parse(JSON.stringify(this.$store.state.modeData)),
       linkPreviewLoading: false
     }
+  },
+  computed: {
+    ...mapState('config', ['config'])
   },
   methods: {
     done () {
@@ -127,7 +131,7 @@ export default {
         method: 'POST',
         mode: 'cors',
         body: JSON.stringify({
-          key: this.$store.state.config.linkPreviewKey,
+          key: this.config.linkPreviewKey,
           q: this.bookmark.url
         })
       })

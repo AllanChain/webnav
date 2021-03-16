@@ -9,7 +9,7 @@
       track-color="indigo"
       thumb-label="always"
       :min="0"
-      :max="$store.state.bookmarks.length - 1"
+      :max="bookmarks.length - 1"
       @input="reorder"
     />
     <div style="width: 90vw;" />
@@ -17,11 +17,16 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   data () {
     return {
       index: this.$store.state.modeData
     }
+  },
+  computed: {
+    ...mapState('db/bookmarks', ['bookmarks'])
   },
   methods: {
     reorder (newIndex) {

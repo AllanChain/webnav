@@ -53,6 +53,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import validate from '@/validator'
 
 const bookmarkMatch = (t, m) => t.url === m.url && t.search === m.search
@@ -69,6 +70,9 @@ export default {
       url: '',
       overwrite: false
     }
+  },
+  computed: {
+    ...mapState('db/bookmarks', ['bookmarks'])
   },
   methods: {
     async importFromCloud () {
@@ -109,10 +113,10 @@ export default {
         await this.$store.dispatch('clearAndAddAll', bookmarks)
       } else {
         bookmarks = bookmarks = bookmarks.filter(m =>
-          this.$store.state.bookmarks.findIndex(t => bookmarkMatch(t, m)) === -1
+          this.bookmarks.findIndex(t => bookmarkMatch(t, m)) === -1
         )
         bookmarks.forEach((b, i) => {
-          b.index = i + this.$store.state.bookmarks.length
+          b.index = i + this.bookmarks.length
         })
         await this.$store.dispatch('addAll', bookmarks)
       }

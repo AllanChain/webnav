@@ -2,7 +2,7 @@
   <div class="text-center pt-5">
     <div style="max-width: 700px; margin: auto;">
       <div
-        v-for="bookmark in $store.state.bookmarks"
+        v-for="bookmark in bookmarks"
         :key="bookmark.id" class="box"
       >
         <div>
@@ -40,9 +40,9 @@
         <div
           class="url"
           :style="{
-            color: $store.state.config.blackText ? '#000' : '#eee',
+            color: config.blackText ? '#000' : '#eee',
             textShadow: `1px 1px 3px
-            ${$store.state.config.blackText ? '#eee' : '#000'}`
+            ${config.blackText ? '#eee' : '#000'}`
           }"
         >
           {{ bookmark.title }}
@@ -53,6 +53,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import WebsiteIcon from '@/components/WebsiteIcon'
 
 export default {
@@ -65,6 +66,10 @@ export default {
       required: true
     }
   },
+  computed: {
+    ...mapState('config', ['config']),
+    ...mapState('db/bookmarks', ['bookmarks'])
+  },
   methods: {
     goSearch (bookmark) {
       this.goURL(new URL(
@@ -73,7 +78,7 @@ export default {
       ).href)
     },
     goURL (url) {
-      if (this.$store.state.config.preferNewTab)
+      if (this.config.preferNewTab)
         window.open(url, '_blank', 'noopener,noreferrer')
       else window.location.href = url
     }

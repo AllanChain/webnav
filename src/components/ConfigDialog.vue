@@ -228,13 +228,13 @@ export default {
   data () {
     return {
       tab: 0,
-      config: JSON.parse(JSON.stringify(this.$store.state.config))
+      config: JSON.parse(JSON.stringify(this.$store.state.config.config))
     }
   },
   methods: {
     done () {
       if (validate('/config', this.config)) {
-        this.$store.commit('updateConfig', {
+        this.$store.commit('config/update', {
           config: this.config,
           app: this,
           write: true
