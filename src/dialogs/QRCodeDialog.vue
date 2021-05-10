@@ -49,7 +49,11 @@
           <v-overlay v-if="!!result" v-bind="overlayProps">
             <h2>{{ $t('qr.result') }}</h2>
             <p class="pt-2 qrcode-result">
-              <a v-if="isLink" :href="result">{{ result }}</a>
+              <a
+                v-if="isLink" :href="result"
+                :target="config.preferNewTab ? '_blank' : undefined"
+                rel="noopener noreferrer"
+              >{{ result }}</a>
               <b v-else>{{ result }}</b>
             </p>
           </v-overlay>
@@ -71,6 +75,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { QrcodeStream, QrcodeCapture } from 'vue-qrcode-reader'
 
 export default {
@@ -89,6 +94,7 @@ export default {
     }
   },
   computed: {
+    ...mapState('config', ['config']),
     isLink () {
       return this.result && this.result.startsWith('http')
     }
