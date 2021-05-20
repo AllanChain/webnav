@@ -19,7 +19,7 @@
     "clear-warn": "Type CLEAR to continue. Hope you have a backup.",
     "config-init": "WebNav config initiated",
     "config-error": "Auto upgrade config failed. Falling back to default. You can still download your previous config. To discard your config changes, just apply default config.",
-    "import-success": "No bookmark added | Successfully added {n} bookmark | Successfully added {n} bookmarks`",
+    "import-success": "No bookmark added | Successfully added {n} bookmark | Successfully added {n} bookmarks",
     "config-update": "Auto upgrade config success"
   },
   "config": {
