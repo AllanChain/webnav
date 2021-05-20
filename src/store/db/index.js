@@ -19,7 +19,7 @@ export default {
               autoIncrement: true,
               keyPath: 'id'
             })
-          } else if (oldVersion < 2) {
+          } if (oldVersion < 2) {
             db.createObjectStore('backgrounds', {
               keyPath: 'name'
             })
