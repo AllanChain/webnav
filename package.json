@@ -1,12 +1,13 @@
 {
   "name": "webnav",
-  "version": "0.17.1",
+  "version": "0.17.2",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "lint:css": "stylelint --fix src/**/*.vue"
+    "lint:css": "stylelint --fix src/**/*.vue",
+    "gitag": "node scripts/gitag.js"
   },
   "dependencies": {
     "ajv": "^7.0.4",
