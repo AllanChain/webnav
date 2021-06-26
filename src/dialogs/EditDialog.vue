@@ -112,9 +112,9 @@ export default {
       if (!validate('/bookmark', this.bookmark))
         return
       if (this.bookmark.id)
-        this.$store.dispatch('put', this.bookmark)
+        this.$store.dispatch('db/bookmarks/put', this.bookmark)
       else
-        this.$store.dispatch('add', this.bookmark)
+        this.$store.dispatch('db/bookmarks/add', this.bookmark)
       this.$store.commit('alert', {
         text: this.$t('message.success'),
         type: 'success'
@@ -122,7 +122,7 @@ export default {
       this.$emit('input', false)
     },
     deleteThis () {
-      this.$store.dispatch('delete', this.bookmark)
+      this.$store.dispatch('db/bookmarks/delete', this.bookmark)
       this.$emit('input', false)
     },
     async linkPreview () {

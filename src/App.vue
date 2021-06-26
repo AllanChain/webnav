@@ -247,7 +247,7 @@ export default {
     },
     confirmClear () {
       if (prompt(this.$t('message.clear-warn')) === 'CLEAR')
-        this.$store.dispatch('clear')
+        this.$store.dispatch('db/bookmarks/clear')
     },
     handleAutofill () {
       if (!this.autofilled) {

@@ -110,7 +110,7 @@ export default {
 
       if (this.overwrite) {
         bookmarks.forEach((b, i) => { b.index = i })
-        await this.$store.dispatch('clearAndAddAll', bookmarks)
+        await this.$store.dispatch('db/bookmarks/clearAndAddAll', bookmarks)
       } else {
         bookmarks = bookmarks = bookmarks.filter(m =>
           this.bookmarks.findIndex(t => bookmarkMatch(t, m)) === -1
@@ -118,7 +118,7 @@ export default {
         bookmarks.forEach((b, i) => {
           b.index = i + this.bookmarks.length
         })
-        await this.$store.dispatch('addAll', bookmarks)
+        await this.$store.dispatch('db/bookmarks/addAll', bookmarks)
       }
 
       this.$store.commit('alert', {

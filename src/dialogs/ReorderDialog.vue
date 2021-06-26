@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     reorder (newIndex) {
-      this.$store.dispatch('reorder', {
+      this.$store.dispatch('db/bookmarks/reorder', {
         from: this.index,
         to: newIndex
       })
@@ -38,7 +38,7 @@ export default {
     },
     async closeDialog () {
       this.$store.commit('switchMode', 'normal')
-      await this.$store.dispatch('putAll')
+      await this.$store.dispatch('db/bookmarks/putAll')
       this.$store.commit('alert', {
         text: 'Reordered!',
         type: 'success'
