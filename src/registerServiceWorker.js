@@ -38,27 +38,26 @@ register(`${process.env.BASE_URL}service-worker.js`, {
 })
 
 export const skipWaiting = () => {
-  const worker = registration?.waiting
-  if (!worker)
-    return Promise.resolve()
+  const newWorker = registration?.waiting
+  const oldWorker = registration?.active
+  if (!newWorker) return Promise.resolve()
 
   console.log('Doing worker.skipWaiting().')
-  return Promise.all([
-    // Wait at least 500 ms because Firefox resolves immediately
-    // while Chrome takes a while to resolve
-    new Promise(resolve => setTimeout(resolve, 500)),
-    new Promise((resolve, reject) => {
-      const channel = new MessageChannel()
+  // Abort revalidating connections because they block skipWaiting
+  // to actually take place (though Promise resolved immediately)
+  // Both FireFox and Chrome stucks here. In Chrome messages are stuck too.
+  oldWorker.postMessage({ type: 'abort-connections' })
+  return new Promise((resolve, reject) => {
+    const channel = new MessageChannel()
 
-      channel.port1.onmessage = (event) => {
-        console.log('Done worker.skipWaiting().')
-        if (event.data.error)
-          reject(event.data.error)
-        else
-          resolve(event.data)
-      }
+    channel.port1.onmessage = (event) => {
+      console.log('Done worker.skipWaiting().')
+      if (event.data.error)
+        reject(event.data.error)
+      else
+        resolve(event.data)
+    }
 
-      worker.postMessage({ type: 'skip-waiting' }, [channel.port2])
-    })
-  ])
+    newWorker.postMessage({ type: 'skip-waiting' }, [channel.port2])
+  })
 }
