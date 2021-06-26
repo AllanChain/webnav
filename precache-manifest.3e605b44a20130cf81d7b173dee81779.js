@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/webnav/config.json"
   },
   {
-    "revision": "4a0a963fa0028bce0b84",
+    "revision": "8d01cc680e3defc10dcc",
     "url": "/webnav/css/app.121a1ca7.css"
   },
   {
@@ -36,7 +36,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/webnav/css/qrcode.f8e56d68.css"
   },
   {
-    "revision": "e75291f240d6416c0aaa",
+    "revision": "23d94a48317ff5332640",
     "url": "/webnav/css/reorder.f4cd3df8.css"
   },
   {
@@ -44,12 +44,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/webnav/img/fallback.png"
   },
   {
-    "revision": "c7d714ca492b3588a5441406c286d2cf",
+    "revision": "3d162bf8b7f6e1a6676636eaacc3daf6",
     "url": "/webnav/index.html"
   },
   {
-    "revision": "4a0a963fa0028bce0b84",
-    "url": "/webnav/js/app.bfa614e5.js"
+    "revision": "8d01cc680e3defc10dcc",
+    "url": "/webnav/js/app.05b7dd73.js"
   },
   {
     "revision": "fab4baf7bb70495d6cfc",
@@ -68,20 +68,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/webnav/js/config~import.4cd6c358.js"
   },
   {
-    "revision": "2524065764d6d60a8bcf",
-    "url": "/webnav/js/edit.00c5464d.js"
+    "revision": "bcee97e3713f6d3c936b",
+    "url": "/webnav/js/edit.14ab1867.js"
   },
   {
-    "revision": "c9716c5ecbd2efa786b4",
-    "url": "/webnav/js/import.4ceca2db.js"
+    "revision": "84742a79a7ff31359da5",
+    "url": "/webnav/js/import.5d861d06.js"
   },
   {
     "revision": "4be8d06ed3bb19290d18",
     "url": "/webnav/js/qrcode.697ef818.js"
   },
   {
-    "revision": "e75291f240d6416c0aaa",
-    "url": "/webnav/js/reorder.3376df26.js"
+    "revision": "23d94a48317ff5332640",
+    "url": "/webnav/js/reorder.87370655.js"
   },
   {
     "revision": "9bd31e76ff5d46bcdcc2071318a84e8b",
