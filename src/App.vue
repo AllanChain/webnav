@@ -140,11 +140,15 @@
           </v-list-item-content>
         </v-list-item>
         <v-divider />
-        <v-list-item>
+        <v-list-item @click="upgradeApp">
           <v-list-item-content>
             <span>
               <v-icon small>
-                mdi-cogs
+                {{
+                  $store.state.swStatus === 'updated'
+                    ? 'mdi-cog-refresh'
+                    : 'mdi-cogs'
+                }}
               </v-icon>
               v{{ version }} - {{ $store.state.swStatus }}
             </span>
@@ -157,6 +161,7 @@
 
 <script>
 import { version } from '../package.json'
+import { skipWaiting } from './registerServiceWorker'
 import WebNav from '@/components/WebNav'
 import Logo from '@/components/Logo'
 import DisAlert from '@/components/DisAlert'
@@ -218,6 +223,12 @@ export default {
     installPrompt (e) {
       e.preventDefault()
       this.install = e
+    },
+    async upgradeApp () {
+      if (this.$store.state.swStatus === 'updated') {
+        await skipWaiting()
+        location.reload()
+      }
     },
     newBookmark () {
       this.$store.commit({

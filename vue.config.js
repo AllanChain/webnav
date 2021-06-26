@@ -34,23 +34,9 @@ module.exports = {
       start_url: '.',
       background_color: '#4c89fe'
     },
-    workboxPluginMode: 'GenerateSW',
+    workboxPluginMode: 'InjectManifest',
     workboxOptions: {
-      runtimeCaching: [
-        {
-          urlPattern: /.*/,
-          handler: 'StaleWhileRevalidate',
-          options: {
-            cacheName: 'webnav-AC',
-            expiration: {
-              maxAgeSeconds: 86400 * 15
-            },
-            cacheableResponse: {
-              statuses: [0, 200]
-            }
-          }
-        }
-      ]
+      swSrc: 'src/service-worker.js'
     }
   },
   transpileDependencies: ['vuetify']

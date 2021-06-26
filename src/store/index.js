@@ -13,7 +13,7 @@ export default new Vuex.Store({
   state: {
     mode: 'normal',
     modeData: undefined,
-    swStatus: '',
+    swStatus: 'pending',
     messages: []
   },
   mutations: {
