@@ -1,36 +1,36 @@
-/**
- * Welcome to your Workbox-powered service worker!
- *
- * You'll need to register this file in your web app and you should
- * disable HTTP caching for this file too.
- * See https://goo.gl/nhQhGp
- *
- * The rest of the code is auto-generated. Please don't update this file
- * directly; instead, make changes to your Workbox build configuration
- * and re-run your build process.
- * See https://goo.gl/2aRDsh
- */
+importScripts("/webnav/precache-manifest.d9bd92e5c757b86962788f342296b86e.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
-importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+/* global workbox */
 
-importScripts(
-  "/webnav/precache-manifest.3e605b44a20130cf81d7b173dee81779.js"
-);
+const controller = new AbortController()
 
-workbox.core.setCacheNameDetails({prefix: "webnav"});
+workbox.core.setCacheNameDetails({ prefix: 'webnav' })
 
-self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
-    self.skipWaiting();
-  }
-});
+self.addEventListener('message', event => {
+  const message = event.data
+  if (!message) return
+  if (message.type === 'skip-waiting')
+    self.skipWaiting()
+  else if (message.type === 'abort-connections')
+    controller.abort()
+})
 
-/**
- * The workboxSW.precacheAndRoute() method efficiently caches and responds to
- * requests for URLs in the manifest.
- * See https://goo.gl/S9QRab
- */
-self.__precacheManifest = [].concat(self.__precacheManifest || []);
-workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
+self.__precacheManifest = [].concat(self.__precacheManifest || [])
+workbox.precaching.precacheAndRoute(self.__precacheManifest, {})
 
-workbox.routing.registerRoute(/.*/, new workbox.strategies.StaleWhileRevalidate({ "cacheName":"webnav-AC", plugins: [new workbox.expiration.Plugin({ maxAgeSeconds: 1296000, purgeOnQuotaError: false }), new workbox.cacheableResponse.Plugin({ statuses: [ 0, 200 ] })] }), 'GET');
+workbox.routing.registerRoute(
+  /.*/,
+  new workbox.strategies.StaleWhileRevalidate({
+    cacheName: 'webnav-AC',
+    fetchOptions: { signal: controller.signal },
+    plugins: [
+      new workbox.expiration.Plugin({
+        maxAgeSeconds: 1296000,
+        purgeOnQuotaError: false
+      }),
+      new workbox.cacheableResponse.Plugin({ statuses: [0, 200] })
+    ]
+  }),
+  'GET'
+)
+
