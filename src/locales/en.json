@@ -7,6 +7,16 @@
     "more-config": "More Config",
     "new-bookmark": "Add Bookmark"
   },
+  "sw": {
+    "active": "active",
+    "updated": "click to update",
+    "registered": "registered",
+    "cached": "app cached",
+    "offline": "offline",
+    "updateFound": "preparing update",
+    "error": "error registering",
+    "pending": "pending"
+  },
   "bookmark": {
     "name": "Bookmark Name",
     "url": "Website URL",

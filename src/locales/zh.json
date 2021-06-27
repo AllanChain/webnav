@@ -59,5 +59,15 @@
     "camera-scan": "打开摄像头扫描",
     "upload-scan": "扫描上传的图片",
     "empty-content": "扫描二维码失败"
+  },
+  "sw": {
+    "active": "已激活",
+    "cached": "应用已缓存",
+    "error": "注册出错",
+    "offline": "离线",
+    "registered": "已注册",
+    "updateFound": "正在准备更新",
+    "updated": "点击更新",
+    "pending": "等待中"
   }
 }

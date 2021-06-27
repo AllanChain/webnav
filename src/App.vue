@@ -150,7 +150,7 @@
                     : 'mdi-cogs'
                 }}
               </v-icon>
-              v{{ version }} - {{ $store.state.swStatus }}
+              v{{ version }} - {{ $t(`sw.${$store.state.swStatus}`) }}
             </span>
           </v-list-item-content>
         </v-list-item>
