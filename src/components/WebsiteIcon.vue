@@ -1,6 +1,7 @@
 <template>
   <img
     v-bind="image"
+    data-cy="website-icon"
     @load="loaded = true"
     @error="image.src = 'img/fallback.png'"
   >
