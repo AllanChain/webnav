@@ -5,16 +5,11 @@ const controller = new AbortController()
 workbox.core.setCacheNameDetails({ prefix: 'webnav' })
 
 self.addEventListener('message', event => {
-  const replyPort = event.ports[0]
   const message = event.data
-  if (replyPort && message && message.type === 'skip-waiting') {
-    event.waitUntil(
-      self.skipWaiting().then(
-        () => replyPort.postMessage({ error: null }),
-        error => replyPort.postMessage({ error })
-      )
-    )
-  } else if (message && message.type === 'abort-connections')
+  if (!message) return
+  if (message.type === 'skip-waiting')
+    self.skipWaiting()
+  else if (message.type === 'abort-connections')
     controller.abort()
 })
 

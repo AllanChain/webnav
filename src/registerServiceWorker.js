@@ -40,24 +40,12 @@ register(`${process.env.BASE_URL}service-worker.js`, {
 export const skipWaiting = () => {
   const newWorker = registration?.waiting
   const oldWorker = registration?.active
-  if (!newWorker) return Promise.resolve()
+  if (!newWorker) return
 
-  console.log('Doing worker.skipWaiting().')
   // Abort revalidating connections because they block skipWaiting
   // to actually take place (though Promise resolved immediately)
   // Both FireFox and Chrome stucks here. In Chrome messages are stuck too.
+  // Thus Vuepress chooses to wait message sent, but not working in FireFox
   oldWorker.postMessage({ type: 'abort-connections' })
-  return new Promise((resolve, reject) => {
-    const channel = new MessageChannel()
-
-    channel.port1.onmessage = (event) => {
-      console.log('Done worker.skipWaiting().')
-      if (event.data.error)
-        reject(event.data.error)
-      else
-        resolve(event.data)
-    }
-
-    newWorker.postMessage({ type: 'skip-waiting' }, [channel.port2])
-  })
+  newWorker.postMessage({ type: 'skip-waiting' })
 }
