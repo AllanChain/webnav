@@ -43,9 +43,11 @@ export default {
         const bookmarks = require('@/defaults/bookmarks.json')
         bookmarks.forEach((b, i) => { b.index = i })
         await context.dispatch('addAll', bookmarks)
-        context.commit('/alert', {
+        context.commit('alert', {
           text: i18n.t('message.bookmark-init'),
           type: 'success'
+        }, {
+          root: true
         })
       } else await context.dispatch('refresh')
     },

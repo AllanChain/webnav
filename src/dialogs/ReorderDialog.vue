@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     reorder (newIndex) {
-      this.$store.dispatch('db/bookmarks/reorder', {
+      this.$store.commit('db/bookmarks/reorder', {
         from: this.index,
         to: newIndex
       })

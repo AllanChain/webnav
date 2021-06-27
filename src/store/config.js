@@ -54,7 +54,7 @@ export default {
       }
       context.commit('update', { config })
       if (result !== undefined)
-        context.commit('/alert', result)
+        context.commit('alert', result, { root: true })
     }
   }
 }
