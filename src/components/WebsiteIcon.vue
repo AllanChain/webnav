@@ -2,7 +2,6 @@
   <img
     v-bind="image"
     data-cy="website-icon"
-    @load="loaded = true"
     @error="image.src = 'img/fallback.png'"
   >
 </template>
@@ -23,8 +22,7 @@ export default {
   },
   data () {
     return {
-      image: {},
-      loaded: false
+      image: {}
     }
   },
   computed: {
@@ -54,9 +52,6 @@ export default {
           }
         }
         this.image = image
-        setTimeout(() => {
-          if (!this.loaded) this.image.src = 'img/fallback.png'
-        }, 3000)
       }
     }
   }
