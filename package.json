@@ -56,7 +56,7 @@
     "vue-template-compiler": "^2.6.14",
     "vuetify-loader": "^1.7.2",
     "webpack": "^4.46.0",
-    "webpack-stats-plugin": "^0.3.2"
+    "webpack-bundle-analyzer": "^4.4.2"
   },
   "browserslist": [
     "> 1%",
