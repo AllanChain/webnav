@@ -2516,6 +2516,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@zxing/library@npm:^0.18.4":
+  version: 0.18.6
+  resolution: "@zxing/library@npm:0.18.6"
+  dependencies:
+    "@zxing/text-encoding": ~0.9.0
+    ts-custom-error: ^3.0.0
+  dependenciesMeta:
+    "@zxing/text-encoding":
+      optional: true
+  checksum: 27e87cf882084a5295976b25975eae3604935bbcf66b2be962f97d99e416b61b93302f305f00d98bd7271467cef5aa4dcda6d918e9cacc65c2b407f9c3780bf7
+  languageName: node
+  linkType: hard
+
+"@zxing/text-encoding@npm:~0.9.0":
+  version: 0.9.0
+  resolution: "@zxing/text-encoding@npm:0.9.0"
+  checksum: c0f32e38c97363c73385db84dba7c645da843348b14615c65781742a393118e86abced6b824ac2351f59f31066714b2155083557afa8bd07f0180a50edf0a7d8
+  languageName: node
+  linkType: hard
+
 "abbrev@npm:1":
   version: 1.1.1
   resolution: "abbrev@npm:1.1.1"
@@ -3169,6 +3189,16 @@ __metadata:
   version: 2.0.0
   resolution: "balanced-match@npm:2.0.0"
   checksum: 4effbe02ad270b88a5852bb07c1db45598da13c0f9b2697c0485eb4524a24efd2321d5e9db5a6669dfae7f520886b6d4ba956b830eb2d4e461a809197f05bfeb
+  languageName: node
+  linkType: hard
+
+"barcode-detector@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "barcode-detector@npm:1.0.0"
+  dependencies:
+    "@zxing/library": ^0.18.4
+    jsqr: ^1.3.1
+  checksum: 98187f3ff7463769a32f645a8a845fca3f776887e0cc0d40d2d8d1e4ea7f4710b78cebce4270ac3f5ea05f0d2c0c1e4f3b4f8010eab698b0f5d71359be80d4fe
   languageName: node
   linkType: hard
 
@@ -8690,6 +8720,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"jsqr@npm:^1.3.1":
+  version: 1.4.0
+  resolution: "jsqr@npm:1.4.0"
+  checksum: 9751c59bd45a29643cc9586b5d013f35b96cef28b7d2f6d937b74e6cd1747e1afa27a8dcdc63495b4f1ca3efde2e2a3331a0ed71442cf4e734ba54e76aafe631
+  languageName: node
+  linkType: hard
+
 "keyv@npm:^4.0.0":
   version: 4.0.3
   resolution: "keyv@npm:4.0.3"
@@ -13678,6 +13715,13 @@ resolve@^1.20.0:
   languageName: node
   linkType: hard
 
+"ts-custom-error@npm:^3.0.0":
+  version: 3.2.0
+  resolution: "ts-custom-error@npm:3.2.0"
+  checksum: 0e865d875cc5095aad9a165950b693d48e9a7921a1a5c1575096797a29447c4f0cb24c9d1cbb0aec7ed1d27bcbdc9a6d4acffd71050dc8b45deb31b960a10126
+  languageName: node
+  linkType: hard
+
 "ts-pnp@npm:^1.1.6":
   version: 1.2.0
   resolution: "ts-pnp@npm:1.2.0"
@@ -14317,15 +14361,16 @@ typescript@4.1.5:
   languageName: node
   linkType: hard
 
-"vue-qrcode-reader@npm:^2.3.18":
-  version: 2.3.18
-  resolution: "vue-qrcode-reader@npm:2.3.18"
+"vue-qrcode-reader@npm:^3.0.3":
+  version: 3.0.3
+  resolution: "vue-qrcode-reader@npm:3.0.3"
   dependencies:
+    barcode-detector: ^1.0.0
     callforth: ^0.3.1
     core-js: ^3.6.5
     vue: ^2.6.11
     webrtc-adapter: 7.7.0
-  checksum: a58681ce9f9fc6527d1d336643fb0f7d18c13220e1bb1f223637f7fd2a6947c1dee50ecf734c035079e3c7703d473ec897dab917af0a289bbb29b23b39d89f59
+  checksum: d4d31886ae6a3003a74e49ed6ff3171b280c74270472d7c74702a29440ddc32bab80d1d5028f0749a785e0380d3da960358647bc053f48df26d47b345ae0c416
   languageName: node
   linkType: hard
 
@@ -14486,7 +14531,7 @@ typescript@4.1.5:
     vue: ^2.6.14
     vue-cli-plugin-vuetify: ^2.4.2
     vue-i18n: ^8.25.0
-    vue-qrcode-reader: ^2.3.18
+    vue-qrcode-reader: ^3.0.3
     vue-template-compiler: ^2.6.14
     vuetify: ^2.5.8
     vuetify-loader: ^1.7.2
