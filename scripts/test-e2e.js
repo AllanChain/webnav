@@ -15,17 +15,33 @@ if (command === 'dev') {
   const server = http.createServer((request, response) => {
     return handler(request, response, { public: 'dist' })
   })
-  const startServer = service.run('build').then(() => server.listen(5000))
+  const startServer = service.run('build').then(async () => {
+    for (const port of [5000, 6723, 8126, 10237, 14236, 17632]) {
+      try {
+        await new Promise((resolve, reject) => {
+          server.listen(port, resolve)
+          server.once('error', reject)
+        })
+        console.log(`Listening on http://localhost:${port}`)
+        return port
+      } catch (err) {
+        if (err.code !== 'EACCES') throw err
+      }
+    }
+    throw new Error('Cannot open server')
+  })
   if (command === 'prod') {
     startServer
-      .then(() => cypress.open({ config: { baseUrl: 'http://localhost:5000' } }))
+      .then(port => cypress.open({ config: { baseUrl: `http://localhost:${port}` } }))
       .then(() => server.close())
   } else {
     startServer
-      .then(() => cypress.run({
+      .then(port => cypress.run({
+        browser: 'chrome',
         config: {
-          baseUrl: 'http://localhost:5000',
-          video: false
+          baseUrl: `http://localhost:${port}`,
+          video: false,
+          screenshotOnRunFailure: false
         }
       })).then(result => {
         if (result.failures) {
