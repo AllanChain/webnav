@@ -6,9 +6,11 @@ import store from './store'
 
 Vue.config.productionTip = false
 
-new Vue({
+const vueApp = new Vue({
   vuetify,
   store,
   i18n,
   render: h => h(App)
-}).$mount('#app')
+})
+
+store.dispatch('init').then(() => vueApp.$mount('#app'))

@@ -2645,15 +2645,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ajv-errors@npm:^2.0.0":
-  version: 2.0.1
-  resolution: "ajv-errors@npm:2.0.1"
-  peerDependencies:
-    ajv: ^7.0.0
-  checksum: e7fd2f1bde7187f1253cf770d4c32efc3ed97dbc457ccee5fb6c4e618614900da3080b62ca5ed96e67e5b462ab2e52ec88387de71f93b8340daef9db49aa932c
-  languageName: node
-  linkType: hard
-
 "ajv-keywords@npm:^3.1.0, ajv-keywords@npm:^3.4.1, ajv-keywords@npm:^3.5.2":
   version: 3.5.2
   resolution: "ajv-keywords@npm:3.5.2"
@@ -2672,18 +2663,6 @@ __metadata:
     json-schema-traverse: ^0.4.1
     uri-js: ^4.2.2
   checksum: 874972efe5c4202ab0a68379481fbd3d1b5d0a7bd6d3cc21d40d3536ebff3352a2a1fabb632d4fd2cc7fe4cbdcd5ed6782084c9bbf7f32a1536d18f9da5007d4
-  languageName: node
-  linkType: hard
-
-"ajv@npm:^7.0.4":
-  version: 7.2.4
-  resolution: "ajv@npm:7.2.4"
-  dependencies:
-    fast-deep-equal: ^3.1.1
-    json-schema-traverse: ^1.0.0
-    require-from-string: ^2.0.2
-    uri-js: ^4.2.2
-  checksum: 3c5be34cc37779e167be4406e620e2f4e69f04b50092e5e9cab609c8be822166ad850dac15e60c49642f46f5735eda2ca89efcd399189b116a56ac843a9a5023
   languageName: node
   linkType: hard
 
@@ -6657,13 +6636,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"foreach@npm:^2.0.4":
-  version: 2.0.5
-  resolution: "foreach@npm:2.0.5"
-  checksum: dab4fbfef0b40b69ee5eab81bcb9626b8fa8b3469c8cfa26480f3e5e1ee08c40eae07048c9a967c65aeda26e774511ccc70b3f10a604c01753c6ef24361f0fc8
-  languageName: node
-  linkType: hard
-
 "forever-agent@npm:~0.6.1":
   version: 0.6.1
   resolution: "forever-agent@npm:0.6.1"
@@ -8624,15 +8596,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"json-pointer@npm:^0.6.1":
-  version: 0.6.1
-  resolution: "json-pointer@npm:0.6.1"
-  dependencies:
-    foreach: ^2.0.4
-  checksum: 882b4b24b515fd866f8c228ed1381c129a40bdbfec578b73882be86a52bbcac15aaa87579c548167d4d8d9e3fc60e35aefead473df95c463553bede2b957f79c
-  languageName: node
-  linkType: hard
-
 "json-schema-traverse@npm:^0.4.1":
   version: 0.4.1
   resolution: "json-schema-traverse@npm:0.4.1"
@@ -8744,6 +8707,13 @@ fsevents@^1.2.7:
   version: 0.0.0
   resolution: "jsonify@npm:0.0.0"
   checksum: d8d4ed476c116e6987a460dcb82f22284686caae9f498ac87b0502c1765ac1522f4f450a4cad4cc368d202fd3b27a3860735140a82867fc6d558f5f199c38bce
+  languageName: node
+  linkType: hard
+
+"jsonschema@npm:^1.4.0":
+  version: 1.4.0
+  resolution: "jsonschema@npm:1.4.0"
+  checksum: a2f96b5154658f5567b064d6f25fa4cb7e38b923d5dce9dad8d2566a07dd94abc4acedf234333a91f31bc9934e9dd57c270dcc51e5656b4c104408196c768580
   languageName: node
   linkType: hard
 
@@ -13923,23 +13893,23 @@ resolve@^1.20.0:
   languageName: node
   linkType: hard
 
-typescript@4.1.5:
-  version: 4.1.5
-  resolution: "typescript@npm:4.1.5"
+typescript@^4.3.5:
+  version: 4.3.5
+  resolution: "typescript@npm:4.3.5"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: af660e69aa5184520dfa57362dcf7fd1b26d08b869d76b3bd58dcc04058a757983f470cd61ded824ab01fa08a81d58c7f607d8e360f4e550664b9439d04f8e41
+  checksum: bab033b5e2b0790dd35b77fd005df976ef80b8d84fd2c6e63cc31808151875beae9216e5a315fe7068e8499905c3c354248fe83272cdfc13b7705635f0c66c97
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@4.1.5#~builtin<compat/typescript>":
-  version: 4.1.5
-  resolution: "typescript@patch:typescript@npm%3A4.1.5#~builtin<compat/typescript>::version=4.1.5&hash=d8b4e7"
+"typescript@patch:typescript@^4.3.5#~builtin<compat/typescript>":
+  version: 4.3.5
+  resolution: "typescript@patch:typescript@npm%3A4.3.5#~builtin<compat/typescript>::version=4.3.5&hash=d8b4e7"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 15f7630d7aa22b770f8e448c9f1b6f14a1d7b969008ef09475b9c377f908e2144ace8dac99ffe0c4830dc42a9970ca333533c9affd75035a17011da7fd03c423
+  checksum: bc2c4fdf0f1557fdafe4ef74848c72ebd9c8c60829568248f869121aea2bb20e16649a252431d0acb185ec118143be22bed73d08f64379557810d82756afedde
   languageName: node
   linkType: hard
 
@@ -14569,8 +14539,6 @@ typescript@4.1.5:
     "@vue/cli-service": ^4.5.6
     "@vue/eslint-config-standard": ^5.1.2
     "@yarnpkg/pnpify": ^2.4.0
-    ajv: ^7.0.4
-    ajv-errors: ^2.0.0
     babel-eslint: ^10.1.0
     core-js: ^3.16.2
     cypress: ^8.3.0
@@ -14584,7 +14552,7 @@ typescript@4.1.5:
     eslint-plugin-standard: ^5.0.0
     eslint-plugin-vue: ^7.16.0
     idb: ^5.0.7
-    json-pointer: ^0.6.1
+    jsonschema: ^1.4.0
     regenerator-runtime: ^0.13.9
     register-service-worker: ^1.7.2
     relateurl: ^0.2.7
@@ -14593,7 +14561,7 @@ typescript@4.1.5:
     serve-handler: ^6.1.3
     stylelint: ^13.13.1
     stylelint-config-standard: ^22.0.0
-    typescript: 4.1.5
+    typescript: ^4.3.5
     vue: ^2.6.14
     vue-cli-plugin-vuetify: ^2.4.2
     vue-i18n: ^8.25.0

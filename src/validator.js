@@ -1,26 +1,23 @@
-import Ajv from 'ajv'
-import pointer from 'json-pointer'
+import { Validator } from 'jsonschema'
 import store from '@/store'
+import schemas from './schemas'
 
-const ajv = new Ajv({
-  schemas: require('./schemas'),
-  allErrors: true,
-  verbose: true
-})
-require('ajv-errors')(ajv, { singleError: true })
+const validator = new Validator()
 
-export default (schema, payload, quiet) => {
-  const validate = ajv.getSchema(schema)
-  if (validate(payload))
+for (const schema of schemas)
+  validator.addSchema(schema, schema.$id)
+
+export default (schemaName, payload, quiet) => {
+  const schema = schemas.find(schema => schema.$id === schemaName)
+  const validateResult = validator.validate(payload, schema)
+  if (validateResult.valid)
     return true
   if (quiet) return false
-  validate.errors.map(e => {
-    let message = pointer.get(payload, e.dataPath)
-    if (typeof message === 'object')
-      message = JSON.stringify(message)
-    message = `"${e.dataPath}" ${e.message}. Got "${message}"`
+  validateResult.errors.map(error => {
+    // slice to remove leading slash
+    const stack = error.stack.replace(/^instance/, schemaName.slice(1))
     store.commit('alert', {
-      text: message,
+      text: `${stack}. Got "${JSON.stringify(error.instance)}"`,
       type: 'warning',
       break: true
     })
