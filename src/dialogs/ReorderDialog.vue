@@ -1,10 +1,8 @@
 <template>
-  <v-overlay
-    opacity="0.7"
-    @click.native="closeDialog"
-  >
+  <v-overlay opacity="0.7">
     <v-slider
       :value="index"
+      data-cy="reorder-slider"
       color="purple"
       track-color="indigo"
       thumb-label="always"
@@ -12,7 +10,15 @@
       :max="bookmarks.length - 1"
       @input="reorder"
     />
-    <div style="width: 90vw;" />
+    <div class="d-flex" style="width: 90vw;">
+      <v-btn color="amber darken-3" data-cy="reorder-cancel" @click="cancel">
+        {{ $t('button.cancel') }}
+      </v-btn>
+      <v-spacer />
+      <v-btn color="green" data-cy="reorder-apply" @click="apply">
+        {{ $t('button.apply') }}
+      </v-btn>
+    </div>
   </v-overlay>
 </template>
 
@@ -36,13 +42,17 @@ export default {
       })
       this.index = newIndex
     },
-    async closeDialog () {
+    async apply () {
       this.$store.commit('switchMode', 'normal')
       await this.$store.dispatch('db/bookmarks/putAll')
       this.$store.commit('alert', {
         text: 'Reordered!',
         type: 'success'
       })
+    },
+    async cancel () {
+      this.$store.commit('switchMode', 'normal')
+      await this.$store.dispatch('db/bookmarks/refresh')
     }
   }
 }
