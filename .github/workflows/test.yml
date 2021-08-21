@@ -24,4 +24,4 @@ jobs:
     - name: Install Packages
       run: yarn install --immutable --check-cache
     - name: Test App
-      run: yarn test:e2e
+      run: yarn test:prod-headless
