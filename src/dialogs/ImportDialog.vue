@@ -16,6 +16,7 @@
           <v-row>
             <v-switch
               v-model="overwrite"
+              data-cy="switch-overwrite-bookmark"
               dense
               hide-details
               class="ml-4 mt-0"
@@ -29,6 +30,7 @@
               </v-btn>
               <input
                 ref="file"
+                data-cy="input-file-bookmark"
                 type="file"
                 accept=".json"
                 hidden
@@ -41,7 +43,11 @@
               </v-btn>
             </v-col>
             <v-col cols="4" class="text-center">
-              <v-btn fab small color="green" @click="importFromCloud">
+              <v-btn
+                fab small color="green"
+                data-cy="import-check"
+                @click="importFromCloud"
+              >
                 <v-icon>mdi-check-bold</v-icon>
               </v-btn>
             </v-col>

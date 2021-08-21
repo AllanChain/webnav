@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-app-bar app :color="config.barColor" dark>
-      <v-app-bar-nav-icon @click="drawer = !drawer" />
+      <v-app-bar-nav-icon data-cy="button-drawer" @click="drawer = !drawer" />
       <v-text-field
         ref="text"
         :value="query"
@@ -26,7 +26,7 @@
       </v-expand-x-transition>
       <v-expand-x-transition>
         <v-btn
-          v-show="showBtn" icon
+          v-show="showBtn" data-cy="button-edit-mode" icon
           :color="$store.state.mode === 'edit' ? 'green' : undefined"
           @click=" $store.commit(
             'switchMode',
@@ -90,7 +90,10 @@
           </v-list-item-content>
         </v-list-item>
         <v-divider />
-        <v-list-item link @click="$store.commit('switchMode', 'import-dialog')">
+        <v-list-item
+          link data-cy="button-import"
+          @click="$store.commit('switchMode', 'import-dialog')"
+        >
           <v-list-item-action>
             <v-icon>mdi-application-import</v-icon>
           </v-list-item-action>
@@ -107,7 +110,7 @@
             <a ref="downloadLink" class="d-none" />
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link @click="newBookmark">
+        <v-list-item link data-cy="button-new-bookmark" @click="newBookmark">
           <v-list-item-action>
             <v-icon>mdi-bookmark-plus-outline</v-icon>
           </v-list-item-action>

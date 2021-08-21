@@ -69,5 +69,9 @@
     "updateFound": "正在准备更新",
     "updated": "点击更新",
     "pending": "等待中"
+  },
+  "button": {
+    "cancel": "取消",
+    "apply": "应用"
   }
 }

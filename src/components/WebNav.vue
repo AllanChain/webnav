@@ -12,6 +12,7 @@
           >
             <v-btn
               color="#2196f390" fab x-small
+              data-cy="edit-one"
               @click="$store.commit('switchMode', {
                 mode: 'edit-dialog',
                 data: bookmark
@@ -38,7 +39,8 @@
           <WebsiteIcon :bookmark="bookmark" @click.native="goURL(bookmark.url)" />
         </div>
         <div
-          class="url"
+          class="name"
+          data-cy="title"
           :style="{
             color: config.blackText ? '#000' : '#eee',
             textShadow: `1px 1px 3px
@@ -94,7 +96,7 @@ export default {
   border: 0;
 }
 
-.url {
+.name {
   height: 3em;
   line-height: 1.1em;
   width: 65px;

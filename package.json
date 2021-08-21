@@ -7,7 +7,9 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "lint:css": "stylelint --fix src/**/*.vue",
-    "test:e2e": "node scripts/test-e2e.js",
+    "test:dev": "node scripts/test-e2e.js dev",
+    "test:prod": "node scripts/test-e2e.js prod",
+    "test:prod-headless": "node scripts/test-e2e.js",
     "gitag": "node scripts/gitag.js"
   },
   "dependencies": {
@@ -23,7 +25,7 @@
     "vue": "^2.6.12",
     "vue-i18n": "^8.22.0",
     "vue-qrcode-reader": "^2.3.18",
-    "vuetify": "^2.3.9",
+    "vuetify": "^2.5.7",
     "vuex": "^3.5.1"
   },
   "devDependencies": {
@@ -35,7 +37,8 @@
     "@vue/eslint-config-standard": "^5.1.2",
     "@yarnpkg/pnpify": "^2.4.0",
     "babel-eslint": "^10.1.0",
-    "cypress": "^7.6.0",
+    "cypress": "^8.1.0",
+    "cypress-file-upload": "^5.0.8",
     "eslint": "^6.7.2",
     "eslint-plugin-cypress": "^2.11.3",
     "eslint-plugin-import": "^2.22.1",

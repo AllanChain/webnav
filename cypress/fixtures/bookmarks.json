@@ -1,0 +1,16 @@
+[
+    {
+        "title": "Bing",
+        "url": "https://www.bing.com",
+        "search": "/search?q={}"
+    },
+    {
+        "title": "GitHub",
+        "url": "https://github.com",
+        "search": "/search?q={}"
+    },
+    {
+        "title": "Stack Overflow",
+        "url": "https://stackoverflow.com"
+    }
+]

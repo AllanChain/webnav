@@ -13,19 +13,23 @@
             {{ bookmark.title }}
           </v-toolbar-title>
           <v-spacer />
-          <v-btn icon large @click="done">
+          <v-btn icon large data-cy="done" @click="done">
             <v-icon color="green lighten-2">
               mdi-check-bold
             </v-icon>
           </v-btn>
-          <v-btn v-if="bookmark.id" icon large @click="deleteThis">
+          <v-btn
+            v-if="bookmark.id" icon large
+            data-cy="delete"
+            @click="deleteThis"
+          >
             <v-icon color="red lighten-2">
               mdi-delete
             </v-icon>
           </v-btn>
           <v-btn
             v-if="bookmark.id"
-            icon large
+            icon large data-cy="reorder"
             @click="$store.commit('switchMode', {
               mode: 'reorder-dialog',
               data: bookmark.index
@@ -43,6 +47,7 @@
           prepend-inner-icon="mdi-bookmark"
           :label="$t('bookmark.name')"
           placeholder="Example"
+          data-cy="input-title"
           outlined
           dense
         />
@@ -51,6 +56,7 @@
           prepend-inner-icon="mdi-web"
           :label="$t('bookmark.url')"
           placeholder="https://example.com"
+          data-cy="input-url"
           outlined
           dense
         />
@@ -59,6 +65,7 @@
           prepend-inner-icon="mdi-magnify"
           :label="$t('bookmark.search')"
           placeholder="/search?wd={}"
+          data-cy="input-search"
           outlined
           dense
         />
@@ -67,6 +74,7 @@
           prepend-inner-icon="mdi-earth"
           :label="$t('bookmark.icon')"
           placeholder="/favicon.ico"
+          data-cy="input-icon"
           outlined
           dense
         />

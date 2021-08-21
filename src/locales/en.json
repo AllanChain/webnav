@@ -72,5 +72,9 @@
   },
   "import": {
     "overwrite": "Overwrite existing bookmarks"
+  },
+  "button": {
+    "cancel": "Cancel",
+    "apply": "Apply"
   }
 }
