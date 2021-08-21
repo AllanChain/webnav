@@ -10,7 +10,7 @@
     "test:dev": "node scripts/test-e2e.js dev",
     "test:prod": "node scripts/test-e2e.js prod",
     "test:prod-headless": "node scripts/test-e2e.js",
-    "gitag": "node scripts/gitag.js"
+    "release": "release-it"
   },
   "dependencies": {
     "core-js": "^3.16.2",
@@ -27,6 +27,7 @@
     "vuex": "^3.6.2"
   },
   "devDependencies": {
+    "@release-it/conventional-changelog": "^3.3.0",
     "@vue/cli-plugin-babel": "^4.5.6",
     "@vue/cli-plugin-eslint": "^4.5.6",
     "@vue/cli-plugin-pwa": "^4.5.6",
@@ -35,6 +36,7 @@
     "@vue/eslint-config-standard": "^5.1.2",
     "@yarnpkg/pnpify": "^2.4.0",
     "babel-eslint": "^10.1.0",
+    "conventional-changelog-conventionalcommits": "^4.6.0",
     "cypress": "^8.3.0",
     "cypress-file-upload": "^5.0.8",
     "eslint": "^7.32.0",
@@ -44,6 +46,7 @@
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-standard": "^5.0.0",
     "eslint-plugin-vue": "^7.16.0",
+    "release-it": "^14.11.5",
     "sass": "~1.32.0",
     "sass-loader": "^10.0.0",
     "serve-handler": "^6.1.3",
