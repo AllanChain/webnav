@@ -1,8 +1,12 @@
-/* global workbox */
+import { setCacheNameDetails } from 'workbox-core'
+import { precacheAndRoute } from 'workbox-precaching'
+import { registerRoute } from 'workbox-routing'
+import { StaleWhileRevalidate } from 'workbox-strategies'
+import { ExpirationPlugin } from 'workbox-expiration'
 
 const controller = new AbortController()
 
-workbox.core.setCacheNameDetails({ prefix: 'webnav' })
+setCacheNameDetails({ prefix: 'webnav' })
 
 self.addEventListener('message', event => {
   const message = event.data
@@ -13,20 +17,19 @@ self.addEventListener('message', event => {
     controller.abort()
 })
 
-self.__precacheManifest = [].concat(self.__precacheManifest || [])
-workbox.precaching.precacheAndRoute(self.__precacheManifest, {})
+self.__precacheManifest = [].concat(self.__WB_MANIFEST || [])
+precacheAndRoute(self.__precacheManifest, {})
 
-workbox.routing.registerRoute(
+registerRoute(
   /.*/,
-  new workbox.strategies.StaleWhileRevalidate({
+  new StaleWhileRevalidate({
     cacheName: 'webnav-AC',
     fetchOptions: { signal: controller.signal },
     plugins: [
-      new workbox.expiration.Plugin({
+      new ExpirationPlugin({
         maxAgeSeconds: 1296000,
         purgeOnQuotaError: false
-      }),
-      new workbox.cacheableResponse.Plugin({ statuses: [0, 200] })
+      })
     ]
   }),
   'GET'

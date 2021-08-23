@@ -2,14 +2,15 @@ module.exports = {
   root: true,
   env: {
     node: true,
+    browser: true,
     'cypress/globals': true
   },
   plugins: ['cypress'],
   extends: [
+    'standard',
     'plugin:cypress/recommended',
     'plugin:vue/recommended',
-    'eslint:recommended',
-    '@vue/standard'
+    'eslint:recommended'
   ],
   rules: {
     'vue/max-attributes-per-line': [

@@ -8,11 +8,11 @@ module.exports = {
   publicPath: process.env.PUB_PATH || '/',
   chainWebpack: config => {
     config.plugin('copy').tap(([options]) => {
-      options[0].ignore.push(
+      options.patterns[0].globOptions.ignore.push(
         'img/icons/converter.sh', // shell script to convert logo to all icons
         'img/icons/logo.*' // original logo
       )
-      options.push({
+      options.patterns.push({
         from: 'src/defaults',
         to: '',
         toType: 'dir'
@@ -33,7 +33,7 @@ module.exports = {
     },
     workboxPluginMode: 'InjectManifest',
     workboxOptions: {
-      swSrc: 'src/service-worker.js'
+      swSrc: './src/service-worker.js'
     }
   },
   transpileDependencies: ['vuetify']

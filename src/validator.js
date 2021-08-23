@@ -13,7 +13,7 @@ export default (schemaName, payload, quiet) => {
   if (validateResult.valid)
     return true
   if (quiet) return false
-  validateResult.errors.map(error => {
+  validateResult.errors.forEach(error => {
     // slice to remove leading slash
     const stack = error.stack.replace(/^instance/, schemaName.slice(1))
     store.commit('alert', {
