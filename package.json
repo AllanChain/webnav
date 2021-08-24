@@ -16,7 +16,6 @@
   "dependencies": {
     "core-js": "^3.16.2",
     "deepmerge": "^4.2.2",
-    "eslint-config-standard": "^16.0.3",
     "idb": "^6.1.2",
     "jsonschema": "^1.4.0",
     "regenerator-runtime": "^0.13.9",
@@ -47,6 +46,7 @@
     "cypress": "^8.3.0",
     "cypress-file-upload": "^5.0.8",
     "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
     "eslint-import-resolver-node": "^0.3.6",
     "eslint-plugin-cypress": "^2.11.3",
     "eslint-plugin-import": "^2.24.1",
