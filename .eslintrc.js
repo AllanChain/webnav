@@ -5,12 +5,21 @@ module.exports = {
     browser: true,
     'cypress/globals': true
   },
-  plugins: ['cypress'],
+  // parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint', 'cypress'],
+  parserOptions: {
+    parser: require.resolve('@typescript-eslint/parser'),
+    extraFileExtensions: ['.vue'],
+    ecmaFeatures: {
+      jsx: true
+    }
+  },
   extends: [
-    'standard',
+    'eslint:recommended',
     'plugin:cypress/recommended',
-    'plugin:vue/recommended',
-    'eslint:recommended'
+    'plugin:vue/vue3-recommended',
+    '@vue/typescript/recommended',
+    'standard'
   ],
   rules: {
     'vue/max-attributes-per-line': [
@@ -41,8 +50,5 @@ module.exports = {
     'generator-star-spacing': ['warn', 'before'],
     'no-console': 'warn',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'warn'
-  },
-  parserOptions: {
-    parser: 'babel-eslint'
   }
 }

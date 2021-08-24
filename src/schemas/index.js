@@ -1,5 +1,4 @@
-export default [
-  require('./bookmark.schema.json'),
-  require('./bookmarks.schema.json'),
-  require('./config.schema.json')
-]
+import bookmark from './bookmark.schema.json'
+import bookmarks from './bookmarks.schema.json'
+import config from './config.schema.json'
+export default [bookmark, bookmarks, config]

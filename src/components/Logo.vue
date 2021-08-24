@@ -1,7 +1,7 @@
 <template>
   <div class="logo py-4">
     4
-    <img src="img/icons/android-chrome-192x192.png" width="50">
+    <img src="/img/icons/android-chrome-192x192.png" width="50">
     4
   </div>
 </template>

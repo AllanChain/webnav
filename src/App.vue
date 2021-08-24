@@ -165,24 +165,24 @@
 <script>
 import pkg from '../package.json'
 import { skipWaiting } from './registerServiceWorker'
-import WebNav from '@/components/WebNav'
-import Logo from '@/components/Logo'
-import DisAlert from '@/components/DisAlert'
+import WebNav from '@/components/WebNav.vue'
+import Logo from '@/components/Logo.vue'
+import DisAlert from '@/components/DisAlert.vue'
 import { mapState } from 'vuex'
 
 export default {
   name: 'App',
   components: {
     ImportDialog: () =>
-      import(/* webpackChunkName: "import" */ '@/dialogs/ImportDialog'),
+      import(/* webpackChunkName: "import" */ '@/dialogs/ImportDialog.vue'),
     EditDialog: () =>
-      import(/* webpackChunkName: "edit" */ '@/dialogs/EditDialog'),
+      import(/* webpackChunkName: "edit" */ '@/dialogs/EditDialog.vue'),
     ReorderDialog: () =>
-      import(/* webpackChunkName: "reorder" */ '@/dialogs/ReorderDialog'),
+      import(/* webpackChunkName: "reorder" */ '@/dialogs/ReorderDialog.vue'),
     ConfigDialog: () =>
-      import(/* webpackChunkName: "config" */ '@/dialogs/ConfigDialog'),
+      import(/* webpackChunkName: "config" */ '@/dialogs/ConfigDialog.vue'),
     QRCodeDialog: () =>
-      import(/* webpackChunkName: "qrcode" */ '@/dialogs/QRCodeDialog'),
+      import(/* webpackChunkName: "qrcode" */ '@/dialogs/QRCodeDialog.vue'),
     WebNav,
     Logo,
     DisAlert

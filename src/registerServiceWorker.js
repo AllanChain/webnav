@@ -5,37 +5,39 @@ import store from './store'
 
 let registration = null
 
-register(`${process.env.BASE_URL}service-worker.js`, {
-  ready () {
-    store.commit('swUpdate', 'active')
-    console.log('Service worker is active')
-  },
-  registered () {
-    store.commit('swUpdate', 'registered')
-    console.log('Service worker has been registered.')
-  },
-  cached () {
-    store.commit('swUpdate', 'cached')
-    console.log('Content has been cached for offline use.')
-  },
-  updatefound () {
-    store.commit('swUpdate', 'updateFound')
-    console.log('New content is downloading.')
-  },
-  updated (r) {
-    store.commit('swUpdate', 'updated')
-    console.log('New content is available; please refresh.')
-    registration = r
-  },
-  offline () {
-    store.commit('swUpdate', 'offline')
-    console.log('No internet connection found. App is running in offline mode.')
-  },
-  error (error) {
-    store.commit('swUpdate', 'error')
-    console.error('Error during service worker registration:', error)
-  }
-})
+if (import.meta.env.PROD) {
+  register(`${import.meta.env.BASE_URL}service-worker.js`, {
+    ready () {
+      store.commit('swUpdate', 'active')
+      console.log('Service worker is active')
+    },
+    registered () {
+      store.commit('swUpdate', 'registered')
+      console.log('Service worker has been registered.')
+    },
+    cached () {
+      store.commit('swUpdate', 'cached')
+      console.log('Content has been cached for offline use.')
+    },
+    updatefound () {
+      store.commit('swUpdate', 'updateFound')
+      console.log('New content is downloading.')
+    },
+    updated (r) {
+      store.commit('swUpdate', 'updated')
+      console.log('New content is available; please refresh.')
+      registration = r
+    },
+    offline () {
+      store.commit('swUpdate', 'offline')
+      console.log('No internet connection found. App is running in offline mode.')
+    },
+    error (error) {
+      store.commit('swUpdate', 'error')
+      console.error('Error during service worker registration:', error)
+    }
+  })
+}
 
 export const skipWaiting = () => {
   const newWorker = registration?.waiting

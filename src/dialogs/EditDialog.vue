@@ -98,7 +98,7 @@
 
 <script>
 import RelateUrl from 'relateurl'
-import WebsiteIcon from '@/components/WebsiteIcon'
+import WebsiteIcon from '@/components/WebsiteIcon.vue'
 import validate from '@/validator'
 import { mapState } from 'vuex'
 

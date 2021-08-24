@@ -1,4 +1,5 @@
 import i18n from '@/plugins/vue-i18n'
+import bookmarks from '@/defaults/bookmarks.json'
 import { db } from '.'
 
 const reIndex = bookmarks => bookmarks.forEach((bookmark, index) => {
@@ -40,7 +41,6 @@ export default {
   actions: {
     async init (context, newcomer) {
       if (newcomer) {
-        const bookmarks = require('@/defaults/bookmarks.json')
         bookmarks.forEach((b, i) => { b.index = i })
         await context.dispatch('addAll', bookmarks)
         context.commit('alert', {

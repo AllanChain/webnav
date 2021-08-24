@@ -57,7 +57,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import WebsiteIcon from '@/components/WebsiteIcon'
+import WebsiteIcon from '@/components/WebsiteIcon.vue'
 
 export default {
   components: {
