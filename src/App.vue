@@ -163,7 +163,7 @@
 </template>
 
 <script>
-import { version } from '../package.json'
+import pkg from '../package.json'
 import { skipWaiting } from './registerServiceWorker'
 import WebNav from '@/components/WebNav'
 import Logo from '@/components/Logo'
@@ -193,7 +193,7 @@ export default {
       importDialog: false,
       query: '',
       drawer: false,
-      version,
+      version: pkg.version,
       textFocus: false,
       autofilled: false
     }
