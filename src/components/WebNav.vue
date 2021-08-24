@@ -3,51 +3,52 @@
     <div style="max-width: 700px; margin: auto;">
       <div
         v-for="bookmark in bookmarks"
-        :key="bookmark.id" class="box"
+        :key="bookmark.id"
+        class="box"
       >
-        <div>
-          <v-overlay
-            absolute opacity="0.1" z-index="2"
-            :value="$store.state.mode === 'edit'"
-          >
-            <v-btn
-              color="#2196f390" fab x-small
-              data-cy="edit-one"
-              @click="$store.commit('switchMode', {
-                mode: 'edit-dialog',
-                data: bookmark
-              })"
-            >
-              <v-icon color="white">
-                mdi-pencil
-              </v-icon>
-            </v-btn>
-          </v-overlay>
-          <v-overlay
-            absolute opacity="0.1" z-index="2"
-            :value="$store.state.mode === 'normal' && query && !!bookmark.search"
-          >
-            <v-btn
-              color="#2196f390" fab x-small
-              @click="goSearch(bookmark)"
-            >
-              <v-icon color="white">
-                mdi-magnify
-              </v-icon>
-            </v-btn>
-          </v-overlay>
-          <WebsiteIcon :bookmark="bookmark" @click.native="goURL(bookmark.url)" />
-        </div>
-        <div
-          class="name"
-          data-cy="title"
-          :style="{
-            color: config.blackText ? '#000' : '#eee',
-            textShadow: `1px 1px 3px
-            ${config.blackText ? '#eee' : '#000'}`
-          }"
+        <v-overlay
+          absolute opacity="0.1" z-index="2"
+          :value="$store.state.mode === 'edit'"
         >
-          {{ bookmark.title }}
+          <v-btn
+            color="#2196f390" fab x-small
+            data-cy="edit-one"
+            @click="$store.commit('switchMode', {
+              mode: 'edit-dialog',
+              data: bookmark
+            })"
+          >
+            <v-icon color="white">
+              mdi-pencil
+            </v-icon>
+          </v-btn>
+        </v-overlay>
+        <v-overlay
+          absolute opacity="0.1" z-index="2"
+          :value="$store.state.mode === 'normal' && query && !!bookmark.search"
+        >
+          <v-btn
+            color="#2196f390" fab x-small
+            @click="goSearch(bookmark)"
+          >
+            <v-icon color="white">
+              mdi-magnify
+            </v-icon>
+          </v-btn>
+        </v-overlay>
+        <div v-ripple>
+          <WebsiteIcon :bookmark="bookmark" @click.native="goURL(bookmark.url)" />
+          <div
+            class="name"
+            data-cy="title"
+            :style="{
+              color: config.blackText ? '#000' : '#eee',
+              textShadow: `1px 1px 3px
+            ${config.blackText ? '#eee' : '#000'}`
+            }"
+          >
+            {{ bookmark.title }}
+          </div>
         </div>
       </div>
     </div>
