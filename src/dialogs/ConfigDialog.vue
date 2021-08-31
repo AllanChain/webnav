@@ -284,7 +284,7 @@ export default {
 
 .bg-preview {
   background-size: cover;
-  background-position: center;
+  background-position: center 60%;
   width: 100%;
   height: 100%;
 }
