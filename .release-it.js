@@ -15,8 +15,7 @@ module.exports = {
     publish: false
   },
   github: {
-    release: true,
-    web: true
+    release: true
   },
   plugins: {
     '@release-it/conventional-changelog': {
