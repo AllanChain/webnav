@@ -1,16 +1,16 @@
 {
     "bgImg": {
-        "url": "back.jpg",
+        "url": "https://unsplash.com/photos/uL4CRLxEuvs/download?force=true&w=1920",
         "filter": {
             "blur": 0,
-            "blurColor": "#4480fd",
+            "blurColor": "#638da3",
             "contrast": 100,
             "grayscale": 0
         }
     },
     "blackText": false,
     "cors": "",
-    "barColor": "#3949AB",
+    "barColor": "#035976",
     "httpIcon": false,
     "locale": "",
     "dark": false,

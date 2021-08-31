@@ -37,6 +37,10 @@ It is possible to host your own bookmarks:
 
 See [the project](https://github.com/AllanChain/webnav/projects/1?fullscreen=true)
 
+## Default Backgroud Image
+
+Photo by [Juliana Chyzhova](https://unsplash.com/photos/uL4CRLxEuvs) on [Unsplash](https://unsplash.com/)
+
 ## Project setup
 
 VSCode i18n-ally
