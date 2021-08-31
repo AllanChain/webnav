@@ -36,15 +36,15 @@
             </v-icon>
           </v-btn>
         </v-overlay>
-        <div v-ripple>
-          <WebsiteIcon :bookmark="bookmark" @click.native="goURL(bookmark.url)" />
+        <div v-ripple @click="goURL(bookmark.url)">
+          <WebsiteIcon :bookmark="bookmark" />
           <div
             class="name"
             data-cy="title"
             :style="{
               color: config.blackText ? '#000' : '#eee',
               textShadow: `1px 1px 3px
-            ${config.blackText ? '#eee' : '#000'}`
+              ${config.blackText ? '#eee' : '#000'}`
             }"
           >
             {{ bookmark.title }}
@@ -95,6 +95,7 @@ export default {
   display: inline-block;
   width: 65px;
   border: 0;
+  user-select: none;
 }
 
 .name {
