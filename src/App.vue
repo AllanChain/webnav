@@ -90,7 +90,7 @@
         @update:model-value="$store.commit('switchMode', 'normal')"
       />
     </v-main>
-    <v-navigation-drawer v-model="drawer" app>
+    <v-navigation-drawer v-model="drawer" disable-resize-watcher app>
       <v-list shaped nav density="compact">
         <v-list-item>
           <v-list-item-header>
