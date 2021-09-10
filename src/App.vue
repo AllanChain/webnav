@@ -79,7 +79,7 @@
         @input="$store.commit('switchMode', 'normal')"
       />
     </v-main>
-    <v-navigation-drawer v-model="drawer" app>
+    <v-navigation-drawer v-model="drawer" disable-resize-watcher app>
       <v-list dense>
         <v-list-item>
           <v-list-item-content>
