@@ -36,7 +36,7 @@
             </v-icon>
           </v-btn>
         </v-overlay>
-        <div v-ripple @click="goURL(bookmark.url)">
+        <div v-ripple class="website" @click="goURL(bookmark.url)">
           <WebsiteIcon :bookmark="bookmark" />
           <div
             class="name"
@@ -89,7 +89,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .box {
   position: relative;
   display: inline-block;
@@ -97,7 +97,14 @@ export default {
   border: 0;
   user-select: none;
 }
-
+.website:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.website {
+  transition-property: all;
+  transition-duration: 500ms;
+  cursor: pointer;
+}
 .name {
   height: 3em;
   line-height: 1.1em;
