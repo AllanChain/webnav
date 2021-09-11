@@ -36,10 +36,10 @@
             </v-icon>
           </v-btn>
         </v-overlay>
-        <div v-ripple class="website" @click="goURL(bookmark.url)">
+        <div v-ripple class="website py-1" @click="goURL(bookmark.url)">
           <WebsiteIcon :bookmark="bookmark" />
           <div
-            class="name"
+            class="name py-1"
             data-cy="title"
             :style="{
               color: config.blackText ? '#000' : '#eee',
@@ -110,16 +110,7 @@ export default {
   line-height: 1.1em;
   width: 65px;
   font-size: 0.75em;
-  white-space: wrap;
   overflow: hidden;
-  -webkit-border-top-right-radius: 5px;
-  -webkit-border-bottom-right-radius: 5px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
   text-overflow: ellipsis;
-  -o-text-overflow: ellipsis;
-  -ms-text-overflow: ellipsis;
-  padding-top: 3px;
-  padding-bottom: 8px;
 }
 </style>
