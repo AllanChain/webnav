@@ -38,6 +38,7 @@
     </v-app-bar>
     <v-main
       :style="{
+        minHeight: '100vh',
         backgroundColor: config.bgImg.filter.blurColor
       }"
     >
@@ -92,70 +93,54 @@
         <v-divider />
         <v-list-item
           link data-cy="button-import"
+          prepend-icon="mdi-application-import"
+          :title="$t('menu.import')"
           @click="$store.commit('switchMode', 'import-dialog')"
+        />
+        <v-list-item
+          link
+          prepen-icon="mdi-file-download-outline"
+          :title="$t('menu.export')"
+          @click="downloadJSON"
         >
-          <v-list-item-action>
-            <v-icon>mdi-application-import</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>{{ $t('menu.import') }}</v-list-item-title>
-          </v-list-item-content>
+          <a ref="downloadLink" class="d-none" />
         </v-list-item>
-        <v-list-item link @click="downloadJSON">
-          <v-list-item-action>
-            <v-icon>mdi-file-download-outline</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>{{ $t('menu.export') }}</v-list-item-title>
-            <a ref="downloadLink" class="d-none" />
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item link data-cy="button-new-bookmark" @click="newBookmark">
-          <v-list-item-action>
-            <v-icon>mdi-bookmark-plus-outline</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>{{ $t('menu.new-bookmark') }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item link @click="$store.commit('switchMode', 'config-dialog')">
-          <v-list-item-action>
-            <v-icon>mdi-cog</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>{{ $t('menu.more-config') }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item link @click="confirmClear">
-          <v-list-item-action>
-            <v-icon>mdi-alert</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>{{ $t('menu.clear-bookmark') }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item link href="https://github.com/AllanChain/webnav">
-          <v-list-item-action>
-            <v-icon>mdi-github</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>{{ $t('menu.github-link') }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
+        <v-list-item
+          link data-cy="button-new-bookmark"
+          prepend-icon="mdi-bookmark-plus-outline"
+          :title="$t('menu.new-bookmark')"
+          @click="newBookmark"
+        />
+        <v-list-item
+          link
+          prepend-icon="mdi-cog"
+          :title="$t('menu.more-config')"
+          @click="$store.commit('switchMode', 'config-dialog')"
+        />
+        <v-list-item
+          link
+          prepend-icon="mdi-alert"
+          :title="$t('menu.clear-bookmark')"
+          @click="confirmClear"
+        />
+        <v-list-item
+          link
+          href="https://github.com/AllanChain/webnav"
+          prepend-icon="mdi-github"
+          :title="$t('menu.github-link')"
+        />
         <v-divider />
         <v-list-item @click="upgradeApp">
-          <v-list-item-content>
-            <span>
-              <v-icon small>
-                {{
-                  $store.state.swStatus === 'updated'
-                    ? 'mdi-cog-refresh'
-                    : 'mdi-cogs'
-                }}
-              </v-icon>
-              v{{ version }} - {{ $t(`sw.${$store.state.swStatus}`) }}
-            </span>
-          </v-list-item-content>
+          <span>
+            <v-icon small>
+              {{
+                $store.state.swStatus === 'updated'
+                  ? 'mdi-cog-refresh'
+                  : 'mdi-cogs'
+              }}
+            </v-icon>
+            v{{ version }} - {{ $t(`sw.${$store.state.swStatus}`) }}
+          </span>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -218,7 +203,7 @@ export default {
   mounted () {
     window.addEventListener('beforeinstallprompt', this.installPrompt)
   },
-  destroyed () {
+  unmounted () {
     window.removeEventListener('beforeinstallprompt', this.installPrompt)
   },
   methods: {
