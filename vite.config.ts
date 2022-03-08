@@ -7,7 +7,7 @@ import path from 'path'
 export default defineConfig({
   plugins: [
     vue(),
-    vuetify({ styles: 'expose' })
+    vuetify()
   ],
   define: { 'process.env': {} },
   resolve: {
