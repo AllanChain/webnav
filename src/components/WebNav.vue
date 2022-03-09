@@ -7,25 +7,27 @@
         class="box"
       >
         <v-overlay
-          contained opacity="0.1" z-index="2"
+          contained z-index="2"
+          class="justify-center align-center"
           :model-value="$store.state.mode === 'edit'"
         >
           <v-btn
-            color="#2196f390" icon size="x-small"
+            color="#2196f390" icon size="small"
             data-cy="edit-one"
             @click="$store.commit('switchMode', {
               mode: 'edit-dialog',
               data: bookmark
             })"
           >
-            <v-icon color="white">
+            <v-icon color="white" size="small">
               mdi-pencil
             </v-icon>
           </v-btn>
         </v-overlay>
         <v-overlay
-          contained opacity="0.1" z-index="2"
-          :model-value="$store.state.mode === 'normal' && query.length && !!bookmark.search"
+          contained z-index="2"
+          class="justify-center align-center"
+          :model-value="$store.state.mode === 'normal' && !!query.length && !!bookmark.search"
         >
           <v-btn
             color="#2196f390" icon size="x-small"
