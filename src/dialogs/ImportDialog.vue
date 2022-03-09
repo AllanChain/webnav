@@ -41,7 +41,7 @@
               >
             </v-col>
             <v-col cols="4" class="text-center">
-              <v-btn fab small color="amber" @click="$emit('input', false)">
+              <v-btn fab small color="amber" @click="$emit('update:modelValue', false)">
                 <v-icon>mdi-close-thick</v-icon>
               </v-btn>
             </v-col>
@@ -109,7 +109,7 @@ export default {
     },
     async importBookmarks (bookmarks) {
       if (!validate('/bookmarks', bookmarks)) {
-        this.$emit('input', false)
+        this.$emit('update:modelValue', false)
         return
       }
       // https://stackoverflow.com/a/36744732/8810271
@@ -134,7 +134,7 @@ export default {
         text: this.$tc('message.import-success', bookmarks.length),
         type: 'success'
       })
-      this.$emit('input', false)
+      this.$emit('update:modelValue', false)
     }
   }
 }

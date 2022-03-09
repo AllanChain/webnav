@@ -1,7 +1,7 @@
 <template>
   <v-overlay opacity="0.7">
     <v-slider
-      :value="index"
+      :model-value="index"
       data-cy="reorder-slider"
       color="purple"
       track-color="indigo"

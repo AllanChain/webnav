@@ -9,12 +9,12 @@
       <v-text-field
         ref="text"
         color="white"
-        :value="query"
+        :model-value="query"
         prepend-inner-icon="mdi-magnify"
         hide-details variant="outlined"
         single-line density="compact" clearable
         @mousedown="handleAutofill"
-        @input="query = $event || ''"
+        @update:modelValue="query = $event || ''"
         @focus="textFocus = true"
         @blur="textFocus = false"
       />

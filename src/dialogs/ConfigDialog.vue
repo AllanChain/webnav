@@ -30,7 +30,7 @@
               mdi-check
             </v-icon>
           </v-btn>
-          <v-btn icon size="large" @click="$emit('input', false)">
+          <v-btn icon size="large" @click="$emit('update:modelValue', false)">
             <v-icon color="yellow lighten-2">
               mdi-close-circle-outline
             </v-icon>
@@ -78,7 +78,7 @@
               <v-col cols="12" md="7">
                 <!-- <v-divider class="my-2" /> -->
                 <v-text-field
-                  :value="config.bgImg.url"
+                  :model-value="config.bgImg.url"
                   prepend-inner-icon="mdi-image"
                   :label="$t('config.bg.image-url')"
                   placeholder="back.jpg"
@@ -86,7 +86,7 @@
                   variant="outlined"
                   density="compact"
                   clearable
-                  @input="config.bgImg.url = $event || ''"
+                  @update:modelValue="config.bgImg.url = $event || ''"
                 />
                 <v-container v-if="config.bgImg.url !== ''">
                   <v-row no-gutters>
@@ -245,7 +245,7 @@ export default {
           app: this,
           write: true
         })
-        this.$emit('input', false)
+        this.$emit('update:modelValue', false)
       }
     },
     importFromFile (e) {

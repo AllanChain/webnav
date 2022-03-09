@@ -134,11 +134,11 @@ export default {
         text: this.$t('message.success'),
         type: 'success'
       })
-      this.$emit('input', false)
+      this.$emit('update:modelValue', false)
     },
     deleteThis () {
       this.$store.dispatch('db/bookmarks/delete', this.bookmark)
-      this.$emit('input', false)
+      this.$emit('update:modelValue', false)
     },
     async linkPreview () {
       this.linkPreviewLoading = true

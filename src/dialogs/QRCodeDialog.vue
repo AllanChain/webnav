@@ -33,7 +33,7 @@
               mdi-camera
             </v-icon>
           </v-btn>
-          <v-btn icon size="large" @click="$emit('input', false)">
+          <v-btn icon size="large" @click="$emit('update:modelValue', false)">
             <v-icon color="yellow lighten-2">
               mdi-close-circle-outline
             </v-icon>
