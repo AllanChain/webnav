@@ -47,8 +47,10 @@
           :label="$t('bookmark.name')"
           placeholder="Example"
           data-cy="input-title"
+          class="my-4"
           variant="outlined"
           density="compact"
+          hide-details
         />
         <v-text-field
           v-model="bookmark.url"
@@ -56,8 +58,10 @@
           :label="$t('bookmark.url')"
           placeholder="https://example.com"
           data-cy="input-url"
+          class="my-4"
           variant="outlined"
           density="compact"
+          hide-details
         />
         <v-text-field
           v-model="bookmark.search"
@@ -65,8 +69,10 @@
           :label="$t('bookmark.search')"
           placeholder="/search?wd={}"
           data-cy="input-search"
+          class="my-4"
           variant="outlined"
           density="compact"
+          hide-details
         />
         <v-text-field
           v-model="bookmark.icon"
@@ -74,8 +80,10 @@
           :label="$t('bookmark.icon')"
           placeholder="/favicon.ico"
           data-cy="input-icon"
+          class="my-4"
           variant="outlined"
           density="compact"
+          hide-details
         />
       </v-card-text>
       <v-card-actions v-if="config.linkPreviewKey" class="pt-0">
