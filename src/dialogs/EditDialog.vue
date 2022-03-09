@@ -1,11 +1,10 @@
 <template>
   <v-dialog
-    :value="true"
-    max-width="500"
     scrollable
-    @input="$emit('input', false)"
+    :model-value="true"
+    @onUpdate:modelValue="$emit('onUpdate:modelValue', false)"
   >
-    <v-card>
+    <v-card max-width="500">
       <v-card-title class="pa-0">
         <v-toolbar color="indigo" dark dense>
           <v-toolbar-title>

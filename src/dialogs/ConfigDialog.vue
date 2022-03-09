@@ -1,5 +1,9 @@
 <template>
-  <v-dialog value="true" scrollable fullscreen @input="$emit('input', false)">
+  <v-dialog
+    scrollable fullscreen
+    :model-value="true"
+    @onUpdate:modelValue="$emit('onUpdate:modelValue', false)"
+  >
     <a ref="downloadLink" class="d-none" />
     <input
       ref="file"

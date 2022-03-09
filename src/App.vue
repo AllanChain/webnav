@@ -83,12 +83,10 @@
     <v-navigation-drawer v-model="drawer" app>
       <v-list dense>
         <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title class="title">
-              WebNav
-            </v-list-item-title>
-            <logo class="text-center" @click.native="install.prompt()" />
-          </v-list-item-content>
+          <v-list-item-title class="title">
+            WebNav
+          </v-list-item-title>
+          <logo class="text-center" @click.native="install.prompt()" />
         </v-list-item>
         <v-divider />
         <v-list-item
@@ -154,20 +152,26 @@ import WebNav from '@/components/WebNav.vue'
 import Logo from '@/components/Logo.vue'
 import DisAlert from '@/components/DisAlert.vue'
 import { mapState } from 'vuex'
+import { defineAsyncComponent } from 'vue'
 
 export default {
   name: 'App',
   components: {
-    ImportDialog: () =>
-      import(/* webpackChunkName: "import" */ '@/dialogs/ImportDialog.vue'),
-    EditDialog: () =>
-      import(/* webpackChunkName: "edit" */ '@/dialogs/EditDialog.vue'),
-    ReorderDialog: () =>
-      import(/* webpackChunkName: "reorder" */ '@/dialogs/ReorderDialog.vue'),
-    ConfigDialog: () =>
-      import(/* webpackChunkName: "config" */ '@/dialogs/ConfigDialog.vue'),
-    QRCodeDialog: () =>
-      import(/* webpackChunkName: "qrcode" */ '@/dialogs/QRCodeDialog.vue'),
+    ImportDialog: defineAsyncComponent(() =>
+      import(/* webpackChunkName: "import" */ '@/dialogs/ImportDialog.vue')
+    ),
+    EditDialog: defineAsyncComponent(() =>
+      import(/* webpackChunkName: "edit" */ '@/dialogs/EditDialog.vue')
+    ),
+    ReorderDialog: defineAsyncComponent(() =>
+      import(/* webpackChunkName: "reorder" */ '@/dialogs/ReorderDialog.vue')
+    ),
+    ConfigDialog: defineAsyncComponent(() =>
+      import(/* webpackChunkName: "config" */ '@/dialogs/ConfigDialog.vue')
+    ),
+    QRCodeDialog: defineAsyncComponent(() =>
+      import(/* webpackChunkName: "qrcode" */ '@/dialogs/QRCodeDialog.vue')
+    ),
     WebNav,
     Logo,
     DisAlert
