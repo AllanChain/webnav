@@ -43,8 +43,9 @@ export default {
       if (newcomer) {
         bookmarks.forEach((b, i) => { b.index = i })
         await context.dispatch('addAll', bookmarks)
+        console.log(i18n)
         context.commit('alert', {
-          text: i18n.t('message.bookmark-init'),
+          text: i18n.global.t('message.bookmark-init'),
           type: 'success'
         }, {
           root: true

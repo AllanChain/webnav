@@ -33,7 +33,7 @@ export default {
         config = defaultConfig
         localStorage.setItem('config', JSON.stringify(config))
         result = {
-          text: i18n.t('message.config-init'),
+          text: i18n.global.t('message.config-init'),
           type: 'success'
         }
       } else if (!validate('/config', config, true)) {
@@ -41,14 +41,14 @@ export default {
         if (!validate('/config', config)) {
           config = defaultConfig
           result = {
-            text: i18n.t('message.config-error'),
+            text: i18n.global.t('message.config-error'),
             type: 'error',
             delay: 12000
           }
         } else {
           localStorage.setItem('config', JSON.stringify(config))
           result = {
-            text: i18n.t('message.config-update'),
+            text: i18n.global.t('message.config-update'),
             type: 'success'
           }
         }
