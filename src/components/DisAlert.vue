@@ -3,7 +3,7 @@
     v-model="show"
     dense
     dismissible
-    border="left"
+    border="start"
     transition="slide-x-transition"
     :type="message.type"
     :style="style"
