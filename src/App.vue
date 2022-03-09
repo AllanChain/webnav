@@ -1,9 +1,14 @@
 <template>
   <v-app>
     <v-app-bar app :color="config.barColor" dark>
-      <v-app-bar-nav-icon data-cy="button-drawer" @click="drawer = !drawer" />
+      <v-app-bar-nav-icon
+        data-cy="button-drawer"
+        color="white"
+        @click="drawer = !drawer"
+      />
       <v-text-field
         ref="text"
+        color="white"
         :value="query"
         prepend-inner-icon="mdi-magnify"
         hide-details variant="outlined"
@@ -18,22 +23,18 @@
       <v-spacer />
       <v-expand-x-transition>
         <v-btn
-          v-show="showBtn" icon
+          v-show="showBtn" icon="mdi-qrcode-scan" color="white"
           @click=" $store.commit('switchMode', 'qrcode-dialog')"
-        >
-          <v-icon>mdi-qrcode-scan</v-icon>
-        </v-btn>
+        />
       </v-expand-x-transition>
       <v-expand-x-transition>
         <v-btn
-          v-show="showBtn" data-cy="button-edit-mode" icon
-          :color="$store.state.mode === 'edit' ? 'green' : undefined"
+          v-show="showBtn" data-cy="button-edit-mode" icon="mdi-pencil"
+          :color="$store.state.mode === 'edit' ? 'green' : 'white'"
           @click=" $store.commit(
             'switchMode',
             $store.state.mode === 'edit' ? 'normal' : 'edit')"
-        >
-          <v-icon>mdi-pencil</v-icon>
-        </v-btn>
+        />
       </v-expand-x-transition>
     </v-app-bar>
     <v-main

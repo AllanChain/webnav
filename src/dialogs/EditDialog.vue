@@ -12,32 +12,32 @@
             {{ bookmark.title }}
           </v-toolbar-title>
           <v-spacer />
-          <v-btn icon size="small" data-cy="done" @click="done">
-            <v-icon color="green lighten-2">
-              mdi-check-bold
-            </v-icon>
-          </v-btn>
           <v-btn
-            v-if="bookmark.id" icon size="small"
-            data-cy="delete"
-            @click="deleteThis"
-          >
-            <v-icon color="red lighten-2">
-              mdi-delete
-            </v-icon>
-          </v-btn>
+            icon="mdi-check-bold"
+            color="green lighten-2"
+            size="small"
+            data-cy="done"
+            @click="done"
+          />
           <v-btn
             v-if="bookmark.id"
-            icon size="small" data-cy="reorder"
+            icon="mdi-delete"
+            color="red lighten-2"
+            size="small"
+            data-cy="delete"
+            @click="deleteThis"
+          />
+          <v-btn
+            v-if="bookmark.id"
+            icon="mdi-swap-horizontal"
+            color="yellow lighten-2"
+            size="small"
+            data-cy="reorder"
             @click="$store.commit('switchMode', {
               mode: 'reorder-dialog',
               data: bookmark.index
             })"
-          >
-            <v-icon color="yellow lighten-2">
-              mdi-swap-horizontal
-            </v-icon>
-          </v-btn>
+          />
         </v-toolbar>
       </v-card-title>
       <v-card-text class="pt-4 pb-0">
