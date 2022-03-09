@@ -2,11 +2,11 @@
   <v-dialog
     scrollable
     :model-value="true"
-    @onUpdate:modelValue="$emit('onUpdate:modelValue', false)"
+    @update:modelValue="$emit('update:modelValue', false)"
   >
     <v-card max-width="500">
       <v-card-title class="pa-0">
-        <v-toolbar color="indigo" dark dense>
+        <v-toolbar color="indigo" dark density="compact">
           <v-toolbar-title>
             {{ $t('qr.title') }}
           </v-toolbar-title>
@@ -23,17 +23,17 @@
               mdi-file-upload-outline
             </v-icon>
           </v-btn>
-          <v-btn v-show="!!result" icon large @click="copy">
+          <v-btn v-show="!!result" icon size="large" @click="copy">
             <v-icon color="amber lighten-2">
               mdi-content-copy
             </v-icon>
           </v-btn>
-          <v-btn v-show="camera === 'off'" icon large @click="rescan">
+          <v-btn v-show="camera === 'off'" icon size="large" @click="rescan">
             <v-icon color="teal lighten-2">
               mdi-camera
             </v-icon>
           </v-btn>
-          <v-btn icon large @click="$emit('input', false)">
+          <v-btn icon size="large" @click="$emit('input', false)">
             <v-icon color="yellow lighten-2">
               mdi-close-circle-outline
             </v-icon>

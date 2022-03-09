@@ -1,7 +1,7 @@
 <template>
   <v-alert
     v-model="show"
-    dense
+    density="compact"
     dismissible
     border="start"
     transition="slide-x-transition"

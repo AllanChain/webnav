@@ -2,23 +2,23 @@
   <v-dialog
     scrollable
     :model-value="true"
-    @onUpdate:modelValue="$emit('onUpdate:modelValue', false)"
+    @update:modelValue="$emit('update:modelValue', false)"
   >
-    <v-card max-width="500">
+    <v-card>
       <v-card-title class="pa-0">
-        <v-toolbar color="indigo" dark dense>
+        <v-toolbar color="indigo" dark density="compact" class="pr-1">
           <v-toolbar-title>
             <WebsiteIcon :bookmark="bookmark" size="1.2rem" />
             {{ bookmark.title }}
           </v-toolbar-title>
           <v-spacer />
-          <v-btn icon large data-cy="done" @click="done">
+          <v-btn icon size="small" data-cy="done" @click="done">
             <v-icon color="green lighten-2">
               mdi-check-bold
             </v-icon>
           </v-btn>
           <v-btn
-            v-if="bookmark.id" icon large
+            v-if="bookmark.id" icon size="small"
             data-cy="delete"
             @click="deleteThis"
           >
@@ -28,7 +28,7 @@
           </v-btn>
           <v-btn
             v-if="bookmark.id"
-            icon large data-cy="reorder"
+            icon size="small" data-cy="reorder"
             @click="$store.commit('switchMode', {
               mode: 'reorder-dialog',
               data: bookmark.index
@@ -47,8 +47,8 @@
           :label="$t('bookmark.name')"
           placeholder="Example"
           data-cy="input-title"
-          outlined
-          dense
+          variant="outlined"
+          density="compact"
         />
         <v-text-field
           v-model="bookmark.url"
@@ -56,8 +56,8 @@
           :label="$t('bookmark.url')"
           placeholder="https://example.com"
           data-cy="input-url"
-          outlined
-          dense
+          variant="outlined"
+          density="compact"
         />
         <v-text-field
           v-model="bookmark.search"
@@ -65,8 +65,8 @@
           :label="$t('bookmark.search')"
           placeholder="/search?wd={}"
           data-cy="input-search"
-          outlined
-          dense
+          variant="outlined"
+          density="compact"
         />
         <v-text-field
           v-model="bookmark.icon"
@@ -74,8 +74,8 @@
           :label="$t('bookmark.icon')"
           placeholder="/favicon.ico"
           data-cy="input-icon"
-          outlined
-          dense
+          variant="outlined"
+          density="compact"
         />
       </v-card-text>
       <v-card-actions v-if="config.linkPreviewKey" class="pt-0">

@@ -2,7 +2,7 @@
   <v-dialog
     scrollable fullscreen
     :model-value="true"
-    @onUpdate:modelValue="$emit('onUpdate:modelValue', false)"
+    @update:modelValue="$emit('update:modelValue', false)"
   >
     <a ref="downloadLink" class="d-none" />
     <input
@@ -14,23 +14,23 @@
     >
     <v-card>
       <v-card-title class="pa-0">
-        <v-toolbar color="indigo" dark dense>
+        <v-toolbar color="indigo" dark density="compact">
           <v-toolbar-title>{{ $t('config.title') }}</v-toolbar-title>
           <v-spacer />
-          <v-btn icon large color="blue lighten-2" @click="$refs.file.click()">
+          <v-btn icon size="large" color="blue lighten-2" @click="$refs.file.click()">
             <v-icon>mdi-file-upload-outline</v-icon>
           </v-btn>
-          <v-btn icon large @click="downloadJSON">
+          <v-btn icon size="large" @click="downloadJSON">
             <v-icon color="amber">
               mdi-file-download-outline
             </v-icon>
           </v-btn>
-          <v-btn icon large @click="done">
+          <v-btn icon size="large" @click="done">
             <v-icon color="green lighten-2">
               mdi-check
             </v-icon>
           </v-btn>
-          <v-btn icon large @click="$emit('input', false)">
+          <v-btn icon size="large" @click="$emit('input', false)">
             <v-icon color="yellow lighten-2">
               mdi-close-circle-outline
             </v-icon>
@@ -83,8 +83,8 @@
                   :label="$t('config.bg.image-url')"
                   placeholder="back.jpg"
                   :messages="$t('config.bg.img-msg')"
-                  outlined
-                  dense
+                  variant="outlined"
+                  density="compact"
                   clearable
                   @input="config.bgImg.url = $event || ''"
                 />
@@ -169,8 +169,8 @@
                   :label="$t('config.other.language')"
                   prepend-inner-icon="mdi-language-java"
                   hide-details
-                  outlined
-                  dense
+                  variant="outlined"
+                  density="compact"
                 />
                 <v-switch v-model="config.dark" :label="$t('config.other.dark-mode')" />
                 <p>
@@ -181,8 +181,8 @@
                   prepend-inner-icon="mdi-airplane-takeoff"
                   :label="$t('config.other.cors')"
                   placeholder="e.g. https://netnr-proxy.cloudno.de/"
-                  outlined
-                  dense
+                  variant="outlined"
+                  density="compact"
                 />
                 <p>
                   {{ $t('config.other.link-preview') }}
@@ -194,8 +194,8 @@
                   placeholder="e.g. 123456abcdfe"
                   clearable
                   hide-details
-                  outlined
-                  dense
+                  variant="outlined"
+                  density="compact"
                 />
                 <v-switch
                   v-model="config.httpIcon"

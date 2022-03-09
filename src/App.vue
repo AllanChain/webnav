@@ -6,8 +6,8 @@
         ref="text"
         :value="query"
         prepend-inner-icon="mdi-magnify"
-        hide-details outlined
-        single-line dense clearable
+        hide-details variant="outlined"
+        single-line density="compact" clearable
         @mousedown="handleAutofill"
         @input="query = $event || ''"
         @focus="textFocus = true"
@@ -61,27 +61,27 @@
       <WebNav :query="query" />
       <ImportDialog
         v-if="$store.state.mode === 'import-dialog'"
-        @input="$store.commit('switchMode', 'normal')"
+        @update:modelValue="$store.commit('switchMode', 'normal')"
       />
       <EditDialog
         v-if="$store.state.mode === 'edit-dialog'"
-        @input="$store.commit('switchMode', 'normal')"
+        @update:modelValue="$store.commit('switchMode', 'normal')"
       />
       <ReorderDialog
         v-if="$store.state.mode === 'reorder-dialog'"
-        @input="$store.commit('switchMode', 'normal')"
+        @update:modelValue="$store.commit('switchMode', 'normal')"
       />
       <ConfigDialog
         v-if="$store.state.mode === 'config-dialog'"
-        @input="$store.commit('switchMode', 'normal')"
+        @update:modelValue="$store.commit('switchMode', 'normal')"
       />
       <QRCodeDialog
         v-if="$store.state.mode === 'qrcode-dialog'"
-        @input="$store.commit('switchMode', 'normal')"
+        @update:modelValue="$store.commit('switchMode', 'normal')"
       />
     </v-main>
     <v-navigation-drawer v-model="drawer" app>
-      <v-list dense>
+      <v-list density="compact">
         <v-list-item>
           <v-list-item-title class="title">
             WebNav

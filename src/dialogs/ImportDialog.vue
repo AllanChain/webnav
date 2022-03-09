@@ -1,5 +1,8 @@
 <template>
-  <v-dialog :model-value="true" @onUpdate:modelValue="$emit('onUpdate:modelValue', false)">
+  <v-dialog
+    :model-value="true"
+    @udate:modelValue="$emit('update:modelValue', false)"
+  >
     <v-card max-width="350px" class="elevation-12">
       <v-card-text class="pa-1">
         <v-container>
@@ -10,14 +13,14 @@
               color="purple"
               label="JSON URL"
               placeholder="https://example.cors/marks.json"
-              dense outlined hide-details
+              density="compact" variant="outlined" hide-details
             />
           </v-row>
           <v-row>
             <v-switch
               v-model="overwrite"
               data-cy="switch-overwrite-bookmark"
-              dense
+              density="compact"
               hide-details
               class="ml-4 mt-0"
               :label="$t('import.overwrite')"

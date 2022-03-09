@@ -8,7 +8,7 @@
       thumb-label="always"
       :min="0"
       :max="bookmarks.length - 1"
-      @input="reorder"
+      @update:modelValue="reorder"
     />
     <div class="d-flex" style="width: 90vw;">
       <v-btn color="amber darken-3" data-cy="reorder-cancel" @click="cancel">
