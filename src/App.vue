@@ -84,10 +84,15 @@
     <v-navigation-drawer v-model="drawer" app>
       <v-list density="compact">
         <v-list-item>
-          <v-list-item-title class="title">
-            WebNav
-          </v-list-item-title>
-          <logo class="text-center" @click.native="install.prompt()" />
+          <template #prepend />
+          <template #title>
+            <div class="title">
+              WebNav
+            </div>
+          </template>
+          <template #subtitle>
+            <logo class="text-center" @click.native="install.prompt()" />
+          </template>
         </v-list-item>
         <v-divider />
         <v-list-item
@@ -98,7 +103,7 @@
         />
         <v-list-item
           link
-          prepen-icon="mdi-file-download-outline"
+          prepend-icon="mdi-file-download-outline"
           :title="$t('menu.export')"
           @click="downloadJSON"
         >
@@ -130,6 +135,7 @@
         />
         <v-divider />
         <v-list-item @click="upgradeApp">
+          <template #prepend />
           <span>
             <v-icon small>
               {{
