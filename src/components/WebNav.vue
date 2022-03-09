@@ -7,11 +7,11 @@
         class="box"
       >
         <v-overlay
-          absolute opacity="0.1" z-index="2"
-          :value="$store.state.mode === 'edit'"
+          contained opacity="0.1" z-index="2"
+          :model-value="$store.state.mode === 'edit'"
         >
           <v-btn
-            color="#2196f390" fab x-small
+            color="#2196f390" icon size="x-small"
             data-cy="edit-one"
             @click="$store.commit('switchMode', {
               mode: 'edit-dialog',
@@ -24,11 +24,11 @@
           </v-btn>
         </v-overlay>
         <v-overlay
-          absolute opacity="0.1" z-index="2"
-          :value="$store.state.mode === 'normal' && query && !!bookmark.search"
+          contained opacity="0.1" z-index="2"
+          :model-value="$store.state.mode === 'normal' && query.length && !!bookmark.search"
         >
           <v-btn
-            color="#2196f390" fab x-small
+            color="#2196f390" icon size="x-small"
             @click="goSearch(bookmark)"
           >
             <v-icon color="white">
