@@ -86,7 +86,7 @@
             <v-list-item-title class="title">
               WebNav
             </v-list-item-title>
-            <logo class="text-center" @click.native="install.prompt()" />
+            <AppLogo class="text-center" @click.native="install.prompt()" />
           </v-list-item-content>
         </v-list-item>
         <v-divider />
@@ -166,7 +166,7 @@
 import pkg from '../package.json'
 import { skipWaiting } from './registerServiceWorker'
 import WebNav from '@/components/WebNav'
-import Logo from '@/components/Logo'
+import AppLogo from '@/components/AppLogo'
 import DisAlert from '@/components/DisAlert'
 import { mapState } from 'vuex'
 
@@ -184,7 +184,7 @@ export default {
     QRCodeDialog: () =>
       import(/* webpackChunkName: "qrcode" */ '@/dialogs/QRCodeDialog'),
     WebNav,
-    Logo,
+    AppLogo,
     DisAlert
   },
   data () {
