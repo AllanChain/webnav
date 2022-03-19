@@ -48,7 +48,7 @@ describe('App Basic Feature Test', () => {
     cy.get('[data-cy="reorder"]').click()
     cy.get('[data-cy="title"]').first().then(titleDiv => {
       const title = titleDiv.text()
-      cy.get('div[data-cy="reorder-slider"]').type('{rightarrow}', { force: true })
+      cy.get('div.v-slider__thumb-container').first().type('{rightarrow}', { force: true })
       cy.get('input[data-cy="reorder-slider"]').should('have.value', 1)
       cy.get('[data-cy="title"]').eq(1).should('have.text', title)
       cy.get('[data-cy=reorder-apply]').click()
@@ -61,7 +61,7 @@ describe('App Basic Feature Test', () => {
     cy.get('[data-cy="reorder"]').click()
     cy.get('[data-cy="title"]').first().then(titleDiv => {
       const title = titleDiv.text()
-      cy.get('div[data-cy="reorder-slider"]').type('{rightarrow}', { force: true })
+      cy.get('div.v-slider__thumb-container').first().type('{rightarrow}', { force: true })
       cy.get('[data-cy="reorder-cancel"]').click()
       cy.get('[data-cy="title"]').eq(0).should('have.text', title)
     })
