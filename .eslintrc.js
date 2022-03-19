@@ -5,7 +5,6 @@ module.exports = {
     browser: true,
     'cypress/globals': true
   },
-  // parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint', 'cypress'],
   parserOptions: {
     parser: require.resolve('@typescript-eslint/parser'),

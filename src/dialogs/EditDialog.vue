@@ -11,7 +11,7 @@
             <WebsiteIcon :bookmark="bookmark" size="1.2rem" />
             {{ bookmark.title }}
           </v-toolbar-title>
-          <v-spacer />
+          <!-- <v-spacer /> -->
           <v-btn
             icon="mdi-check-bold"
             color="green lighten-2"
