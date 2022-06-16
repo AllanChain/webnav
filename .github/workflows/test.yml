@@ -23,5 +23,3 @@ jobs:
           node-
     - name: Install Packages
       run: yarn install --immutable --check-cache
-    - name: Test App
-      run: yarn test:prod-headless
