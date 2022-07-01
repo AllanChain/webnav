@@ -9,10 +9,10 @@ Try it out at https://allanchain.github.io/webnav/
 
 - Import and export bookmarks and config via JSON files
 - Easy editing site's icon, display name and search query
-- Works with LinkPreview, for even easier icon and name editing
+- Works with [Favicon Grabber](https://favicongrabber.com), for even easier icon and name editing
 - Easy reordering
 - Easy searching in any sites, as long as configured
-- Highly customisable
+- Highly customizable
 - Able to add proxy
 
 

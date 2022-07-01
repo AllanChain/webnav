@@ -34,7 +34,12 @@ export default {
       immediate: true,
       handler (bookmark) {
         const cors = this.config.cors
-        let src = cors + new URL(bookmark.icon || '/favicon.ico', bookmark.url).href
+        let src
+        try {
+          src = cors + new URL(bookmark.icon || '/favicon.ico', bookmark.url).href
+        } catch (err) {
+          return
+        }
         // Fail image serve over http if configured
         if (!this.config.httpIcon && !src.startsWith('https://'))
           src = 'img/fallback.png'

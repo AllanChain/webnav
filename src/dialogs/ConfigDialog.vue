@@ -180,19 +180,6 @@
                   outlined
                   dense
                 />
-                <p>
-                  {{ $t('config.other.link-preview') }}
-                </p>
-                <v-text-field
-                  v-model="config.linkPreviewKey"
-                  prepend-inner-icon="mdi-key-link"
-                  :label="$t('config.other.link-preview-key')"
-                  placeholder="e.g. 123456abcdfe"
-                  clearable
-                  hide-details
-                  outlined
-                  dense
-                />
                 <v-switch
                   v-model="config.httpIcon"
                   hide-details=""

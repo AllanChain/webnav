@@ -79,16 +79,16 @@
           dense
         />
       </v-card-text>
-      <v-card-actions v-if="config.linkPreviewKey" class="pt-0">
+      <v-card-actions class="pt-0">
         <v-spacer />
         <v-btn
           text
           color="primary"
-          :disabled="!bookmark.url || linkPreviewLoading"
-          @click="linkPreview"
+          :disabled="!bookmark.url || faviconGrabLoading"
+          @click="faviconGrab"
         >
-          LinkPreview
-          <span v-if="linkPreviewLoading">...</span>
+          FaviconGrab
+          <span v-if="faviconGrabLoading">...</span>
           <span v-else>!</span>
         </v-btn>
       </v-card-actions>
@@ -109,7 +109,7 @@ export default {
   data () {
     return {
       bookmark: JSON.parse(JSON.stringify(this.$store.state.modeData)),
-      linkPreviewLoading: false
+      faviconGrabLoading: false
     }
   },
   computed: {
@@ -133,18 +133,12 @@ export default {
       this.$store.dispatch('db/bookmarks/delete', this.bookmark)
       this.$emit('input', false)
     },
-    async linkPreview () {
-      this.linkPreviewLoading = true
-      const response = await fetch('https://api.linkpreview.net', {
-        method: 'POST',
-        mode: 'cors',
-        body: JSON.stringify({
-          key: this.config.linkPreviewKey,
-          q: this.bookmark.url
-        })
-      })
+    async faviconGrab () {
+      this.faviconGrabLoading = true
+      const domain = new URL(this.bookmark.url).hostname
+      const response = await fetch(`http://favicongrabber.com/api/grab/${domain}`)
       const previewData = await response.json()
-      this.linkPreviewLoading = false
+      this.faviconGrabLoading = false
       if (previewData.error) {
         this.$store.commit('alert', {
           text: `${previewData.error}: ${previewData.description}`,
@@ -152,11 +146,9 @@ export default {
         })
         return
       }
-      if (previewData.title)
-        this.bookmark.title = previewData.title
-      if (previewData.image) {
+      if (previewData.icons.length) {
         this.bookmark.icon = RelateUrl.relate(
-          this.bookmark.url, previewData.image
+          this.bookmark.url, previewData.icons[0].src
         )
       }
     }

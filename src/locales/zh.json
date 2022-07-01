@@ -44,8 +44,6 @@
       "cors-note": "使用 CORS 代理将使被阻止的 http 请求转换为 https。",
       "dark-mode": "暗色模式",
       "http-icon": "允许加载 http 协议的图标",
-      "link-preview": "使用 LinkPreview.net 的服务自动填写网页标题和图标。LinkPreview 也存在一定缺陷，不对任何情况适用。",
-      "link-preview-key": "LinkPreview Key",
       "prefer-new-tab": "在新标签页打开网页"
     },
     "title": "配置 WebNav",
