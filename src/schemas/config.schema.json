@@ -9,10 +9,9 @@
         "httpIcon",
         "locale",
         "dark",
-        "linkPreviewKey",
         "preferNewTab"
     ],
-    "additionalProperties": false,
+    "additionalProperties": true,
     "properties": {
         "bgImg": {
             "type": "object",
@@ -77,9 +76,6 @@
         },
         "dark": {
             "type": "boolean"
-        },
-        "linkPreviewKey": {
-            "type": "string"
         },
         "preferNewTab": {
             "type": "boolean"

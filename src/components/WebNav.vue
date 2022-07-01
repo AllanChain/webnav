@@ -39,7 +39,7 @@
           </v-btn>
         </v-overlay>
         <div v-ripple>
-          <WebsiteIcon :bookmark="bookmark" @click.native="goURL(bookmark.url)" />
+          <WebsiteIcon :bookmark="bookmark" @click="goURL(bookmark.url)" />
           <div
             class="name"
             data-cy="title"

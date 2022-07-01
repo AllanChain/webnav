@@ -66,9 +66,7 @@ export default {
       default: false
     }
   },
-  emits: {
-    'update:modelValue': Boolean
-  },
+  emits: ['update:modelValue'],
   data () {
     return {
       url: '',

@@ -2,7 +2,7 @@
   <v-dialog
     scrollable
     :model-value="true"
-    @update:modelValue="$emit('update:modelValue', false)"
+    @update:model-value="$emit('update:modelValue', false)"
   >
     <v-card max-width="500">
       <v-card-title class="pa-0">
@@ -79,6 +79,7 @@ import { QrcodeStream, QrcodeCapture } from 'vue-qrcode-reader'
 
 export default {
   components: { QrcodeStream, QrcodeCapture },
+  emits: ['update:modelValue'],
   data () {
     return {
       camera: 'off',

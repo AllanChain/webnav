@@ -6,7 +6,7 @@
   >
     <v-card width="500px" max-width="90vw">
       <v-card-title class="pa-0">
-        <v-toolbar color="indigo" dark density="compact" class="pr-1">
+        <v-toolbar color="indigo" dark density="compact">
           <v-toolbar-title>
             <WebsiteIcon :bookmark="bookmark" size="1.2rem" />
             {{ bookmark.title }}
@@ -43,6 +43,7 @@
       <v-card-text class="pt-4 pb-0">
         <v-text-field
           v-model="bookmark.title"
+          color="primary"
           prepend-inner-icon="mdi-bookmark"
           :label="$t('bookmark.name')"
           placeholder="Example"
@@ -54,6 +55,7 @@
         />
         <v-text-field
           v-model="bookmark.url"
+          color="primary"
           prepend-inner-icon="mdi-web"
           :label="$t('bookmark.url')"
           placeholder="https://example.com"
@@ -65,6 +67,7 @@
         />
         <v-text-field
           v-model="bookmark.search"
+          color="primary"
           prepend-inner-icon="mdi-magnify"
           :label="$t('bookmark.search')"
           placeholder="/search?wd={}"
@@ -76,6 +79,7 @@
         />
         <v-text-field
           v-model="bookmark.icon"
+          color="primary"
           prepend-inner-icon="mdi-earth"
           :label="$t('bookmark.icon')"
           placeholder="/favicon.ico"
@@ -86,16 +90,16 @@
           hide-details
         />
       </v-card-text>
-      <v-card-actions v-if="config.linkPreviewKey" class="pt-0">
+      <v-card-actions class="pt-0">
         <v-spacer />
         <v-btn
           text
           color="primary"
-          :disabled="!bookmark.url || linkPreviewLoading"
-          @click="linkPreview"
+          :disabled="!bookmark.url || faviconGrabLoading"
+          @click="faviconGrab"
         >
-          LinkPreview
-          <span v-if="linkPreviewLoading">...</span>
+          FaviconGrab
+          <span v-if="faviconGrabLoading">...</span>
           <span v-else>!</span>
         </v-btn>
       </v-card-actions>
@@ -113,13 +117,11 @@ export default {
   components: {
     WebsiteIcon
   },
-  emits: {
-    'update:modelValue': Boolean
-  },
+  emits: ['update:modelValue'],
   data () {
     return {
       bookmark: JSON.parse(JSON.stringify(this.$store.state.modeData)),
-      linkPreviewLoading: false
+      faviconGrabLoading: false
     }
   },
   computed: {
@@ -143,18 +145,12 @@ export default {
       this.$store.dispatch('db/bookmarks/delete', this.bookmark)
       this.$emit('update:modelValue', false)
     },
-    async linkPreview () {
-      this.linkPreviewLoading = true
-      const response = await fetch('https://api.linkpreview.net', {
-        method: 'POST',
-        mode: 'cors',
-        body: JSON.stringify({
-          key: this.config.linkPreviewKey,
-          q: this.bookmark.url
-        })
-      })
+    async faviconGrab () {
+      this.faviconGrabLoading = true
+      const domain = new URL(this.bookmark.url).hostname
+      const response = await fetch(`http://favicongrabber.com/api/grab/${domain}`)
       const previewData = await response.json()
-      this.linkPreviewLoading = false
+      this.faviconGrabLoading = false
       if (previewData.error) {
         this.$store.commit('alert', {
           text: `${previewData.error}: ${previewData.description}`,
@@ -162,11 +158,9 @@ export default {
         })
         return
       }
-      if (previewData.title)
-        this.bookmark.title = previewData.title
-      if (previewData.image) {
+      if (previewData.icons.length) {
         this.bookmark.icon = RelateUrl.relate(
-          this.bookmark.url, previewData.image
+          this.bookmark.url, previewData.icons[0].src
         )
       }
     }

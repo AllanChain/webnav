@@ -2,7 +2,7 @@
   <v-dialog
     scrollable fullscreen
     :model-value="true"
-    @update:modelValue="$emit('update:modelValue', false)"
+    @update:model-value="$emit('update:modelValue', false)"
   >
     <a ref="downloadLink" class="d-none" />
     <input
@@ -86,7 +86,7 @@
                   variant="outlined"
                   density="compact"
                   clearable
-                  @update:modelValue="config.bgImg.url = $event || ''"
+                  @update:model-value="config.bgImg.url = $event || ''"
                 />
                 <v-container v-if="config.bgImg.url !== ''">
                   <v-row no-gutters>
@@ -184,19 +184,6 @@
                   variant="outlined"
                   density="compact"
                 />
-                <p>
-                  {{ $t('config.other.link-preview') }}
-                </p>
-                <v-text-field
-                  v-model="config.linkPreviewKey"
-                  prepend-inner-icon="mdi-key-link"
-                  :label="$t('config.other.link-preview-key')"
-                  placeholder="e.g. 123456abcdfe"
-                  clearable
-                  hide-details
-                  variant="outlined"
-                  density="compact"
-                />
                 <v-switch
                   v-model="config.httpIcon"
                   hide-details=""
@@ -231,6 +218,7 @@
 import validate from '@/validator'
 
 export default {
+  emits: ['update:modelValue'],
   data () {
     return {
       tab: 0,
