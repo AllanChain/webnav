@@ -25,10 +25,7 @@ module.exports = {
       'error',
       {
         singleline: 4,
-        multiline: {
-          max: 3,
-          allowFirstLine: false
-        }
+        multiline: 3
       }
     ],
     indent: [

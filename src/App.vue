@@ -1,20 +1,21 @@
 <template>
   <v-app>
-    <v-app-bar app :color="config.barColor" dark>
+    <v-app-bar app :color="config.barColor" theme="dark" density="compact">
       <v-app-bar-nav-icon
         data-cy="button-drawer"
-        color="white"
         @click="drawer = !drawer"
       />
       <v-text-field
         ref="text"
-        color="white"
         :model-value="query"
         prepend-inner-icon="mdi-magnify"
-        hide-details variant="outlined"
-        single-line density="compact" clearable
+        hide-details
+        variant="outlined"
+        single-line
+        density="compact"
+        clearable
         @mousedown="handleAutofill"
-        @update:modelValue="query = $event || ''"
+        @update:model-value="query = $event || ''"
         @focus="textFocus = true"
         @blur="textFocus = false"
       />
@@ -23,24 +24,30 @@
       <v-spacer />
       <v-expand-x-transition>
         <v-btn
-          v-show="showBtn" icon="mdi-qrcode-scan" color="white"
-          @click=" $store.commit('switchMode', 'qrcode-dialog')"
+          v-show="showBtn"
+          icon="mdi-qrcode-scan"
+          @click="$store.commit('switchMode', 'qrcode-dialog')"
         />
       </v-expand-x-transition>
       <v-expand-x-transition>
         <v-btn
-          v-show="showBtn" data-cy="button-edit-mode" icon="mdi-pencil"
-          :color="$store.state.mode === 'edit' ? 'green' : 'white'"
-          @click=" $store.commit(
-            'switchMode',
-            $store.state.mode === 'edit' ? 'normal' : 'edit')"
+          v-show="showBtn"
+          data-cy="button-edit-mode"
+          icon="mdi-pencil"
+          :color="$store.state.mode === 'edit' ? 'green' : undefined"
+          @click="
+            $store.commit(
+              'switchMode',
+              $store.state.mode === 'edit' ? 'normal' : 'edit'
+            )
+          "
         />
       </v-expand-x-transition>
     </v-app-bar>
     <v-main
       :style="{
         minHeight: '100vh',
-        backgroundColor: config.bgImg.filter.blurColor
+        backgroundColor: config.bgImg.filter.blurColor,
       }"
     >
       <div
@@ -51,101 +58,116 @@
           backgroundPosition: 'center',
           filter: `blur(${config.bgImg.filter.blur}px)
             contrast(${config.bgImg.filter.contrast}%)
-            grayscale(${config.bgImg.filter.grayscale}%)`}"
+            grayscale(${config.bgImg.filter.grayscale}%)`,
+        }"
       />
       <div class="mt-3 mx-2 alert-box">
         <DisAlert
           v-for="(message, i) in $store.state.messages"
-          :key="i" :message="message"
+          :key="i"
+          :message="message"
         />
       </div>
       <WebNav :query="query" />
       <ImportDialog
         v-if="$store.state.mode === 'import-dialog'"
-        @update:modelValue="$store.commit('switchMode', 'normal')"
+        @update:model-value="$store.commit('switchMode', 'normal')"
       />
       <EditDialog
         v-if="$store.state.mode === 'edit-dialog'"
-        @update:modelValue="$store.commit('switchMode', 'normal')"
+        @update:model-value="$store.commit('switchMode', 'normal')"
       />
       <ReorderDialog
         v-if="$store.state.mode === 'reorder-dialog'"
-        @update:modelValue="$store.commit('switchMode', 'normal')"
+        @update:model-value="$store.commit('switchMode', 'normal')"
       />
       <ConfigDialog
         v-if="$store.state.mode === 'config-dialog'"
-        @update:modelValue="$store.commit('switchMode', 'normal')"
+        @update:model-value="$store.commit('switchMode', 'normal')"
       />
       <QRCodeDialog
         v-if="$store.state.mode === 'qrcode-dialog'"
-        @update:modelValue="$store.commit('switchMode', 'normal')"
+        @update:model-value="$store.commit('switchMode', 'normal')"
       />
     </v-main>
     <v-navigation-drawer v-model="drawer" app>
-      <v-list density="compact">
+      <v-list shaped nav density="compact">
         <v-list-item>
-          <template #prepend />
-          <template #title>
-            <div class="title">
+          <v-list-item-header>
+            <v-list-item-title class="text-subtitle-1">
               WebNav
-            </div>
-          </template>
-          <template #subtitle>
-            <logo class="text-center" @click.native="install.prompt()" />
-          </template>
+            </v-list-item-title>
+            <v-list-item-subtitle>
+              <logo class="text-center" @click="install.prompt()" />
+            </v-list-item-subtitle>
+          </v-list-item-header>
         </v-list-item>
+
         <v-divider />
+
         <v-list-item
-          link data-cy="button-import"
-          prepend-icon="mdi-application-import"
-          :title="$t('menu.import')"
+          link
+          data-cy="button-import"
           @click="$store.commit('switchMode', 'import-dialog')"
-        />
-        <v-list-item
-          link
-          prepend-icon="mdi-file-download-outline"
-          :title="$t('menu.export')"
-          @click="downloadJSON"
         >
-          <a ref="downloadLink" class="d-none" />
+          <v-list-item-avatar start>
+            <v-icon icon="mdi-application-import" />
+          </v-list-item-avatar>
+          <v-list-item-title>{{ $t('menu.import') }}</v-list-item-title>
         </v-list-item>
+
+        <v-list-item link @click="downloadJSON">
+          <v-list-item-avatar start>
+            <v-icon icon="mdi-file-download-outline" />
+          </v-list-item-avatar>
+          <a ref="downloadLink" class="d-none" />
+          <v-list-item-title>{{ $t('menu.export') }}</v-list-item-title>
+        </v-list-item>
+
         <v-list-item
-          link data-cy="button-new-bookmark"
-          prepend-icon="mdi-bookmark-plus-outline"
-          :title="$t('menu.new-bookmark')"
+          link
+          data-cy="button-new-bookmark"
           @click="newBookmark"
-        />
-        <v-list-item
-          link
-          prepend-icon="mdi-cog"
-          :title="$t('menu.more-config')"
-          @click="$store.commit('switchMode', 'config-dialog')"
-        />
-        <v-list-item
-          link
-          prepend-icon="mdi-alert"
-          :title="$t('menu.clear-bookmark')"
-          @click="confirmClear"
-        />
-        <v-list-item
-          link
-          href="https://github.com/AllanChain/webnav"
-          prepend-icon="mdi-github"
-          :title="$t('menu.github-link')"
-        />
+        >
+          <v-list-item-avatar start>
+            <v-icon icon="mdi-bookmark-plus-outline" />
+          </v-list-item-avatar>
+          <v-list-item-title>{{ $t('menu.new-bookmark') }}</v-list-item-title>
+        </v-list-item>
+
+        <v-list-item link @click="$store.commit('switchMode', 'config-dialog')">
+          <v-list-item-avatar start>
+            <v-icon icon="mdi-cog" />
+          </v-list-item-avatar>
+          <v-list-item-title>{{ $t('menu.more-config') }}</v-list-item-title>
+        </v-list-item>
+
+        <v-list-item link @click="confirmClear">
+          <v-list-item-avatar start>
+            <v-icon icon="mdi-alert" />
+          </v-list-item-avatar>
+          <v-list-item-title>{{ $t('menu.clear-bookmark') }}</v-list-item-title>
+        </v-list-item>
+
+        <v-list-item link href="https://github.com/AllanChain/webnav">
+          <v-list-item-avatar start>
+            <v-icon icon="mdi-github" />
+          </v-list-item-avatar>
+          <v-list-item-title>{{ $t('menu.github-link') }}</v-list-item-title>
+        </v-list-item>
+
         <v-divider />
         <v-list-item @click="upgradeApp">
-          <template #prepend />
-          <span>
-            <v-icon small>
-              {{
-                $store.state.swStatus === 'updated'
-                  ? 'mdi-cog-refresh'
-                  : 'mdi-cogs'
-              }}
-            </v-icon>
+          <v-icon size="small">
+            {{
+              $store.state.swStatus === 'updated'
+                ? 'mdi-cog-refresh'
+                : 'mdi-cogs'
+            }}
+          </v-icon>
+          <div class="text-caption ml-2">
             v{{ version }} - {{ $t(`sw.${$store.state.swStatus}`) }}
-          </span>
+          </div>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -191,7 +213,12 @@ export default {
       drawer: false,
       version: pkg.version,
       textFocus: false,
-      autofilled: false
+      autofilled: false,
+      items: [
+        { text: 'Real-Time', icon: 'mdi-clock' },
+        { text: 'Audience', icon: 'mdi-account' },
+        { text: 'Conversions', icon: 'mdi-flag' }
+      ]
     }
   },
   computed: {
@@ -247,8 +274,7 @@ export default {
         delete m.index
       })
       const timeStr = new Date().toJSON().slice(0, -8).replace(/-|:/g, '')
-      this.$refs.downloadLink.download =
-        `bookmarks-${timeStr}.json`
+      this.$refs.downloadLink.download = `bookmarks-${timeStr}.json`
       this.$refs.downloadLink.href =
         'data:text/json;charset=utf-8,' +
         encodeURIComponent(JSON.stringify(bookmarks, null, 4))
@@ -269,6 +295,10 @@ export default {
 </script>
 
 <style>
+html {
+  font-size: 16px !important;
+}
+
 .alert-box {
   position: fixed;
   z-index: 9999;

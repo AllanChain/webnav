@@ -1,10 +1,10 @@
 <template>
   <v-dialog
     :model-value="true"
-    @udate:modelValue="$emit('update:modelValue', false)"
+    @update:model-value="$emit('update:modelValue', false)"
   >
-    <v-card max-width="350px" class="elevation-12">
-      <v-card-text class="pa-1">
+    <v-card max-width="500px" class="elevation-12">
+      <v-card-text class="pa-3">
         <v-container>
           <v-row>
             <v-text-field
@@ -20,40 +20,32 @@
             <v-switch
               v-model="overwrite"
               data-cy="switch-overwrite-bookmark"
-              density="compact"
               hide-details
-              class="ml-4 mt-0"
               :label="$t('import.overwrite')"
             />
           </v-row>
-          <v-row>
-            <v-col cols="4" class="text-center">
-              <v-btn fab small color="indigo lighten-1" @click="$refs.file.click()">
-                <v-icon>mdi-file-upload-outline</v-icon>
-              </v-btn>
-              <input
-                ref="file"
-                data-cy="input-file-bookmark"
-                type="file"
-                accept=".json"
-                hidden
-                @change="importFromFile"
-              >
-            </v-col>
-            <v-col cols="4" class="text-center">
-              <v-btn fab small color="amber" @click="$emit('update:modelValue', false)">
-                <v-icon>mdi-close-thick</v-icon>
-              </v-btn>
-            </v-col>
-            <v-col cols="4" class="text-center">
-              <v-btn
-                fab small color="green"
-                data-cy="import-check"
-                @click="importFromCloud"
-              >
-                <v-icon>mdi-check-bold</v-icon>
-              </v-btn>
-            </v-col>
+          <v-row justify="space-between" class="mx-4">
+            <v-btn icon small color="indigo lighten-1" @click="$refs.file.click()">
+              <v-icon>mdi-file-upload-outline</v-icon>
+            </v-btn>
+            <input
+              ref="file"
+              data-cy="input-file-bookmark"
+              type="file"
+              accept=".json"
+              hidden
+              @change="importFromFile"
+            >
+            <v-btn icon small color="amber" @click="$emit('update:modelValue', false)">
+              <v-icon>mdi-close-thick</v-icon>
+            </v-btn>
+            <v-btn
+              icon small color="green"
+              data-cy="import-check"
+              @click="importFromCloud"
+            >
+              <v-icon>mdi-check-bold</v-icon>
+            </v-btn>
           </v-row>
         </v-container>
       </v-card-text>
@@ -73,6 +65,9 @@ export default {
       type: Boolean,
       default: false
     }
+  },
+  emits: {
+    'update:modelValue': Boolean
   },
   data () {
     return {

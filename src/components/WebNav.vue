@@ -30,10 +30,10 @@
           :model-value="$store.state.mode === 'normal' && !!query.length && !!bookmark.search"
         >
           <v-btn
-            color="#2196f390" icon size="x-small"
+            color="#2196f390" icon size="small"
             @click="goSearch(bookmark)"
           >
-            <v-icon color="white">
+            <v-icon color="white" size="x-small">
               mdi-magnify
             </v-icon>
           </v-btn>

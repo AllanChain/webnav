@@ -2,16 +2,16 @@
   <v-dialog
     scrollable
     :model-value="true"
-    @update:modelValue="$emit('update:modelValue', false)"
+    @update:model-value="$emit('update:modelValue', false)"
   >
-    <v-card>
+    <v-card width="500px" max-width="90vw">
       <v-card-title class="pa-0">
         <v-toolbar color="indigo" dark density="compact" class="pr-1">
           <v-toolbar-title>
             <WebsiteIcon :bookmark="bookmark" size="1.2rem" />
             {{ bookmark.title }}
           </v-toolbar-title>
-          <!-- <v-spacer /> -->
+          <v-spacer />
           <v-btn
             icon="mdi-check-bold"
             color="green lighten-2"
@@ -112,6 +112,9 @@ import { mapState } from 'vuex'
 export default {
   components: {
     WebsiteIcon
+  },
+  emits: {
+    'update:modelValue': Boolean
   },
   data () {
     return {
