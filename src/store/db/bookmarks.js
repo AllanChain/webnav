@@ -78,7 +78,7 @@ export default {
     async putAll (context) {
       await Promise.all(
         context.state.bookmarks.map(
-          bookmark => db.put('bookmarks', bookmark)
+          bookmark => db.put('bookmarks', toRaw(bookmark))
         ))
     },
     // Index will not be continous after delete,

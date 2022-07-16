@@ -1,5 +1,5 @@
 <template>
-  <v-overlay opacity="0.7">
+  <v-dialog :model-value="true">
     <v-slider
       :model-value="index"
       data-cy="reorder-slider"
@@ -8,6 +8,7 @@
       thumb-label="always"
       :min="0"
       :max="bookmarks.length - 1"
+      step="1"
       @update:model-value="reorder"
     />
     <div class="d-flex" style="width: 90vw;">
@@ -19,7 +20,7 @@
         {{ $t('button.apply') }}
       </v-btn>
     </div>
-  </v-overlay>
+  </v-dialog>
 </template>
 
 <script>
