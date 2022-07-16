@@ -41,7 +41,6 @@
     "@vue/cli-plugin-vuex": "^5.0.3",
     "@vue/cli-service": "^5.0.3",
     "@yarnpkg/pnpify": "^2.4.0",
-    "babel-eslint": "^10.1.0",
     "conventional-changelog-conventionalcommits": "^5.0.0",
     "cypress": "^10.3.0",
     "cypress-file-upload": "^5.0.8",

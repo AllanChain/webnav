@@ -38,8 +38,5 @@ module.exports = {
     'generator-star-spacing': ['warn', 'before'],
     'no-console': 'warn',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'warn'
-  },
-  parserOptions: {
-    parser: 'babel-eslint'
   }
 }
