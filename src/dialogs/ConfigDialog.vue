@@ -42,9 +42,9 @@
         </v-tabs>
       </v-card-title>
       <v-card-text class="pt-4">
-        <v-tabs-items v-model="tab">
+        <v-window v-model="tab">
           <!-- Background -->
-          <v-tab-item>
+          <v-window-item>
             <v-row>
               <v-col cols="12" md="5">
                 <div
@@ -154,9 +154,9 @@
                 flat
               />
             </div>
-          </v-tab-item>
+          </v-window-item>
           <!-- other -->
-          <v-tab-item>
+          <v-window-item>
             <v-row>
               <v-col cols="12" md="7">
                 <v-select
@@ -207,8 +207,8 @@
                 />
               </v-col>
             </v-row>
-          </v-tab-item>
-        </v-tabs-items>
+          </v-window-item>
+        </v-window>
       </v-card-text>
     </v-card>
   </v-dialog>
