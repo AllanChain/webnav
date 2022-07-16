@@ -36,7 +36,7 @@
             </v-icon>
           </v-btn>
         </v-toolbar>
-        <v-tabs v-model="tab">
+        <v-tabs v-model="tab" background-color="indigo-darken-1">
           <v-tab> {{ $t('config.bg.title') }} </v-tab>
           <v-tab> {{ $t('config.other.title') }} </v-tab>
         </v-tabs>
@@ -167,12 +167,14 @@
                     {text: 'English', value: 'en'}
                   ]"
                   :label="$t('config.other.language')"
+                  item-title="text"
+                  item-state="value"
                   prepend-inner-icon="mdi-language-java"
                   hide-details
                   variant="outlined"
                   density="compact"
                 />
-                <v-switch v-model="config.dark" :label="$t('config.other.dark-mode')" />
+                <v-switch v-model="config.dark" hide-details :label="$t('config.other.dark-mode')" />
                 <p>
                   {{ $t('config.other.cors-note') }}
                 </p>
@@ -181,12 +183,13 @@
                   prepend-inner-icon="mdi-airplane-takeoff"
                   :label="$t('config.other.cors')"
                   placeholder="e.g. https://netnr-proxy.cloudno.de/"
+                  hide-details
                   variant="outlined"
                   density="compact"
                 />
                 <v-switch
                   v-model="config.httpIcon"
-                  hide-details=""
+                  hide-details
                   :label="$t('config.other.http-icon')"
                 />
                 <v-switch
