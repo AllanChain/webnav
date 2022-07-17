@@ -4,13 +4,12 @@
     :model-value="true"
     @update:model-value="$emit('update:modelValue', false)"
   >
-    <v-card max-width="500">
+    <v-card width="400px" max-width="90vw">
       <v-card-title class="pa-0">
         <v-toolbar color="indigo" dark density="compact">
           <v-toolbar-title>
             {{ $t('qr.title') }}
           </v-toolbar-title>
-          <v-spacer />
           <qrcode-capture
             ref="file"
             class="d-none"
@@ -45,7 +44,11 @@
           class="qrcode-stream" :camera="camera"
           @detect="onDetect" @init="onInit"
         >
-          <v-overlay v-if="!!result" v-bind="overlayProps">
+          <v-overlay
+            class="align-center justify-center text-center" contained
+            :scrim="scrim"
+            :model-value="!!result"
+          >
             <h2>{{ $t('qr.result') }}</h2>
             <p class="pt-2 qrcode-result">
               <a
@@ -56,7 +59,11 @@
               <b v-else>{{ result }}</b>
             </p>
           </v-overlay>
-          <v-overlay v-if="!result && camera === 'off'" v-bind="overlayProps">
+          <v-overlay
+            class="align-center justify-center text-center" contained
+            :scrim="scrim"
+            :model-value="!result && camera === 'off'"
+          >
             <h3 class="mb-2">
               {{ $t('qr.help') }}
             </h3>
@@ -76,21 +83,20 @@
 <script>
 import { mapState } from 'vuex'
 import { QrcodeStream, QrcodeCapture } from 'vue-qrcode-reader'
+import { useTheme } from 'vuetify'
+import { ref, computed } from 'vue'
 
 export default {
   components: { QrcodeStream, QrcodeCapture },
   emits: ['update:modelValue'],
-  data () {
+  setup () {
+    const theme = useTheme()
+    const camera = ref('off')
+    const result = ref(null)
     return {
-      camera: 'off',
-      result: null,
-      overlayProps: {
-        class: 'text-center',
-        color: this.$vuetify.theme.dark ? undefined : '#fff',
-        dark: false,
-        absolute: true,
-        opacity: 0.9
-      }
+      camera,
+      result,
+      scrim: computed(() => theme.current.value.dark ? '#000000' : '#ffffff')
     }
   },
   computed: {
@@ -146,6 +152,11 @@ export default {
 <style>
 .qrcode-stream {
   max-height: 70vh;
+  position: relative;
+}
+
+.qrcode-stream .v-overlay__scrim {
+  opacity: 90%;
 }
 
 .qrcode-result {

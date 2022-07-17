@@ -23,7 +23,7 @@
     "url": "^0.11.0",
     "vue": "^3.2.37",
     "vue-i18n": "^9.1.10",
-    "vue-qrcode-reader": "^3.1.0",
+    "vue-qrcode-reader": "3.1.0-vue3-compatibility.2",
     "vuetify": "^3.0.0-beta.5",
     "vuex": "^4.0.2",
     "workbox-core": "^6.5.3",
