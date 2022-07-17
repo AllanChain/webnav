@@ -234,7 +234,7 @@ export default {
     'config.dark': {
       immediate: true,
       handler (dark) {
-        this.$vuetify.theme.dark = dark
+        this.$vuetify.theme.current.dark = dark
       }
     }
   },

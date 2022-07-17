@@ -84,6 +84,7 @@
                   placeholder="back.jpg"
                   :messages="$t('config.bg.img-msg')"
                   variant="outlined"
+                  color="primary"
                   density="compact"
                   clearable
                   @update:model-value="config.bgImg.url = $event || ''"
@@ -99,6 +100,7 @@
                         min="0"
                         max="10"
                         thumb-label
+                        color="primary"
                         hide-details
                       />
                     </v-col>
@@ -113,6 +115,7 @@
                         min="0"
                         max="200"
                         thumb-label
+                        color="primary"
                         hide-details
                       />
                     </v-col>
@@ -127,6 +130,7 @@
                         min="0"
                         max="100"
                         thumb-label
+                        color="primary"
                         hide-details
                       />
                     </v-col>
@@ -136,6 +140,7 @@
                   v-model="config.blackText"
                   class="mt-0"
                   hide-details
+                  color="primary"
                   :label="config.blackText ? $t('config.bg.black-text') : $t('config.bg.white-text')"
                 />
               </v-col>
@@ -172,9 +177,10 @@
                   prepend-inner-icon="mdi-language-java"
                   hide-details
                   variant="outlined"
+                  color="primary"
                   density="compact"
                 />
-                <v-switch v-model="config.dark" hide-details :label="$t('config.other.dark-mode')" />
+                <v-switch v-model="config.dark" color="primary" hide-details :label="$t('config.other.dark-mode')" />
                 <p>
                   {{ $t('config.other.cors-note') }}
                 </p>
@@ -185,16 +191,17 @@
                   placeholder="e.g. https://netnr-proxy.cloudno.de/"
                   hide-details
                   variant="outlined"
+                  color="primary"
                   density="compact"
                 />
                 <v-switch
                   v-model="config.httpIcon"
-                  hide-details
+                  hide-details color="primary"
                   :label="$t('config.other.http-icon')"
                 />
                 <v-switch
                   v-model="config.preferNewTab"
-                  hide-details
+                  hide-details color="primary"
                   :label="$t('config.other.prefer-new-tab')"
                 />
               </v-col>
