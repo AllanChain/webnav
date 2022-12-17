@@ -2,7 +2,7 @@
   <v-alert
     v-model="show"
     density="compact"
-    dismissible
+    closable
     border="start"
     transition="slide-x-transition"
     :type="message.type"
