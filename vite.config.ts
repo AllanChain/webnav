@@ -7,7 +7,9 @@ import path from 'path'
 export default defineConfig({
   plugins: [
     vue(),
-    vuetify()
+    vuetify({
+      styles: { configFile: 'src/settings.scss' }
+    })
   ],
   define: { 'process.env': {} },
   resolve: {
