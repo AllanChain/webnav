@@ -12,14 +12,14 @@
           :model-value="$store.state.mode === 'edit'"
         >
           <v-btn
-            color="#2196f390" icon size="small"
+            color="#2196f390" icon size="x-small"
             data-cy="edit-one"
             @click="$store.commit('switchMode', {
               mode: 'edit-dialog',
               data: bookmark
             })"
           >
-            <v-icon color="white" size="small">
+            <v-icon color="white">
               mdi-pencil
             </v-icon>
           </v-btn>
@@ -30,10 +30,10 @@
           :model-value="$store.state.mode === 'normal' && !!query.length && !!bookmark.search"
         >
           <v-btn
-            color="#2196f390" icon size="small"
+            color="#2196f390" icon size="x-small"
             @click="goSearch(bookmark)"
           >
-            <v-icon color="white" size="x-small">
+            <v-icon color="white">
               mdi-magnify
             </v-icon>
           </v-btn>
