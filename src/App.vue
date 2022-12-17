@@ -110,16 +110,16 @@
           data-cy="button-import"
           @click="$store.commit('switchMode', 'import-dialog')"
         >
-          <v-list-item-avatar start>
+          <template #prepend>
             <v-icon icon="mdi-application-import" />
-          </v-list-item-avatar>
+          </template>
           <v-list-item-title>{{ $t('menu.import') }}</v-list-item-title>
         </v-list-item>
 
         <v-list-item link @click="downloadJSON">
-          <v-list-item-avatar start>
+          <template #prepend>
             <v-icon icon="mdi-file-download-outline" />
-          </v-list-item-avatar>
+          </template>
           <a ref="downloadLink" class="d-none" />
           <v-list-item-title>{{ $t('menu.export') }}</v-list-item-title>
         </v-list-item>
@@ -129,30 +129,30 @@
           data-cy="button-new-bookmark"
           @click="newBookmark"
         >
-          <v-list-item-avatar start>
+          <template #prepend>
             <v-icon icon="mdi-bookmark-plus-outline" />
-          </v-list-item-avatar>
+          </template>
           <v-list-item-title>{{ $t('menu.new-bookmark') }}</v-list-item-title>
         </v-list-item>
 
         <v-list-item link @click="$store.commit('switchMode', 'config-dialog')">
-          <v-list-item-avatar start>
+          <template #prepend>
             <v-icon icon="mdi-cog" />
-          </v-list-item-avatar>
+          </template>
           <v-list-item-title>{{ $t('menu.more-config') }}</v-list-item-title>
         </v-list-item>
 
         <v-list-item link @click="confirmClear">
-          <v-list-item-avatar start>
+          <template #prepend>
             <v-icon icon="mdi-alert" />
-          </v-list-item-avatar>
+          </template>
           <v-list-item-title>{{ $t('menu.clear-bookmark') }}</v-list-item-title>
         </v-list-item>
 
         <v-list-item link href="https://github.com/AllanChain/webnav">
-          <v-list-item-avatar start>
+          <template #prepend>
             <v-icon icon="mdi-github" />
-          </v-list-item-avatar>
+          </template>
           <v-list-item-title>{{ $t('menu.github-link') }}</v-list-item-title>
         </v-list-item>
 
@@ -165,7 +165,7 @@
                 : 'mdi-cogs'
             }}
           </v-icon>
-          <div class="text-caption ml-2">
+          <div class="text-caption ml-2 d-inline-block">
             v{{ version }} - {{ $t(`sw.${$store.state.swStatus}`) }}
           </div>
         </v-list-item>
