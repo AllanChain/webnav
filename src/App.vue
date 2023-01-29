@@ -47,7 +47,6 @@
       </v-app-bar>
       <v-main
         :style="{
-          minHeight: '100vh',
           backgroundColor: config.bgImg.filter.blurColor,
         }"
       >
@@ -314,7 +313,7 @@ html {
 .bg-image {
   position: absolute;
   left: 0;
-  right: 0;
+  top: 0;
   z-index: 0;
   display: block;
   width: 100%;
