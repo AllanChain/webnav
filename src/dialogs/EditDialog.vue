@@ -4,7 +4,7 @@
     :model-value="true"
     @update:model-value="$emit('update:modelValue', false)"
   >
-    <v-card width="500px" max-width="90vw">
+    <v-card>
       <v-card-title class="pa-0">
         <v-toolbar color="indigo" dark density="compact">
           <v-toolbar-title>

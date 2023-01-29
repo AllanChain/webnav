@@ -1,10 +1,11 @@
 <template>
   <v-dialog
     scrollable
+    width="400px"
     :model-value="true"
     @update:model-value="$emit('update:modelValue', false)"
   >
-    <v-card width="400px" max-width="90vw">
+    <v-card>
       <v-card-title class="pa-0">
         <v-toolbar color="indigo" dark density="compact">
           <v-toolbar-title>

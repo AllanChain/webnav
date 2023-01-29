@@ -3,7 +3,7 @@
     :model-value="true"
     @update:model-value="$emit('update:modelValue', false)"
   >
-    <v-card max-width="500px" class="elevation-12">
+    <v-card class="elevation-12">
       <v-card-text class="pa-3">
         <v-container>
           <v-row>

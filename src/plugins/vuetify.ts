@@ -4,6 +4,11 @@ import { createVuetify } from 'vuetify'
 import colors from 'vuetify/lib/util/colors'
 
 export default createVuetify({
+  defaults: {
+    VDialog: {
+      width: 500,
+    }
+  },
   theme: {
     themes: {
       light: {
