@@ -26,13 +26,6 @@
         <v-expand-x-transition>
           <v-btn
             v-show="showBtn"
-            icon="mdi-qrcode-scan"
-            @click="$store.commit('switchMode', 'qrcode-dialog')"
-          />
-        </v-expand-x-transition>
-        <v-expand-x-transition>
-          <v-btn
-            v-show="showBtn"
             data-cy="button-edit-mode"
             icon="mdi-pencil"
             :color="$store.state.mode === 'edit' ? 'green' : undefined"
@@ -83,10 +76,6 @@
         />
         <ConfigDialog
           v-if="$store.state.mode === 'config-dialog'"
-          @update:model-value="$store.commit('switchMode', 'normal')"
-        />
-        <QRCodeDialog
-          v-if="$store.state.mode === 'qrcode-dialog'"
           @update:model-value="$store.commit('switchMode', 'normal')"
         />
       </v-main>
@@ -198,9 +187,6 @@ export default {
     ),
     ConfigDialog: defineAsyncComponent(() =>
       import(/* webpackChunkName: "config" */ '@/dialogs/ConfigDialog.vue')
-    ),
-    QRCodeDialog: defineAsyncComponent(() =>
-      import(/* webpackChunkName: "qrcode" */ '@/dialogs/QRCodeDialog.vue')
     ),
     WebNav,
     Logo,
