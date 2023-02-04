@@ -8,8 +8,8 @@
     "lint": "eslint src/ --ext js,ts,vue",
     "lint:css": "stylelint --fix src/**/*.vue",
     "release": "release-it",
-    "cy:open": "cross-env NODE_OPTIONS=--openssl-legacy-provider cypress open",
-    "cy:run": "cross-env NODE_OPTIONS=--openssl-legacy-provider cypress run",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
     "test:dev": "start-server-and-test dev http://localhost:5173 cy:open",
     "test:prod": "start-server-and-test serve http://localhost:5173 cy:open",
     "test:ci": "start-server-and-test serve http://localhost:5173 cy:run"
@@ -43,7 +43,6 @@
     "@vue/eslint-config-typescript": "^11.0.2",
     "@vuetify/loader-shared": "^1.7.1",
     "conventional-changelog-conventionalcommits": "^5.0.0",
-    "cross-env": "^7.0.3",
     "cypress": "^12.5.1",
     "cypress-file-upload": "^5.0.8",
     "eslint": "^8.33.0",
