@@ -54,7 +54,7 @@ jobs:
         run: pnpm install
 
       - name: Build app
-        run: pnpm build --base=/wevnav/
+        run: pnpm build --base=/webnav/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
