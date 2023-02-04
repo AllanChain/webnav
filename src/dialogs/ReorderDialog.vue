@@ -11,7 +11,7 @@
       step="1"
       @update:model-value="reorder"
     />
-    <div class="d-flex" style="width: 90vw;">
+    <div class="d-flex">
       <v-btn color="amber darken-3" data-cy="reorder-cancel" @click="cancel">
         {{ $t('button.cancel') }}
       </v-btn>
