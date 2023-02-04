@@ -99,14 +99,17 @@ export default {
   border: 0;
   user-select: none;
 }
-.website:hover {
-  background-color: rgba(0, 0, 0, 0.1);
-}
+
 .website {
   transition-property: all;
   transition-duration: 500ms;
   cursor: pointer;
 }
+
+.website:hover {
+  background-color: rgb(0 0 0 / 10%);
+}
+
 .name {
   height: 3em;
   line-height: 1.1em;

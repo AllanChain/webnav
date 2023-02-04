@@ -6,7 +6,7 @@ import colors from 'vuetify/lib/util/colors'
 export default createVuetify({
   defaults: {
     VDialog: {
-      width: 500,
+      width: 500
     }
   },
   theme: {
