@@ -1,82 +1,93 @@
 <template>
   <v-dialog
-    :value="true"
-    max-width="500"
     scrollable
-    @input="$emit('input', false)"
+    :model-value="true"
+    @update:model-value="$emit('update:modelValue', false)"
   >
     <v-card>
       <v-card-title class="pa-0">
-        <v-toolbar color="indigo" dark dense>
+        <v-toolbar color="indigo" dark density="compact">
           <v-toolbar-title>
             <WebsiteIcon :bookmark="bookmark" size="1.2rem" />
             {{ bookmark.title }}
           </v-toolbar-title>
           <v-spacer />
-          <v-btn icon large data-cy="done" @click="done">
-            <v-icon color="green lighten-2">
-              mdi-check-bold
-            </v-icon>
-          </v-btn>
           <v-btn
-            v-if="bookmark.id" icon large
-            data-cy="delete"
-            @click="deleteThis"
-          >
-            <v-icon color="red lighten-2">
-              mdi-delete
-            </v-icon>
-          </v-btn>
+            icon="mdi-check-bold"
+            color="green lighten-2"
+            size="small"
+            data-cy="done"
+            @click="done"
+          />
           <v-btn
             v-if="bookmark.id"
-            icon large data-cy="reorder"
+            icon="mdi-delete"
+            color="red lighten-2"
+            size="small"
+            data-cy="delete"
+            @click="deleteThis"
+          />
+          <v-btn
+            v-if="bookmark.id"
+            icon="mdi-swap-horizontal"
+            color="yellow lighten-2"
+            size="small"
+            data-cy="reorder"
             @click="$store.commit('switchMode', {
               mode: 'reorder-dialog',
               data: bookmark.index
             })"
-          >
-            <v-icon color="yellow lighten-2">
-              mdi-swap-horizontal
-            </v-icon>
-          </v-btn>
+          />
         </v-toolbar>
       </v-card-title>
       <v-card-text class="pt-4 pb-0">
         <v-text-field
           v-model="bookmark.title"
+          color="primary"
           prepend-inner-icon="mdi-bookmark"
           :label="$t('bookmark.name')"
           placeholder="Example"
           data-cy="input-title"
-          outlined
-          dense
+          class="my-4"
+          variant="outlined"
+          density="compact"
+          hide-details
         />
         <v-text-field
           v-model="bookmark.url"
+          color="primary"
           prepend-inner-icon="mdi-web"
           :label="$t('bookmark.url')"
           placeholder="https://example.com"
           data-cy="input-url"
-          outlined
-          dense
+          class="my-4"
+          variant="outlined"
+          density="compact"
+          hide-details
         />
         <v-text-field
           v-model="bookmark.search"
+          color="primary"
           prepend-inner-icon="mdi-magnify"
           :label="$t('bookmark.search')"
           placeholder="/search?wd={}"
           data-cy="input-search"
-          outlined
-          dense
+          class="my-4"
+          variant="outlined"
+          density="compact"
+          hide-details
         />
         <v-text-field
           v-model="bookmark.icon"
+          color="primary"
           prepend-inner-icon="mdi-earth"
           :label="$t('bookmark.icon')"
           placeholder="/favicon.ico"
           data-cy="input-icon"
-          outlined
-          dense
+          class="my-4"
+          variant="outlined"
+          density="compact"
+          hide-details
         />
       </v-card-text>
       <v-card-actions class="pt-0">
@@ -98,7 +109,7 @@
 
 <script>
 import RelateUrl from 'relateurl'
-import WebsiteIcon from '@/components/WebsiteIcon'
+import WebsiteIcon from '@/components/WebsiteIcon.vue'
 import validate from '@/validator'
 import { mapState } from 'vuex'
 
@@ -106,6 +117,7 @@ export default {
   components: {
     WebsiteIcon
   },
+  emits: ['update:modelValue'],
   data () {
     return {
       bookmark: JSON.parse(JSON.stringify(this.$store.state.modeData)),
@@ -127,11 +139,11 @@ export default {
         text: this.$t('message.success'),
         type: 'success'
       })
-      this.$emit('input', false)
+      this.$emit('update:modelValue', false)
     },
     deleteThis () {
       this.$store.dispatch('db/bookmarks/delete', this.bookmark)
-      this.$emit('input', false)
+      this.$emit('update:modelValue', false)
     },
     async faviconGrab () {
       this.faviconGrabLoading = true

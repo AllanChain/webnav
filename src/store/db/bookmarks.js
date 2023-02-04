@@ -1,5 +1,7 @@
 import i18n from '@/plugins/vue-i18n'
+import bookmarks from '@/defaults/bookmarks.json'
 import { db } from '.'
+import { toRaw } from 'vue'
 
 const reIndex = bookmarks => bookmarks.forEach((bookmark, index) => {
   bookmark.index = index
@@ -40,11 +42,11 @@ export default {
   actions: {
     async init (context, newcomer) {
       if (newcomer) {
-        const bookmarks = require('@/defaults/bookmarks.json')
         bookmarks.forEach((b, i) => { b.index = i })
         await context.dispatch('addAll', bookmarks)
+        console.log(i18n)
         context.commit('alert', {
-          text: i18n.t('message.bookmark-init'),
+          text: i18n.global.t('message.bookmark-init'),
           type: 'success'
         }, {
           root: true
@@ -52,7 +54,7 @@ export default {
       } else await context.dispatch('refresh')
     },
     async add (context, bookmark) {
-      await db.add('bookmarks', bookmark)
+      await db.add('bookmarks', toRaw(bookmark))
       await context.dispatch('refresh') // fetch from db to get their id
     },
     async addAll (context, bookmarks) {
@@ -66,7 +68,7 @@ export default {
       await context.dispatch('addAll', bookmarks)
     },
     async put (context, bookmark) {
-      await db.put('bookmarks', bookmark)
+      await db.put('bookmarks', toRaw(bookmark))
       context.commit('put', bookmark)
     },
     /** Put all current bookmarks to db after reorder
@@ -76,7 +78,7 @@ export default {
     async putAll (context) {
       await Promise.all(
         context.state.bookmarks.map(
-          bookmark => db.put('bookmarks', bookmark)
+          bookmark => db.put('bookmarks', toRaw(bookmark))
         ))
     },
     // Index will not be continous after delete,

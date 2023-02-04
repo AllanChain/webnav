@@ -1,9 +1,9 @@
 <template>
   <v-alert
     v-model="show"
-    dense
-    dismissible
-    border="left"
+    density="compact"
+    closable
+    border="start"
     transition="slide-x-transition"
     :type="message.type"
     :style="style"

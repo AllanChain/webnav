@@ -1,5 +1,9 @@
 <template>
-  <v-dialog value="true" scrollable fullscreen @input="$emit('input', false)">
+  <v-dialog
+    scrollable fullscreen
+    :model-value="true"
+    @update:model-value="$emit('update:modelValue', false)"
+  >
     <a ref="downloadLink" class="d-none" />
     <input
       ref="file"
@@ -10,37 +14,37 @@
     >
     <v-card>
       <v-card-title class="pa-0">
-        <v-toolbar color="indigo" dark dense>
+        <v-toolbar color="indigo" dark density="compact">
           <v-toolbar-title>{{ $t('config.title') }}</v-toolbar-title>
           <v-spacer />
-          <v-btn icon large color="blue lighten-2" @click="$refs.file.click()">
+          <v-btn icon size="large" color="blue lighten-2" @click="$refs.file.click()">
             <v-icon>mdi-file-upload-outline</v-icon>
           </v-btn>
-          <v-btn icon large @click="downloadJSON">
+          <v-btn icon size="large" @click="downloadJSON">
             <v-icon color="amber">
               mdi-file-download-outline
             </v-icon>
           </v-btn>
-          <v-btn icon large @click="done">
+          <v-btn icon size="large" @click="done">
             <v-icon color="green lighten-2">
               mdi-check
             </v-icon>
           </v-btn>
-          <v-btn icon large @click="$emit('input', false)">
+          <v-btn icon size="large" @click="$emit('update:modelValue', false)">
             <v-icon color="yellow lighten-2">
               mdi-close-circle-outline
             </v-icon>
           </v-btn>
         </v-toolbar>
-        <v-tabs v-model="tab">
+        <v-tabs v-model="tab" background-color="indigo-darken-1">
           <v-tab> {{ $t('config.bg.title') }} </v-tab>
           <v-tab> {{ $t('config.other.title') }} </v-tab>
         </v-tabs>
       </v-card-title>
       <v-card-text class="pt-4">
-        <v-tabs-items v-model="tab">
+        <v-window v-model="tab">
           <!-- Background -->
-          <v-tab-item>
+          <v-window-item>
             <v-row>
               <v-col cols="12" md="5">
                 <div
@@ -74,15 +78,16 @@
               <v-col cols="12" md="7">
                 <!-- <v-divider class="my-2" /> -->
                 <v-text-field
-                  :value="config.bgImg.url"
+                  :model-value="config.bgImg.url"
                   prepend-inner-icon="mdi-image"
                   :label="$t('config.bg.image-url')"
                   placeholder="back.jpg"
                   :messages="$t('config.bg.img-msg')"
-                  outlined
-                  dense
+                  variant="outlined"
+                  color="primary"
+                  density="compact"
                   clearable
-                  @input="config.bgImg.url = $event || ''"
+                  @update:model-value="config.bgImg.url = $event || ''"
                 />
                 <v-container v-if="config.bgImg.url !== ''">
                   <v-row no-gutters>
@@ -95,6 +100,7 @@
                         min="0"
                         max="10"
                         thumb-label
+                        color="primary"
                         hide-details
                       />
                     </v-col>
@@ -109,6 +115,7 @@
                         min="0"
                         max="200"
                         thumb-label
+                        color="primary"
                         hide-details
                       />
                     </v-col>
@@ -123,6 +130,7 @@
                         min="0"
                         max="100"
                         thumb-label
+                        color="primary"
                         hide-details
                       />
                     </v-col>
@@ -132,6 +140,7 @@
                   v-model="config.blackText"
                   class="mt-0"
                   hide-details
+                  color="primary"
                   :label="config.blackText ? $t('config.bg.black-text') : $t('config.bg.white-text')"
                 />
               </v-col>
@@ -150,9 +159,9 @@
                 flat
               />
             </div>
-          </v-tab-item>
+          </v-window-item>
           <!-- other -->
-          <v-tab-item>
+          <v-window-item>
             <v-row>
               <v-col cols="12" md="7">
                 <v-select
@@ -163,12 +172,15 @@
                     {text: 'English', value: 'en'}
                   ]"
                   :label="$t('config.other.language')"
+                  item-title="text"
+                  item-state="value"
                   prepend-inner-icon="mdi-language-java"
                   hide-details
-                  outlined
-                  dense
+                  variant="outlined"
+                  color="primary"
+                  density="compact"
                 />
-                <v-switch v-model="config.dark" :label="$t('config.other.dark-mode')" />
+                <v-switch v-model="config.dark" color="primary" hide-details :label="$t('config.other.dark-mode')" />
                 <p>
                   {{ $t('config.other.cors-note') }}
                 </p>
@@ -177,17 +189,19 @@
                   prepend-inner-icon="mdi-airplane-takeoff"
                   :label="$t('config.other.cors')"
                   placeholder="e.g. https://netnr-proxy.cloudno.de/"
-                  outlined
-                  dense
+                  hide-details
+                  variant="outlined"
+                  color="primary"
+                  density="compact"
                 />
                 <v-switch
                   v-model="config.httpIcon"
-                  hide-details=""
+                  hide-details color="primary"
                   :label="$t('config.other.http-icon')"
                 />
                 <v-switch
                   v-model="config.preferNewTab"
-                  hide-details
+                  hide-details color="primary"
                   :label="$t('config.other.prefer-new-tab')"
                 />
               </v-col>
@@ -203,8 +217,8 @@
                 />
               </v-col>
             </v-row>
-          </v-tab-item>
-        </v-tabs-items>
+          </v-window-item>
+        </v-window>
       </v-card-text>
     </v-card>
   </v-dialog>
@@ -214,6 +228,7 @@
 import validate from '@/validator'
 
 export default {
+  emits: ['update:modelValue'],
   data () {
     return {
       tab: 0,
@@ -228,7 +243,7 @@ export default {
           app: this,
           write: true
         })
-        this.$emit('input', false)
+        this.$emit('update:modelValue', false)
       }
     },
     importFromFile (e) {

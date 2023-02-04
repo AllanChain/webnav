@@ -1,5 +1,7 @@
+import deepmerge from 'deepmerge'
 import validate from '@/validator'
 import i18n from '@/plugins/vue-i18n'
+import defaultConfig from '@/defaults/config.json'
 
 export default {
   namespaced: true,
@@ -28,26 +30,25 @@ export default {
       let result
       let config = JSON.parse(localStorage.getItem('config'))
       if (config === null) { // Beginner friendly
-        config = require('@/defaults/config.json')
+        config = defaultConfig
         localStorage.setItem('config', JSON.stringify(config))
         result = {
-          text: i18n.t('message.config-init'),
+          text: i18n.global.t('message.config-init'),
           type: 'success'
         }
       } else if (!validate('/config', config, true)) {
-        const defaultConfig = require('@/defaults/config.json')
-        config = require('deepmerge')(defaultConfig, config)
+        config = deepmerge(defaultConfig, config)
         if (!validate('/config', config)) {
           config = defaultConfig
           result = {
-            text: i18n.t('message.config-error'),
+            text: i18n.global.t('message.config-error'),
             type: 'error',
             delay: 12000
           }
         } else {
           localStorage.setItem('config', JSON.stringify(config))
           result = {
-            text: i18n.t('message.config-update'),
+            text: i18n.global.t('message.config-update'),
             type: 'success'
           }
         }

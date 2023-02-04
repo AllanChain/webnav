@@ -56,8 +56,8 @@ VSCode i18n-ally
 ```bash
 yarn
 
-# Setup vscode in yarn 2
-yarn pnpify --sdk vscode
+# Setup vscode in yarn berry
+yarn sdks vscode
 
 # Compiles and hot-reloads for development
 yarn serve

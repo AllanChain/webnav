@@ -59,15 +59,6 @@
     },
     "locale-default": "System default"
   },
-  "qr": {
-    "title": "Scan QR Code",
-    "result": "Scan Result",
-    "help": "Help",
-    "press": "Press",
-    "camera-scan": "open camera and scan",
-    "upload-scan": "upload an image and scan",
-    "empty-content": "Fail to scan QR code"
-  },
   "import": {
     "overwrite": "Overwrite existing bookmarks"
   },

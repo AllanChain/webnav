@@ -5,12 +5,20 @@ module.exports = {
     browser: true,
     'cypress/globals': true
   },
-  plugins: ['cypress'],
+  plugins: ['@typescript-eslint', 'cypress'],
+  parserOptions: {
+    parser: require.resolve('@typescript-eslint/parser'),
+    extraFileExtensions: ['.vue'],
+    ecmaFeatures: {
+      jsx: true
+    }
+  },
   extends: [
-    'standard',
+    'eslint:recommended',
     'plugin:cypress/recommended',
-    'plugin:vue/recommended',
-    'eslint:recommended'
+    'plugin:vue/vue3-recommended',
+    '@vue/typescript/recommended',
+    'standard'
   ],
   rules: {
     'vue/max-attributes-per-line': [

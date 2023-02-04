@@ -49,15 +49,6 @@
     "title": "配置 WebNav",
     "locale-default": "系统默认"
   },
-  "qr": {
-    "title": "扫描二维码",
-    "result": "扫描结果",
-    "help": "帮助",
-    "press": "点击",
-    "camera-scan": "打开摄像头扫描",
-    "upload-scan": "扫描上传的图片",
-    "empty-content": "扫描二维码失败"
-  },
   "sw": {
     "active": "已激活",
     "cached": "应用已缓存",

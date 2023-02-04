@@ -1,16 +1,17 @@
 <template>
-  <v-overlay opacity="0.7">
+  <v-dialog :model-value="true">
     <v-slider
-      :value="index"
+      :model-value="index"
       data-cy="reorder-slider"
       color="purple"
       track-color="indigo"
       thumb-label="always"
       :min="0"
       :max="bookmarks.length - 1"
-      @input="reorder"
+      step="1"
+      @update:model-value="reorder"
     />
-    <div class="d-flex" style="width: 90vw;">
+    <div class="d-flex">
       <v-btn color="amber darken-3" data-cy="reorder-cancel" @click="cancel">
         {{ $t('button.cancel') }}
       </v-btn>
@@ -19,7 +20,7 @@
         {{ $t('button.apply') }}
       </v-btn>
     </div>
-  </v-overlay>
+  </v-dialog>
 </template>
 
 <script>
