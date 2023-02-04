@@ -8,10 +8,8 @@ describe('App Basic Feature Test', () => {
     // alert
     cy.contains('WebNav config initiated').should('be.visible')
     cy.contains('WebNav has added some bookmarks for you').should('be.visible')
-    cy.get('.v-alert__close > button').click({
-      multiple: true,
-      waitForAnimations: true,
-    })
+    cy.get('.v-alert__close > button').first().click({ waitForAnimations: true })
+    cy.get('.v-alert__close > button').first().click({ waitForAnimations: true })
     cy.get('div.v-alert.success').should('not.exist')
 
     cy.wait('@ico')
