@@ -24,3 +24,7 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Cypress assets
+cypress/screenshots/
+cypress/videos/
