@@ -64,32 +64,30 @@
         <WebNav :query="query" />
         <ImportDialog
           v-if="$store.state.mode === 'import-dialog'"
-          @update:model-value="$store.commit('switchMode', 'normal')"
+          @update:model-value="dialogClose"
         />
         <EditDialog
           v-if="$store.state.mode === 'edit-dialog'"
-          @update:model-value="$store.commit('switchMode', 'normal')"
+          @update:model-value="dialogClose"
         />
         <ReorderDialog
           v-if="$store.state.mode === 'reorder-dialog'"
-          @update:model-value="$store.commit('switchMode', 'normal')"
+          @update:model-value="dialogClose"
         />
         <ConfigDialog
           v-if="$store.state.mode === 'config-dialog'"
-          @update:model-value="$store.commit('switchMode', 'normal')"
+          @update:model-value="dialogClose"
         />
       </v-main>
       <v-navigation-drawer v-model="drawer" disable-resize-watcher app>
         <v-list shaped nav density="compact">
           <v-list-item>
-            <v-list-item-header>
-              <v-list-item-title class="text-subtitle-1">
-                WebNav
-              </v-list-item-title>
-              <v-list-item-subtitle>
-                <logo class="text-center" @click="install.prompt()" />
-              </v-list-item-subtitle>
-            </v-list-item-header>
+            <v-list-item-title class="text-subtitle-1">
+              WebNav
+            </v-list-item-title>
+            <v-list-item-subtitle>
+              <logo class="text-center" @click="install.prompt()" />
+            </v-list-item-subtitle>
           </v-list-item>
 
           <v-divider />
@@ -242,6 +240,10 @@ export default {
         await skipWaiting()
         location.reload()
       }
+    },
+    dialogClose () {
+      this.drawer = false
+      this.$store.commit('switchMode', 'normal')
     },
     newBookmark () {
       this.$store.commit({
