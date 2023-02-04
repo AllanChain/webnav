@@ -8,6 +8,8 @@ const controller = new AbortController()
 
 setCacheNameDetails({ prefix: 'webnav' })
 
+declare let self: ServiceWorkerGlobalScope
+
 self.addEventListener('message', event => {
   const message = event.data
   if (!message) return
@@ -17,8 +19,7 @@ self.addEventListener('message', event => {
     controller.abort()
 })
 
-self.__precacheManifest = [].concat(self.__WB_MANIFEST || [])
-precacheAndRoute(self.__precacheManifest, {})
+precacheAndRoute(self.__WB_MANIFEST)
 
 registerRoute(
   /.*/,

@@ -12,7 +12,7 @@ export default defineConfig({
     VitePWA({
       strategies: 'injectManifest',
       srcDir: 'src',
-      filename: 'service-worker.js',
+      filename: 'service-worker.ts',
       injectRegister: false,
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,webmanifest,woff2}']

@@ -3,7 +3,7 @@
 import { register } from 'register-service-worker'
 import store from './store'
 
-let registration = null
+let registration: ServiceWorkerRegistration | null = null
 
 if (import.meta.env.PROD) {
   register(`${import.meta.env.BASE_URL}service-worker.js`, {
@@ -48,6 +48,6 @@ export const skipWaiting = () => {
   // to actually take place (though Promise resolved immediately)
   // Both FireFox and Chrome stucks here. In Chrome messages are stuck too.
   // Thus Vuepress chooses to wait message sent, but not working in FireFox
-  oldWorker.postMessage({ type: 'abort-connections' })
+  oldWorker && oldWorker.postMessage({ type: 'abort-connections' })
   newWorker.postMessage({ type: 'skip-waiting' })
 }
