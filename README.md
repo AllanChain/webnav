@@ -1,5 +1,6 @@
 # WebNav
-![.github/workflows/gh-pages.yml](https://github.com/AllanChain/webnav/workflows/.github/workflows/gh-pages.yml/badge.svg?branch=master)
+[![Test App with Cypress](https://github.com/AllanChain/webnav/actions/workflows/test.yml/badge.svg)](https://github.com/AllanChain/webnav/actions/workflows/test.yml)
+[![Build and Deploy to gh-pages](https://github.com/AllanChain/webnav/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/AllanChain/webnav/actions/workflows/gh-pages.yml)
 
 A good start page for web navigation.
 
@@ -53,26 +54,3 @@ VSCode i18n-ally
 }
 ```
 
-```bash
-yarn
-
-# Setup vscode in yarn berry
-yarn sdks vscode
-
-# Compiles and hot-reloads for development
-yarn serve
-
-# Compiles and minifies for production
-yarn build
-
-# Lints and fixes files
-yarn lint
-
-# New version
-## Also push tags
-git config --global push.followTags true
-## patch, minor and major version changes
-yarn version patch
-yarn version minor
-yarn version major
-```
