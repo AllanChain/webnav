@@ -86,7 +86,7 @@
               WebNav
             </v-list-item-title>
             <v-list-item-subtitle>
-              <logo class="text-center" @click="install.prompt()" />
+              <app-logo class="text-center" @click="install.prompt()" />
             </v-list-item-subtitle>
           </v-list-item>
 
@@ -166,7 +166,7 @@
 import pkg from '../package.json'
 import { skipWaiting } from './registerServiceWorker'
 import WebNav from '@/components/WebNav.vue'
-import Logo from '@/components/Logo.vue'
+import AppLogo from '@/components/AppLogo.vue'
 import DisAlert from '@/components/DisAlert.vue'
 import { mapState } from 'vuex'
 import { defineAsyncComponent } from 'vue'
@@ -187,7 +187,7 @@ export default {
       import(/* webpackChunkName: "config" */ '@/dialogs/ConfigDialog.vue')
     ),
     WebNav,
-    Logo,
+    AppLogo,
     DisAlert
   },
   data () {
