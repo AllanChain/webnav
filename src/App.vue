@@ -168,24 +168,19 @@ import { skipWaiting } from './registerServiceWorker'
 import WebNav from '@/components/WebNav.vue'
 import AppLogo from '@/components/AppLogo.vue'
 import DisAlert from '@/components/DisAlert.vue'
+import ImportDialog from '@/dialogs/ImportDialog.vue'
+import EditDialog from '@/dialogs/EditDialog.vue'
+import ReorderDialog from '@/dialogs/ReorderDialog.vue'
+import ConfigDialog from '@/dialogs/ConfigDialog.vue'
 import { mapState } from 'vuex'
-import { defineAsyncComponent } from 'vue'
 
 export default {
   name: 'App',
   components: {
-    ImportDialog: defineAsyncComponent(() =>
-      import(/* webpackChunkName: "import" */ '@/dialogs/ImportDialog.vue')
-    ),
-    EditDialog: defineAsyncComponent(() =>
-      import(/* webpackChunkName: "edit" */ '@/dialogs/EditDialog.vue')
-    ),
-    ReorderDialog: defineAsyncComponent(() =>
-      import(/* webpackChunkName: "reorder" */ '@/dialogs/ReorderDialog.vue')
-    ),
-    ConfigDialog: defineAsyncComponent(() =>
-      import(/* webpackChunkName: "config" */ '@/dialogs/ConfigDialog.vue')
-    ),
+    ImportDialog,
+    EditDialog,
+    ReorderDialog,
+    ConfigDialog,
     WebNav,
     AppLogo,
     DisAlert
