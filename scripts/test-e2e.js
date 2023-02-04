@@ -1,21 +1,21 @@
 /* eslint-disable no-console */
-const Service = require('@vue/cli-service/lib/Service')
 const cypress = require('cypress')
 const handler = require('serve-handler')
 const http = require('http')
+const { createServer, build } = require('vite')
 
 // dev, prod or prod-headless
 const command = process.argv[2] || 'prod-headless'
-const service = new Service(process.env.VUE_CLI_CONTEXT || process.cwd())
 
 if (command === 'dev') {
-  service.run('serve')
-    .then(() => cypress.open({ config: { baseUrl: 'http://localhost:8080' } }))
+  createServer({ server: { port: 1337 } })
+    .then(server => server.listen())
+    .then(() => cypress.open({ config: { baseUrl: 'http://localhost:1337' } }))
 } else {
   const server = http.createServer((request, response) => {
     return handler(request, response, { public: 'dist' })
   })
-  const startServer = service.run('build').then(async () => {
+  const startServer = build().then(async () => {
     for (const port of [5000, 6723, 8126, 10237, 14236, 17632]) {
       try {
         await new Promise((resolve, reject) => {
@@ -32,18 +32,23 @@ if (command === 'dev') {
   })
   if (command === 'prod') {
     startServer
-      .then(port => cypress.open({ config: { baseUrl: `http://localhost:${port}` } }))
+      .then(port =>
+        cypress.open({ config: { baseUrl: `http://localhost:${port}` } })
+      )
       .then(() => server.close())
   } else {
     startServer
-      .then(port => cypress.run({
-        browser: 'chrome',
-        config: {
-          baseUrl: `http://localhost:${port}`,
-          video: false,
-          screenshotOnRunFailure: false
-        }
-      })).then(result => {
+      .then(port =>
+        cypress.run({
+          browser: 'chrome',
+          config: {
+            baseUrl: `http://localhost:${port}`,
+            video: false,
+            screenshotOnRunFailure: false,
+          },
+        })
+      )
+      .then(result => {
         if (result.failures) {
           console.error('Could not execute tests: ', result.message)
           return result.failures
