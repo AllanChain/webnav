@@ -124,7 +124,7 @@ export default {
       }
 
       this.$store.commit('alert', {
-        text: this.$tc('message.import-success', bookmarks.length),
+        text: this.$t('message.import-success', bookmarks.length),
         type: 'success'
       })
       this.$emit('update:modelValue', false)
