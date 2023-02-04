@@ -11,8 +11,8 @@
     "cy:open": "cross-env NODE_OPTIONS=--openssl-legacy-provider cypress open",
     "cy:run": "cross-env NODE_OPTIONS=--openssl-legacy-provider cypress run",
     "test:dev": "start-server-and-test dev http://localhost:5173 cy:open",
-    "test:prod": "start-server-and-test preview http://localhost:5173 cy:open",
-    "test:ci": "start-server-and-test preview http://localhost:5173 cy:run"
+    "test:prod": "start-server-and-test serve http://localhost:5173 cy:open",
+    "test:ci": "start-server-and-test serve http://localhost:5173 cy:run"
   },
   "dependencies": {
     "@mdi/font": "7.1.96",
