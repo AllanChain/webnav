@@ -1,6 +1,6 @@
 {
- "extends": "stylelint-config-standard",
- "rules": {
-     "no-empty-source": null
- }
+  "extends": "stylelint-config-standard-vue",
+  "rules": {
+    "no-empty-source": null
+  }
 }
