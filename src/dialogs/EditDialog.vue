@@ -1,3 +1,62 @@
+<script setup lang="ts">
+import RelateUrl from 'relateurl'
+import WebsiteIcon from '@/components/WebsiteIcon.vue'
+import validate from '@/validator'
+import { useModeStore } from '@/store/mode'
+import { BookmarkWithID, useBookmarkStore } from '@/store/bookmark'
+import { ref } from 'vue'
+import { useAlertStore } from '@/store/alert'
+import { useI18n } from 'vue-i18n'
+
+const emit = defineEmits<{(e: 'update:modelValue', open: boolean): void}>()
+
+const modeStore = useModeStore()
+const bookmarkStore = useBookmarkStore()
+const alertStore = useAlertStore()
+const { t } = useI18n()
+
+const bookmark = ref(
+  JSON.parse(JSON.stringify(modeStore.data)) as BookmarkWithID
+)
+const faviconGrabLoading = ref(false)
+
+const done = () => {
+  if (!validate('/bookmark', bookmark.value))
+    return
+  if (bookmark.value.id)
+    bookmarkStore.put(bookmark.value)
+  else
+    bookmarkStore.add(bookmark.value)
+  alertStore.push({
+    text: t('message.success'),
+    type: 'success'
+  })
+  emit('update:modelValue', false)
+}
+const deleteThis = () => {
+  bookmarkStore.delete(bookmark.value)
+  emit('update:modelValue', false)
+}
+const faviconGrab = async () => {
+  faviconGrabLoading.value = true
+  const domain = new URL(bookmark.value.url).hostname
+  const response = await fetch(`http://favicongrabber.com/api/grab/${domain}`)
+  const previewData = await response.json()
+  faviconGrabLoading.value = false
+  if (previewData.error) {
+    alertStore.push({
+      text: `${previewData.error}: ${previewData.description}`,
+      type: 'error'
+    })
+    return
+  }
+  if (previewData.icons.length) {
+    bookmark.value.icon = RelateUrl.relate(
+      bookmark.value.url, previewData.icons[0].src
+    )
+  }
+}
+</script>
 <template>
   <v-dialog
     scrollable
@@ -33,7 +92,7 @@
             color="yellow lighten-2"
             size="small"
             data-cy="reorder"
-            @click="$store.commit('switchMode', {
+            @click="modeStore.update({
               mode: 'reorder-dialog',
               data: bookmark.index
             })"
@@ -106,64 +165,3 @@
     </v-card>
   </v-dialog>
 </template>
-
-<script>
-import RelateUrl from 'relateurl'
-import WebsiteIcon from '@/components/WebsiteIcon.vue'
-import validate from '@/validator'
-import { mapState } from 'vuex'
-
-export default {
-  components: {
-    WebsiteIcon
-  },
-  emits: ['update:modelValue'],
-  data () {
-    return {
-      bookmark: JSON.parse(JSON.stringify(this.$store.state.modeData)),
-      faviconGrabLoading: false
-    }
-  },
-  computed: {
-    ...mapState('config', ['config'])
-  },
-  methods: {
-    done () {
-      if (!validate('/bookmark', this.bookmark))
-        return
-      if (this.bookmark.id)
-        this.$store.dispatch('db/bookmarks/put', this.bookmark)
-      else
-        this.$store.dispatch('db/bookmarks/add', this.bookmark)
-      this.$store.commit('alert', {
-        text: this.$t('message.success'),
-        type: 'success'
-      })
-      this.$emit('update:modelValue', false)
-    },
-    deleteThis () {
-      this.$store.dispatch('db/bookmarks/delete', this.bookmark)
-      this.$emit('update:modelValue', false)
-    },
-    async faviconGrab () {
-      this.faviconGrabLoading = true
-      const domain = new URL(this.bookmark.url).hostname
-      const response = await fetch(`http://favicongrabber.com/api/grab/${domain}`)
-      const previewData = await response.json()
-      this.faviconGrabLoading = false
-      if (previewData.error) {
-        this.$store.commit('alert', {
-          text: `${previewData.error}: ${previewData.description}`,
-          type: 'error'
-        })
-        return
-      }
-      if (previewData.icons.length) {
-        this.bookmark.icon = RelateUrl.relate(
-          this.bookmark.url, previewData.icons[0].src
-        )
-      }
-    }
-  }
-}
-</script>

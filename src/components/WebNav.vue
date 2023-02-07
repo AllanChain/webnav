@@ -1,3 +1,34 @@
+<script setup lang="ts">
+import WebsiteIcon from '@/components/WebsiteIcon.vue'
+import { BookmarkWithID, useBookmarkStore } from '@/store/bookmark'
+import { useConfig } from '@/store/config'
+import { useModeStore } from '@/store/mode'
+import { computed } from 'vue';
+
+const config = useConfig()
+const modeStore = useModeStore()
+const bookmarkStore = useBookmarkStore()
+
+const props = defineProps<{
+  query: string
+}>()
+
+const bookmarks = computed(() => bookmarkStore.bookmarks)
+
+const goSearch = (bookmark: BookmarkWithID) => {
+  if (bookmark.search === undefined) return
+  goURL(new URL(
+    bookmark.search.replace('{}', props.query),
+    bookmark.url
+  ).href)
+}
+const goURL = (url: string) => {
+  if (config.value.preferNewTab)
+    window.open(url, '_blank', 'noopener,noreferrer')
+  else window.location.href = url
+}
+</script>
+
 <template>
   <div class="text-center pt-5">
     <div style="max-width: 700px; margin: auto;">
@@ -9,12 +40,12 @@
         <v-overlay
           contained z-index="2"
           class="justify-center align-center"
-          :model-value="$store.state.mode === 'edit'"
+          :model-value="modeStore.mode === 'edit'"
         >
           <v-btn
             color="#2196f390" icon size="x-small"
             data-cy="edit-one"
-            @click="$store.commit('switchMode', {
+            @click="modeStore.update({
               mode: 'edit-dialog',
               data: bookmark
             })"
@@ -27,7 +58,7 @@
         <v-overlay
           contained z-index="2"
           class="justify-center align-center"
-          :model-value="$store.state.mode === 'normal' && !!query.length && !!bookmark.search"
+          :model-value="modeStore.mode === 'normal' && !!query.length && !!bookmark.search"
         >
           <v-btn
             color="#2196f390" icon size="x-small"
@@ -56,40 +87,6 @@
     </div>
   </div>
 </template>
-
-<script>
-import { mapState } from 'vuex'
-import WebsiteIcon from '@/components/WebsiteIcon.vue'
-
-export default {
-  components: {
-    WebsiteIcon
-  },
-  props: {
-    query: {
-      type: String,
-      required: true
-    }
-  },
-  computed: {
-    ...mapState('config', ['config']),
-    ...mapState('db/bookmarks', ['bookmarks'])
-  },
-  methods: {
-    goSearch (bookmark) {
-      this.goURL(new URL(
-        bookmark.search.replace('{}', this.query),
-        bookmark.url
-      ).href)
-    },
-    goURL (url) {
-      if (this.config.preferNewTab)
-        window.open(url, '_blank', 'noopener,noreferrer')
-      else window.location.href = url
-    }
-  }
-}
-</script>
 
 <style scoped>
 .box {

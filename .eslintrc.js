@@ -9,6 +9,7 @@ module.exports = {
   parserOptions: {
     parser: require.resolve('@typescript-eslint/parser'),
     extraFileExtensions: ['.vue'],
+    project: './tsconfig.json',
     ecmaFeatures: {
       jsx: true
     }
@@ -18,7 +19,7 @@ module.exports = {
     'plugin:cypress/recommended',
     'plugin:vue/vue3-recommended',
     '@vue/typescript/recommended',
-    'standard'
+    'standard-with-typescript'
   ],
   rules: {
     'vue/max-attributes-per-line': [

@@ -1,3 +1,34 @@
+<script setup lang="ts">
+import { useAlertStore } from '@/store/alert'
+import { useBookmarkStore } from '@/store/bookmark'
+import { useModeStore } from '@/store/mode'
+import { ref } from 'vue'
+
+const bookmarkStore = useBookmarkStore()
+const modeStore = useModeStore()
+const alertStore = useAlertStore()
+
+const index = ref(modeStore.data as number)
+const reorder = (newIndex: number) => {
+  bookmarkStore.reorder({
+    from: index.value,
+    to: newIndex
+  })
+  index.value = newIndex
+}
+const apply = async () => {
+  modeStore.update('normal')
+  await bookmarkStore.putAll()
+  alertStore.push({
+    text: 'Reordered!',
+    type: 'success'
+  })
+}
+const cancel = async () => {
+  modeStore.update('normal')
+  await bookmarkStore.refresh()
+}
+</script>
 <template>
   <v-dialog :model-value="true">
     <v-slider
@@ -7,7 +38,7 @@
       track-color="indigo"
       thumb-label="always"
       :min="0"
-      :max="bookmarks.length - 1"
+      :max="bookmarkStore.bookmarks.length - 1"
       step="1"
       @update:model-value="reorder"
     />
@@ -22,43 +53,3 @@
     </div>
   </v-dialog>
 </template>
-
-<script>
-import { mapState } from 'vuex'
-
-export default {
-  data () {
-    return {
-      index: this.$store.state.modeData
-    }
-  },
-  computed: {
-    ...mapState('db/bookmarks', ['bookmarks'])
-  },
-  methods: {
-    reorder (newIndex) {
-      this.$store.commit('db/bookmarks/reorder', {
-        from: this.index,
-        to: newIndex
-      })
-      this.index = newIndex
-    },
-    async apply () {
-      this.$store.commit('switchMode', 'normal')
-      await this.$store.dispatch('db/bookmarks/putAll')
-      this.$store.commit('alert', {
-        text: 'Reordered!',
-        type: 'success'
-      })
-    },
-    async cancel () {
-      this.$store.commit('switchMode', 'normal')
-      await this.$store.dispatch('db/bookmarks/refresh')
-    }
-  }
-}
-</script>
-
-<style>
-
-</style>

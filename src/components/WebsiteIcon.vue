@@ -1,64 +1,40 @@
 <template>
   <img
-    v-bind="image"
+    :src="src"
+    :crossorigin="crossorigin"
+    :style="{ width: size, height: size }"
     data-cy="website-icon"
-    @error="image.src = 'img/fallback.png'"
+    @error="src = 'img/fallback.png'"
   >
 </template>
 
-<script>
-import { mapState } from 'vuex'
+<script setup lang="ts">
+import { Bookmark } from '@/store/bookmark'
+import { useConfig } from '@/store/config'
+import { ref, watchEffect } from 'vue'
 
-export default {
-  props: {
-    bookmark: {
-      type: Object,
-      required: true
-    },
-    size: {
-      type: String,
-      default: '2rem'
-    }
-  },
-  data () {
-    return {
-      image: {}
-    }
-  },
-  computed: {
-    ...mapState('config', ['config'])
-  },
-  watch: {
-    bookmark: {
-      deep: true,
-      immediate: true,
-      handler (bookmark) {
-        const cors = this.config.cors
-        let src
-        try {
-          src = cors + new URL(bookmark.icon || '/favicon.ico', bookmark.url).href
-        } catch (err) {
-          return
-        }
-        // Fail image serve over http if configured
-        if (!this.config.httpIcon && !src.startsWith('https://'))
-          src = 'img/fallback.png'
-        let image = {
-          src,
-          style: {
-            width: this.size,
-            height: this.size
-          }
-        }
-        if (cors) {
-          image = {
-            ...image,
-            crossorigin: 'anonymous'
-          }
-        }
-        this.image = image
-      }
-    }
-  }
+export interface Props {
+  bookmark: Bookmark
+  size?: string
 }
+const props = withDefaults(defineProps<Props>(), { size: '2rem' })
+
+const config = useConfig()
+
+const src = ref('')
+const crossorigin = ref<'anonymous' | undefined>(undefined)
+
+watchEffect(() => {
+  const cors = config.value.cors
+  try {
+    src.value = cors + new URL(props.bookmark.icon || '/favicon.ico', props.bookmark.url).href
+  } catch (err) {
+    return
+  }
+  // Fail image serve over http if configured
+  if (!config.value.httpIcon && !src.value.startsWith('https://'))
+    src.value = 'img/fallback.png'
+  if (cors)
+    crossorigin.value = 'anonymous'
+})
 </script>

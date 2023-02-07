@@ -17,6 +17,7 @@ specifiers:
   deepmerge: ^4.3.0
   eslint: ^8.33.0
   eslint-config-standard: ^17.0.0
+  eslint-config-standard-with-typescript: ^34.0.0
   eslint-import-resolver-node: ^0.3.7
   eslint-plugin-cypress: ^2.12.1
   eslint-plugin-import: ^2.27.5
@@ -26,6 +27,7 @@ specifiers:
   eslint-plugin-vue: ^9.9.0
   idb: ^7.1.1
   jsonschema: ^1.4.1
+  pinia: ^2.0.30
   postcss-html: ^1.5.0
   register-service-worker: ^1.7.2
   relateurl: ^0.2.7
@@ -57,6 +59,7 @@ dependencies:
   deepmerge: 4.3.0
   idb: 7.1.1
   jsonschema: 1.4.1
+  pinia: 2.0.30_hmuptsblhheur2tugfgucj7gc4
   register-service-worker: 1.7.2
   relateurl: 0.2.7
   roboto-fontface: 0.10.0
@@ -86,6 +89,7 @@ devDependencies:
   cypress-file-upload: 5.0.8_cypress@12.5.1
   eslint: 8.33.0
   eslint-config-standard: 17.0.0_xh3wrndcszbt2l7hdksdjqnjcq
+  eslint-config-standard-with-typescript: 34.0.0_frfgwa7fqjzszldru3sxumpviq
   eslint-import-resolver-node: 0.3.7
   eslint-plugin-cypress: 2.12.1_eslint@8.33.0
   eslint-plugin-import: 2.27.5_ufewo3pl5nnmz6lltvjrdi2hii
@@ -3807,6 +3811,28 @@ packages:
       source-map: 0.6.1
     dev: true
 
+  /eslint-config-standard-with-typescript/34.0.0_frfgwa7fqjzszldru3sxumpviq:
+    resolution: {integrity: sha512-zhCsI4/A0rJ1ma8sf3RLXYc0gc7yPmdTWRVXMh9dtqeUx3yBQyALH0wosHhk1uQ9QyItynLdNOtcHKNw8G7lQw==}
+    peerDependencies:
+      '@typescript-eslint/eslint-plugin': ^5.0.0
+      eslint: ^8.0.1
+      eslint-plugin-import: ^2.25.2
+      eslint-plugin-n: ^15.0.0
+      eslint-plugin-promise: ^6.0.0
+      typescript: '*'
+    dependencies:
+      '@typescript-eslint/eslint-plugin': 5.50.0_go4drrxstycfikanvu45pi4vgq
+      '@typescript-eslint/parser': 5.50.0_4vsywjlpuriuw3tl5oq6zy5a64
+      eslint: 8.33.0
+      eslint-config-standard: 17.0.0_xh3wrndcszbt2l7hdksdjqnjcq
+      eslint-plugin-import: 2.27.5_ufewo3pl5nnmz6lltvjrdi2hii
+      eslint-plugin-n: 15.6.1_eslint@8.33.0
+      eslint-plugin-promise: 6.1.1_eslint@8.33.0
+      typescript: 4.9.5
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /eslint-config-standard/17.0.0_xh3wrndcszbt2l7hdksdjqnjcq:
     resolution: {integrity: sha512-/2ks1GKyqSOkH7JFvXJicu0iMpoojkwB+f5Du/1SC0PtBL+s8v30k9njRZ21pm2drKYm2342jFnGWzttxPmZVg==}
     peerDependencies:
@@ -6251,6 +6277,24 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
+  /pinia/2.0.30_hmuptsblhheur2tugfgucj7gc4:
+    resolution: {integrity: sha512-q6DUmxWwe/mQgg+55QQjykpKC+aGeGdaJV3niminl19V08dE+LRTvSEuqi6/NLSGCKHI49KGL6tMNEOssFiMyA==}
+    peerDependencies:
+      '@vue/composition-api': ^1.4.0
+      typescript: '>=4.4.4'
+      vue: ^2.6.14 || ^3.2.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+      typescript:
+        optional: true
+    dependencies:
+      '@vue/devtools-api': 6.5.0
+      typescript: 4.9.5
+      vue: 3.2.47
+      vue-demi: 0.13.11_vue@3.2.47
+    dev: false
+
   /pkg-dir/4.2.0:
     resolution: {integrity: sha512-HRDzbaKjC+AOWVXxAU/x54COGeIv9eb+6CkDSQoNTt4XyWoIJvuPsXizxu/Fr23EiekbtZwmh1IcIG/l/a10GQ==}
     engines: {node: '>=8'}
@@ -7589,7 +7633,6 @@ packages:
     resolution: {integrity: sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==}
     engines: {node: '>=4.2.0'}
     hasBin: true
-    dev: true
 
   /uglify-js/3.17.4:
     resolution: {integrity: sha512-T9q82TJI9e/C1TAxYvfb16xO120tMVFZrGA3f9/P4424DNu6ypK103y0GPFVa17yotwSyZW5iYXgjYHkGrJW/g==}
@@ -7841,6 +7884,21 @@ packages:
       acorn: 8.8.2
       acorn-walk: 8.2.0
     dev: true
+
+  /vue-demi/0.13.11_vue@3.2.47:
+    resolution: {integrity: sha512-IR8HoEEGM65YY3ZJYAjMlKygDQn25D5ajNFNoKh9RSDMQtlzCxtfQjdQgv9jjK+m3377SsJXY8ysq8kLCZL25A==}
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: 3.2.47
+    dev: false
 
   /vue-eslint-parser/9.1.0_eslint@8.33.0:
     resolution: {integrity: sha512-NGn/iQy8/Wb7RrRa4aRkokyCZfOUWk19OP5HP6JEozQFX5AoS/t+Z0ZN7FY4LlmWc4FNI922V7cvX28zctN8dQ==}

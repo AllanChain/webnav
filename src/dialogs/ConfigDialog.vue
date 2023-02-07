@@ -1,3 +1,57 @@
+<script setup lang="ts">
+import { useAlertStore } from '@/store/alert'
+import { Config, useConfigStore } from '@/store/config'
+import validate from '@/validator'
+import { ref } from 'vue'
+
+const emit = defineEmits<{(e: 'update:modelValue', open: boolean): void}>()
+
+const configStore = useConfigStore()
+const alertStore = useAlertStore()
+
+const tab = ref(0)
+const config = ref(JSON.parse(JSON.stringify(configStore.getConfig())) as Config)
+const downloadLink = ref<HTMLAnchorElement | null>(null)
+const fileInput = ref<HTMLInputElement | null>(null)
+
+const done = () => {
+  if (validate('/config', config.value)) {
+    configStore.update(config.value)
+    emit('update:modelValue', false)
+  }
+}
+const importFromFile = (e: Event) => {
+  const target = e.target as HTMLInputElement
+  const file = target.files?.[0]
+  if (file === undefined) return
+  const reader = new FileReader()
+  reader.onload = async () => {
+    const content = JSON.parse(reader.result as string)
+    if (validate('/config', content)) {
+      config.value = content
+      alertStore.push({
+        text: 'Success!',
+        type: 'success'
+      })
+    }
+  }
+  reader.readAsText(file)
+}
+const downloadJSON = () => {
+  if (downloadLink.value === null) return
+  const configString = localStorage.getItem('config')
+  if (configString === null) return
+  const timeStr = new Date()
+    .toJSON()
+    .slice(0, -8)
+    .replace(/-|:/g, '')
+  downloadLink.value.download = `config-${timeStr}.json`
+  downloadLink.value.href =
+    'data:text/json;charset=utf-8,' +
+    encodeURIComponent(configString)
+  downloadLink.value.click()
+}
+</script>
 <template>
   <v-dialog
     scrollable fullscreen
@@ -17,7 +71,7 @@
         <v-toolbar color="indigo" dark density="compact">
           <v-toolbar-title>{{ $t('config.title') }}</v-toolbar-title>
           <v-spacer />
-          <v-btn icon size="large" color="blue lighten-2" @click="$refs.file.click()">
+          <v-btn icon size="large" color="blue lighten-2" @click="fileInput?.click()">
             <v-icon>mdi-file-upload-outline</v-icon>
           </v-btn>
           <v-btn icon size="large" @click="downloadJSON">
@@ -223,58 +277,6 @@
     </v-card>
   </v-dialog>
 </template>
-
-<script>
-import validate from '@/validator'
-
-export default {
-  emits: ['update:modelValue'],
-  data () {
-    return {
-      tab: 0,
-      config: JSON.parse(JSON.stringify(this.$store.state.config.config))
-    }
-  },
-  methods: {
-    done () {
-      if (validate('/config', this.config)) {
-        this.$store.commit('config/update', {
-          config: this.config,
-          app: this,
-          write: true
-        })
-        this.$emit('update:modelValue', false)
-      }
-    },
-    importFromFile (e) {
-      const file = e.target.files[0]
-      const reader = new FileReader()
-      reader.onload = async e => {
-        const content = JSON.parse(e.target.result)
-        if (validate('/config', content)) {
-          this.config = content
-          this.$store.commit('alert', {
-            text: 'Success!',
-            type: 'success'
-          })
-        }
-      }
-      reader.readAsText(file)
-    },
-    downloadJSON () {
-      const timeStr = new Date()
-        .toJSON()
-        .slice(0, -8)
-        .replace(/-|:/g, '')
-      this.$refs.downloadLink.download = `config-${timeStr}.json`
-      this.$refs.downloadLink.href =
-        'data:text/json;charset=utf-8,' +
-        encodeURIComponent(localStorage.getItem('config'))
-      this.$refs.downloadLink.click()
-    }
-  }
-}
-</script>
 
 <style>
 .bg-preview-wrapper {

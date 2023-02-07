@@ -1,14 +1,19 @@
 import { Validator } from 'jsonschema'
-import store from '@/store'
 import schemas from './schemas'
+import { useAlertStore } from './store/alert'
 
 const validator = new Validator()
 
 for (const schema of schemas)
   validator.addSchema(schema, schema.$id)
 
-export default (schemaName, payload, quiet) => {
+export default (
+  schemaName: string,
+  payload: Record<string, unknown>,
+  quiet = false
+): boolean => {
   const schema = schemas.find(schema => schema.$id === schemaName)
+  if (schema === undefined) return false
   const validateResult = validator.validate(payload, schema)
   if (validateResult.valid)
     return true
@@ -16,7 +21,7 @@ export default (schemaName, payload, quiet) => {
   validateResult.errors.forEach(error => {
     // slice to remove leading slash
     const stack = error.stack.replace(/^instance/, schemaName.slice(1))
-    store.commit('alert', {
+    useAlertStore().push({
       text: `${stack}. Got "${JSON.stringify(error.instance)}"`,
       type: 'warning',
       break: true
