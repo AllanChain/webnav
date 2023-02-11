@@ -5,6 +5,7 @@ specifiers:
   '@mdi/font': 7.1.96
   '@release-it/conventional-changelog': ^5.1.1
   '@types/node': ^18.11.18
+  '@types/randomcolor': ^0.5.7
   '@typescript-eslint/eslint-plugin': ^5.50.0
   '@typescript-eslint/parser': ^5.50.0
   '@vitejs/plugin-vue': ^4.0.0
@@ -29,6 +30,7 @@ specifiers:
   jsonschema: ^1.4.1
   pinia: ^2.0.30
   postcss-html: ^1.5.0
+  randomcolor: ^0.6.2
   register-service-worker: ^1.7.2
   relateurl: ^0.2.7
   release-it: ^15.6.0
@@ -60,6 +62,7 @@ dependencies:
   idb: 7.1.1
   jsonschema: 1.4.1
   pinia: 2.0.30_hmuptsblhheur2tugfgucj7gc4
+  randomcolor: 0.6.2
   register-service-worker: 1.7.2
   relateurl: 0.2.7
   roboto-fontface: 0.10.0
@@ -78,6 +81,7 @@ devDependencies:
   '@intlify/unplugin-vue-i18n': 0.8.1_vue-i18n@9.2.2
   '@release-it/conventional-changelog': 5.1.1_release-it@15.6.0
   '@types/node': 18.11.18
+  '@types/randomcolor': 0.5.7
   '@typescript-eslint/eslint-plugin': 5.50.0_go4drrxstycfikanvu45pi4vgq
   '@typescript-eslint/parser': 5.50.0_4vsywjlpuriuw3tl5oq6zy5a64
   '@vitejs/plugin-vue': 4.0.0_vite@4.1.1+vue@3.2.47
@@ -2042,6 +2046,10 @@ packages:
 
   /@types/parse-json/4.0.0:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
+    dev: true
+
+  /@types/randomcolor/0.5.7:
+    resolution: {integrity: sha512-LPcG96dGYRCsXlk1fslUNIg6ebEi+bKNyn84uBL/pu2cRSf5i/djD3ArJZOyzszVMVV/DB87va6pMZP+tRSl/w==}
     dev: true
 
   /@types/resolve/1.17.1:
@@ -6491,6 +6499,10 @@ packages:
     dependencies:
       safe-buffer: 5.2.1
     dev: true
+
+  /randomcolor/0.6.2:
+    resolution: {integrity: sha512-Mn6TbyYpFgwFuQ8KJKqf3bqqY9O1y37/0jgSK/61PUxV4QfIMv0+K2ioq8DfOjkBslcjwSzRfIDEXfzA9aCx7A==}
+    dev: false
 
   /range-parser/1.2.0:
     resolution: {integrity: sha1-9JvmtIeJTdxA3MlKMi9hEJLgDV4=}
