@@ -23,7 +23,11 @@ const goSearch = (bookmark: BookmarkWithID) => {
   ).href)
 }
 const goURL = (url: string) => {
-  if (config.value.preferNewTab) { window.open(url, '_blank', 'noopener,noreferrer') } else window.location.href = url
+  if (config.value.preferNewTab) {
+    window.open(url, '_blank', 'noopener,noreferrer')
+  } else {
+    window.location.href = url
+  }
 }
 </script>
 
@@ -75,7 +79,13 @@ const goURL = (url: string) => {
             </v-icon>
           </v-btn>
         </v-overlay>
-        <div v-ripple class="website py-1" @click="goURL(bookmark.url)">
+        <a
+          v-ripple
+          class="website py-1"
+          :href="bookmark.url"
+          :target="config.preferNewTab ? '_blank' : undefined"
+          rel="noopener,noreferrer"
+        >
           <WebsiteIcon :bookmark="bookmark" />
           <div
             class="name py-1"
@@ -88,7 +98,7 @@ const goURL = (url: string) => {
           >
             {{ bookmark.title }}
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </div>
@@ -104,6 +114,9 @@ const goURL = (url: string) => {
 }
 
 .website {
+  display: block;
+  text-decoration: none;
+  color: inherit;
   transition-property: all;
   transition-duration: 500ms;
   cursor: pointer;
