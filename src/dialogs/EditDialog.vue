@@ -56,6 +56,7 @@ const faviconGrab = async () => {
 <template>
   <v-dialog
     scrollable
+    width="500"
     :model-value="true"
     @update:model-value="$emit('update:modelValue', false)"
   >

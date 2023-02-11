@@ -77,6 +77,7 @@ const importBookmarks = async (bookmarks: ImportedBookmark[]) => {
 </script>
 <template>
   <v-dialog
+    width="500"
     :model-value="true"
     @update:model-value="$emit('update:modelValue', false)"
   >
