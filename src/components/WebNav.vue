@@ -37,6 +37,7 @@ const goURL = (url: string) => {
       >
         <v-overlay
           contained
+          persistent
           z-index="2"
           class="justify-center align-center"
           :model-value="modeStore.mode === 'edit'"
@@ -58,6 +59,7 @@ const goURL = (url: string) => {
         </v-overlay>
         <v-overlay
           contained
+          persistent
           z-index="2"
           class="justify-center align-center"
           :model-value="modeStore.mode === 'normal' && !!query.length && !!bookmark.search"
