@@ -8,7 +8,7 @@ for (const schema of schemas) { validator.addSchema(schema, schema.$id) }
 
 export default (
   schemaName: string,
-  payload: Record<string, unknown>,
+  payload: unknown,
   quiet = false
 ): boolean => {
   const schema = schemas.find(schema => schema.$id === schemaName)
