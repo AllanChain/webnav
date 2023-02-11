@@ -1,12 +1,14 @@
 name: Test App with Cypress
 on:
-  - push
-  - pull_request
+  push:
+    tags-ignore:
+      - '**'
+  pull_request:
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-
+    if: ${{ ! contains(github.event.head_commit.message, 'chore(release)') }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
