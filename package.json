@@ -6,7 +6,7 @@
     "dev": "vite --port 5173",
     "build": "vite build",
     "serve": "vite preview --port 5173",
-    "lint": "eslint src/ --ext js,ts,vue",
+    "lint": "eslint . --ext js,ts,vue",
     "lint:css": "stylelint --fix src/**/*.vue",
     "release": "release-it",
     "cy:open": "cypress open",

@@ -17,7 +17,7 @@ describe('App Basic Feature Test', () => {
     // icon display
     cy.get('img[data-cy="website-icon"]').should('be.visible')
     cy.get('img[data-cy="website-icon"][src*="fallback"]', {
-      timeout: 10000,
+      timeout: 10000
     }).should('have.length', 0)
 
     // import new bookmarks so that we have consistant test set

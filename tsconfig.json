@@ -21,8 +21,8 @@
     }
   },
   "include": [
-    "components.d.ts",
     "src/**/*.ts",
+    "src/**/*.js",
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue"

@@ -38,12 +38,8 @@ export const useConfigStore = defineStore('config', {
       const locale = (
         config.locale !== '' ? config.locale : navigator.language.slice(0, 2)
       )
-      if (['en', 'zh'].includes(locale))
-        i18n.global.locale.value = locale as 'zh' | 'en'
-      else
-        i18n.global.locale.value = 'en'
-      if (write)
-        localStorage.setItem('config', JSON.stringify(config))
+      if (['en', 'zh'].includes(locale)) { i18n.global.locale.value = locale as 'zh' | 'en' } else { i18n.global.locale.value = 'en' }
+      if (write) { localStorage.setItem('config', JSON.stringify(config)) }
     },
     getConfig (): Config {
       if (this._config !== null) return this._config

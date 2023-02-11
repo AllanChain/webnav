@@ -54,7 +54,8 @@ const downloadJSON = () => {
 </script>
 <template>
   <v-dialog
-    scrollable fullscreen
+    scrollable
+    fullscreen
     :model-value="true"
     @update:model-value="$emit('update:modelValue', false)"
   >
@@ -250,12 +251,14 @@ const downloadJSON = () => {
                 />
                 <v-switch
                   v-model="config.httpIcon"
-                  hide-details color="primary"
+                  hide-details
+                  color="primary"
                   :label="$t('config.other.http-icon')"
                 />
                 <v-switch
                   v-model="config.preferNewTab"
-                  hide-details color="primary"
+                  hide-details
+                  color="primary"
                   :label="$t('config.other.prefer-new-tab')"
                 />
               </v-col>

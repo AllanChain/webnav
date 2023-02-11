@@ -4,7 +4,7 @@ import { defineStore } from 'pinia'
 
 interface BookmarkDBSchema extends DBSchema {
   bookmarks: {
-    key: number,
+    key: number
     value: {
       id: number
       index: number
@@ -12,10 +12,10 @@ interface BookmarkDBSchema extends DBSchema {
       url: string
       icon?: string
       search?: string
-    },
+    }
   }
   backgrounds: {
-    key: string,
+    key: string
     value: {
       name: string
       data: string

@@ -7,6 +7,7 @@ import type { VTextField } from 'vuetify/components/VTextField'
 const configStore = useConfigStore()
 const modeStore = useModeStore()
 
+// eslint-disable-next-line func-call-spacing
 const emit = defineEmits<{
   (e: 'drawer-toggle'): void
   (e: 'update:query', query: string): void

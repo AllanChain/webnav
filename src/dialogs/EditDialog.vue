@@ -21,12 +21,8 @@ const bookmark = ref(
 const faviconGrabLoading = ref(false)
 
 const done = () => {
-  if (!validate('/bookmark', bookmark.value))
-    return
-  if (bookmark.value.id)
-    bookmarkStore.put(bookmark.value)
-  else
-    bookmarkStore.add(bookmark.value)
+  if (!validate('/bookmark', bookmark.value)) { return }
+  if (bookmark.value.id) { bookmarkStore.put(bookmark.value) } else { bookmarkStore.add(bookmark.value) }
   alertStore.push({
     text: t('message.success'),
     type: 'success'

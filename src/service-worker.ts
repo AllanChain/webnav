@@ -10,13 +10,14 @@ setCacheNameDetails({ prefix: 'webnav' })
 
 declare let self: ServiceWorkerGlobalScope
 
-self.addEventListener('message', event => {
+self.addEventListener('message', (event) => {
   const message = event.data
-  if (!message) return
-  if (message.type === 'skip-waiting')
-    self.skipWaiting()
-  else if (message.type === 'abort-connections')
+  if (typeof message !== 'object') return
+  if (message.type === 'skip-waiting') {
+    void self.skipWaiting() // Not awaiting here
+  } else if (message.type === 'abort-connections') {
     controller.abort()
+  }
 })
 
 precacheAndRoute(self.__WB_MANIFEST)

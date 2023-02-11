@@ -3,7 +3,7 @@ import WebsiteIcon from '@/components/WebsiteIcon.vue'
 import { BookmarkWithID, useBookmarkStore } from '@/store/bookmark'
 import { useConfig } from '@/store/config'
 import { useModeStore } from '@/store/mode'
-import { computed } from 'vue';
+import { computed } from 'vue'
 
 const config = useConfig()
 const modeStore = useModeStore()
@@ -23,9 +23,7 @@ const goSearch = (bookmark: BookmarkWithID) => {
   ).href)
 }
 const goURL = (url: string) => {
-  if (config.value.preferNewTab)
-    window.open(url, '_blank', 'noopener,noreferrer')
-  else window.location.href = url
+  if (config.value.preferNewTab) { window.open(url, '_blank', 'noopener,noreferrer') } else window.location.href = url
 }
 </script>
 
@@ -38,12 +36,15 @@ const goURL = (url: string) => {
         class="box"
       >
         <v-overlay
-          contained z-index="2"
+          contained
+          z-index="2"
           class="justify-center align-center"
           :model-value="modeStore.mode === 'edit'"
         >
           <v-btn
-            color="#2196f390" icon size="x-small"
+            color="#2196f390"
+            icon
+            size="x-small"
             data-cy="edit-one"
             @click="modeStore.update({
               mode: 'edit-dialog',
@@ -56,12 +57,15 @@ const goURL = (url: string) => {
           </v-btn>
         </v-overlay>
         <v-overlay
-          contained z-index="2"
+          contained
+          z-index="2"
           class="justify-center align-center"
           :model-value="modeStore.mode === 'normal' && !!query.length && !!bookmark.search"
         >
           <v-btn
-            color="#2196f390" icon size="x-small"
+            color="#2196f390"
+            icon
+            size="x-small"
             @click="goSearch(bookmark)"
           >
             <v-icon color="white">

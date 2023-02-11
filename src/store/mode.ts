@@ -1,4 +1,4 @@
-import { Bookmark } from '@/store/bookmark'
+import { type Bookmark } from '@/store/bookmark'
 import { defineStore } from 'pinia'
 
 export interface DatalessMode {

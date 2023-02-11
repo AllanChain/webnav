@@ -4,8 +4,7 @@ import { useAlertStore } from './store/alert'
 
 const validator = new Validator()
 
-for (const schema of schemas)
-  validator.addSchema(schema, schema.$id)
+for (const schema of schemas) { validator.addSchema(schema, schema.$id) }
 
 export default (
   schemaName: string,
@@ -15,8 +14,7 @@ export default (
   const schema = schemas.find(schema => schema.$id === schemaName)
   if (schema === undefined) return false
   const validateResult = validator.validate(payload, schema)
-  if (validateResult.valid)
-    return true
+  if (validateResult.valid) { return true }
   if (quiet) return false
   validateResult.errors.forEach(error => {
     // slice to remove leading slash

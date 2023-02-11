@@ -90,7 +90,9 @@ const importBookmarks = async (bookmarks: ImportedBookmark[]) => {
               color="purple"
               label="JSON URL"
               placeholder="https://example.cors/marks.json"
-              density="compact" variant="outlined" hide-details
+              density="compact"
+              variant="outlined"
+              hide-details
             />
           </v-row>
           <v-row>
@@ -117,7 +119,9 @@ const importBookmarks = async (bookmarks: ImportedBookmark[]) => {
               <v-icon>mdi-close-thick</v-icon>
             </v-btn>
             <v-btn
-              icon small color="green"
+              icon
+              small
+              color="green"
               data-cy="import-check"
               @click="importFromCloud"
             >

@@ -1,15 +1,16 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useModeStore } from '@/store/mode'
 import { BookmarkWithID, useBookmarkStore } from '@/store/bookmark'
 import AppLogo from './AppLogo.vue'
 import ServiceWorker from './ServiceWorker.vue'
 
-const props = defineProps<{
+defineProps<{
   drawer: boolean
 }>()
 
+// eslint-disable-next-line func-call-spacing
 const emit = defineEmits<{
   (e: 'update:drawer', drawer: boolean): void
 }>()
@@ -49,14 +50,15 @@ const downloadJSON = () => {
   downloadLink.value.click()
 }
 const confirmClear = () => {
-  if (prompt(t('message.clear-warn')) === 'CLEAR')
-    bookmarkStore.clear()
+  if (prompt(t('message.clear-warn')) === 'CLEAR') { bookmarkStore.clear() }
 }
 </script>
 
 <template>
   <v-navigation-drawer
-    :model-value="drawer" disable-resize-watcher app
+    :model-value="drawer"
+    disable-resize-watcher
+    app
     @update:model-value="emit('update:drawer', $event)"
   >
     <v-list shaped nav density="compact">

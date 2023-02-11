@@ -32,9 +32,7 @@ watchEffect(() => {
     return
   }
   // Fail image serve over http if configured
-  if (!config.value.httpIcon && !src.value.startsWith('https://'))
-    src.value = 'img/fallback.png'
-  if (cors)
-    crossorigin.value = 'anonymous'
+  if (!config.value.httpIcon && !src.value.startsWith('https://')) { src.value = 'img/fallback.png' }
+  if (cors) { crossorigin.value = 'anonymous' }
 })
 </script>

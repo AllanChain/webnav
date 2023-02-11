@@ -30,7 +30,7 @@ export default {
   },
   created () {
     setTimeout(this.close.bind(this),
-               this.message.delay || 4000)
+      this.message.delay || 4000)
   },
   methods: {
     close () {
