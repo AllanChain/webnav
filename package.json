@@ -41,6 +41,7 @@
     "@release-it/conventional-changelog": "^5.1.1",
     "@types/node": "^18.11.18",
     "@types/randomcolor": "^0.5.7",
+    "@types/relateurl": "^0.2.29",
     "@typescript-eslint/eslint-plugin": "^5.50.0",
     "@typescript-eslint/parser": "^5.50.0",
     "@vitejs/plugin-vue": "^4.0.0",

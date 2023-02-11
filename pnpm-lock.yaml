@@ -6,6 +6,7 @@ specifiers:
   '@release-it/conventional-changelog': ^5.1.1
   '@types/node': ^18.11.18
   '@types/randomcolor': ^0.5.7
+  '@types/relateurl': ^0.2.29
   '@typescript-eslint/eslint-plugin': ^5.50.0
   '@typescript-eslint/parser': ^5.50.0
   '@vitejs/plugin-vue': ^4.0.0
@@ -82,6 +83,7 @@ devDependencies:
   '@release-it/conventional-changelog': 5.1.1_release-it@15.6.0
   '@types/node': 18.11.18
   '@types/randomcolor': 0.5.7
+  '@types/relateurl': 0.2.29
   '@typescript-eslint/eslint-plugin': 5.50.0_go4drrxstycfikanvu45pi4vgq
   '@typescript-eslint/parser': 5.50.0_4vsywjlpuriuw3tl5oq6zy5a64
   '@vitejs/plugin-vue': 4.0.0_vite@4.1.1+vue@3.2.47
@@ -2050,6 +2052,10 @@ packages:
 
   /@types/randomcolor/0.5.7:
     resolution: {integrity: sha512-LPcG96dGYRCsXlk1fslUNIg6ebEi+bKNyn84uBL/pu2cRSf5i/djD3ArJZOyzszVMVV/DB87va6pMZP+tRSl/w==}
+    dev: true
+
+  /@types/relateurl/0.2.29:
+    resolution: {integrity: sha512-QSvevZ+IRww2ldtfv1QskYsqVVVwCKQf1XbwtcyyoRvLIQzfyPhj/C+3+PKzSDRdiyejaiLgnq//XTkleorpLg==}
     dev: true
 
   /@types/resolve/1.17.1:
