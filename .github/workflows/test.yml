@@ -1,4 +1,4 @@
-name: Test App with Cypress
+name: Cypress Test
 on:
   push:
     tags-ignore:
