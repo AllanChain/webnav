@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useBookmarkStore } from '@/store/bookmark'
 import { useConfigStore } from '@/store/config'
 import { useModeStore } from '@/store/mode'
 import { computed, ref, watch } from 'vue'
@@ -6,6 +7,7 @@ import type { VTextField } from 'vuetify/components/VTextField'
 
 const configStore = useConfigStore()
 const modeStore = useModeStore()
+const bookmarkStore = useBookmarkStore()
 
 // eslint-disable-next-line func-call-spacing
 const emit = defineEmits<{
@@ -40,6 +42,16 @@ const handleAutofill = () => {
     _query.value = inputEl.value
     autofilled.value = true
   }
+}
+const newBookmark = () => {
+  modeStore.update({
+    mode: 'edit-dialog',
+    data: {
+      title: '',
+      url: '',
+      index: bookmarkStore.bookmarks.length
+    }
+  })
 }
 </script>
 
@@ -77,6 +89,14 @@ const handleAutofill = () => {
             modeStore.mode === 'edit' ? 'normal' : 'edit'
           )
         "
+      />
+    </v-expand-x-transition>
+    <v-expand-x-transition>
+      <v-btn
+        v-show="showBtn"
+        data-cy="button-add-bookmark"
+        icon="mdi-bookmark-plus-outline"
+        @click="newBookmark"
       />
     </v-expand-x-transition>
   </v-app-bar>
