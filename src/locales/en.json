@@ -70,5 +70,9 @@
     "edit": "Edit",
     "remove": "Remove",
     "reorder": "Reorder"
+  },
+  "faview": {
+    "error": "Failed to get info",
+    "action": "Grab website info"
   }
 }

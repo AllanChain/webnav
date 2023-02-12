@@ -40,20 +40,33 @@ const deleteThis = () => {
 const faviconGrab = async () => {
   faviconGrabLoading.value = true
   const domain = new URL(bookmark.value.url).hostname
-  const response = await fetch(`http://favicongrabber.com/api/grab/${domain}`)
-  const previewData = await response.json()
-  faviconGrabLoading.value = false
-  if (previewData.error) {
+  try {
+    const response = await fetch(`https://faview.vercel.app/api/${domain}`)
+    const previewData = await response.json()
+    faviconGrabLoading.value = false
+    if (previewData.error) {
+      alertStore.push({
+        text: t('faview.error'),
+        type: 'error'
+      })
+      return
+    }
+    if (previewData.icons.length) {
+      bookmark.value.icon = RelateUrl.relate(
+        bookmark.value.url, previewData.icons[0].src
+      )
+    }
+    if (previewData.title && !bookmark.value.title) {
+      bookmark.value.title = previewData.title.split(/(:| ?-)/)[0]
+    }
+    if (previewData.search && !bookmark.value.search) {
+      bookmark.value.search = previewData.search.replace('searchTerms', '')
+    }
+  } catch {
     alertStore.push({
-      text: `${previewData.error}: ${previewData.description}`,
+      text: t('faview.error'),
       type: 'error'
     })
-    return
-  }
-  if (previewData.icons.length) {
-    bookmark.value.icon = RelateUrl.relate(
-      bookmark.value.url, previewData.icons[0].src
-    )
   }
 }
 </script>
@@ -158,7 +171,7 @@ const faviconGrab = async () => {
           :disabled="!bookmark.url || faviconGrabLoading"
           @click="faviconGrab"
         >
-          FaviconGrab
+          {{ $t('faview.action') }}
           <span v-if="faviconGrabLoading">...</span>
           <span v-else>!</span>
         </v-btn>

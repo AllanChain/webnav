@@ -67,5 +67,9 @@
     "edit": "编辑",
     "remove": "删除",
     "reorder": "移动"
+  },
+  "faview": {
+    "error": "获取失败",
+    "action": "获取网站信息"
   }
 }
