@@ -62,5 +62,10 @@
   "button": {
     "cancel": "取消",
     "apply": "应用"
+  },
+   "action": {
+    "edit": "编辑",
+    "remove": "删除",
+    "reorder": "移动"
   }
 }

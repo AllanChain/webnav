@@ -65,5 +65,10 @@
   "button": {
     "cancel": "Cancel",
     "apply": "Apply"
+  },
+  "action": {
+    "edit": "Edit",
+    "remove": "Remove",
+    "reorder": "Reorder"
   }
 }

@@ -142,21 +142,19 @@ const goURL = (url: string) => {
           <template #prepend>
             <v-icon class="menu-icon" :icon="mdiPencil" size="x-small" />
           </template>
-          <v-list-item-title>Edit</v-list-item-title>
+          <v-list-item-title>{{ $t('action.edit') }}</v-list-item-title>
         </v-list-item>
         <v-list-item class="text-red-darken-2" @click="deleteThis">
           <template #prepend>
             <v-icon class="menu-icon" :icon="mdiDelete" size="x-small" />
           </template>
-          <v-list-item-title>Remove</v-list-item-title>
+          <v-list-item-title>{{ $t('action.remove') }}</v-list-item-title>
         </v-list-item>
         <v-list-item class="text-yellow-darken-4" @click="startReorder">
           <template #prepend>
             <v-icon class="menu-icon" :icon="mdiSwapHorizontalBold" size="x-small" />
           </template>
-          <v-list-item-title color="red">
-            Reorder
-          </v-list-item-title>
+          <v-list-item-title>{{ $t('action.reorder') }}</v-list-item-title>
         </v-list-item>
       </v-list>
     </v-menu>
