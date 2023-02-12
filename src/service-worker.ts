@@ -23,7 +23,7 @@ self.addEventListener('message', (event) => {
 precacheAndRoute(self.__WB_MANIFEST)
 
 registerRoute(
-  /.*/,
+  /.*\.(png|jpg|ico|svg)/,
   new StaleWhileRevalidate({
     cacheName: 'webnav-AC',
     fetchOptions: { signal: controller.signal },
