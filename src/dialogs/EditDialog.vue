@@ -39,8 +39,8 @@ const deleteThis = () => {
 }
 const faviconGrab = async () => {
   faviconGrabLoading.value = true
-  const domain = new URL(bookmark.value.url).hostname
   try {
+    const domain = new URL(bookmark.value.url).hostname
     const response = await fetch(`https://faview.vercel.app/api/${domain}`)
     const previewData = await response.json()
     faviconGrabLoading.value = false
@@ -128,6 +128,7 @@ const faviconGrab = async () => {
         />
         <v-text-field
           v-model="bookmark.url"
+          :autofocus="bookmark.url === ''"
           color="primary"
           :prepend-inner-icon="mdiWeb"
           :label="$t('bookmark.url')"
@@ -137,6 +138,7 @@ const faviconGrab = async () => {
           variant="outlined"
           density="compact"
           hide-details
+          @paste="$nextTick(faviconGrab)"
         />
         <v-text-field
           v-model="bookmark.search"
