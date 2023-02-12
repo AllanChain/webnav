@@ -65,7 +65,7 @@ const faviconGrab = async (overwrite = false) => {
       )
     }
     if (previewData.title && (overwrite || !bookmark.value.title)) {
-      bookmark.value.title = previewData.title.split(/(:| ?-)/)[0]
+      bookmark.value.title = previewData.title.split(/(:| ?[-|])/)[0]
     }
     if (previewData.search && (overwrite || !bookmark.value.search)) {
       bookmark.value.search = previewData.search.replace('searchTerms', '')
