@@ -37,7 +37,7 @@ const deleteThis = () => {
   bookmarkStore.delete(bookmark.value)
   emit('update:modelValue', false)
 }
-const faviconGrab = async () => {
+const faviconGrab = async (overwrite = false) => {
   faviconGrabLoading.value = true
   try {
     const domain = new URL(bookmark.value.url).hostname
@@ -51,15 +51,15 @@ const faviconGrab = async () => {
       })
       return
     }
-    if (previewData.icons.length) {
+    if (previewData.icons.length) { // always overwrite icon
       bookmark.value.icon = RelateUrl.relate(
         bookmark.value.url, previewData.icons[0].src
       )
     }
-    if (previewData.title && !bookmark.value.title) {
+    if (previewData.title && (overwrite || !bookmark.value.title)) {
       bookmark.value.title = previewData.title.split(/(:| ?-)/)[0]
     }
-    if (previewData.search && !bookmark.value.search) {
+    if (previewData.search && (overwrite || !bookmark.value.search)) {
       bookmark.value.search = previewData.search.replace('searchTerms', '')
     }
   } catch {
@@ -170,7 +170,7 @@ const faviconGrab = async () => {
           text
           color="primary"
           :disabled="!bookmark.url || faviconGrabLoading"
-          @click="faviconGrab"
+          @click="faviconGrab(true)"
         >
           {{ $t('faview.action') }}
           <span v-if="faviconGrabLoading">...</span>
