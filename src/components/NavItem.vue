@@ -90,6 +90,7 @@ const goURL = (url: string) => {
       :href="bookmark.url"
       :target="config.preferNewTab ? '_blank' : undefined"
       rel="noopener,noreferrer"
+      @contextmenu="$event.preventDefault(); showActions = true"
     >
       <WebsiteIcon :bookmark="bookmark" />
       <div
