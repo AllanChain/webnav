@@ -45,7 +45,7 @@ const onPaste = () => {
     faviconGrab()
   })
 }
-const faviconGrab = async (overwrite = false) => {
+const faviconGrab = async () => {
   faviconGrabLoading.value = true
   try {
     const domain = new URL(bookmark.value.url).hostname
@@ -59,15 +59,15 @@ const faviconGrab = async (overwrite = false) => {
       })
       return
     }
-    if (previewData.icons.length) { // always overwrite icon
+    if (previewData.icons.length) {
       bookmark.value.icon = RelateUrl.relate(
         bookmark.value.url, previewData.icons[0].src
       )
     }
-    if (previewData.title && (overwrite || !bookmark.value.title)) {
+    if (previewData.title && !bookmark.value.title) {
       bookmark.value.title = previewData.title.split(/(:| ?[-|])/)[0]
     }
-    if (previewData.search && (overwrite || !bookmark.value.search)) {
+    if (previewData.search && !bookmark.value.search) {
       bookmark.value.search = previewData.search.replace('searchTerms', '')
     }
   } catch {
@@ -179,7 +179,7 @@ const faviconGrab = async (overwrite = false) => {
           text
           color="primary"
           :disabled="!bookmark.url || faviconGrabLoading"
-          @click="faviconGrab(true)"
+          @click="faviconGrab"
         >
           {{ $t('faview.action') }}
           <span v-if="faviconGrabLoading">...</span>
