@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch, watchEffect } from 'vue'
 import {
   mdiMagnify, mdiPencil, mdiDotsVertical, mdiDelete, mdiSwapHorizontalBold
 } from '@mdi/js'
 import { BookmarkWithID, useBookmarkStore } from '@/store/bookmark'
 import { useConfig } from '@/store/config'
 import { useModeStore } from '@/store/mode'
+import { useMenuStore } from '@/store/menu'
 import WebsiteIcon from '@/components/WebsiteIcon.vue'
 
 const props = defineProps<{
@@ -16,10 +17,21 @@ const props = defineProps<{
 const config = useConfig()
 const modeStore = useModeStore()
 const bookmarkStore = useBookmarkStore()
+const menuStore = useMenuStore()
 
 const showActions = ref(false)
 const container = ref<HTMLDivElement | null>(null)
 
+watch(showActions, (showing) => {
+  // Update store open state
+  menuStore.opened = showing ? props.bookmark.id : null
+})
+watchEffect(() => {
+  // Close if another menu opened
+  if (menuStore.opened && menuStore.opened !== props.bookmark.id) {
+    showActions.value = false
+  }
+})
 const openEdit = () => modeStore.update({
   mode: 'edit-dialog',
   data: props.bookmark
@@ -116,7 +128,7 @@ const goURL = (url: string) => {
       :icon="mdiDotsVertical"
       @click="showActions = true"
     />
-    <v-menu v-model="showActions" location="end">
+    <v-menu v-model="showActions" location="end" width="120">
       <template #activator="{ props:menuProps }">
         <div class="nav-item-menu-anchor" v-bind="menuProps" />
       </template>
