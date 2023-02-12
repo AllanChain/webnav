@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { BookmarkWithID } from '@/store/bookmark'
+import { ref } from 'vue'
+import {
+  mdiMagnify, mdiPencil, mdiDotsVertical, mdiDelete, mdiSwapHorizontalBold
+} from '@mdi/js'
+import { BookmarkWithID, useBookmarkStore } from '@/store/bookmark'
 import { useConfig } from '@/store/config'
 import { useModeStore } from '@/store/mode'
 import WebsiteIcon from '@/components/WebsiteIcon.vue'
-import { mdiMagnify, mdiPencil } from '@mdi/js'
 
 const props = defineProps<{
   bookmark: BookmarkWithID
@@ -12,7 +15,24 @@ const props = defineProps<{
 
 const config = useConfig()
 const modeStore = useModeStore()
+const bookmarkStore = useBookmarkStore()
 
+const showActions = ref(false)
+const container = ref<HTMLDivElement | null>(null)
+
+const openEdit = () => modeStore.update({
+  mode: 'edit-dialog',
+  data: props.bookmark
+})
+const deleteThis = () => {
+  bookmarkStore.delete(props.bookmark)
+}
+const startReorder = () => {
+  modeStore.update({
+    mode: 'reorder-dialog',
+    data: props.bookmark.index
+  })
+}
 const goSearch = () => {
   if (props.bookmark.search === undefined) return
   goURL(new URL(
@@ -30,7 +50,7 @@ const goURL = (url: string) => {
 </script>
 
 <template>
-  <div class="nav-item-container">
+  <div ref="container" class="nav-item-container">
     <v-overlay
       contained
       persistent
@@ -43,10 +63,7 @@ const goURL = (url: string) => {
         icon
         size="x-small"
         data-cy="edit-one"
-        @click="modeStore.update({
-          mode: 'edit-dialog',
-          data: bookmark
-        })"
+        @click="openEdit"
       >
         <v-icon color="white" :icon="mdiPencil" />
       </v-btn>
@@ -87,6 +104,49 @@ const goURL = (url: string) => {
         {{ bookmark.title }}
       </div>
     </a>
+
+    <v-btn
+      class="nav-item-actions"
+      position="absolute"
+      location="top right"
+      density="compact"
+      size="small"
+      color="rgba(3, 9, 27, 0.2)"
+      :icon="mdiDotsVertical"
+      @click="showActions = true"
+    />
+    <v-menu v-model="showActions" location="end">
+      <template #activator="{ props:menuProps }">
+        <div class="nav-item-menu-anchor" v-bind="menuProps" />
+      </template>
+      <v-list
+        shaped
+        link
+        density="compact"
+        :bg-color="config.dark ? 'rgb(100, 100, 100, 0.9)': 'rgb(240, 240, 240, 0.9)'"
+      >
+        <v-list-item @click="openEdit">
+          <template #prepend>
+            <v-icon class="menu-icon" :icon="mdiPencil" size="x-small" />
+          </template>
+          <v-list-item-title>Edit</v-list-item-title>
+        </v-list-item>
+        <v-list-item class="text-red-darken-2" @click="deleteThis">
+          <template #prepend>
+            <v-icon class="menu-icon" :icon="mdiDelete" size="x-small" />
+          </template>
+          <v-list-item-title>Remove</v-list-item-title>
+        </v-list-item>
+        <v-list-item class="text-yellow-darken-4" @click="startReorder">
+          <template #prepend>
+            <v-icon class="menu-icon" :icon="mdiSwapHorizontalBold" size="x-small" />
+          </template>
+          <v-list-item-title color="red">
+            Reorder
+          </v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
   </div>
 </template>
 
@@ -96,7 +156,6 @@ const goURL = (url: string) => {
   display: inline-block;
   width: 65px;
   border: 0;
-  user-select: none;
 }
 
 .nav-item {
@@ -106,6 +165,7 @@ const goURL = (url: string) => {
   transition-property: all;
   transition-duration: 500ms;
   cursor: pointer;
+  user-select: none;
 }
 
 .nav-item:hover {
@@ -119,5 +179,23 @@ const goURL = (url: string) => {
   font-size: 0.75em;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.nav-item-actions {
+  display: none !important;
+}
+
+.nav-item-container:hover .nav-item-actions {
+  display: inline-grid !important;
+}
+
+.nav-item-menu-anchor {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.menu-icon {
+  margin-inline-end: 8px !important;
 }
 </style>
