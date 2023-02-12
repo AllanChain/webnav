@@ -198,7 +198,7 @@ const faviconGrab = async () => {
         <v-spacer />
         <v-btn
           class="text-green"
-          data-cy="done"
+          data-cy="done-bottom"
           @click="done"
         >
           {{ $t('button.done') }}
