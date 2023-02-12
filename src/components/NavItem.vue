@@ -191,7 +191,7 @@ const goURL = (url: string) => {
 
 .nav-item-menu-anchor {
   position: absolute;
-  top: 0;
+  top: 1em;
   right: 0;
 }
 
