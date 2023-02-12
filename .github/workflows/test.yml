@@ -51,3 +51,5 @@ jobs:
           build: pnpm build
           start: pnpm serve
           wait-on: http://localhost:5173
+        env:
+          VITE_FAVIEW_API: ${{ secrets.FAVIEW_API }}

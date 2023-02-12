@@ -49,7 +49,7 @@ const faviconGrab = async () => {
   faviconGrabLoading.value = true
   try {
     const domain = new URL(bookmark.value.url).hostname
-    const response = await fetch(`https://faview.vercel.app/api/${domain}`)
+    const response = await fetch(`${import.meta.env.VITE_FAVIEW_API}/${domain}`)
     const previewData = await response.json()
     faviconGrabLoading.value = false
     if (previewData.error) {

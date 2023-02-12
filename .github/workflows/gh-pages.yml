@@ -55,6 +55,8 @@ jobs:
 
       - name: Build app
         run: pnpm build --base=/webnav/
+        env:
+          VITE_FAVIEW_API: ${{ secrets.FAVIEW_API }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
