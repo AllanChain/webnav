@@ -75,7 +75,7 @@ const faviconGrab = async () => {
           <v-btn
             :icon="mdiCheckBold"
             color="green lighten-2"
-            size="small"
+            density="comfortable"
             data-cy="done"
             @click="done"
           />
@@ -83,7 +83,7 @@ const faviconGrab = async () => {
             v-if="bookmark.id"
             :icon="mdiDelete"
             color="red lighten-2"
-            size="small"
+            density="comfortable"
             data-cy="delete"
             @click="deleteThis"
           />
@@ -91,7 +91,7 @@ const faviconGrab = async () => {
             v-if="bookmark.id"
             :icon="mdiSwapHorizontal"
             color="yellow lighten-2"
-            size="small"
+            density="comfortable"
             data-cy="reorder"
             @click="modeStore.update({
               mode: 'reorder-dialog',
