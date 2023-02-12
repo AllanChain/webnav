@@ -64,7 +64,8 @@
   },
   "button": {
     "cancel": "Cancel",
-    "apply": "Apply"
+    "apply": "Apply",
+    "done": "Done"
   },
   "action": {
     "edit": "Edit",

@@ -166,7 +166,6 @@ const faviconGrab = async () => {
         />
       </v-card-text>
       <v-card-actions class="pt-0">
-        <v-spacer />
         <v-btn
           text
           color="primary"
@@ -176,6 +175,14 @@ const faviconGrab = async () => {
           {{ $t('faview.action') }}
           <span v-if="faviconGrabLoading">...</span>
           <span v-else>!</span>
+        </v-btn>
+        <v-spacer />
+        <v-btn
+          class="text-green"
+          data-cy="done"
+          @click="done"
+        >
+          {{ $t('button.done') }}
         </v-btn>
       </v-card-actions>
     </v-card>
