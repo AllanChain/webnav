@@ -2,6 +2,10 @@
 import { useAlertStore } from '@/store/alert'
 import { Config, useConfigStore } from '@/store/config'
 import validate from '@/validator'
+import {
+  mdiCheck, mdiFileUploadOutline, mdiFileDownloadOutline,
+  mdiImage, mdiLanguageJava, mdiCloseCircleOutline, mdiAirplaneTakeoff
+} from '@mdi/js'
 import { ref } from 'vue'
 
 const emit = defineEmits<{(e: 'update:modelValue', open: boolean): void}>()
@@ -73,22 +77,16 @@ const downloadJSON = () => {
           <v-toolbar-title>{{ $t('config.title') }}</v-toolbar-title>
           <v-spacer />
           <v-btn icon size="large" color="blue lighten-2" @click="fileInput?.click()">
-            <v-icon>mdi-file-upload-outline</v-icon>
+            <v-icon :icon="mdiFileUploadOutline" />
           </v-btn>
           <v-btn icon size="large" @click="downloadJSON">
-            <v-icon color="amber">
-              mdi-file-download-outline
-            </v-icon>
+            <v-icon color="amber" :icon="mdiFileDownloadOutline" />
           </v-btn>
           <v-btn icon size="large" @click="done">
-            <v-icon color="green lighten-2">
-              mdi-check
-            </v-icon>
+            <v-icon color="green lighten-2" :icon="mdiCheck" />
           </v-btn>
           <v-btn icon size="large" @click="$emit('update:modelValue', false)">
-            <v-icon color="yellow lighten-2">
-              mdi-close-circle-outline
-            </v-icon>
+            <v-icon color="yellow lighten-2" :icon="mdiCloseCircleOutline" />
           </v-btn>
         </v-toolbar>
         <v-tabs v-model="tab" background-color="indigo-darken-1">
@@ -134,7 +132,7 @@ const downloadJSON = () => {
                 <!-- <v-divider class="my-2" /> -->
                 <v-text-field
                   :model-value="config.bgImg.url"
-                  prepend-inner-icon="mdi-image"
+                  :prepend-inner-icon="mdiImage"
                   :label="$t('config.bg.image-url')"
                   placeholder="back.jpg"
                   :messages="$t('config.bg.img-msg')"
@@ -229,7 +227,7 @@ const downloadJSON = () => {
                   :label="$t('config.other.language')"
                   item-title="text"
                   item-state="value"
-                  prepend-inner-icon="mdi-language-java"
+                  :prepend-inner-icon="mdiLanguageJava"
                   hide-details
                   variant="outlined"
                   color="primary"
@@ -241,7 +239,7 @@ const downloadJSON = () => {
                 </p>
                 <v-text-field
                   v-model="config.cors"
-                  prepend-inner-icon="mdi-airplane-takeoff"
+                  :prepend-inner-icon="mdiAirplaneTakeoff"
                   :label="$t('config.other.cors')"
                   placeholder="e.g. https://netnr-proxy.cloudno.de/"
                   hide-details

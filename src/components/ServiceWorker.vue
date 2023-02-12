@@ -3,6 +3,7 @@
 import { ref, onBeforeMount } from 'vue'
 import { register } from 'register-service-worker'
 import { version } from '../../package.json'
+import { mdiCogRefresh, mdiCogs } from '@mdi/js'
 
 let registration: ServiceWorkerRegistration | null = null
 const swStatus = ref('pending')
@@ -62,9 +63,10 @@ const upgradeApp = async () => {
 
 <template>
   <v-list-item @click="upgradeApp">
-    <v-icon size="small">
-      {{ swStatus === 'updated' ? 'mdi-cog-refresh' : 'mdi-cogs' }}
-    </v-icon>
+    <v-icon
+      size="small"
+      :icon="swStatus === 'updated' ? mdiCogRefresh : mdiCogs"
+    />
     <div class="text-caption ml-2 d-inline-block">
       v{{ version }} - {{ $t(`sw.${swStatus}`) }}
     </div>

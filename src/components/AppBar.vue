@@ -4,7 +4,7 @@ import { useConfigStore } from '@/store/config'
 import { useModeStore } from '@/store/mode'
 import { computed, ref, watch } from 'vue'
 import type { VTextField } from 'vuetify/components/VTextField'
-
+import { mdiMagnify, mdiPencil, mdiBookmarkPlusOutline } from '@mdi/js'
 const configStore = useConfigStore()
 const modeStore = useModeStore()
 const bookmarkStore = useBookmarkStore()
@@ -63,7 +63,7 @@ const newBookmark = () => {
     />
     <v-text-field
       ref="textInput"
-      prepend-inner-icon="mdi-magnify"
+      :prepend-inner-icon="mdiMagnify"
       hide-details
       variant="outlined"
       single-line
@@ -82,7 +82,7 @@ const newBookmark = () => {
       <v-btn
         v-show="showBtn"
         data-cy="button-edit-mode"
-        icon="mdi-pencil"
+        :icon="mdiPencil"
         :color="modeStore.mode === 'edit' ? 'green' : undefined"
         @click="
           modeStore.update(
@@ -95,7 +95,7 @@ const newBookmark = () => {
       <v-btn
         v-show="showBtn"
         data-cy="button-add-bookmark"
-        icon="mdi-bookmark-plus-outline"
+        :icon="mdiBookmarkPlusOutline"
         @click="newBookmark"
       />
     </v-expand-x-transition>

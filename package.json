@@ -16,7 +16,7 @@
     "test:ci": "start-server-and-test serve http://localhost:5173 cy:run"
   },
   "dependencies": {
-    "@mdi/font": "7.1.96",
+    "@mdi/js": "^7.1.96",
     "deepmerge": "^4.3.0",
     "idb": "^7.1.1",
     "jsonschema": "^1.4.1",

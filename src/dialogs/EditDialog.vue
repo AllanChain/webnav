@@ -7,6 +7,10 @@ import { BookmarkWithID, useBookmarkStore } from '@/store/bookmark'
 import { ref } from 'vue'
 import { useAlertStore } from '@/store/alert'
 import { useI18n } from 'vue-i18n'
+import {
+  mdiBookmark, mdiCheckBold, mdiDelete, mdiSwapHorizontal, mdiWeb,
+  mdiMagnify, mdiEarth
+} from '@mdi/js'
 
 const emit = defineEmits<{(e: 'update:modelValue', open: boolean): void}>()
 
@@ -69,7 +73,7 @@ const faviconGrab = async () => {
           </v-toolbar-title>
           <v-spacer />
           <v-btn
-            icon="mdi-check-bold"
+            :icon="mdiCheckBold"
             color="green lighten-2"
             size="small"
             data-cy="done"
@@ -77,7 +81,7 @@ const faviconGrab = async () => {
           />
           <v-btn
             v-if="bookmark.id"
-            icon="mdi-delete"
+            :icon="mdiDelete"
             color="red lighten-2"
             size="small"
             data-cy="delete"
@@ -85,7 +89,7 @@ const faviconGrab = async () => {
           />
           <v-btn
             v-if="bookmark.id"
-            icon="mdi-swap-horizontal"
+            :icon="mdiSwapHorizontal"
             color="yellow lighten-2"
             size="small"
             data-cy="reorder"
@@ -100,7 +104,7 @@ const faviconGrab = async () => {
         <v-text-field
           v-model="bookmark.title"
           color="primary"
-          prepend-inner-icon="mdi-bookmark"
+          :prepend-inner-icon="mdiBookmark"
           :label="$t('bookmark.name')"
           placeholder="Example"
           data-cy="input-title"
@@ -112,7 +116,7 @@ const faviconGrab = async () => {
         <v-text-field
           v-model="bookmark.url"
           color="primary"
-          prepend-inner-icon="mdi-web"
+          :prepend-inner-icon="mdiWeb"
           :label="$t('bookmark.url')"
           placeholder="https://example.com"
           data-cy="input-url"
@@ -124,7 +128,7 @@ const faviconGrab = async () => {
         <v-text-field
           v-model="bookmark.search"
           color="primary"
-          prepend-inner-icon="mdi-magnify"
+          :prepend-inner-icon="mdiMagnify"
           :label="$t('bookmark.search')"
           placeholder="/search?wd={}"
           data-cy="input-search"
@@ -136,7 +140,7 @@ const faviconGrab = async () => {
         <v-text-field
           v-model="bookmark.icon"
           color="primary"
-          prepend-inner-icon="mdi-earth"
+          :prepend-inner-icon="mdiEarth"
           :label="$t('bookmark.icon')"
           placeholder="/favicon.ico"
           data-cy="input-icon"

@@ -3,6 +3,7 @@ import { BookmarkWithID } from '@/store/bookmark'
 import { useConfig } from '@/store/config'
 import { useModeStore } from '@/store/mode'
 import WebsiteIcon from '@/components/WebsiteIcon.vue'
+import { mdiMagnify, mdiPencil } from '@mdi/js'
 
 const props = defineProps<{
   bookmark: BookmarkWithID
@@ -47,9 +48,7 @@ const goURL = (url: string) => {
           data: bookmark
         })"
       >
-        <v-icon color="white">
-          mdi-pencil
-        </v-icon>
+        <v-icon color="white" :icon="mdiPencil" />
       </v-btn>
     </v-overlay>
     <v-overlay
@@ -65,9 +64,7 @@ const goURL = (url: string) => {
         size="x-small"
         @click="goSearch"
       >
-        <v-icon color="white">
-          mdi-magnify
-        </v-icon>
+        <v-icon color="white" :icon="mdiMagnify" />
       </v-btn>
     </v-overlay>
     <a

@@ -2,6 +2,7 @@
 import { useAlertStore } from '@/store/alert'
 import { Bookmark, useBookmarkStore } from '@/store/bookmark'
 import validate from '@/validator'
+import { mdiCheckBold, mdiWeb, mdiFileUploadOutline, mdiCloseThick } from '@mdi/js'
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
@@ -87,7 +88,7 @@ const importBookmarks = async (bookmarks: ImportedBookmark[]) => {
           <v-row>
             <v-text-field
               v-model="url"
-              prepend-inner-icon="mdi-web"
+              :prepend-inner-icon="mdiWeb"
               color="purple"
               label="JSON URL"
               placeholder="https://example.cors/marks.json"
@@ -106,7 +107,7 @@ const importBookmarks = async (bookmarks: ImportedBookmark[]) => {
           </v-row>
           <v-row justify="space-between" class="mx-4">
             <v-btn icon small color="indigo lighten-1" @click="fileInput?.click()">
-              <v-icon>mdi-file-upload-outline</v-icon>
+              <v-icon :icon="mdiFileUploadOutline" />
             </v-btn>
             <input
               ref="fileInput"
@@ -117,7 +118,7 @@ const importBookmarks = async (bookmarks: ImportedBookmark[]) => {
               @change="importFromFile"
             >
             <v-btn icon small color="amber" @click="emit('update:modelValue', false)">
-              <v-icon>mdi-close-thick</v-icon>
+              <v-icon :icon="mdiCloseThick" />
             </v-btn>
             <v-btn
               icon
@@ -126,7 +127,7 @@ const importBookmarks = async (bookmarks: ImportedBookmark[]) => {
               data-cy="import-check"
               @click="importFromCloud"
             >
-              <v-icon>mdi-check-bold</v-icon>
+              <v-icon :icon="mdiCheckBold" />
             </v-btn>
           </v-row>
         </v-container>

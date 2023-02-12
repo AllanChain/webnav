@@ -5,6 +5,10 @@ import { useModeStore } from '@/store/mode'
 import { BookmarkWithID, useBookmarkStore } from '@/store/bookmark'
 import AppLogo from './AppLogo.vue'
 import ServiceWorker from './ServiceWorker.vue'
+import {
+  mdiAlert, mdiApplicationImport, mdiBookmarkPlusOutline, mdiCog,
+  mdiGithub, mdiFileDownloadOutline
+} from '@mdi/js'
 
 defineProps<{
   drawer: boolean
@@ -79,14 +83,14 @@ const confirmClear = () => {
         @click="modeStore.update('import-dialog')"
       >
         <template #prepend>
-          <v-icon icon="mdi-application-import" />
+          <v-icon :icon="mdiApplicationImport" />
         </template>
         <v-list-item-title>{{ $t('menu.import') }}</v-list-item-title>
       </v-list-item>
 
       <v-list-item link @click="downloadJSON">
         <template #prepend>
-          <v-icon icon="mdi-file-download-outline" />
+          <v-icon :icon="mdiFileDownloadOutline" />
         </template>
         <a ref="downloadLink" class="d-none" />
         <v-list-item-title>{{ $t('menu.export') }}</v-list-item-title>
@@ -98,28 +102,28 @@ const confirmClear = () => {
         @click="newBookmark"
       >
         <template #prepend>
-          <v-icon icon="mdi-bookmark-plus-outline" />
+          <v-icon :icon="mdiBookmarkPlusOutline" />
         </template>
         <v-list-item-title>{{ $t('menu.new-bookmark') }}</v-list-item-title>
       </v-list-item>
 
       <v-list-item link @click="modeStore.update('config-dialog')">
         <template #prepend>
-          <v-icon icon="mdi-cog" />
+          <v-icon :icon="mdiCog" />
         </template>
         <v-list-item-title>{{ $t('menu.more-config') }}</v-list-item-title>
       </v-list-item>
 
       <v-list-item link @click="confirmClear">
         <template #prepend>
-          <v-icon icon="mdi-alert" />
+          <v-icon :icon="mdiAlert" />
         </template>
         <v-list-item-title>{{ $t('menu.clear-bookmark') }}</v-list-item-title>
       </v-list-item>
 
       <v-list-item link href="https://github.com/AllanChain/webnav">
         <template #prepend>
-          <v-icon icon="mdi-github" />
+          <v-icon :icon="mdiGithub" />
         </template>
         <v-list-item-title>{{ $t('menu.github-link') }}</v-list-item-title>
       </v-list-item>

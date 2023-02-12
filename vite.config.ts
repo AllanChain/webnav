@@ -15,7 +15,7 @@ export default defineConfig({
       filename: 'service-worker.ts',
       injectRegister: false,
       injectManifest: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,webmanifest,woff2}']
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,webmanifest}']
       },
       manifest: {
         name: 'WebNav',
