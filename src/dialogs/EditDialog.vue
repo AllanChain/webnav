@@ -4,7 +4,7 @@ import WebsiteIcon from '@/components/WebsiteIcon.vue'
 import validate from '@/validator'
 import { useModeStore } from '@/store/mode'
 import { BookmarkWithID, useBookmarkStore } from '@/store/bookmark'
-import { ref } from 'vue'
+import { nextTick, ref } from 'vue'
 import { useAlertStore } from '@/store/alert'
 import { useI18n } from 'vue-i18n'
 import {
@@ -37,6 +37,14 @@ const deleteThis = () => {
   bookmarkStore.delete(bookmark.value)
   emit('update:modelValue', false)
 }
+const onPaste = () => {
+  nextTick(() => {
+    if (!bookmark.value.url.startsWith('http')) {
+      bookmark.value.url = `http://${bookmark.value.url}`
+    }
+    faviconGrab()
+  })
+}
 const faviconGrab = async (overwrite = false) => {
   faviconGrabLoading.value = true
   try {
@@ -67,6 +75,7 @@ const faviconGrab = async (overwrite = false) => {
       text: t('faview.error'),
       type: 'error'
     })
+    faviconGrabLoading.value = false
   }
 }
 </script>
@@ -138,7 +147,7 @@ const faviconGrab = async (overwrite = false) => {
           variant="outlined"
           density="compact"
           hide-details
-          @paste="$nextTick(faviconGrab)"
+          @paste="onPaste"
         />
         <v-text-field
           v-model="bookmark.search"
