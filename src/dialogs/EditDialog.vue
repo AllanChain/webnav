@@ -4,7 +4,7 @@ import WebsiteIcon from '@/components/WebsiteIcon.vue'
 import validate from '@/validator'
 import { useModeStore } from '@/store/mode'
 import { BookmarkWithID, useBookmarkStore } from '@/store/bookmark'
-import { nextTick, ref } from 'vue'
+import { nextTick, ref, reactive, watch, toRaw } from 'vue'
 import { useAlertStore } from '@/store/alert'
 import { useI18n } from 'vue-i18n'
 import {
@@ -19,14 +19,18 @@ const bookmarkStore = useBookmarkStore()
 const alertStore = useAlertStore()
 const { t } = useI18n()
 
-const bookmark = ref(
+const bookmark = reactive(
   JSON.parse(JSON.stringify(modeStore.data)) as BookmarkWithID
 )
 const faviconGrabLoading = ref(false)
 
 const done = () => {
-  if (!validate('/bookmark', bookmark.value)) { return }
-  if (bookmark.value.id) { bookmarkStore.put(bookmark.value) } else { bookmarkStore.add(bookmark.value) }
+  if (!validate('/bookmark', toRaw(bookmark))) { return }
+  if (bookmark.id) {
+    bookmarkStore.put(bookmark)
+  } else {
+    bookmarkStore.add(bookmark)
+  }
   alertStore.push({
     text: t('message.success'),
     type: 'success'
@@ -34,21 +38,27 @@ const done = () => {
   emit('update:modelValue', false)
 }
 const deleteThis = () => {
-  bookmarkStore.delete(bookmark.value)
+  bookmarkStore.delete(bookmark)
   emit('update:modelValue', false)
 }
 const onPaste = () => {
   nextTick(() => {
-    if (!bookmark.value.url.startsWith('http')) {
-      bookmark.value.url = `http://${bookmark.value.url}`
+    if (!bookmark.url.startsWith('http')) {
+      bookmark.url = `http://${bookmark.url}`
     }
     faviconGrab()
   })
 }
+watch(() => bookmark.url, (newURL, oldURL) => {
+  // On mobile, onpaste event is not fired
+  if (oldURL.length === 0 && newURL.length > 10) {
+    onPaste()
+  }
+})
 const faviconGrab = async () => {
   faviconGrabLoading.value = true
   try {
-    const domain = new URL(bookmark.value.url).hostname
+    const domain = new URL(bookmark.url).hostname
     const response = await fetch(`${import.meta.env.VITE_FAVIEW_API}/${domain}`)
     const previewData = await response.json()
     faviconGrabLoading.value = false
@@ -60,15 +70,15 @@ const faviconGrab = async () => {
       return
     }
     if (previewData.icons.length) {
-      bookmark.value.icon = RelateUrl.relate(
-        bookmark.value.url, previewData.icons[0].src
+      bookmark.icon = RelateUrl.relate(
+        bookmark.url, previewData.icons[0].src
       )
     }
-    if (previewData.title && !bookmark.value.title) {
-      bookmark.value.title = previewData.title.split(/(:| ?[-|])/)[0]
+    if (previewData.title && !bookmark.title) {
+      bookmark.title = previewData.title.split(/(:| ?[-|])/)[0]
     }
-    if (previewData.search && !bookmark.value.search) {
-      bookmark.value.search = previewData.search.replace('searchTerms', '')
+    if (previewData.search && !bookmark.search) {
+      bookmark.search = previewData.search.replace('searchTerms', '')
     }
   } catch {
     alertStore.push({
