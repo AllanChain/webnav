@@ -102,6 +102,7 @@ const goURL = (url: string) => {
       :href="bookmark.url"
       :target="config.preferNewTab ? '_blank' : undefined"
       rel="noopener,noreferrer"
+      data-cy="nav-item"
       @contextmenu.prevent="showActions = true"
     >
       <WebsiteIcon :bookmark="bookmark" />
@@ -138,19 +139,27 @@ const goURL = (url: string) => {
         density="compact"
         :bg-color="config.dark ? 'rgb(100, 100, 100, 0.9)': 'rgb(240, 240, 240, 0.9)'"
       >
-        <v-list-item @click="openEdit">
+        <v-list-item data-cy="nav-item-action-edit" @click="openEdit">
           <template #prepend>
             <v-icon class="menu-icon" :icon="mdiPencil" size="x-small" />
           </template>
           <v-list-item-title>{{ $t('action.edit') }}</v-list-item-title>
         </v-list-item>
-        <v-list-item class="text-red-darken-2" @click="deleteThis">
+        <v-list-item
+          data-cy="nav-item-action-delete"
+          class="text-red-darken-2"
+          @click="deleteThis"
+        >
           <template #prepend>
             <v-icon class="menu-icon" :icon="mdiDelete" size="x-small" />
           </template>
           <v-list-item-title>{{ $t('action.remove') }}</v-list-item-title>
         </v-list-item>
-        <v-list-item class="text-yellow-darken-4" @click="startReorder">
+        <v-list-item
+          data-cy="nav-item-action-reorder"
+          class="text-yellow-darken-4"
+          @click="startReorder"
+        >
           <template #prepend>
             <v-icon class="menu-icon" :icon="mdiSwapHorizontalBold" size="x-small" />
           </template>

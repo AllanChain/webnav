@@ -1,4 +1,5 @@
 /// <reference types="Cypress" />
+/// <reference types="cypress-file-upload" />
 
 describe('App Basic Feature Test', () => {
   it('Functions well', () => {
@@ -61,9 +62,9 @@ describe('App Basic Feature Test', () => {
       })
 
     // reorder cancel
-    cy.get('[data-cy="button-edit-mode"]').click()
-    cy.get('[data-cy="edit-one"]').first().click()
-    cy.get('[data-cy="reorder"]').click()
+    // this time, use the rightclick way
+    cy.get('[data-cy="nav-item"]').first().rightclick()
+    cy.get('[data-cy="nav-item-action-reorder"]').click()
     cy.get('[data-cy="title"]')
       .first()
       .then(titleDiv => {
@@ -76,8 +77,9 @@ describe('App Basic Feature Test', () => {
       })
 
     // edit bookmark
-    cy.get('[data-cy="button-edit-mode"]').click()
-    cy.get('[data-cy="edit-one"]').first().click()
+    // this time, use the rightclick way
+    cy.get('[data-cy="nav-item"]').first().rightclick()
+    cy.get('[data-cy="nav-item-action-edit"]').click()
     cy.get('[data-cy="title"]')
       .first()
       .then(titleDiv => {
