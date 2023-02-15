@@ -59,6 +59,13 @@
     "updated": "点击更新",
     "pending": "等待中"
   },
+  "import": {
+    "title": "导入书签",
+    "overwrite": "覆盖现有书签",
+    "url-import": "从 URL 导入:",
+    "or-file-import": "或者上传本地 JSON 文件:",
+    "upload-file": "上传文件"
+  },
   "button": {
     "cancel": "取消",
     "apply": "应用",
