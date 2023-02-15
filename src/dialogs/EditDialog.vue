@@ -4,7 +4,7 @@ import WebsiteIcon from '@/components/WebsiteIcon.vue'
 import validate from '@/validator'
 import { useModeStore } from '@/store/mode'
 import { BookmarkWithID, useBookmarkStore } from '@/store/bookmark'
-import { nextTick, ref, reactive, watch, toRaw } from 'vue'
+import { ref, reactive, watch, toRaw } from 'vue'
 import { useAlertStore } from '@/store/alert'
 import { useI18n } from 'vue-i18n'
 import {
@@ -41,18 +41,15 @@ const deleteThis = () => {
   bookmarkStore.delete(bookmark)
   emit('update:modelValue', false)
 }
-const onPaste = () => {
-  nextTick(() => {
-    if (!bookmark.url.startsWith('http')) {
-      bookmark.url = `http://${bookmark.url}`
-    }
-    faviconGrab()
-  })
-}
+// Watch paste
 watch(() => bookmark.url, (newURL, oldURL) => {
+  if (bookmark.url !== newURL) return // out of sync
   // On mobile, onpaste event is not fired
   if (oldURL.length === 0 && newURL.length > 10) {
-    onPaste()
+    if (!newURL.startsWith('http')) {
+      bookmark.url = `https://${newURL}`
+    }
+    faviconGrab()
   }
 })
 const faviconGrab = async () => {
@@ -157,7 +154,6 @@ const faviconGrab = async () => {
           variant="outlined"
           density="compact"
           hide-details
-          @paste="onPaste"
         />
         <v-text-field
           v-model="bookmark.search"
