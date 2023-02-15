@@ -83,54 +83,64 @@ const importBookmarks = async (bookmarks: ImportedBookmark[]) => {
     @update:model-value="$emit('update:modelValue', false)"
   >
     <v-card class="elevation-12">
-      <v-card-text class="pa-3">
-        <v-container>
-          <v-row>
-            <v-text-field
-              v-model="url"
-              :prepend-inner-icon="mdiWeb"
-              color="purple"
-              label="JSON URL"
-              placeholder="https://example.cors/marks.json"
-              density="compact"
-              variant="outlined"
-              hide-details
-            />
-          </v-row>
-          <v-row>
-            <v-switch
-              v-model="overwrite"
-              data-cy="switch-overwrite-bookmark"
-              hide-details
-              :label="$t('import.overwrite')"
-            />
-          </v-row>
-          <v-row justify="space-between" class="mx-4">
-            <v-btn icon small color="indigo lighten-1" @click="fileInput?.click()">
-              <v-icon :icon="mdiFileUploadOutline" />
-            </v-btn>
-            <input
-              ref="fileInput"
-              data-cy="input-file-bookmark"
-              type="file"
-              accept=".json"
-              hidden
-              @change="importFromFile"
-            >
-            <v-btn icon small color="amber" @click="emit('update:modelValue', false)">
-              <v-icon :icon="mdiCloseThick" />
-            </v-btn>
-            <v-btn
-              icon
-              small
-              color="green"
-              data-cy="import-check"
-              @click="importFromCloud"
-            >
-              <v-icon :icon="mdiCheckBold" />
-            </v-btn>
-          </v-row>
-        </v-container>
+      <v-card-title class="pa-0">
+        <v-toolbar color="indigo" dark density="compact">
+          <v-toolbar-title>
+            {{ $t('import.title') }}
+          </v-toolbar-title>
+        </v-toolbar>
+      </v-card-title>
+      <v-card-text>
+        {{ $t('import.url-import') }}
+        <v-text-field
+          v-model="url"
+          class="pt-1"
+          :prepend-inner-icon="mdiWeb"
+          color="primary"
+          label="JSON URL"
+          placeholder="https://example.cors/marks.json"
+          density="compact"
+          variant="outlined"
+        />
+        {{ $t('import.or-file-import') }}
+        <v-btn
+          :prepend-icon="mdiFileUploadOutline"
+          small
+          color="indigo lighten-1"
+          @click="fileInput?.click()"
+        >
+          {{ $t('import.upload-file') }}
+        </v-btn>
+        <input
+          ref="fileInput"
+          data-cy="input-file-bookmark"
+          type="file"
+          accept=".json"
+          hidden
+          @change="importFromFile"
+        >
+        <v-checkbox
+          v-model="overwrite"
+          color="primary"
+          data-cy="switch-overwrite-bookmark"
+          hide-details
+          :label="$t('import.overwrite')"
+        />
+        <v-card-actions>
+          <v-btn :prepend-icon="mdiCloseThick" small color="amber" @click="emit('update:modelValue', false)">
+            {{ $t('button.cancel') }}
+          </v-btn>
+          <v-spacer />
+          <v-btn
+            :prepend-icon="mdiCheckBold"
+            small
+            color="green"
+            data-cy="import-check"
+            @click="importFromCloud"
+          >
+            {{ $t('button.done') }}
+          </v-btn>
+        </v-card-actions>
       </v-card-text>
     </v-card>
   </v-dialog>

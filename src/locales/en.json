@@ -60,7 +60,11 @@
     "locale-default": "System default"
   },
   "import": {
-    "overwrite": "Overwrite existing bookmarks"
+    "title": "Import Bookmarks",
+    "overwrite": "Overwrite existing bookmarks",
+    "url-import": "Import from URL:",
+    "or-file-import": "or upload JSON file:",
+    "upload-file": "Upload File"
   },
   "button": {
     "cancel": "Cancel",
