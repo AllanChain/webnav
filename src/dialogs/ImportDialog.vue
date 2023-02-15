@@ -3,7 +3,7 @@ import { useAlertStore } from '@/store/alert'
 import { Bookmark, useBookmarkStore } from '@/store/bookmark'
 import validate from '@/validator'
 import { mdiCheckBold, mdiWeb, mdiFileUploadOutline, mdiCloseThick } from '@mdi/js'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const emit = defineEmits<{(e: 'update:modelValue', open: boolean): void}>()
@@ -16,8 +16,11 @@ const alertStore = useAlertStore()
 const { t } = useI18n()
 
 const url = ref('')
+const file = ref<File | undefined>()
 const overwrite = ref(false)
 const fileInput = ref<HTMLInputElement | null>(null)
+
+const canImport = computed(() => url.value !== '' || file.value !== undefined)
 
 const bookmarkMatch = (t:ImportedBookmark, m: ImportedBookmark) => t.url === m.url && t.search === m.search
 
@@ -33,18 +36,21 @@ const importFromCloud = async () => {
     })
   }
 }
-const importFromFile = (e: Event) => {
-  const target = e.target as HTMLInputElement
-  const file = target.files?.[0]
-  if (file === undefined) return
-  // Clear input to let it fire for the same file
-  target.value = ''
+const importFromFile = () => {
+  if (file.value === undefined) return
   const reader = new FileReader()
   reader.onload = async () => {
     const content = reader.result as string
     await importBookmarks(JSON.parse(content))
   }
-  reader.readAsText(file)
+  reader.readAsText(file.value)
+}
+const doImport = () => {
+  if (url.value) {
+    importFromCloud()
+  } else {
+    importFromFile()
+  }
 }
 const importBookmarks = async (bookmarks: ImportedBookmark[]) => {
   if (!validate('/bookmarks', bookmarks)) {
@@ -102,22 +108,26 @@ const importBookmarks = async (bookmarks: ImportedBookmark[]) => {
           density="compact"
           variant="outlined"
         />
-        {{ $t('import.or-file-import') }}
-        <v-btn
-          :prepend-icon="mdiFileUploadOutline"
-          small
-          color="indigo lighten-1"
-          @click="fileInput?.click()"
-        >
-          {{ $t('import.upload-file') }}
-        </v-btn>
+        <v-expand-transition>
+          <div v-show="!url">
+            {{ $t('import.or-file-import') }}
+            <v-btn
+              :prepend-icon="mdiFileUploadOutline"
+              small
+              :color="file ? 'green' : 'indigo lighten-1'"
+              @click="fileInput?.click()"
+            >
+              {{ file ? $t('import.file-ready') : $t('import.upload-file') }}
+            </v-btn>
+          </div>
+        </v-expand-transition>
         <input
           ref="fileInput"
           data-cy="input-file-bookmark"
           type="file"
           accept=".json"
           hidden
-          @change="importFromFile"
+          @change="file = ($event.target as HTMLInputElement).files?.[0]"
         >
         <v-checkbox
           v-model="overwrite"
@@ -133,10 +143,11 @@ const importBookmarks = async (bookmarks: ImportedBookmark[]) => {
           <v-spacer />
           <v-btn
             :prepend-icon="mdiCheckBold"
+            :disabled="!canImport"
             small
             color="green"
             data-cy="import-check"
-            @click="importFromCloud"
+            @click="doImport"
           >
             {{ $t('button.done') }}
           </v-btn>

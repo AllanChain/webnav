@@ -64,7 +64,8 @@
     "overwrite": "覆盖现有书签",
     "url-import": "从 URL 导入:",
     "or-file-import": "或者上传本地 JSON 文件:",
-    "upload-file": "上传文件"
+    "upload-file": "上传文件",
+    "file-ready": "文件就绪"
   },
   "button": {
     "cancel": "取消",

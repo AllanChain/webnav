@@ -31,6 +31,7 @@ describe('App Basic Feature Test', () => {
     cy.get('[data-cy="switch-overwrite-bookmark"] input').should('be.checked')
     // finally upload
     cy.get('[data-cy="input-file-bookmark"]').attachFile('bookmarks.json')
+    cy.get('[data-cy="import-check"').click()
 
     // edit mode
     cy.get('[data-cy="button-edit-mode"]').click()

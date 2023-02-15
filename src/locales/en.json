@@ -64,7 +64,8 @@
     "overwrite": "Overwrite existing bookmarks",
     "url-import": "Import from URL:",
     "or-file-import": "or upload JSON file:",
-    "upload-file": "Upload File"
+    "upload-file": "Upload File",
+    "file-ready": "File Ready"
   },
   "button": {
     "cancel": "Cancel",
