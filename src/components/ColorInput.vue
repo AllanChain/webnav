@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watchEffect } from 'vue'
-import { mdiFormatColorFill, mdiSelectColor } from '@mdi/js'
+import { mdiSquare, mdiSelectColor } from '@mdi/js'
 
 const props = defineProps<{
   modelValue: string
@@ -26,7 +26,6 @@ const selectDone = () => {
   <v-text-field
     class="mt-2"
     :model-value="modelValue"
-    :prepend-inner-icon="mdiFormatColorFill"
     :append-inner-icon="mdiSelectColor"
     :label="label"
     :rules="[
@@ -37,7 +36,11 @@ const selectDone = () => {
     color="primary"
     density="compact"
     @click:append-inner="dialogOpen = true"
-  />
+  >
+    <template #prepend-inner>
+      <v-icon :icon="mdiSquare" :color="modelValue" />
+    </template>
+  </v-text-field>
   <v-dialog v-model="dialogOpen" width="320">
     <v-card>
       <v-card-title class="pa-0">

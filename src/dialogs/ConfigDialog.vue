@@ -275,10 +275,12 @@ const downloadJSON = () => {
   overflow: hidden;
 }
 
-.bg-preview {
+.bg-image.bg-preview {
   background-size: cover;
   background-position: center 60%;
-  width: 100%;
-  height: 100%;
+  top: 5%;
+  left: 2%;
+  width: 96%;
+  height: 90%;
 }
 </style>
