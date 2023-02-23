@@ -35,7 +35,7 @@
   "config": {
     "title": "Config WebNav",
     "other": {
-      "title": "other",
+      "title": "Other",
       "language": "Language",
       "cors": "CORS Proxy",
       "bar-color": "Main app bar color",
@@ -55,7 +55,8 @@
       "image-url": "Image URL",
       "black-text": "Black text",
       "img-msg": "Leave it blank to use pure color background",
-      "white-text": "White text"
+      "white-text": "White text",
+      "colorDesc": "The color displayed before image available"
     },
     "locale-default": "System default"
   },

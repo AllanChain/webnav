@@ -34,7 +34,8 @@
       "image-url": "图片网址",
       "black-text": "黑色文字",
       "img-msg": "留白以使用纯色背景",
-      "white-text": "白色文字"
+      "white-text": "白色文字",
+      "colorDesc": "没有背景图片时显示的颜色"
     },
     "other": {
       "title": "其他",
@@ -72,7 +73,7 @@
     "apply": "应用",
     "done": "完成"
   },
-   "action": {
+  "action": {
     "edit": "编辑",
     "remove": "删除",
     "reorder": "移动"
