@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeMount, ref, watchEffect } from 'vue'
+import { onMounted, ref, watchEffect } from 'vue'
 import { useConfig } from '@/store/config'
 import { useModeStore } from '@/store/mode'
 import { useAlertStore } from '@/store/alert'
@@ -22,7 +22,7 @@ const theme = ref<'light' | 'dark'>('light')
 const query = ref('')
 const drawer = ref(false)
 
-onBeforeMount(async () => {
+onMounted(async () => {
   await bookmarkStore.init()
 })
 
