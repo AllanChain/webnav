@@ -58,7 +58,8 @@
       "white-text": "White text",
       "colorDesc": "The color displayed before image available",
       "invalid-color": "Invalid color",
-      "pick-color": "Pick a color"
+      "pick-color": "Pick a color",
+      "color-will-change": "The color will change according to the image"
     },
     "locale-default": "System default"
   },

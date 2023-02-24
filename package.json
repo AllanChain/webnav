@@ -18,6 +18,7 @@
   "dependencies": {
     "@mdi/js": "^7.1.96",
     "deepmerge": "^4.3.0",
+    "extract-colors": "^2.0.5",
     "idb": "^7.1.1",
     "jsonschema": "^1.4.1",
     "pinia": "^2.0.30",

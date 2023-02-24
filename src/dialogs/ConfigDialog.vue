@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
+import { extractColors } from 'extract-colors'
 import {
   mdiCheck, mdiFileUploadOutline, mdiFileDownloadOutline,
   mdiImage, mdiLanguageJava, mdiCloseCircleOutline, mdiAirplaneTakeoff
@@ -73,6 +74,15 @@ const uploadBGImage = async (e: Event) => {
   await db.put('backgrounds', { name, data: file })
   config.value.bgImg.url = `upload://${name}`
 }
+watch(bgImg, async (newBGImg, oldBGImg) => {
+  // The BG image is just initialized from IDB, skip updating
+  if (oldBGImg === null || newBGImg === null) return
+  const colors = await extractColors(newBGImg).catch(() => null)
+  if (colors === null || !colors.length) return
+  colors.sort((a, b) => b.area - a.area)
+  config.value.bgImg.filter.blurColor = colors[0].hex
+  config.value.barColor = colors.length > 1 ? colors[1].hex : colors[0].hex
+})
 </script>
 <template>
   <v-dialog
@@ -180,9 +190,16 @@ const uploadBGImage = async (e: Event) => {
               @click:append-inner="bgImgFileInput?.click()"
             />
             <color-input
+              v-model="config.barColor"
+              :label="$t('config.other.bar-color')"
+              :message="$t('config.bg.color-will-change')"
+              :bg-image="bgImg"
+            />
+            <color-input
               v-model="config.bgImg.filter.blurColor"
               :label="$t('config.bg.color')"
               :message="$t('config.bg.colorDesc')"
+              :bg-image="bgImg"
             />
             <v-container v-if="config.bgImg.url !== ''">
               <v-row no-gutters>
@@ -280,10 +297,6 @@ const uploadBGImage = async (e: Event) => {
               hide-details
               color="primary"
               :label="$t('config.other.prefer-new-tab')"
-            />
-            <color-input
-              v-model="config.barColor"
-              :label="$t('config.other.bar-color')"
             />
           </v-window-item>
         </v-window>

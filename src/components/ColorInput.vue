@@ -1,19 +1,36 @@
 <script setup lang="ts">
 import { ref, watchEffect } from 'vue'
 import { mdiSquare, mdiSelectColor } from '@mdi/js'
+import { extractColors } from 'extract-colors'
 
 const props = defineProps<{
   modelValue: string
   label: string
+  bgImage?: string | null
   message?: string
 }>()
 const emit = defineEmits<{(e: 'update:modelValue', color: string): void }>()
 
 const color = ref(props.modelValue)
+const swatches = ref<string[][]>([])
 const dialogOpen = ref(false)
 
 watchEffect(() => {
   color.value = props.modelValue
+})
+watchEffect(async () => {
+  if (props.bgImage) {
+    const colors = await extractColors(props.bgImage).catch(() => null)
+    if (colors === null) return
+    const hexes = colors.sort((a, b) => b.area - a.area).map(c => c.hex)
+    const chunkSize = 2
+    const res = []
+    for (let i = 0; i < hexes.length; i += chunkSize) {
+      const chunk = hexes.slice(i, i + chunkSize)
+      res.push(chunk)
+    }
+    swatches.value = res
+  }
 })
 
 const selectDone = () => {
@@ -24,7 +41,7 @@ const selectDone = () => {
 
 <template>
   <v-text-field
-    class="mt-2"
+    class="mt-3"
     :model-value="modelValue"
     :append-inner-icon="mdiSelectColor"
     :label="label"
@@ -56,6 +73,8 @@ const selectDone = () => {
         rounded="0"
         elevation="0"
         mode="hex"
+        :swatches="swatches"
+        show-swatches
         hide-inputs
       />
       <v-card-actions class="pt-0">

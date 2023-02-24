@@ -27,6 +27,7 @@ specifiers:
   eslint-plugin-node: ^11.1.0
   eslint-plugin-promise: ^6.1.1
   eslint-plugin-vue: ^9.9.0
+  extract-colors: ^2.0.5
   idb: ^7.1.1
   jsonschema: ^1.4.1
   pinia: ^2.0.30
@@ -60,6 +61,7 @@ specifiers:
 dependencies:
   '@mdi/js': 7.1.96
   deepmerge: 4.3.0
+  extract-colors: 2.0.5
   idb: 7.1.1
   jsonschema: 1.4.1
   pinia: 2.0.30_hmuptsblhheur2tugfgucj7gc4
@@ -4281,6 +4283,10 @@ packages:
       iconv-lite: 0.4.24
       tmp: 0.0.33
     dev: true
+
+  /extract-colors/2.0.5:
+    resolution: {integrity: sha512-MCILfigw4M9T8czA8JS1aGbP7c3g8dzdyNbG63hKgSnLGA4FLtnsLdoEvtNFO8BhYuWKAOiYqBaXQetWmgG1Lg==}
+    dev: false
 
   /extract-zip/2.0.1_supports-color@8.1.1:
     resolution: {integrity: sha512-GDhU9ntwuKyGXdZBUgTIe+vXnWj0fppUEtMDL0+idd5Sta8TGpHssn/eusA9mrPr9qNDym6SxAYZjNvCn/9RBg==}
