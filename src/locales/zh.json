@@ -35,7 +35,9 @@
       "black-text": "黑色文字",
       "img-msg": "留白以使用纯色背景",
       "white-text": "白色文字",
-      "colorDesc": "没有背景图片时显示的颜色"
+      "colorDesc": "没有背景图片时显示的颜色",
+      "invalid-color": "颜色格式有误",
+      "pick-color": "选取一个颜色"
     },
     "other": {
       "title": "其他",

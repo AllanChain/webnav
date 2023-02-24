@@ -29,7 +29,7 @@ const selectDone = () => {
     :append-inner-icon="mdiSelectColor"
     :label="label"
     :rules="[
-      (v: string) => !!v.match(/^#([\da-fA-F]{3}){1,2}$/) || 'Color'
+      (v: string) => !!v.match(/^#([\da-fA-F]{3}){1,2}$/) || $t('config.bg.invalid-color')
     ]"
     :messages="message"
     variant="outlined"
@@ -41,25 +41,25 @@ const selectDone = () => {
       <v-icon :icon="mdiSquare" :color="modelValue" />
     </template>
   </v-text-field>
-  <v-dialog v-model="dialogOpen" width="320">
+  <v-dialog v-model="dialogOpen" width="300">
     <v-card>
       <v-card-title class="pa-0">
         <v-toolbar color="indigo" dark density="compact">
           <v-toolbar-title>
-            Pick a color
+            {{ $t('config.bg.pick-color') }}
           </v-toolbar-title>
         </v-toolbar>
       </v-card-title>
-      <v-card-text>
-        <v-color-picker
-          v-model="color"
-          canvas-height="100"
-          hide-inputs
-          flat
-        />
-      </v-card-text>
-      <v-card-actions>
-        <v-btn color="yellow" @clcik="dialogOpen=false">
+      <v-color-picker
+        v-model="color"
+        canvas-height="150"
+        rounded="0"
+        elevation="0"
+        mode="hex"
+        hide-inputs
+      />
+      <v-card-actions class="pt-0">
+        <v-btn color="amber darken-3" @click="dialogOpen=false">
           {{ $t('button.cancel') }}
         </v-btn>
         <v-spacer />

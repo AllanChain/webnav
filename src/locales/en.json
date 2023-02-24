@@ -56,7 +56,9 @@
       "black-text": "Black text",
       "img-msg": "Leave it blank to use pure color background",
       "white-text": "White text",
-      "colorDesc": "The color displayed before image available"
+      "colorDesc": "The color displayed before image available",
+      "invalid-color": "Invalid color",
+      "pick-color": "Pick a color"
     },
     "locale-default": "System default"
   },
