@@ -8,16 +8,21 @@ import { useAlertStore } from '@/store/alert'
 import { Config, useConfigStore } from '@/store/config'
 import validate from '@/validator'
 import ColorInput from '@/components/ColorInput.vue'
+import { useDBStore } from '@/store/db'
+import { useBGImg } from '@/composables/bgImg'
 
 const emit = defineEmits<{(e: 'update:modelValue', open: boolean): void}>()
 
 const configStore = useConfigStore()
 const alertStore = useAlertStore()
+const dbStore = useDBStore()
 
 const tab = ref(0)
 const config = ref(JSON.parse(JSON.stringify(configStore.getConfig())) as Config)
 const downloadLink = ref<HTMLAnchorElement | null>(null)
 const fileInput = ref<HTMLInputElement | null>(null)
+const bgImgFileInput = ref<HTMLInputElement | null>(null)
+const { bgImg } = useBGImg(config)
 
 const done = () => {
   if (validate('/config', config.value)) {
@@ -55,6 +60,18 @@ const downloadJSON = () => {
     'data:text/json;charset=utf-8,' +
     encodeURIComponent(configString)
   downloadLink.value.click()
+}
+const uploadBGImage = async (e: Event) => {
+  const target = e.target as HTMLInputElement
+  const file = target.files?.[0]
+  if (file === undefined) return
+  const db = await dbStore.getDB()
+  const arrayBuffer = await file.arrayBuffer()
+  const hashBuffer = await crypto.subtle.digest('SHA-1', arrayBuffer)
+  const hashArray = Array.from(new Uint8Array(hashBuffer))
+  const name = hashArray.slice(0, 5).map((b) => b.toString(16).padStart(2, '0')).join('')
+  await db.put('backgrounds', { name, data: file })
+  config.value.bgImg.url = `upload://${name}`
 }
 </script>
 <template>
@@ -107,7 +124,7 @@ const downloadJSON = () => {
               <div
                 class="bg-image bg-preview"
                 :style="{
-                  backgroundImage: `url(${config.bgImg.url})`,
+                  backgroundImage: `url(${bgImg})`,
                   filter: `blur(${config.bgImg.filter.blur}px)
                       contrast(${config.bgImg.filter.contrast}%)
                       grayscale(${config.bgImg.filter.grayscale}%)`
@@ -142,9 +159,16 @@ const downloadJSON = () => {
                 </v-btn>
               </v-btn-toggle>
             </div>
+            <input
+              ref="bgImgFileInput"
+              type="file"
+              hidden
+              @change="uploadBGImage"
+            >
             <v-text-field
               :model-value="config.bgImg.url"
               :prepend-inner-icon="mdiImage"
+              :append-inner-icon="mdiFileUploadOutline"
               :label="$t('config.bg.image-url')"
               placeholder="back.jpg"
               :messages="$t('config.bg.img-msg')"
@@ -153,6 +177,7 @@ const downloadJSON = () => {
               density="compact"
               clearable
               @update:model-value="config.bgImg.url = $event || ''"
+              @click:append-inner="bgImgFileInput?.click()"
             />
             <color-input
               v-model="config.bgImg.filter.blurColor"

@@ -11,7 +11,8 @@ import ImportDialog from '@/dialogs/ImportDialog.vue'
 import EditDialog from '@/dialogs/EditDialog.vue'
 import ReorderDialog from '@/dialogs/ReorderDialog.vue'
 import ConfigDialog from '@/dialogs/ConfigDialog.vue'
-import { useBookmarkStore } from './store/bookmark'
+import { useBookmarkStore } from '@/store/bookmark'
+import { useBGImg } from '@/composables/bgImg'
 
 const config = useConfig()
 const modeStore = useModeStore()
@@ -21,6 +22,7 @@ const bookmarkStore = useBookmarkStore()
 const theme = ref<'light' | 'dark'>('light')
 const query = ref('')
 const drawer = ref(false)
+const { bgImg } = useBGImg(config)
 
 onMounted(async () => {
   await bookmarkStore.init()
@@ -47,7 +49,7 @@ const dialogClose = () => {
         <div
           class="bg-image"
           :style="{
-            backgroundImage: `url(${config.bgImg.url})`,
+            backgroundImage: `url(${bgImg})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center 60%',
             filter: `blur(${config.bgImg.filter.blur}px)

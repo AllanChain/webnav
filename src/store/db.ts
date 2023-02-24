@@ -18,7 +18,7 @@ interface BookmarkDBSchema extends DBSchema {
     key: string
     value: {
       name: string
-      data: string
+      data: Blob
     }
   }
 }
