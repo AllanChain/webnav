@@ -2,8 +2,9 @@
 /// <reference types="cypress-file-upload" />
 
 describe('App Basic Feature Test', () => {
-  it('Functions well', () => {
+  beforeEach(() => {
     cy.intercept('*.ico', { fixture: 'favicon.png' }).as('ico')
+    cy.intercept('https://*.unsplash.com/*', { fixture: 'juliana-unsplash.jpg' }).as('bg')
     cy.visit('/', {
       onBeforeLoad (win) {
         // only delete once on test start
@@ -11,13 +12,18 @@ describe('App Basic Feature Test', () => {
       }
     })
     cy.wait('@ico')
-
-    // icon display
+    cy.wait('@bg')
+    cy.get('.alert-box').then((el) => {
+      el.find('.v-alert__close button').trigger('click')
+    })
+  })
+  it('icons visible', () => {
     cy.get('img[data-cy="website-icon"]').should('be.visible')
     cy.get('img[data-cy="website-icon"][src*="fallback"]', {
       timeout: 10000
     }).should('have.length', 0)
-
+  })
+  it('import, edit, and reorder', () => {
     // import new bookmarks so that we have consistant test set
     // open drawer and dialog
     cy.get('[data-cy="button-drawer"]').click()
@@ -78,8 +84,8 @@ describe('App Basic Feature Test', () => {
         cy.get('[data-cy="reorder-cancel"]').click()
         cy.get('[data-cy="title"]').eq(0).should('have.text', title)
       })
-
-    // edit bookmark
+  })
+  it('edit bookmark', () => {
     // this time, use the rightclick way
     cy.get('[data-cy="nav-item"]').first().rightclick()
     cy.get('[data-cy="nav-item-action-edit"]').click()
@@ -95,7 +101,8 @@ describe('App Basic Feature Test', () => {
         cy.get('[data-cy=done]').click()
         cy.get('[data-cy="title"]').first().should('contain', newTitle)
       })
-
+  })
+  it('clear, add, and search', () => {
     // clear bookmarks
     cy.get('[data-cy="button-drawer"]').click()
     cy.get('[data-cy="button-clear"]').click()
