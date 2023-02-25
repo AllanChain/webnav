@@ -23,7 +23,7 @@ watchEffect(async () => {
     const colors = await extractColors(props.bgImage).catch(() => null)
     if (colors === null) return
     const hexes = colors.sort((a, b) => b.area - a.area).map(c => c.hex)
-    const chunkSize = 2
+    const chunkSize = Math.ceil(hexes.length / 5)
     const res = []
     for (let i = 0; i < hexes.length; i += chunkSize) {
       const chunk = hexes.slice(i, i + chunkSize)
