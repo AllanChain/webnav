@@ -56,10 +56,10 @@
       "black-text": "Black text",
       "img-msg": "Leave it blank to use pure color background",
       "white-text": "White text",
-      "colorDesc": "The color displayed before image available",
       "invalid-color": "Invalid color",
       "pick-color": "Pick a color",
-      "color-will-change": "The color will change according to the image"
+      "color-will-change": "The color will auto update when a new image is uploaded",
+      "color-desc": "The color displayed before image is available"
     },
     "locale-default": "System default"
   },

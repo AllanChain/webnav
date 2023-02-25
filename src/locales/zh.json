@@ -35,10 +35,10 @@
       "black-text": "黑色文字",
       "img-msg": "留白以使用纯色背景",
       "white-text": "白色文字",
-      "colorDesc": "没有背景图片时显示的颜色",
       "invalid-color": "颜色格式有误",
       "pick-color": "选取一个颜色",
-      "color-will-change": "颜色会随背景图片的变化而更新"
+      "color-will-change": "上传新的图片后颜色会自动更新",
+      "color-desc": "没有背景图片或加载未完成时显示的颜色"
     },
     "other": {
       "title": "其他",

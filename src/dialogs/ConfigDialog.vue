@@ -198,7 +198,7 @@ watch(bgImg, async (newBGImg, oldBGImg) => {
             <color-input
               v-model="config.bgImg.filter.blurColor"
               :label="$t('config.bg.color')"
-              :message="$t('config.bg.colorDesc')"
+              :message="$t('config.bg.color-desc')"
               :bg-image="bgImg"
             />
             <v-container v-if="config.bgImg.url !== ''">
