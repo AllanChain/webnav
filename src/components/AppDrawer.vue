@@ -47,6 +47,10 @@ const downloadJSON = () => {
     encodeURIComponent(JSON.stringify(bookmarks, null, 4))
   downloadLink.value.click()
 }
+const openConfirm = () => {
+  confirmOpen.value = true
+  emit('update:drawer', false)
+}
 </script>
 
 <template>
@@ -105,7 +109,7 @@ const downloadJSON = () => {
         <v-list-item-title>{{ $t('menu.more-config') }}</v-list-item-title>
       </v-list-item>
 
-      <v-list-item link @click="confirmOpen=true">
+      <v-list-item link data-cy="button-clear" @click="openConfirm">
         <template #prepend>
           <v-icon :icon="mdiAlert" />
         </template>

@@ -71,6 +71,7 @@ const newBookmark = () => {
     />
     <v-text-field
       ref="textInput"
+      data-cy="search-input"
       :prepend-inner-icon="mdiMagnify"
       hide-details
       variant="outlined"

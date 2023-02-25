@@ -4,7 +4,12 @@
 describe('App Basic Feature Test', () => {
   it('Functions well', () => {
     cy.intercept('*.ico', { fixture: 'favicon.png' }).as('ico')
-    cy.visit('/')
+    cy.visit('/', {
+      onBeforeLoad (win) {
+        // only delete once on test start
+        win.indexedDB.deleteDatabase('BookmarkDB')
+      }
+    })
 
     // alert
     cy.contains('WebNav config initiated').should('be.visible')
@@ -93,5 +98,41 @@ describe('App Basic Feature Test', () => {
         cy.get('[data-cy=done]').click()
         cy.get('[data-cy="title"]').first().should('contain', newTitle)
       })
+
+    // clear bookmarks
+    cy.get('[data-cy="button-drawer"]').click()
+    cy.get('[data-cy="button-clear"]').click()
+    cy.get('[data-cy="clear-confirm"]').click()
+    // dialog closed
+    cy.get('[data-cy="clear-confirm"]').should('not.exist')
+    // drawer closed
+    cy.get('[data-cy="button-clear"]').should('not.be.visible')
+    // bookmarks gone
+    cy.get('img[data-cy="website-icon"]').should('not.exist')
+
+    // add new bookmark
+    cy.get('[data-cy="button-drawer"]').click()
+    cy.get('[data-cy="button-new-bookmark"]').click()
+    cy.get('[data-cy="input-url"] input').type('{selectall}https://www.bing.com')
+    cy.intercept('*/www.bing.com', { fixture: 'www.bing.com.json' }).as('bing')
+    cy.get('[data-cy="info-grab"]').click()
+    cy.wait('@bing')
+    cy.get('[data-cy="input-title"] input').should('contain.value', 'Bing')
+    cy.get('[data-cy="done"]').click()
+    cy.get('[data-cy="title"]').last().should('contain', 'Bing')
+
+    // searching
+    cy.get('[data-cy="search-input"] input').type('github')
+    cy.intercept('https://www.bing.com/search*', { fixture: 'bing.html' }).as('bing-search')
+    cy.get('[data-cy="search-with-it"]').click()
+    cy.origin('www.bing.com', () => {
+      cy.location('href').should('contain', 'https://www.bing.com/search?q=github')
+      cy.go('back')
+    })
+
+    // Chrome auto complete
+    cy.get('[data-cy="search-input"] input').should('have.value', 'github')
+    // bookmarks are same as before leaving
+    cy.get('img[data-cy="website-icon"]').should('have.length', 1)
   })
 })

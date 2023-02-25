@@ -91,6 +91,7 @@ const goURL = (url: string) => {
         color="#2196f390"
         icon
         size="x-small"
+        data-cy="search-with-it"
         @click="goSearch"
       >
         <v-icon color="white" :icon="mdiMagnify" />

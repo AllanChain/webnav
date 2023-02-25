@@ -183,6 +183,7 @@ const faviconGrab = async () => {
       <v-card-actions class="pt-0">
         <v-btn
           text
+          data-cy="info-grab"
           color="primary"
           :disabled="!bookmark.url || faviconGrabLoading"
           @click="faviconGrab"
