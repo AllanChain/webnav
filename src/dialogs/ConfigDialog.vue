@@ -93,7 +93,7 @@ watch(bgImg, async (newBGImg, oldBGImg) => {
   >
     <a ref="downloadLink" class="d-none" />
     <input
-      ref="file"
+      ref="fileInput"
       type="file"
       accept=".json"
       hidden
