@@ -48,6 +48,7 @@ jobs:
 
       - name: Cypress run
         uses: cypress-io/github-action@v5
+        timeout-minutes: 10
         with:
           install: false
           build: pnpm build
