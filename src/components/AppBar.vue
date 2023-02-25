@@ -32,6 +32,14 @@ const showBtn = computed(() => {
   if (textFocus.value || _query.value) return false
   return true
 })
+const barTheme = computed(() => {
+  const rgb = parseInt(config.value.barColor.slice(1), 16) // convert rrggbb to decimal
+  const r = (rgb >> 16) & 0xff
+  const g = (rgb >> 8) & 0xff
+  const b = (rgb >> 0) & 0xff
+  const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b // per ITU-R BT.709
+  return luma < 100 ? 'dark' : 'light'
+})
 
 const handleAutofill = () => {
   if (!autofilled.value) {
@@ -56,7 +64,7 @@ const newBookmark = () => {
 </script>
 
 <template>
-  <v-app-bar app :color="config.barColor" theme="dark" density="compact">
+  <v-app-bar app :color="config.barColor" :theme="barTheme" density="compact">
     <v-app-bar-nav-icon
       data-cy="button-drawer"
       @click="emit('drawer-toggle')"

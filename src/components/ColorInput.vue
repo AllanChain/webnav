@@ -46,7 +46,7 @@ const selectDone = () => {
     :append-inner-icon="mdiSelectColor"
     :label="label"
     :rules="[
-      (v: string) => !!v.match(/^#([\da-fA-F]{3}){1,2}$/) || $t('config.bg.invalid-color')
+      (v: string) => !!v.match(/^#[\da-fA-F]{6}$/) || $t('config.bg.invalid-color')
     ]"
     :messages="message"
     variant="outlined"
