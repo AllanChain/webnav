@@ -211,6 +211,7 @@ watch(bgImg, async (newBGImg, oldBGImg) => {
                     v-model="config.bgImg.filter.blur"
                     min="0"
                     max="10"
+                    step="1"
                     thumb-label
                     color="primary"
                     hide-details
@@ -226,6 +227,7 @@ watch(bgImg, async (newBGImg, oldBGImg) => {
                     v-model="config.bgImg.filter.contrast"
                     min="0"
                     max="200"
+                    step="1"
                     thumb-label
                     color="primary"
                     hide-details
@@ -241,6 +243,7 @@ watch(bgImg, async (newBGImg, oldBGImg) => {
                     v-model="config.bgImg.filter.grayscale"
                     min="0"
                     max="100"
+                    step="1"
                     thumb-label
                     color="primary"
                     hide-details
