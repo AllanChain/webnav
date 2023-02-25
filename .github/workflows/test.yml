@@ -55,3 +55,11 @@ jobs:
           wait-on: http://localhost:5173
         env:
           VITE_FAVIEW_API: ${{ secrets.FAVIEW_API }}
+    
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: cypress-videos
+          path: |
+            cypress/screenshots
+            cypress/videos
