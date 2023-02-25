@@ -1,6 +1,6 @@
 {
   "name": "webnav",
-  "version": "0.22.0",
+  "version": "0.22.1",
   "private": true,
   "scripts": {
     "dev": "vite --port 5173",
