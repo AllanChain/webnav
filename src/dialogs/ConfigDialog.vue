@@ -256,6 +256,7 @@ watch(bgImg, async (newBGImg, oldBGImg) => {
           <v-window-item>
             <v-select
               v-model="config.locale"
+              class="mt-1"
               :items="[
                 {text: $t('config.locale-default'), value: ''},
                 {text: '中文', value: 'zh'},
