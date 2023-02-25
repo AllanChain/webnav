@@ -26,7 +26,7 @@
   "message": {
     "success": "Success!",
     "bookmark-init": "WebNav has added some bookmarks for you",
-    "clear-warn": "Type CLEAR to continue. Hope you have a backup.",
+    "clear-warn": "You are about to clear all bookmarks. Please make sure you have a backup.",
     "config-init": "WebNav config initiated",
     "config-error": "Auto upgrade config failed. Falling back to default. You can still download your previous config. To discard your config changes, just apply default config.",
     "import-success": "No bookmark added | Successfully added {n} bookmark | Successfully added {n} bookmarks",
@@ -74,7 +74,8 @@
   "button": {
     "cancel": "Cancel",
     "apply": "Apply",
-    "done": "Done"
+    "done": "Done",
+    "confirm": "Confirm"
   },
   "action": {
     "edit": "Edit",

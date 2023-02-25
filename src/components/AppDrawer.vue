@@ -1,28 +1,22 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useI18n } from 'vue-i18n'
-import { useModeStore } from '@/store/mode'
-import { BookmarkWithID, useBookmarkStore } from '@/store/bookmark'
-import AppLogo from './AppLogo.vue'
-import ServiceWorker from './ServiceWorker.vue'
 import {
   mdiAlert, mdiApplicationImport, mdiBookmarkPlusOutline, mdiCog,
   mdiGithub, mdiFileDownloadOutline
 } from '@mdi/js'
+import { useModeStore } from '@/store/mode'
+import { BookmarkWithID, useBookmarkStore } from '@/store/bookmark'
+import AppLogo from '@/components/AppLogo.vue'
+import ServiceWorker from '@/components/ServiceWorker.vue'
+import ClearConfirmDialog from '@/dialogs/ClearConfirmDialog.vue'
 
-defineProps<{
-  drawer: boolean
-}>()
-
-// eslint-disable-next-line func-call-spacing
-const emit = defineEmits<{
-  (e: 'update:drawer', drawer: boolean): void
-}>()
+defineProps<{drawer: boolean}>()
+const emit = defineEmits<{(e: 'update:drawer', drawer: boolean): void}>()
 
 const modeStore = useModeStore()
 const bookmarkStore = useBookmarkStore()
-const { t } = useI18n()
 
+const confirmOpen = ref(false)
 const downloadLink = ref<HTMLAnchorElement | null>(null)
 
 const newBookmark = () => {
@@ -52,9 +46,6 @@ const downloadJSON = () => {
     'data:text/json;charset=utf-8,' +
     encodeURIComponent(JSON.stringify(bookmarks, null, 4))
   downloadLink.value.click()
-}
-const confirmClear = () => {
-  if (prompt(t('message.clear-warn')) === 'CLEAR') { bookmarkStore.clear() }
 }
 </script>
 
@@ -114,7 +105,7 @@ const confirmClear = () => {
         <v-list-item-title>{{ $t('menu.more-config') }}</v-list-item-title>
       </v-list-item>
 
-      <v-list-item link @click="confirmClear">
+      <v-list-item link @click="confirmOpen=true">
         <template #prepend>
           <v-icon :icon="mdiAlert" />
         </template>
@@ -132,4 +123,5 @@ const confirmClear = () => {
       <ServiceWorker />
     </v-list>
   </v-navigation-drawer>
+  <ClearConfirmDialog v-model="confirmOpen" />
 </template>
