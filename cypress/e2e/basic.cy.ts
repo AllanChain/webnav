@@ -10,14 +10,6 @@ describe('App Basic Feature Test', () => {
         win.indexedDB.deleteDatabase('BookmarkDB')
       }
     })
-
-    // alert
-    cy.contains('WebNav config initiated').should('be.visible')
-    cy.contains('WebNav has added some bookmarks for you').should('be.visible')
-    cy.get('.v-alert__close > button').first().click({ waitForAnimations: true })
-    cy.get('.v-alert__close > button').first().click({ waitForAnimations: true })
-    cy.get('div.v-alert.success').should('not.exist')
-
     cy.wait('@ico')
 
     // icon display
@@ -37,6 +29,11 @@ describe('App Basic Feature Test', () => {
     // finally upload
     cy.get('[data-cy="input-file-bookmark"]').attachFile('bookmarks.json')
     cy.get('[data-cy="import-check"').click()
+
+    // alert
+    cy.contains('Successfully added 3 bookmarks').should('be.visible')
+    cy.get('.v-alert__close > button').last().click()
+    cy.get('div.v-alert').should('not.exist')
 
     // edit mode
     cy.get('[data-cy="button-edit-mode"]').click()
