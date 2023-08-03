@@ -1662,8 +1662,8 @@ packages:
       vue-i18n:
         optional: true
     dependencies:
-      '@intlify/message-compiler': 9.3.0-beta.24
-      '@intlify/shared': 9.3.0-beta.24
+      '@intlify/message-compiler': 9.3.0-beta.25
+      '@intlify/shared': 9.3.0-beta.25
       jsonc-eslint-parser: 1.4.1
       source-map: 0.6.1
       vue-i18n: 9.2.2(vue@3.2.47)
@@ -1692,11 +1692,11 @@ packages:
       '@intlify/shared': 9.2.2
       source-map: 0.6.1
 
-  /@intlify/message-compiler@9.3.0-beta.24:
-    resolution: {integrity: sha512-prhHATkgp0mpPqoVgiAtLmUc1JMvs8fMH6w53AVEBn+VF87dLhzanfmWY5FoZWORG51ag54gBDBOoM/VFv3m3A==}
+  /@intlify/message-compiler@9.3.0-beta.25:
+    resolution: {integrity: sha512-uT7ybqKoDEw1XITQYnTYjWgZnpCDmHv9e3D4MmJDqHl2qCm6anzdUXWKHUhqR87Ha9Z8Rl44v40iSI/4NUbppQ==}
     engines: {node: '>= 16'}
     dependencies:
-      '@intlify/shared': 9.3.0-beta.24
+      '@intlify/shared': 9.3.0-beta.25
       source-map-js: 1.0.2
     dev: true
 
@@ -1704,8 +1704,8 @@ packages:
     resolution: {integrity: sha512-wRwTpsslgZS5HNyM7uDQYZtxnbI12aGiBZURX3BTR9RFIKKRWpllTsgzHWvj3HKm3Y2Sh5LPC1r0PDCKEhVn9Q==}
     engines: {node: '>= 14'}
 
-  /@intlify/shared@9.3.0-beta.24:
-    resolution: {integrity: sha512-AKxJ8s7eKIQWkNaf4wyyoLRwf4puCuQgjSChlDJm5JBEt6T8HGgnYTJLRXu6LD/JACn3Qwu6hM/XRX1c9yvjmQ==}
+  /@intlify/shared@9.3.0-beta.25:
+    resolution: {integrity: sha512-Zg+ECV9RPdp227tCJOgvPb+S3i651nf4kKHsMojSyWCppVK/4NFuDrBG2lIQSQL6Iq5LKVr5MkezHCW2NBTQRg==}
     engines: {node: '>= 16'}
     dev: true
 
@@ -1725,7 +1725,7 @@ packages:
         optional: true
     dependencies:
       '@intlify/bundle-utils': 4.0.0(vue-i18n@9.2.2)
-      '@intlify/shared': 9.3.0-beta.24
+      '@intlify/shared': 9.3.0-beta.25
       '@rollup/pluginutils': 4.2.1
       '@vue/compiler-sfc': 3.2.47
       debug: 4.3.4(supports-color@8.1.1)
@@ -5225,7 +5225,7 @@ packages:
     dev: true
 
   /is-module@1.0.0:
-    resolution: {integrity: sha1-Mlj7afeMFNW4FdZkM2tM/7ZEFZE=}
+    resolution: {integrity: sha512-51ypPSPCoTEIN9dy5Oy+h4pShgJmPCygKfyRCISBI+JoWT/2oJvK8QPxmwv7b/p239jXrm9M1mlQbyKJ5A152g==}
     dev: true
 
   /is-negative-zero@2.0.2:
@@ -5250,7 +5250,7 @@ packages:
     engines: {node: '>=0.12.0'}
 
   /is-obj@1.0.1:
-    resolution: {integrity: sha1-PkcprB9f3gJc19g6iW2rn09n2w8=}
+    resolution: {integrity: sha512-l4RyHgRqGN4Y3+9JHVrNqO+tN0rV5My76uW5/nuO4K1b6vw5G8d/cmFjP9tRfEsdhZNt0IFdZuK/c2Vr4Nb+Qg==}
     engines: {node: '>=0.10.0'}
     dev: true
 
@@ -5283,7 +5283,7 @@ packages:
     dev: true
 
   /is-regexp@1.0.0:
-    resolution: {integrity: sha1-/S2INUXEa6xaYz57mgnof6LLUGk=}
+    resolution: {integrity: sha512-7zjFAPO4/gwyQAAgRRmqeEeyIICSdmCqa3tsVHMdBzaXXRiqopZL4Cyghg/XulGWrtABTpbnYYzzIRffLkP4oA==}
     engines: {node: '>=0.10.0'}
     dev: true
 
@@ -5462,7 +5462,7 @@ packages:
     dev: true
 
   /jsesc@0.5.0:
-    resolution: {integrity: sha1-597mbjXW/Bb3EP6R1c9p9w8IkR0=}
+    resolution: {integrity: sha512-uZz5UnB7u4T9LvwmFqXii7pZSouaRPorGs5who1Ip7VO0wxanFvBL7GkM6dTHlgX+jhBApRetaWpnDabOeTcnA==}
     hasBin: true
     dev: true
 
@@ -5670,7 +5670,7 @@ packages:
     dev: true
 
   /lodash.debounce@4.0.8:
-    resolution: {integrity: sha1-gteb/zCmfEAF/9XiUVMArZyk168=}
+    resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
     dev: true
 
   /lodash.ismatch@4.4.0:
@@ -5686,7 +5686,7 @@ packages:
     dev: true
 
   /lodash.sortby@4.7.0:
-    resolution: {integrity: sha1-7dFMgk4sycHgsKG0K7UhBRakJDg=}
+    resolution: {integrity: sha512-HDWXG8isMntAyRF5vZ7xKuEvOhT4AhlRt/3czTSjvGUxjYCBVRQY48ViDHyfYz9VIoBkW4TMGQNapx+l3RUwdA==}
     dev: true
 
   /lodash.truncate@4.4.2:
@@ -5997,7 +5997,7 @@ packages:
     dependencies:
       hosted-git-info: 2.8.9
       resolve: 1.22.1
-      semver: 5.7.1
+      semver: 5.7.2
       validate-npm-package-license: 3.0.4
     dev: true
 
@@ -6901,6 +6901,7 @@ packages:
 
   /rollup-plugin-terser@7.0.2(rollup@2.79.1):
     resolution: {integrity: sha512-w3iIaU4OxcF52UUXiZNsNeuXIMDvFrr+ZXK6bFZ0Q60qyVfq4uLptoS4bbq3paG3x216eQllFZX7zt6TIImguQ==}
+    deprecated: This package has been deprecated and is no longer maintained. Please use @rollup/plugin-terser
     peerDependencies:
       rollup: ^2.0.0
     dependencies:
@@ -6996,8 +6997,8 @@ packages:
       semver: 7.3.8
     dev: true
 
-  /semver@5.7.1:
-    resolution: {integrity: sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==}
+  /semver@5.7.2:
+    resolution: {integrity: sha512-cBznnQ9KjJqU67B52RMC65CMarK2600WFnbkcaiwWq3xy/5haFJlshgnpjovMVJ+Hff49d8GEn0b87C5pDQ10g==}
     hasBin: true
     dev: true
 
@@ -7622,7 +7623,7 @@ packages:
     dev: true
 
   /tr46@1.0.1:
-    resolution: {integrity: sha1-qLE/1r/SSJUZZ0zN5VujaTtwbQk=}
+    resolution: {integrity: sha512-dTpowEjclQ7Kgx5SdBkqRzVhERQXov8/l9Ft9dVM9fmg0W0KQSVaXX9T4i6twCPNtYiZM53lpSSUAwJbFPOHxA==}
     dependencies:
       punycode: 2.3.0
     dev: true
