@@ -53,6 +53,7 @@ const selectDone = () => {
     color="primary"
     density="compact"
     @click:append-inner="dialogOpen = true"
+    @update:model-value="emit('update:modelValue', $event)"
   >
     <template #prepend-inner>
       <v-icon :icon="mdiSquare" :color="modelValue" />
