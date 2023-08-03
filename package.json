@@ -64,7 +64,6 @@
     "eslint-plugin-vue": "^9.16.1",
     "postcss-html": "^1.5.0",
     "release-it": "^16.1.3",
-    "rollup-plugin-visualizer": "^5.9.2",
     "sass": "^1.64.2",
     "serve-handler": "^6.1.5",
     "start-server-and-test": "^2.0.0",
