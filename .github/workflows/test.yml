@@ -56,7 +56,7 @@ jobs:
           start: pnpm serve
           wait-on: http://localhost:5173
         env:
-          VITE_FAVIEW_API: ${{ secrets.FAVIEW_API }}
+          VITE_FAVIEW_API: https://faview.vercel.app/api
     
       - uses: actions/upload-artifact@v3
         if: failure()
