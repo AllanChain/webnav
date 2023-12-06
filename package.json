@@ -70,7 +70,7 @@
     "stylelint": "^15.10.3",
     "stylelint-config-standard-vue": "^1.0.0",
     "typescript": "^5.2.2",
-    "vite": "^4.4.11",
+    "vite": "^4.4.12",
     "vite-plugin-pwa": "^0.16.5",
     "vite-plugin-vuetify": "1.0.2",
     "vue-tsc": "^1.8.16"
